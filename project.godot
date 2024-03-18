@@ -13,6 +13,11 @@ config_version=5
 config/name="enigma-gioco"
 config/features=PackedStringArray("4.2", "Mobile")
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [rendering]
 
 renderer/rendering_method="mobile"
