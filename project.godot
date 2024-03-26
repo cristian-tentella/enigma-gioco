@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="enigma-gioco"
-run/main_scene="res://house/house.tscn"
+run/main_scene="res://entities/house/house.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 
 [editor]

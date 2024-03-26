@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1kfdvwq3apxf"]
 
-[ext_resource type="Script" path="res://interaction/interaction.gd" id="1_qsoig"]
+[ext_resource type="Script" path="res://components/interaction/interaction.gd" id="1_qsoig"]
 
 [node name="Interaction" type="Area2D"]
 monitoring = false
