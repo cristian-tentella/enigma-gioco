@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://uopwbm6brg3f"]
+[gd_scene load_steps=8 format=3 uid="uid://dsum2h3el3ynb"]
 
-[ext_resource type="Script" path="res://entities/dialogue_balloon/dialogue_balloon.gd" id="1_o1hwg"]
-[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_bl41h"]
+[ext_resource type="Script" path="res://entities/dialogue_balloon/dialogue_balloon.gd" id="1_oe66a"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_h305x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,7 +64,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="DialogueBalloon" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_o1hwg")
+script = ExtResource("1_oe66a")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -112,7 +112,7 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_bl41h")]
+[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_h305x")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
