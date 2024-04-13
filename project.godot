@@ -20,7 +20,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
-general/balloon_path="res://entities/dialogue_balloon/dialogue_balloon.tscn"
+general/balloon_path="res://ui/dialogue_balloon/dialogue_balloon.tscn"
 general/create_lines_for_responses_with_characters=false
 
 [display]
