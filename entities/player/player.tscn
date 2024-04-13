@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://xe1mhd3eqhkh"]
+[gd_scene load_steps=43 format=3 uid="uid://xe1mhd3eqhkh"]
 
 [ext_resource type="Texture2D" uid="uid://u57th31x713j" path="res://entities/player/player.png" id="1_0o1y5"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_yt8ds"]
+[ext_resource type="PackedScene" uid="uid://cts0odlcglphc" path="res://components/interaction_system/interaction_detector/interaction_detector.tscn" id="3_paehh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45tfr"]
 atlas = ExtResource("1_0o1y5")
@@ -301,6 +302,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krkt7"]
 height = 48.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yd28a"]
+radius = 32.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_yt8ds")
 
@@ -311,3 +315,8 @@ autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_krkt7")
+
+[node name="InteractionDetector" parent="." instance=ExtResource("3_paehh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+shape = SubResource("CircleShape2D_yd28a")

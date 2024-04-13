@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
+# TODO:	change the position of InteractionDetector based on the direction in
+#		which the player is facing
+
+# TODO: the player should not be able to move when a dialogue is active
+
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var interaction_detector = $InteractionDetector
 
 @export_category("Settings")
 @export_group("Movement constants")
@@ -63,3 +69,7 @@ func _unhandled_input(event: InputEvent):
 			movement_actions_list.append(movement_action)
 		if event.is_action_released(movement_action):
 			movement_actions_list.erase(movement_action)
+
+	# TODO: find a better place for this
+	if event.is_action_pressed("interact"):
+		interaction_detector.activate_closest_interaction()

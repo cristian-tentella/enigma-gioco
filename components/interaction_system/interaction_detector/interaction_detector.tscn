@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cts0odlcglphc"]
 
-[ext_resource type="Script" path="res://components/interaction_detector/interaction_detector.gd" id="1_keeja"]
+[ext_resource type="Script" path="res://components/interaction_system/interaction_detector/interaction_detector.gd" id="1_keeja"]
 
 [node name="InteractionDetector" type="Area2D"]
 monitorable = false

@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgqfyu15dibqc"]
+[gd_scene load_steps=12 format=3 uid="uid://dgqfyu15dibqc"]
 
 [ext_resource type="PackedScene" uid="uid://evbg8vgtl62v" path="res://entities/house/house.tscn" id="1_iqx74"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://entities/player/player.tscn" id="2_ow0fi"]
 [ext_resource type="Texture2D" uid="uid://cw5n3dthg6jmw" path="res://entities/house/backgrounds/bathroom.png" id="3_10tb1"]
 [ext_resource type="Texture2D" uid="uid://cxax2rpwbbgqf" path="res://entities/house/backgrounds/misc.png" id="4_4c1h5"]
 [ext_resource type="Texture2D" uid="uid://coxyg74cxeq35" path="res://entities/house/backgrounds/walls.png" id="5_28j61"]
+[ext_resource type="PackedScene" uid="uid://detyb6ykvb4bi" path="res://components/interaction_system/dialogue_interaction/dialogue_interaction.tscn" id="6_dutkn"]
+[ext_resource type="Resource" uid="uid://bru0drio3c2xe" path="res://localization/dialogue/dialogue.dialogue" id="8_lsseg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8expx"]
 texture = ExtResource("3_10tb1")
@@ -64,3 +66,8 @@ layer_1/tile_data = PackedInt32Array(196613, 65538, 1610612736, 262149, 196610, 
 
 [node name="Player" parent="House" instance=ExtResource("2_ow0fi")]
 position = Vector2(242, 146)
+
+[node name="DialogueInteraction" parent="House" instance=ExtResource("6_dutkn")]
+position = Vector2(147, 205)
+dialogue_resource = ExtResource("8_lsseg")
+title = "title"
