@@ -1,15 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqqaa8s7scdc7"]
+[gd_scene load_steps=2 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://entities/player/player.tscn" id="2_ow0fi"]
-[ext_resource type="PackedScene" uid="uid://detyb6ykvb4bi" path="res://components/interaction_system/dialogue_interaction/dialogue_interaction.tscn" id="2_tg6qh"]
-[ext_resource type="Resource" uid="uid://bfvym3bx7bu1w" path="res://localization/dialogue/test.dialogue" id="3_slrkf"]
 
 [node name="TestingHouse" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_ow0fi")]
-position = Vector2(289, 169)
-
-[node name="TestDialogueInteraction" parent="." instance=ExtResource("2_tg6qh")]
-position = Vector2(257, 169)
-dialogue_resource = ExtResource("3_slrkf")
-title = "test"
+position = Vector2(121, 115)

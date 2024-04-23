@@ -14,10 +14,6 @@ config/name="enigma-gioco"
 run/main_scene="res://entities/house/testing_house.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 
-[autoload]
-
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-
 [dialogue_manager]
 
 general/balloon_path="res://ui/dialogue_balloon/dialogue_balloon.tscn"
@@ -33,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
@@ -65,7 +61,6 @@ interact={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localization/dialogue/test.en.translation")
 locale/translations_pot_files=PackedStringArray("res://localization/dialogue/test.dialogue")
 
 [rendering]
