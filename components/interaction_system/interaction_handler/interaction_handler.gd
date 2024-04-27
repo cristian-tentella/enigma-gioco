@@ -3,4 +3,12 @@ extends Node
 
 
 func handle_interaction(interaction: Interaction):
-	pass
+	if interaction is ContainerInteraction:
+		handle_container_interaction(interaction)
+		
+		
+func handle_container_interaction(interaction: ContainerInteraction):
+	if interaction.animated_sprite.animation == interaction.open_animation:
+		interaction.animated_sprite.animation = interaction.close_animation
+	else:
+		interaction.animated_sprite.animation = interaction.open_animation

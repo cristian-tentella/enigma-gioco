@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gc81vkqm216x"]
+
+[ext_resource type="Script" path="res://components/interaction_system/container_interaction/container_interaction.gd" id="1_xlquk"]
+
+[node name="ContainerInteraction" type="Area2D"]
+script = ExtResource("1_xlquk")

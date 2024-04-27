@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxe8scmsur06x"]
+
+[ext_resource type="Texture2D" uid="uid://b1piofqi6uu3k" path="res://entities/door/door.png" id="1_d3ixm"]
+[ext_resource type="PackedScene" uid="uid://gc81vkqm216x" path="res://components/interaction_system/container_interaction/container_interaction.tscn" id="3_rwkvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhqvi"]
+atlas = ExtResource("1_d3ixm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckdbp"]
+atlas = ExtResource("1_d3ixm")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skjl7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhqvi")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckdbp")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifa50"]
+radius = 40.3113
+
+[node name="Door" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_skjl7")
+animation = &"closed"
+
+[node name="ContainerInteraction" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_rwkvy")]
+animated_sprite = NodePath("..")
+open_animation = "opened"
+close_animation = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainerInteraction"]
+shape = SubResource("CircleShape2D_ifa50")
