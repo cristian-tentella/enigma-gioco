@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=5 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://entities/door/door.tscn" id="1_lts8c"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://entities/player/player.tscn" id="2_ow0fi"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction_system/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
+radius = 20.2237
 
 [node name="TestingHouse" type="Node2D"]
 
@@ -10,3 +14,10 @@ position = Vector2(461, 135)
 
 [node name="Player" parent="." instance=ExtResource("2_ow0fi")]
 position = Vector2(121, 115)
+
+[node name="DialogueInteraction" parent="." instance=ExtResource("3_0llho")]
+position = Vector2(209, 100)
+dialogue_id = "test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
+shape = SubResource("CircleShape2D_8spsj")
