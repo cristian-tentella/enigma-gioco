@@ -17,17 +17,24 @@ func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 	for dialogue_line_id in dialogue_lines_ids:
 		dialogue_lines.append(tr(dialogue_line_id))
 
-	show_dialogue_box(dialogue_lines)
+	process_dialogue_lines(dialogue_lines)
 
 
-func show_dialogue_box(dialogue_lines: Array[String]):
+func process_dialogue_lines(dialogue_lines: Array[String]):
 	if not dialogue_box_is_inside_tree:
-		var dialogue_box = dialogue_box_scene.instantiate()
-		add_child(dialogue_box)
-		dialogue_box_is_inside_tree = true
-
+		var dialogue_box = spawn_dialogue_box()
 		dialogue_box.start_dialogue(dialogue_lines)
-
 		await dialogue_box.dialogue_finished_showing
-		dialogue_box.queue_free()
-		dialogue_box_is_inside_tree = false
+		kill_dialogue_box(dialogue_box)
+
+
+func spawn_dialogue_box() -> DialogueBox:
+	var dialogue_box = dialogue_box_scene.instantiate()
+	add_child(dialogue_box)
+	dialogue_box_is_inside_tree = true
+	return dialogue_box
+
+
+func kill_dialogue_box(dialogue_box: DialogueBox):
+	dialogue_box.queue_free()
+	dialogue_box_is_inside_tree = false
