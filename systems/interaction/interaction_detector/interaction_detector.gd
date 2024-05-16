@@ -2,7 +2,7 @@ class_name InteractionDetector
 extends Area2D
 
 
-const interaction_handler_script = preload("res://components/interaction_system/interaction_handler/interaction_handler.gd")
+const interaction_handler_script = preload("res://systems/interaction/interaction_handler/interaction_handler.gd")
 
 @onready var interactions: Array[Interaction]
 @onready var interaction_handler = interaction_handler_script.new()

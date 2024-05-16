@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 
 [autoload]
 
-DialogueSystemSingleton="*res://components/dialogue_system/dialogue_system.gd"
+DialogueSystemSingleton="*res://systems/dialogue/dialogue_system.gd"
 
 [dialogue_manager]
 

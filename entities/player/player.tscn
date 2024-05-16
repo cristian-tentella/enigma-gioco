@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://u57th31x713j" path="res://entities/player/player.png" id="1_0o1y5"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_yt8ds"]
-[ext_resource type="PackedScene" uid="uid://cts0odlcglphc" path="res://components/interaction_system/interaction_detector/interaction_detector.tscn" id="3_paehh"]
+[ext_resource type="PackedScene" uid="uid://cts0odlcglphc" path="res://systems/interaction/interaction_detector/interaction_detector.tscn" id="3_paehh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45tfr"]
 atlas = ExtResource("1_0o1y5")

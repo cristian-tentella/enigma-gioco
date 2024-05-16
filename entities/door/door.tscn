@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxe8scmsur06x"]
 
 [ext_resource type="Texture2D" uid="uid://b1piofqi6uu3k" path="res://entities/door/door.png" id="1_d3ixm"]
-[ext_resource type="PackedScene" uid="uid://gc81vkqm216x" path="res://components/interaction_system/container_interaction/container_interaction.tscn" id="3_rwkvy"]
+[ext_resource type="PackedScene" uid="uid://gc81vkqm216x" path="res://systems/interaction/container_interaction/container_interaction.tscn" id="3_rwkvy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhqvi"]
 atlas = ExtResource("1_d3ixm")
