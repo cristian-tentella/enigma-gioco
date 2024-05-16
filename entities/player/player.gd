@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var interaction_detector = $InteractionDetector
 
+const pause_menu_scene = preload("res://ui/pause_menu/pause_menu.tscn")
+
 @export_category("Settings")
 @export_group("Movement constants")
 @export var max_speed: float = 128
