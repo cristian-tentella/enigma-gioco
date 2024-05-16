@@ -3,8 +3,6 @@ extends CharacterBody2D
 # TODO:	change the position of InteractionDetector based on the direction in
 #		which the player is facing
 
-# TODO: the player should not be able to move when a dialogue is active
-
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var interaction_detector = $InteractionDetector
@@ -15,16 +13,35 @@ extends CharacterBody2D
 @export var acceleration: float = 8
 @export var friction: float = 16
 
-# TODO: use StringName in place of String
+var input = Vector2.ZERO
+
 const MOVEMENT_ACTIONS = ["move_left", "move_right", "move_up", "move_down"]
 var movement_actions_list: Array[String]
 
 
-func get_input() -> Vector2:
-	return Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	)
+func get_vector_from_movement_action(movement_action: String):
+	match movement_action:
+		"move_left":
+			return Vector2.LEFT
+		"move_right":
+			return Vector2.RIGHT
+		"move_up":
+			return Vector2.UP
+		"move_down":
+			return Vector2.DOWN
+
+
+func calculate_input_vector(movement_actions: Array[String]) -> Vector2:
+	var new_input = Vector2.ZERO
+
+	for movement_action in movement_actions:
+		new_input += get_vector_from_movement_action(movement_action)
+
+	return new_input
+
+
+func should_halt():
+	return DialogueSystemSingleton.dialogue_box_is_inside_tree 
 
 
 func calculate_new_velocity(
@@ -58,8 +75,7 @@ func update_animated_sprite():
 
 
 func _physics_process(delta: float):
-	velocity = calculate_new_velocity(velocity, get_input(), delta)
-	update_animated_sprite()
+	velocity = calculate_new_velocity(velocity, input, delta)
 	move_and_slide()
 
 
@@ -70,6 +86,13 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_released(movement_action):
 			movement_actions_list.erase(movement_action)
 
+	if should_halt():
+		movement_actions_list.clear()
+
+	input = calculate_input_vector(movement_actions_list)
+
 	# TODO: find a better place for this
 	if event.is_action_pressed("interact"):
 		interaction_detector.activate_closest_interaction()
+
+	update_animated_sprite()

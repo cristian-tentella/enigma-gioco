@@ -3,6 +3,9 @@ extends Node
 
 
 const dialogues = preload("res://localization/dialogue/dialogues.gd").dialogues
+const dialogue_box_scene = preload("res://ui/dialogue_box/dialogue_box.tscn")
+
+@export var dialogue_box_is_inside_tree = false
 
 
 func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
@@ -10,15 +13,21 @@ func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 		return
 	var dialogue_lines_ids = dialogues.get(dialogue_interaction.dialogue_id)
 
-	var dialogue_lines = []
+	var dialogue_lines: Array[String] = []
 	for dialogue_line_id in dialogue_lines_ids:
 		dialogue_lines.append(tr(dialogue_line_id))
 
 	show_dialogue_box(dialogue_lines)
 
 
-# TODO: add type hint to dialogue_lines (Array[String] doesn't work?!)
-func show_dialogue_box(dialogue_lines):
-	# TODO: implement dialogue_box
-	for line in dialogue_lines:
-		print_debug(line)
+func show_dialogue_box(dialogue_lines: Array[String]):
+	if not dialogue_box_is_inside_tree:
+		var dialogue_box = dialogue_box_scene.instantiate()
+		add_child(dialogue_box)
+		dialogue_box_is_inside_tree = true
+
+		dialogue_box.start_dialogue(dialogue_lines)
+
+		await dialogue_box.dialogue_finished_showing
+		dialogue_box.queue_free()
+		dialogue_box_is_inside_tree = false
