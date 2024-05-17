@@ -17,4 +17,4 @@ func handle_container_interaction(interaction: ContainerInteraction):
 
 
 func handle_dialogue_interaction(interaction: DialogueInteraction):
-	DialogueSystemSingleton.process_dialogue_interaction(interaction)
+	DialogueSystem.process_dialogue_interaction(interaction)

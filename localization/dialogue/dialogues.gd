@@ -1,4 +1,3 @@
-class_name Dialogues
 extends Node
 
 

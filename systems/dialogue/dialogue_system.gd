@@ -1,4 +1,3 @@
-class_name DialogueSystem
 extends Node
 
 
@@ -15,24 +14,24 @@ func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 	for dialogue_line_id in dialogue_lines_ids:
 		dialogue_lines.append(tr(dialogue_line_id))
 
-	process_dialogue_lines(dialogue_lines)
+	_process_dialogue_lines(dialogue_lines)
 
 
-func process_dialogue_lines(dialogue_lines: Array[String]):
+func _process_dialogue_lines(dialogue_lines: Array[String]):
 	if not State.is_dialogue_box_shown:
-		var dialogue_box = spawn_dialogue_box()
+		var dialogue_box = _spawn_dialogue_box()
 		dialogue_box.start_dialogue(dialogue_lines)
 		await dialogue_box.dialogue_finished_showing
-		kill_dialogue_box(dialogue_box)
+		_kill_dialogue_box(dialogue_box)
 
 
-func spawn_dialogue_box() -> DialogueBox:
+func _spawn_dialogue_box() -> DialogueBox:
 	var dialogue_box = dialogue_box_scene.instantiate()
 	add_child(dialogue_box)
 	State.is_dialogue_box_shown = true
 	return dialogue_box
 
 
-func kill_dialogue_box(dialogue_box: DialogueBox):
+func _kill_dialogue_box(dialogue_box: DialogueBox):
 	dialogue_box.queue_free()
 	State.is_dialogue_box_shown = false

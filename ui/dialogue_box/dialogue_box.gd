@@ -9,9 +9,9 @@ signal dialogue_finished_showing()
 func start_dialogue(dialogue_lines: Array[String]):
 	for dialogue_line in dialogue_lines:
 		_process_dialogue_line(dialogue_line)
-		await skip_dialogue_line
+		await self.skip_dialogue_line
 
-	dialogue_finished_showing.emit()
+	self.dialogue_finished_showing.emit()
 
 
 func _process_dialogue_line(dialogue_line: String):
@@ -35,4 +35,4 @@ func _process_dialogue_line(dialogue_line: String):
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("interact"):
-		skip_dialogue_line.emit()
+		self.skip_dialogue_line.emit()
