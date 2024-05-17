@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-# TODO:	change the position of InteractionDetector based on the direction in
-#		which the player is facing
-
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var interaction_detector = $InteractionDetector
@@ -42,6 +39,10 @@ func calculate_input_vector(movement_actions: Array[String]) -> Vector2:
 	return new_input
 
 
+func latest_movement_action() -> String:
+	return movement_actions_list.back()
+
+
 func should_halt():
 	return DialogueSystemSingleton.dialogue_box_is_inside_tree 
 
@@ -69,11 +70,16 @@ func update_animated_sprite():
 	
 	var next_animation_name = current_animation_name
 	if not movement_actions_list.is_empty():
-		next_animation_name = movement_actions_list.back()
+		next_animation_name = latest_movement_action()
 	else:
 		next_animation_name = current_animation_name.replace("move", "idle")
 
 	animated_sprite.play(next_animation_name)
+
+
+func update_interaction_detector_position():
+	const offset_multiplier = 24
+	interaction_detector.position = input * offset_multiplier
 
 
 func _physics_process(delta: float):
@@ -98,3 +104,4 @@ func _unhandled_input(event: InputEvent):
 		interaction_detector.activate_closest_interaction()
 
 	update_animated_sprite()
+	update_interaction_detector_position()
