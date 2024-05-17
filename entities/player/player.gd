@@ -48,16 +48,16 @@ func should_halt():
 
 func calculate_new_velocity(
 	current_velocity: Vector2,
-	input: Vector2,
+	input_vector: Vector2,
 	delta: float
 ) -> Vector2:
 	var new_velocity: Vector2
 
-	if input == Vector2.ZERO:
+	if input_vector == Vector2.ZERO:
 		new_velocity = current_velocity.lerp(Vector2.ZERO, friction * delta)
 	else:
 		new_velocity = current_velocity.lerp(
-			max_speed * input.normalized(),
+			max_speed * input_vector.normalized(),
 			acceleration * delta
 		)
 

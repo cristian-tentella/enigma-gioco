@@ -2,10 +2,6 @@ class_name DialogueBox
 extends Control
 
 
-@onready var title_label = $PanelContainer/MarginContainer/VBoxContainer/Title
-@onready var body_label = $PanelContainer/MarginContainer/VBoxContainer/Body
-
-
 signal skip_dialogue_line()
 signal dialogue_finished_showing()
 
@@ -20,6 +16,9 @@ func start_dialogue(dialogue_lines: Array[String]):
 
 func _process_dialogue_line(dialogue_line: String):
 	const title_delimiter = ":"
+	
+	var title_label = $PanelContainer/MarginContainer/VBoxContainer/Title
+	var body_label = $PanelContainer/MarginContainer/VBoxContainer/Body
 
 	if dialogue_line.contains(title_delimiter):
 		var title_delimiter_index = dialogue_line.find(title_delimiter)
