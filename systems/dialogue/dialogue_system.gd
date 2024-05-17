@@ -5,8 +5,6 @@ extends Node
 const dialogues = preload("res://localization/dialogue/dialogues.gd").dialogues
 const dialogue_box_scene = preload("res://ui/dialogue_box/dialogue_box.tscn")
 
-@export var dialogue_box_is_inside_tree = false
-
 
 func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 	if not dialogues.has(dialogue_interaction.dialogue_id):
@@ -21,7 +19,7 @@ func process_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 
 
 func process_dialogue_lines(dialogue_lines: Array[String]):
-	if not dialogue_box_is_inside_tree:
+	if not State.is_dialogue_box_shown:
 		var dialogue_box = spawn_dialogue_box()
 		dialogue_box.start_dialogue(dialogue_lines)
 		await dialogue_box.dialogue_finished_showing
@@ -31,10 +29,10 @@ func process_dialogue_lines(dialogue_lines: Array[String]):
 func spawn_dialogue_box() -> DialogueBox:
 	var dialogue_box = dialogue_box_scene.instantiate()
 	add_child(dialogue_box)
-	dialogue_box_is_inside_tree = true
+	State.is_dialogue_box_shown = true
 	return dialogue_box
 
 
 func kill_dialogue_box(dialogue_box: DialogueBox):
 	dialogue_box.queue_free()
-	dialogue_box_is_inside_tree = false
+	State.is_dialogue_box_shown = false

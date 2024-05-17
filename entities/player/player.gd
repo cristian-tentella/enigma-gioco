@@ -43,10 +43,6 @@ func latest_movement_action() -> String:
 	return movement_actions_list.back()
 
 
-func should_halt():
-	return DialogueSystemSingleton.dialogue_box_is_inside_tree 
-
-
 func calculate_new_velocity(
 	current_velocity: Vector2,
 	input_vector: Vector2,
@@ -94,7 +90,7 @@ func _unhandled_input(event: InputEvent):
 		if event.is_action_released(movement_action):
 			movement_actions_list.erase(movement_action)
 
-	if should_halt():
+	if not State.should_player_be_able_to_move():
 		movement_actions_list.clear()
 
 	input = calculate_input_vector(movement_actions_list)
