@@ -16,9 +16,8 @@ config/features=PackedStringArray("4.2", "Mobile")
 
 [autoload]
 
-State="*res://systems/state/state.gd"
-Dialogues="*res://localization/dialogue/dialogues.gd"
-DialogueSystem="*res://systems/dialogue/dialogue_system.gd"
+StateManager="*res://managers/state_manager.gd"
+DialogueManager="*res://managers/dialogue_manager.gd"
 
 [dialogue_manager]
 
