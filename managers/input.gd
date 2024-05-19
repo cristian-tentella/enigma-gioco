@@ -6,6 +6,7 @@ const MOVE_DOWN = "move_down"
 const MOVE_RIGHT = "move_right"
 const MOVE_LEFT = "move_left"
 const INTERACT = "interact"
+const PAUSE = "pause"
 
 const MOVEMENT_ACTIONS = [
 	MOVE_UP,
@@ -37,7 +38,11 @@ func _process_player_input_event(input_event: InputEvent):
 	if input_event.is_action_pressed(INTERACT):
 		StateManager.player.interaction_detector.activate_closest_interaction()
 
+	if input_event.is_action_pressed(PAUSE):
+		UIManager.show_pause_menu()
+
 
 func _process_ui_input_event(input_event: InputEvent):
-	if input_event.is_action_pressed(INTERACT):
-		self.advance_dialogue.emit()
+	if StateManager.is_a_dialogue_in_progress:
+		if input_event.is_action_pressed(INTERACT):
+			self.advance_dialogue.emit()

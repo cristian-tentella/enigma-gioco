@@ -3,7 +3,12 @@ extends Node
 
 @onready var ui = get_node("/root/Game/UI")
 
-@onready var dialogue_box_scene = preload("res://ui/dialogue_box/dialogue_box.tscn")
+@onready var dialogue_box_scene = preload(
+	"res://ui/dialogue_box/dialogue_box.tscn"
+)
+@onready var pause_menu_scene = preload(
+	"res://ui/pause_menu/pause_menu.tscn"
+)
 
 
 signal spawn(ui_element: Control)
@@ -35,3 +40,11 @@ func show_dialogue_box(dialogue_lines: Array):
 
 	unlock.emit()
 	_kill_ui_element(dialogue_box)
+
+
+func show_pause_menu():
+	var pause_menu = _spawn_ui_element(pause_menu_scene.instantiate())
+	lock.emit()
+	await pause_menu.exit
+	unlock.emit()
+	_kill_ui_element(pause_menu)
