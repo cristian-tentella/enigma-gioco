@@ -2,16 +2,14 @@ class_name DialogueBox
 extends Control
 
 
-signal skip_dialogue_line()
-signal dialogue_finished_showing()
+func start_dialogue(dialogue_lines: Array):
+	DialogueManager.has_started_displaying.emit()
 
-
-func start_dialogue(dialogue_lines: Array[String]):
 	for dialogue_line in dialogue_lines:
 		_process_dialogue_line(dialogue_line)
-		await self.skip_dialogue_line
+		await InputManager.advance_dialogue
 
-	self.dialogue_finished_showing.emit()
+	DialogueManager.has_finished_displaying.emit()
 
 
 func _process_dialogue_line(dialogue_line: String):
@@ -31,8 +29,3 @@ func _process_dialogue_line(dialogue_line: String):
 	else:
 		title_label.hide()
 		body_label.text = dialogue_line
-
-
-func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("interact"):
-		self.skip_dialogue_line.emit()

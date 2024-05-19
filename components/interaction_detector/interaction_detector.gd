@@ -2,16 +2,13 @@ class_name InteractionDetector
 extends Area2D
 
 
-const interaction_handler_script = preload("res://game/modules/interaction_handler.gd")
-
 @onready var interactions: Array[Interaction]
-@onready var interaction_handler = interaction_handler_script.new()
 
 
 func activate_closest_interaction():
 	if interactions.is_empty():
 		return
-	interaction_handler.handle_interaction(find_closest_interaction())
+	InteractionManager.handle_interaction(find_closest_interaction())
 
 
 func _on_area_entered(area: Area2D):

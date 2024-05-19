@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="enigma-gioco"
-run/main_scene="res://ui/start_menu/start_menu.tscn"
+run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 
 [autoload]
 
-StateManager="*res://managers/state_manager.gd"
-DialogueManager="*res://managers/dialogue_manager.gd"
+DialogueManager="*res://managers/dialogue.gd"
+InputManager="*res://managers/input.gd"
+InteractionManager="*res://managers/interaction.gd"
+StateManager="*res://managers/state.gd"
+UIManager="*res://managers/ui.gd"
 
 [dialogue_manager]
 

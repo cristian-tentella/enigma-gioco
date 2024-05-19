@@ -1,10 +1,10 @@
+class_name Player
 extends CharacterBody2D
 
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var interaction_detector = $InteractionDetector
 
-const pause_menu_scene = preload("res://ui/pause_menu/pause_menu.tscn")
 
 @export_category("Settings")
 @export_group("Movement constants")
@@ -18,17 +18,30 @@ const MOVEMENT_ACTIONS = ["move_left", "move_right", "move_up", "move_down"]
 var movement_actions_queue: Array[String]
 
 
+func _ready():
+	InputManager.movement_action_pressed.connect(
+		func(movement_action: String):
+			self.movement_actions_queue.append(movement_action)
+	)
+
+	InputManager.movement_action_released.connect(
+		func(movement_action: String):
+			self.movement_actions_queue.erase(movement_action)
+	)
+	
+	StateManager.player_can_move.connect(
+		func(player_can_move: bool):
+			if not player_can_move:
+				self.movement_actions_queue.clear()
+	)
+
+
 func _physics_process(delta: float):
-	update_velocity(delta)
-	move_and_slide()
-
-
-func _unhandled_input(event: InputEvent):
-	update_movement_actions_list(event)
-	handle_remaining_actions(event)
 	update_input_vector()
 	update_animated_sprite()
 	update_interaction_detector_position()
+	update_velocity(delta)
+	move_and_slide()
 
 
 func update_velocity(delta: float):
@@ -37,18 +50,8 @@ func update_velocity(delta: float):
 	else:
 		self.velocity = self.velocity.lerp(
 			self.MAX_SPEED * self.input.normalized(),
-			self.ACCELERATION * delta
+			self.ACCELERATION * delta,
 		)
-
-
-func update_movement_actions_list(event: InputEvent):
-	for movement_action in self.MOVEMENT_ACTIONS:
-		if event.is_action_pressed(movement_action):
-			self.movement_actions_queue.append(movement_action)
-		if event.is_action_released(movement_action):
-			self.movement_actions_queue.erase(movement_action)
-	if not StateManager.should_player_be_able_to_move():
-		self.movement_actions_queue.clear()
 
 
 func update_input_vector():
@@ -58,12 +61,6 @@ func update_input_vector():
 		new_input += get_vector_from_movement_action(movement_action)
 
 	self.input = new_input
-
-
-func handle_remaining_actions(event: InputEvent):
-	# TODO: find a better place for this
-	if event.is_action_pressed("interact"):
-		self.interaction_detector.activate_closest_interaction()
 
 
 func update_animated_sprite():
