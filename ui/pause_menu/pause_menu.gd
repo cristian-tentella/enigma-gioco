@@ -1,13 +1,13 @@
 class_name PauseMenu
-extends Node
+extends Control
 
 
 signal exit
 
 
 func _on_main_menu_button_pressed():
-	get_tree().change_scene_to_file("res://ui/start_menu/start_menu.tscn")
-	UIManager.unlock.emit()
+	self.exit.emit()
+	GameManager.start()
 
 
 func _on_exit_pause_menu_button_pressed():

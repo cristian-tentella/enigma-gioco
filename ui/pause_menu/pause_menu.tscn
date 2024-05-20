@@ -38,4 +38,4 @@ text = "Main Menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="CenterContainer/VBoxContainer/SettingsButton" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="CenterContainer/VBoxContainer/SettingsButton" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

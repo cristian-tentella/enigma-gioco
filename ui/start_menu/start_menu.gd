@@ -1,6 +1,13 @@
 class_name StartMenu
-extends Node
+extends Control
+
+
+signal exit
 
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	self.exit.emit()
+
+
+func _on_exit_button_pressed():
+	GameManager.exit()

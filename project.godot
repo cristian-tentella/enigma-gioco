@@ -21,6 +21,7 @@ InputManager="*res://managers/input.gd"
 InteractionManager="*res://managers/interaction.gd"
 StateManager="*res://managers/state.gd"
 UIManager="*res://managers/ui.gd"
+GameManager="*res://managers/game.gd"
 
 [dialogue_manager]
 

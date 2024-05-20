@@ -2,6 +2,7 @@ extends Node
 
 
 var player: Player
+var house: House
 
 var is_a_dialogue_in_progress = false
 var should_player_be_able_to_move = true
