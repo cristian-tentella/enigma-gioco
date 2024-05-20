@@ -44,32 +44,30 @@ func _kill_ui_element(ui_element: Control):
 	kill.emit(ui_element)
 
 
-func show_dialogue_box(dialogue_lines: Array):
-	_spawn_ui_element(dialogue_box)
+func _spawn_locking_ui_element(ui_element: Control):
+	_spawn_ui_element(ui_element)
 	lock.emit()
 
+
+func _kil_locking_ui_element(ui_element: Control):
+	_kill_ui_element(ui_element)
+	unlock.emit()
+
+
+func show_dialogue_box(dialogue_lines: Array):
+	_spawn_locking_ui_element(dialogue_box)
 	dialogue_box.start_dialogue(dialogue_lines)
 	await DialogueManager.has_finished_displaying
-
-	unlock.emit()
-	_kill_ui_element(dialogue_box)
+	_kil_locking_ui_element(dialogue_box)
 
 
 func show_start_menu():
-	_spawn_ui_element(start_menu)
-	lock.emit()
-
+	_spawn_locking_ui_element(start_menu)
 	await start_menu.exit
-
-	unlock.emit()
-	_kill_ui_element(start_menu)
+	_kil_locking_ui_element(start_menu)
 
 
 func show_pause_menu():
-	_spawn_ui_element(pause_menu)
-	lock.emit()
-
+	_spawn_locking_ui_element(pause_menu)
 	await pause_menu.exit
-
-	unlock.emit()
-	_kill_ui_element(pause_menu)
+	_kil_locking_ui_element(pause_menu)
