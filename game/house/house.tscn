@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=11 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/door/door.tscn" id="1_lts8c"]
+[ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/Rooms/rooms.tscn" id="2_axyq3"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
+[ext_resource type="PackedScene" uid="uid://rqb8t5u7c2vy" path="res://game/house/Rooms/Bagno/bagno.tscn" id="3_gmilm"]
+[ext_resource type="PackedScene" uid="uid://bt822pe1r5vam" path="res://game/house/Rooms/Cucina/cucina.tscn" id="5_objf3"]
+[ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2n7"]
+size = Vector2(171, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akjyo"]
+size = Vector2(176, 177.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
 radius = 20.2237
@@ -10,8 +20,51 @@ radius = 20.2237
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
-[node name="Door" parent="." instance=ExtResource("1_lts8c")]
+[node name="Rooms" parent="." instance=ExtResource("2_axyq3")]
+
+[node name="Bagno" parent="Rooms" instance=ExtResource("3_gmilm")]
+
+[node name="ColorRect" type="ColorRect" parent="Rooms/Bagno"]
+offset_left = 121.0
+offset_top = 188.0
+offset_right = 292.0
+offset_bottom = 359.0
+
+[node name="Door" parent="Rooms/Bagno" instance=ExtResource("1_lts8c")]
 position = Vector2(461, 135)
+
+[node name="TextEdit" type="TextEdit" parent="Rooms/Bagno"]
+offset_left = 149.0
+offset_top = 247.0
+offset_right = 218.0
+offset_bottom = 287.0
+text = "Bagno"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Bagno"]
+position = Vector2(206.5, 273)
+shape = SubResource("RectangleShape2D_df2n7")
+
+[node name="Cucina" parent="Rooms" instance=ExtResource("5_objf3")]
+
+[node name="ColorRect" type="ColorRect" parent="Rooms/Cucina"]
+offset_left = 461.0
+offset_top = 183.0
+offset_right = 638.0
+offset_bottom = 360.0
+
+[node name="TextEdit" type="TextEdit" parent="Rooms/Cucina"]
+offset_left = 517.0
+offset_top = 250.0
+offset_right = 586.0
+offset_bottom = 290.0
+text = "Cucina"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Cucina"]
+position = Vector2(550, 271.25)
+shape = SubResource("RectangleShape2D_akjyo")
+
+[node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
+position = Vector2(155, 191)
 
 [node name="DialogueInteraction" parent="." instance=ExtResource("3_0llho")]
 position = Vector2(209, 100)
