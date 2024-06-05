@@ -34,5 +34,10 @@ text = "Settings"
 layout_mode = 2
 text = "Exit"
 
+[node name="LogOutButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Log Out"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LogOutButton" to="." method="_on_log_out_button_pressed"]

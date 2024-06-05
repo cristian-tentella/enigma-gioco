@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjes2bhwnoy6a"]
+
+[ext_resource type="Script" path="res://ui/authentication_menu/authentication_menu.gd" id="1_e57bp"]
+
+[node name="AuthenticationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e57bp")
+
+[node name="email" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 91.0
+offset_right = 467.0
+offset_bottom = 122.0
+placeholder_text = "email"
+
+[node name="password" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 143.0
+offset_right = 467.0
+offset_bottom = 174.0
+placeholder_text = "password"
+secret = true
+
+[node name="sign in" type="Button" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 214.0
+offset_right = 269.0
+offset_bottom = 239.0
+text = "sign in"
+
+[node name="sign up" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 214.0
+offset_right = 468.0
+offset_bottom = 239.0
+text = "sign out"
+
+[connection signal="pressed" from="sign in" to="." method="_on_sign_in_button_pressed"]
+[connection signal="pressed" from="sign up" to="." method="_on_sign_up_button_pressed"]

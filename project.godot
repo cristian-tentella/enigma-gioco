@@ -22,6 +22,8 @@ InteractionManager="*res://managers/interaction.gd"
 StateManager="*res://managers/state.gd"
 UIManager="*res://managers/ui.gd"
 GameManager="*res://managers/game.gd"
+Supabase="*res://addons/supabase/Supabase/supabase.gd"
+AuthenticationManager="*res://managers/authentication.gd"
 
 [dialogue_manager]
 
@@ -38,7 +40,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
 
 [input]
 

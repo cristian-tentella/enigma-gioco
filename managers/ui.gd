@@ -12,8 +12,11 @@ extends Node
 @onready var pause_menu: PauseMenu = preload(
 	"res://ui/pause_menu/pause_menu.tscn"
 ).instantiate()
-
+@onready var authentication_menu: AuthenticationMenu = preload(
+	"res://ui/authentication_menu/authentication_menu.tscn"
+).instantiate()
 @onready var ui_elements: Array[Control] = [
+	authentication_menu,
 	dialogue_box,
 	start_menu,
 	pause_menu,
@@ -71,3 +74,9 @@ func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
+
+
+func show_authentication_menu():
+	_spawn_locking_ui_element(authentication_menu)
+	await AuthenticationManager.exit
+	_kil_locking_ui_element(authentication_menu)
