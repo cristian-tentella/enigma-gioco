@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bt822pe1r5vam"]
 
-[ext_resource type="Script" path="res://game/house/Rooms/Cucina/cucina.gd" id="1_20qlo"]
+[ext_resource type="Script" path="res://game/house/rooms/cucina/cucina.gd" id="1_20qlo"]
 
 [node name="Cucina" type="Area2D"]
 script = ExtResource("1_20qlo")
