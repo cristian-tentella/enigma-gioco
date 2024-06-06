@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v70wes3cb76c"]
+
+[ext_resource type="Script" path="res://components/room_switcher/room_switcher.gd" id="1_rit8b"]
+
+[node name="RoomSwitcher" type="Node2D"]
+script = ExtResource("1_rit8b")
