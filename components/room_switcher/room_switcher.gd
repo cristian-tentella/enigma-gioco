@@ -10,9 +10,8 @@ func _ready():
 	for room in rooms_node.get_children():
 		if room is Room:
 			rooms[room.name] = room
-			room.connect("body_entered", Callable(self, "_on_room_entered").bind(room.name))
-			room.connect("body_exited", Callable(self, "_on_room_exited"))
-			print("Segnale collegato per la stanza " + room.name)
+			room.body_entered.connect(_on_room_entered.bind(room.name))
+			room.body_exited.connect(_on_room_exited)
 			if room.name == current_room:
 				room.get_node("ColorRect").color = LIGHT_ON
 			else:
