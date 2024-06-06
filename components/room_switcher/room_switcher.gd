@@ -18,11 +18,10 @@ func _ready():
 			else:
 				room.get_node("ColorRect").color = LIGHT_OFF
 				
-	print("La stanza corrente e' " + rooms[current_room].name)
+	
 
 func _on_room_entered(body, room_name):	
 	if body is Player:
-		print("Sei entrato in " + room_name)
 		current_room = room_name
 		rooms[current_room].get_node("ColorRect").color = LIGHT_ON
 	
