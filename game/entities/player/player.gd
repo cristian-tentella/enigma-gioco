@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var interaction_detector = $InteractionDetector
 

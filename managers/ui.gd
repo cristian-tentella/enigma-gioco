@@ -1,6 +1,14 @@
+"""
+UIManager
+
+Gestisce tutto ciò che ha a che fare con l'interfaccia utente.
+"""
+
 extends Node
 
-
+"""################################################################################
+PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
+################################################################################"""
 @onready var ui = get_node("/root/Game/UI")
 
 @onready var dialogue_box: DialogueBox = preload(
@@ -13,26 +21,29 @@ extends Node
 	"res://ui/pause_menu/pause_menu.tscn"
 ).instantiate()
 
+"""################################################################################
+QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
+################################################################################"""
 @onready var ui_elements: Array[Control] = [
 	dialogue_box,
 	start_menu,
 	pause_menu,
 ]
 
-
-signal spawn(ui_element: Control)
-signal kill(ui_element: Control)
+#Segnali
+signal spawn(ui_element: Control) #Segnale per mettere in sovrimpressione un elemento UI
+signal kill(ui_element: Control) #Segnale per nascondere un elemento UI
 
 signal lock
 signal unlock
 
-
+#Inizializza come nodi figli di Control tutti gli elementi UI prima elencati, per una veloce selezione in runtime
 func _ready():
 	for ui_element in ui_elements:
 		ui_element.hide()
 		ui.add_child(ui_element)
 
-
+#TODO: Comment those next
 func _spawn_ui_element(ui_element: Control):
 	ui_element.show()
 	spawn.emit(ui_element)

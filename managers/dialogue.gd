@@ -1,3 +1,12 @@
+"""
+Classe che gestisce i dialoghi.
+
+Non mi va di leggere quello che c'è scritto, perciò ripeti dopo di me:
+	Fine, I'll do it myself.
+Bene! HF!
+"""
+
+
 extends Node
 
 
