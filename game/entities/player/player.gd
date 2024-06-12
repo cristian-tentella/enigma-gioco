@@ -80,6 +80,8 @@ func update_animated_sprite():
 
 
 func update_interaction_detector_position():
+	if(input == Vector2.ZERO):
+		return
 	const offset_multiplier = 24
 	self.interaction_detector.position = input * offset_multiplier
 
