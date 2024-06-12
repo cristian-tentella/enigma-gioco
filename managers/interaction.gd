@@ -1,26 +1,16 @@
 """
 InteractionManager
 
-
+Gestore di tutte le interazioni.
+NOTE: Usiamo il polimorfismo.
+	Cosa implica? La spiegazione è meglio gestita in interaction/interaction.gd
+	Idea base? Interazione è una superclasse delle specifiche interazioni, di cui ogni tipo è qui elencato:
+		
+		container_interaction : Interazioni che hanno a che fare con Container (qualcosa che si apre/chiude)
+		dialogue_interaction: 	Interazione per dialoghi
 """
-
 
 extends Node
 
-
 func handle_interaction(interaction: Interaction):
-	if interaction is ContainerInteraction:
-		handle_container_interaction(interaction)
-	elif interaction is DialogueInteraction:
-		handle_dialogue_interaction(interaction)
-
-
-func handle_container_interaction(container_interaction: ContainerInteraction):
-	if container_interaction.animated_sprite.animation == container_interaction.open_animation:
-		container_interaction.animated_sprite.animation = container_interaction.close_animation
-	else:
-		container_interaction.animated_sprite.animation = container_interaction.open_animation
-
-
-func handle_dialogue_interaction(dialogue_interaction: DialogueInteraction):
-	DialogueManager.handle_dialogue_interaction(dialogue_interaction)
+	interaction.handle_interaction()
