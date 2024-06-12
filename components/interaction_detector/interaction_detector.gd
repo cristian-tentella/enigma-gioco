@@ -1,3 +1,19 @@
+"""
+Una Area2D messa davanti alla faccia del giocatore, che detecta gli altri oggetti di interazione che ci sono nella scena,
+talvolta ci entrasse in contatto.
+
+Se guardo una porta, e la porta, come Node, ha un sottonodo XXXXInteraction, che a sua volta ha sottonodo CollisionShape2D, 
+allora quando il CollisionShape2D della porta entra in contatto col
+CollisionShape2D dell'Interaction_Detector (definito in Player.tscn)
+
+TUTORIAL -> L'idea per creare un oggetto con area di interazione è:
+	
+	Fai scena a parte per l'oggetto
+		Metti come figlio un nodo XXXXInteraction
+			Metti come figlio di quel nodo un nodo CollisionShape2D, e modellalo nel modo opportuno 
+			(occupa gran parte della texture dell'oggetto iniziale, se non di più!)
+"""
+
 class_name InteractionDetector
 extends Area2D
 

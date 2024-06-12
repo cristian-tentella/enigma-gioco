@@ -2,9 +2,12 @@ class_name Player
 extends CharacterBody2D
 
 
-
+#Lo sprite del giocatore
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var interaction_detector = $InteractionDetector
+
+#Ha sottonodo CollisionShape2D che definisce l'area di interazione del giocatore. interaction/interaction_detector/interaction_detector.gd per info extra
+#Al momento è un giga cerchio stabile intorno al giocatore
+@onready var interaction_detector = $InteractionDetector 
 
 
 @export_category("Settings")
