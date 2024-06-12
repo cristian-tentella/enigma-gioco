@@ -34,8 +34,21 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 signal spawn(ui_element: Control) #Segnale per mettere in sovrimpressione un elemento UI
 signal kill(ui_element: Control) #Segnale per nascondere un elemento UI
 
-signal lock
+#Le functioni associate a questi due segnali sono definite in managers/state.gd
+signal lock 
+"""
+LOCK:
+	func():
+		player_can_move.emit(false)
+		self.should_player_be_able_to_move = false
+	"""
 signal unlock
+"""
+UNLOCK:
+	func():
+		player_can_move.emit(true)
+		self.should_player_be_able_to_move = true
+"""
 
 #Inizializza come nodi figli di Control tutti gli elementi UI prima elencati, per una veloce selezione in runtime
 func _ready():
@@ -43,9 +56,9 @@ func _ready():
 		ui_element.hide()
 		ui.add_child(ui_element)
 
-#TODO: Comment those next
+#Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
-	ui_element.show()
+	ui_element.show() #Era già nello scene tree, e ora lo mostri
 	spawn.emit(ui_element)
 	return ui_element
 

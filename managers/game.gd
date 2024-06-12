@@ -9,14 +9,17 @@ extends Node
 
 #Chiamata da game/game.gd, a sua volta invocato in game.tscn con _ready()
 func start():
-	#Nascondi tutti i componenti di game.tscn; Inizialmente ci deve essere solo la UI coi tasti di scelta
+	#Nascondi tutti i componenti di game.tscn tranne la UI; Inizialmente ci deve essere solo la UI coi tasti di scelta
 	StateManager.player.hide()
 	StateManager.house.hide()
 	
-	UIManager.show_start_menu() #Mostra il menu iniziale
-	await UIManager.start_menu.exit #Resta nella schermata di selezione finché non viene cliccato un tasto
+	#Mostra il menu iniziale
+	UIManager.show_start_menu() 
 	
-	#Mostra i componenti della scena per far partire il gioco
+	#Resta nella schermata di selezione finché non viene cliccato un tasto
+	await UIManager.start_menu.exit 
+	
+	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()
 
