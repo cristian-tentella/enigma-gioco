@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=5 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
+[ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/generic_item.tscn" id="4_qwdm7"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_oaeyu")
@@ -19,3 +20,6 @@ grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("3_8jufx")]
 position = Vector2(262, 187)
+
+[node name="mazzo_di_chiavi" parent="." instance=ExtResource("4_qwdm7")]
+position = Vector2(111, 103)

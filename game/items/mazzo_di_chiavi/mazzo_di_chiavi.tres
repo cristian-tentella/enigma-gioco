@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://dbtewnplahjhx"]
+
+[ext_resource type="Script" path="res://game/items/item_resouce.gd" id="1_pds8t"]
+
+[resource]
+script = ExtResource("1_pds8t")
+item_name = "mazzo_di_chiavi"
+description = "Mazzo composto da 8 chiavi numerate"
+sprite_path = "res://game/items/mazzo_di_chiavi/mazzo_di_chiavi.png"
+script_path = "res://game/items/mazzo_di_chiavi/mazzo_di_chiavi.gd"
+collision_circle_radius = 16
+properties = {}
