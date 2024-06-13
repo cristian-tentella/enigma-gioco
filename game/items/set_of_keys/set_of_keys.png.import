@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckc7bg417hwxw"
-path="res://.godot/imported/mazzo_di_chiavi.png-7c9ce28c0625f1e5521823e2ca627557.ctex"
+path="res://.godot/imported/set_of_keys.png-f5fbdaf4a274ecc1c69c5e24da19b1a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/items/mazzo_di_chiavi/mazzo_di_chiavi.png"
-dest_files=["res://.godot/imported/mazzo_di_chiavi.png-7c9ce28c0625f1e5521823e2ca627557.ctex"]
+source_file="res://game/items/set_of_keys/set_of_keys.png"
+dest_files=["res://.godot/imported/set_of_keys.png-f5fbdaf4a274ecc1c69c5e24da19b1a2.ctex"]
 
 [params]
 
