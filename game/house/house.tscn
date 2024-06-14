@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=12 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bt822pe1r5vam" path="res://game/house/rooms/cucina/cucina.tscn" id="5_objf3"]
 [ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
+[ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/generic_item.tscn" id="8_0lq6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2n7"]
 size = Vector2(171, 170)
@@ -72,9 +73,20 @@ shape = SubResource("CircleShape2D_8spsj")
 
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(461, 135)
-is_open_at_startup = true
+container_name = "door"
+container_collision_rect_x = 307
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(372, 268)
-animation = &""
+container_name = "door"
 is_locked = true
+
+[node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
+position = Vector2(89, 103)
+collision_circle_radius = 24
+item_name = "set_of_keys"
+
+[node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
+position = Vector2(335, 105)
+collision_circle_radius = -81
+item_name = "set_of_keys2"

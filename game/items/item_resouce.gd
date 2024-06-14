@@ -23,9 +23,9 @@ collision_circle_radius = 16 - Dipende dalla grandezza della pixel art, se in du
 properties = {} - Finora non è usato, we will see
 """
 
-@export var item_name: String #L'item name è NECESSARIAMENTE lo stesso con cui hai chiamato la folder
-@export var description: String #La descrizione che faremo vedere nell'inventario
-@export var sprite_path: String  # Path to the sprite for this item
-@export var script_path: String  # Path to the script for this item
-@export var collision_circle_radius: int # Grandezza della collisione, se non sei sicuro, metti 16
-@export var properties: Dictionary  # Proprietà varie, per ora inutilizzato. Potrebbe essere un posto per mettere proprietà custom di un oggetto, non in comune con gli altri
+var item_name: String #L'item name è NECESSARIAMENTE lo stesso con cui hai chiamato la folder
+var description: String #La descrizione che faremo vedere nell'inventario
+var sprite_path: String  # Path to the sprite for this item
+var script_path: String  # Path to the script for this item
+var collision_circle_radius: int # Grandezza della collisione, se non sei sicuro, metti 16
+var properties: Dictionary  # Proprietà varie, per ora inutilizzato. Potrebbe essere un posto per mettere proprietà custom di un oggetto, non in comune con gli altri

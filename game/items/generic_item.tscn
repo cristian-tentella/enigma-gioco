@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn7glxbd1b4dw"]
+[gd_scene load_steps=3 format=3 uid="uid://dn7glxbd1b4dw"]
 
 [ext_resource type="Script" path="res://game/items/generic_item.gd" id="1_w0j7e"]
 [ext_resource type="Script" path="res://components/interaction/item_interaction/item_interaction.gd" id="2_c6xfl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2axxd"]
-radius = 16.0
 
 [node name="GenericItem" type="Node2D"]
 script = ExtResource("1_w0j7e")
@@ -12,7 +9,6 @@ script = ExtResource("1_w0j7e")
 [node name="ItemInteraction" type="Area2D" parent="."]
 script = ExtResource("2_c6xfl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemInteraction"]
-shape = SubResource("CircleShape2D_2axxd")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]

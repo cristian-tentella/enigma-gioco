@@ -57,7 +57,7 @@ func update_velocity(delta: float):
 			self.ACCELERATION * delta,
 		)
 
-
+#When I receive an input, I place it as a Player variable
 func update_input_vector():
 	var new_input = Vector2.ZERO
 
