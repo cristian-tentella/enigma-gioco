@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfa12bjkyodin"]
-
-[ext_resource type="Script" path="res://components/interaction/locked_container_interaction/locked_container_interaction.gd" id="1_i5act"]
-
-[node name="LockedContainerInteraction" type="Node2D"]
-script = ExtResource("1_i5act")
