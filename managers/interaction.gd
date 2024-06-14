@@ -13,4 +13,4 @@ NOTE: Usiamo il polimorfismo.
 extends Node
 
 func handle_interaction(interaction: Interaction):
-	interaction.handle_interaction()
+	interaction.handle_interaction() #Polymorph call

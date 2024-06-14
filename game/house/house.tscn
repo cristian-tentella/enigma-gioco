@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
-[ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/door/door.tscn" id="1_lts8c"]
-[ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/Rooms/rooms.tscn" id="2_axyq3"]
+[ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
-[ext_resource type="PackedScene" uid="uid://rqb8t5u7c2vy" path="res://game/house/Rooms/Bagno/bagno.tscn" id="3_gmilm"]
-[ext_resource type="PackedScene" uid="uid://bt822pe1r5vam" path="res://game/house/Rooms/Cucina/cucina.tscn" id="5_objf3"]
+[ext_resource type="PackedScene" uid="uid://rqb8t5u7c2vy" path="res://game/house/rooms/bagno/bagno.tscn" id="3_gmilm"]
+[ext_resource type="PackedScene" uid="uid://bt822pe1r5vam" path="res://game/house/rooms/cucina/cucina.tscn" id="5_objf3"]
 [ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
+[ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2n7"]
 size = Vector2(171, 170)
@@ -29,9 +29,6 @@ offset_left = 121.0
 offset_top = 188.0
 offset_right = 292.0
 offset_bottom = 359.0
-
-[node name="Door" parent="Rooms/Bagno" instance=ExtResource("1_lts8c")]
-position = Vector2(461, 135)
 
 [node name="TextEdit" type="TextEdit" parent="Rooms/Bagno"]
 offset_left = 149.0
@@ -72,3 +69,12 @@ dialogue_id = "test"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
 shape = SubResource("CircleShape2D_8spsj")
+
+[node name="door" parent="." instance=ExtResource("7_qq4fd")]
+position = Vector2(461, 135)
+is_open_at_startup = true
+
+[node name="door2" parent="." instance=ExtResource("7_qq4fd")]
+position = Vector2(372, 268)
+animation = &""
+is_locked = true

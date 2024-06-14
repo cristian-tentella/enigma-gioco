@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://dbtewnplahjhx"]
+
+[ext_resource type="Script" path="res://game/items/item_resouce.gd" id="1_pds8t"]
+
+[resource]
+script = ExtResource("1_pds8t")
+item_name = "set_of_keys"
+description = "A set of 8 numbered keys"
+sprite_path = "res://game/items/set_of_keys/set_of_keys.png"
+script_path = "res://game/items/set_of_keys/set_of_keys.gd"
+collision_circle_radius = 16
+properties = {}

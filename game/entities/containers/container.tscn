@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxe8scmsur06x"]
+
+[ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door/door_animations.tres" id="1_7iffp"]
+[ext_resource type="Script" path="res://game/entities/containers/container.gd" id="2_ro2ol"]
+[ext_resource type="PackedScene" uid="uid://gc81vkqm216x" path="res://components/interaction/container_interaction/container_interaction.tscn" id="3_k2j1w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifa50"]
+radius = 40.3113
+
+[node name="Container" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_7iffp")
+animation = &"closed"
+script = ExtResource("2_ro2ol")
+requirement_type = 1
+
+[node name="ContainerInteraction" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_k2j1w")]
+animated_sprite = NodePath("..")
+open_animation = "opened"
+close_animation = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainerInteraction"]
+shape = SubResource("CircleShape2D_ifa50")
+
+[node name="lock_sprite_image" type="Sprite2D" parent="."]
+position = Vector2(0, 5.68434e-14)
+scale = Vector2(1.6, 1.7)
