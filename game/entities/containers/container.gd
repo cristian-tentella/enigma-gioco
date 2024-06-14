@@ -35,16 +35,15 @@ GESTIONE DELLE ANIMAZIONI:
 
 @onready var lock_sprite_image = $lock_sprite_image
 @onready var static_body = $StaticBody2D
-@onready var physical_collision_shape = $StaticBody2D/CollisionShape2D2
-@onready var interaction_collision_shape = $ContainerInteraction/CollisionShape2D
+@onready var container_interaction = $ContainerInteraction
 
 
 @export_category("Container settings")
 @export var is_open_at_startup: bool = false
 @export_enum("door") var container_name: String
 @export_category("Rectangle collision values")
-@export var container_collision_rect_x : int = 32
-@export var container_collision_rect_y : int = 64
+@export var container_collision_rect_x : int = -1 #Negative means default
+@export var container_collision_rect_y : int = -1 #Negative means default
 @export_category("Lock Settings")
 @export var is_locked: bool = false
 @export_group("Requirements")
@@ -55,16 +54,33 @@ GESTIONE DELLE ANIMAZIONI:
 @export var required_item_name: String #MUST BE THE NAME THAT IS IN THE .tres FILE OF THE ITEM ON "item_name" ENTRY. We do inventory search like this, maybe?
 
 func _ready():
-	# Carica le animazioni dello specifico container
 	_load_and_apply_animations_on_startup()
-	_resize_collision_shapes_according_to_exported_variable()
+	generate_both_collision_circles()
 
-func _resize_collision_shapes_according_to_exported_variable():
-	physical_collision_shape.shape.size.x = container_collision_rect_x
-	physical_collision_shape.shape.size.y = container_collision_rect_y
+#Genera dinamicamente i collision shape col loro raggio
+func generate_both_collision_circles():
+	var x =  container_collision_rect_x as int
+	var y = container_collision_rect_y as int
+
+	"""DEFAULT VALUES IF NEGATIVE IN INPUT"""
+	if x < 0:
+		x = 32
+	if y < 0:
+		y = 64
+
+	var interaction_collision_shape = CollisionShape2D.new()
+	var circle_shape_container = RectangleShape2D.new()
+	interaction_collision_shape.shape = circle_shape_container
+	interaction_collision_shape.shape.size.x = x
+	interaction_collision_shape.shape.size.y = y
+	container_interaction.add_child(interaction_collision_shape)
 	
-	interaction_collision_shape.shape.size.x = container_collision_rect_x
-	interaction_collision_shape.shape.size.y = container_collision_rect_y
+	var physical_collision_shape = CollisionShape2D.new()
+	var circle_shape_static = RectangleShape2D.new()
+	physical_collision_shape.shape = circle_shape_static
+	physical_collision_shape.shape.size.x = x
+	physical_collision_shape.shape.size.y = y
+	static_body.add_child(physical_collision_shape)
 
 func _load_and_apply_animations_on_startup():
 	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
