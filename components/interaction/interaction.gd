@@ -33,5 +33,5 @@ extends Area2D
 #Abstract method for handing interactions. 
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
 func handle_interaction():
-	# Throw an error if this method is not overridden
-	push_error("Method 'interact' must be overridden in EVERY subclass. Check interaction/interaction.gd for extra infos")
+	# Throw an error if this method is not overwritten
+	push_error("Method 'interact' must be overwritten in EVERY subclass. Check interaction/interaction.gd for extra infos")

@@ -28,5 +28,3 @@ func _handle_open_close_animation():
 		self.animated_sprite.animation = self.close_animation
 	else:
 		self.animated_sprite.animation = self.open_animation
-
-

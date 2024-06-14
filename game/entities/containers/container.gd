@@ -33,50 +33,42 @@ GESTIONE DELLE ANIMAZIONI:
 	4) Finito, eliminare la scena temporanea
 """
 
-# Lista dei possibili requisiti di sblocco
-enum RequirementType {
-	KEY,
-	ITEM
-}
-
-# Lista di tutti i possibili container, strettamente correlata alle folder che abbiamo nel progetto dentro res://game/entities/containers/
-enum ContainerNames {
-	door
-}
-# Mappatura da enum a stringa per poter usare gli enum come, appunto, stringa
-var ContainerNamesString = {
-	ContainerNames.door: "door"
-}
-
 @onready var lock_sprite_image = $lock_sprite_image
+@onready var static_body = $StaticBody2D
+@onready var physical_collision_shape = $StaticBody2D/CollisionShape2D2
+@onready var interaction_collision_shape = $ContainerInteraction/CollisionShape2D
 
 
 @export_category("Container settings")
 @export var is_open_at_startup: bool = false
-@export var container_name: ContainerNames = ContainerNames.door
+@export_enum("door") var container_name: String
+@export_category("Rectangle collision values")
+@export var container_collision_rect_x : int = 32
+@export var container_collision_rect_y : int = 64
 @export_category("Lock Settings")
 @export var is_locked: bool = false
 @export_group("Requirements")
-@export var requirement_type: RequirementType # Variables to hold the requirement type and associated data
+@export_enum("key") var requirement_type: String # Variables to hold the requirement type and associated data
 @export_group("Key settings, if key is the unlock item")
 @export_range(0,8) var required_key_number : int = 0 #Zero if key is not the unlocking item
 @export_group("Other items requirements (to be implemented)")
 @export var required_item_name: String #MUST BE THE NAME THAT IS IN THE .tres FILE OF THE ITEM ON "item_name" ENTRY. We do inventory search like this, maybe?
 
-
-
-var locked_message_dictionary = {
-	RequirementType.KEY : "This door is locked"
-}
-
 func _ready():
 	# Carica le animazioni dello specifico container
 	_load_and_apply_animations_on_startup()
+	_resize_collision_shapes_according_to_exported_variable()
+
+func _resize_collision_shapes_according_to_exported_variable():
+	physical_collision_shape.shape.size.x = container_collision_rect_x
+	physical_collision_shape.shape.size.y = container_collision_rect_y
+	
+	interaction_collision_shape.shape.size.x = container_collision_rect_x
+	interaction_collision_shape.shape.size.y = container_collision_rect_y
 
 func _load_and_apply_animations_on_startup():
 	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
-	var container_name_string = ContainerNamesString[container_name] as String #Dall'enum passa alla stringa 
-	var container_animation_frames_path = "res://game/entities/containers/"+container_name_string+"/"+container_name_string+"_animations.tres" #La path per il file di animazioni
+	var container_animation_frames_path = "res://game/entities/containers/"+container_name+"/"+container_name+"_animations.tres" #La path per il file di animazioni
 	var sprite_frames = load(container_animation_frames_path) #Lo sprite di animazioni
 	if sprite_frames: #Se l'ha trovato (Lo deve aver trovato se sono stati rispettati i criteri di path)
 		self.sprite_frames = sprite_frames
@@ -85,7 +77,7 @@ func _load_and_apply_animations_on_startup():
 		else:
 			self.animation = "closed"
 	else:
-		print("SPRITE FRAMES FOR "+container_name_string+" NOT LOADED! A CONTAINER HAS DEFAULT DOOR TEXTURE!\n")
+		print("SPRITE FRAMES FOR "+container_name+" NOT LOADED! A CONTAINER HAS DEFAULT DOOR TEXTURE!\n")
 	
 	
 	"""SE E' UN CONTAINER BLOCCATO, METTICI SOPRA LO SPRITE DEL LUCCHETTO, ALTRIMENTI CANCELLA IL NODO DALLA MEMORIA"""
@@ -115,7 +107,7 @@ func try_to_unlock() -> bool:
 	else: 
 		"""COMPORTAMENTO PER CONTAINER CHE SI DEVE TENTARE DI SBLOCCARE IN BASE AL REQUIREMENT"""
 		match requirement_type:
-			RequirementType.KEY:
+			"key":
 				var key_locked_manager = KeyLockedContainerBehavior.new()
 				true_if_unlocked = key_locked_manager.try_to_unlock(required_key_number)
 	
@@ -123,4 +115,6 @@ func try_to_unlock() -> bool:
 		unlock()
 	
 	return true_if_unlocked
-
+	
+	
+# Function to update CollisionPolygon2D based on current AnimatedSprite2D frame
