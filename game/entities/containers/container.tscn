@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxe8scmsur06x"]
+[gd_scene load_steps=5 format=3 uid="uid://cxe8scmsur06x"]
 
+[ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door/door_animations.tres" id="1_7iffp"]
 [ext_resource type="Script" path="res://game/entities/containers/container.gd" id="2_ro2ol"]
 [ext_resource type="PackedScene" uid="uid://gc81vkqm216x" path="res://components/interaction/container_interaction/container_interaction.tscn" id="3_k2j1w"]
 
@@ -7,8 +8,10 @@
 radius = 40.3113
 
 [node name="Container" type="AnimatedSprite2D"]
-animation = &"opened_1"
+sprite_frames = ExtResource("1_7iffp")
+animation = &"closed"
 script = ExtResource("2_ro2ol")
+requirement_type = 1
 
 [node name="ContainerInteraction" parent="." node_paths=PackedStringArray("animated_sprite") instance=ExtResource("3_k2j1w")]
 animated_sprite = NodePath("..")

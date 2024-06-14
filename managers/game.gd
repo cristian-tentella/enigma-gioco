@@ -13,6 +13,7 @@ func start():
 	StateManager.player.hide()
 	StateManager.house.hide()
 	
+	
 	#Mostra il menu iniziale
 	UIManager.show_start_menu() 
 	

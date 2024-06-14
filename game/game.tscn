@@ -10,6 +10,9 @@ script = ExtResource("1_oaeyu")
 
 [node name="House" parent="." instance=ExtResource("2_535vp")]
 
+[node name="set_of_keys" parent="House" instance=ExtResource("4_qwdm7")]
+position = Vector2(111, 103)
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +23,3 @@ grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("3_8jufx")]
 position = Vector2(262, 187)
-
-[node name="set_of_keys" parent="." instance=ExtResource("4_qwdm7")]
-position = Vector2(111, 103)

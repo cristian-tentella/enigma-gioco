@@ -72,9 +72,9 @@ shape = SubResource("CircleShape2D_8spsj")
 
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(461, 135)
-animation = &"closed"
+is_open_at_startup = true
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(372, 268)
-animation = &"closed"
+animation = &""
 is_locked = true
