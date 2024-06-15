@@ -74,8 +74,8 @@ shape = SubResource("CircleShape2D_8spsj")
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(461, 135)
 container_name = "door"
-container_collision_rect_x = -748
-container_collision_rect_y = -721
+container_collision_rect_x = 20
+container_collision_rect_y = 50
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(372, 268)

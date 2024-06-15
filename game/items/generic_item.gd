@@ -68,15 +68,11 @@ func generate_both_collision_circles(item_resource: ItemResource):
 		new_radius = collision_circle_radius
 	
 	var item_interaction_collision_circle_shape = CollisionShape2D.new()
-	var circle_shape_item = CircleShape2D.new()
-	item_interaction_collision_circle_shape.shape = circle_shape_item
-	item_interaction_collision_circle_shape.shape.radius = new_radius
+	var circle_shape_item = CollisionShapeCreator.create_circle_shape(item_interaction_collision_circle_shape, new_radius)
 	item_interaction.add_child(item_interaction_collision_circle_shape)
 	
 	var actual_collision_circle_shape = CollisionShape2D.new()
-	var circle_shape_static = CircleShape2D.new()
-	actual_collision_circle_shape.shape = circle_shape_static
-	actual_collision_circle_shape.shape.radius = new_radius
+	var circle_shape_static = CollisionShapeCreator.create_circle_shape(actual_collision_circle_shape, new_radius)
 	static_body_2D.add_child(actual_collision_circle_shape)
 
 func load_script_dinamically(item_resource: ItemResource):
