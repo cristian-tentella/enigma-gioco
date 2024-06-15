@@ -53,6 +53,9 @@ GESTIONE DELLE ANIMAZIONI:
 @export_group("Other items requirements (to be implemented)")
 @export var required_item_name: String #MUST BE THE NAME THAT IS IN THE .tres FILE OF THE ITEM ON "item_name" ENTRY. We do inventory search like this, maybe?
 
+var physical_collision_shape
+var rect_shape_static
+
 func _ready():
 	_load_and_apply_animations_on_startup()
 	generate_both_collision_circles()
@@ -67,20 +70,17 @@ func generate_both_collision_circles():
 		x = 32
 	if y < 0:
 		y = 64
-
+	
+	#Generate Collision Shape for interaction
 	var interaction_collision_shape = CollisionShape2D.new()
-	var circle_shape_container = RectangleShape2D.new()
-	interaction_collision_shape.shape = circle_shape_container
-	interaction_collision_shape.shape.size.x = x
-	interaction_collision_shape.shape.size.y = y
+	var rect_shape_container = CollisionShapeCreator.create_rect_shape(interaction_collision_shape, x, y)
 	container_interaction.add_child(interaction_collision_shape)
 	
-	var physical_collision_shape = CollisionShape2D.new()
-	var circle_shape_static = RectangleShape2D.new()
-	physical_collision_shape.shape = circle_shape_static
-	physical_collision_shape.shape.size.x = x
-	physical_collision_shape.shape.size.y = y
+	#Generate Collision Shape for physical collisions
+	physical_collision_shape = CollisionShape2D.new()
+	rect_shape_static = CollisionShapeCreator.create_rect_shape(physical_collision_shape, x, y)
 	static_body.add_child(physical_collision_shape)
+
 
 func _load_and_apply_animations_on_startup():
 	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
@@ -94,7 +94,6 @@ func _load_and_apply_animations_on_startup():
 			self.animation = "closed"
 	else:
 		print("SPRITE FRAMES FOR "+container_name+" NOT LOADED! A CONTAINER HAS DEFAULT DOOR TEXTURE!\n")
-	
 	
 	"""SE E' UN CONTAINER BLOCCATO, METTICI SOPRA LO SPRITE DEL LUCCHETTO, ALTRIMENTI CANCELLA IL NODO DALLA MEMORIA"""
 	update_lock_state()
@@ -111,9 +110,10 @@ func free_lock_sprite_image_node():
 	lock_sprite_image.queue_free()
 
 func unlock():
-	self.is_locked = false #TODO: REMOVE
-	free_lock_sprite_image_node() # Container not locked anymore, I do not need the node anymore #TODO: REMOVE
-	self.animation = "opened" #TODO: REMOVE
+	self.is_locked = false
+	free_lock_sprite_image_node() # Container not locked anymore, I do not need the node anymore
+	self.animation = "opened"
+	remove_physical_collision() # Fa in modo che se sia aperta ci puoi passare attraverso
 
 func try_to_unlock() -> bool:
 	#Guardia se la funzione viene invocata nonostante il container sia già sbloccato
@@ -131,6 +131,9 @@ func try_to_unlock() -> bool:
 		unlock()
 	
 	return true_if_unlocked
-	
-	
-# Function to update CollisionPolygon2D based on current AnimatedSprite2D frame
+
+func remove_physical_collision():
+	physical_collision_shape.shape = null
+
+func restore_physical_collision():
+	physical_collision_shape.shape = rect_shape_static

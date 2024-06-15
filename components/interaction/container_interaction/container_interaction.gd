@@ -24,7 +24,9 @@ func handle_interaction():
 
 func _handle_open_close_animation():
 	"""Se è aperto fai animazione per chiuderlo, e viceversa"""
-	if self.animated_sprite.animation == self.open_animation:
+	if self.animated_sprite.animation == self.open_animation: #Chiudilo
 		self.animated_sprite.animation = self.close_animation
+		container_involved.restore_physical_collision() # Fa in modo che se è chiuso ci sia la collisione a bloccarlo
 	else:
 		self.animated_sprite.animation = self.open_animation
+		container_involved.remove_physical_collision() # Fa in modo che se sia aperta ci puoi passare attraverso
