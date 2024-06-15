@@ -8,6 +8,7 @@ extends Node
 
 @onready var player = $Player
 @onready var house = $House
+@onready var inventory_UI = UIManager.inventory_menu
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
@@ -17,6 +18,8 @@ func _ready():
 	#Associare allo StateManager i riferimenti agli oggetti principali che creiamo, importantissimo per il comportamento generale!
 	StateManager.player = player
 	StateManager.house = house
+	StateManager.inventory_UI = inventory_UI
+	StateManager.inventory = inventory_UI.inv
 	
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

@@ -73,7 +73,7 @@ func generate_both_collision_circles():
 	
 	#Generate Collision Shape for interaction
 	var interaction_collision_shape = CollisionShape2D.new()
-	var rect_shape_container = CollisionShapeCreator.create_rect_shape(interaction_collision_shape, x, y)
+	CollisionShapeCreator.create_rect_shape(interaction_collision_shape, x, y)
 	container_interaction.add_child(interaction_collision_shape)
 	
 	#Generate Collision Shape for physical collisions

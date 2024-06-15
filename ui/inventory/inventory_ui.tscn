@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwxmqs7dpwp5y"]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
+[ext_resource type="PackedScene" uid="uid://ddkavijkl5ek0" path="res://ui/inventory/inventory_ui_slot.tscn" id="2_fky7l"]
+[ext_resource type="Texture2D" uid="uid://bgwemqsterbdv" path="res://components/inventory/inventory_background.jpg" id="2_iulht"]
+[ext_resource type="Texture2D" uid="uid://5x4jxgednkpq" path="res://ui/multiuse_common_files/x_icon.png" id="4_dia0o"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 56.0
+script = ExtResource("1_cw135")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 453.0
+offset_bottom = 238.0
+texture = ExtResource("2_iulht")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.5
+offset_top = -85.0
+offset_right = -41.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="Inventory_UI_slot_1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="ExitPauseMenuButton" type="Button" parent="NinePatchRect"]
+offset_left = 414.0
+offset_top = 9.0
+offset_right = 448.0
+offset_bottom = 42.0
+icon = ExtResource("4_dia0o")
+flat = true

@@ -12,8 +12,6 @@ func start():
 	#Nascondi tutti i componenti di game.tscn tranne la UI; Inizialmente ci deve essere solo la UI coi tasti di scelta
 	StateManager.player.hide()
 	StateManager.house.hide()
-	
-	
 	#Mostra il menu iniziale
 	UIManager.show_start_menu() 
 	

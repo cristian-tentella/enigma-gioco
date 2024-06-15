@@ -1,4 +1,5 @@
 # BaseItem.gd
+class_name GenericItem
 extends Node2D
 
 """
@@ -27,6 +28,7 @@ UPDATE QUESTO OGNI VOLTA CHE SI INSERISCE UN ITEM SPECIFICO
 var item_resource
 
 func _ready():
+	return #TODO remove
 	""" 
 	IL NOME DEL NODO NELLA SCENA DEFINISCE L'ITEM CHE VUOI CHE SIA.
 	FAI ATTENZIONE CHE LA FOLDER DELL'ITEM SI CHIAMI nome_item E CHE IL .tres ABBIA LA FORMA nome_item.tres
@@ -42,7 +44,6 @@ func _ready():
 	_initialize_the_real_item_with_its_properties(item_resource)
 
 
-	
 func _initialize_the_real_item_with_its_properties(item_resource: ItemResource):
 	generate_both_collision_circles(item_resource)
 	load_script_dinamically(item_resource)
@@ -62,6 +63,7 @@ fatto qui sotto.
 
 """
 func generate_both_collision_circles(item_resource: ItemResource):
+	print_debug(item_resource)
 	#Cambia il raggio del CollisionShape2D in base al raggio indicato
 	var new_radius = item_resource.collision_circle_radius #Prendi quello dal .tres inizialmente
 	if collision_circle_radius > 0: #Se è settato nelle variabili esportate, prendilo da li
@@ -86,3 +88,7 @@ func update_sprite2D_texture(item_resource: ItemResource):
 	#Carica l'immagine dell'oggetto
 	var image_texture = load(item_resource.sprite_path)
 	sprite2D.texture = image_texture
+
+
+
+
