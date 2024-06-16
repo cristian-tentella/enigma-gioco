@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1piofqi6uu3k"
-path="res://.godot/imported/door.png-3f69d756f60fa812c82d3e92a3ee65d5.ctex"
+uid="uid://dfvhtovdowxyq"
+path="res://.godot/imported/lock.png-3ea1dc3ea66a42cf77c7fd7147448648.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/entities/door/door.png"
-dest_files=["res://.godot/imported/door.png-3f69d756f60fa812c82d3e92a3ee65d5.ctex"]
+source_file="res://game/entities/containers/lock.png"
+dest_files=["res://.godot/imported/lock.png-3ea1dc3ea66a42cf77c7fd7147448648.ctex"]
 
 [params]
 

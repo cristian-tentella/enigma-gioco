@@ -2,8 +2,12 @@ class_name Player
 extends CharacterBody2D
 
 
+#Lo sprite del giocatore
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var interaction_detector = $InteractionDetector
+
+#Ha sottonodo CollisionShape2D che definisce l'area di interazione del giocatore. interaction/interaction_detector/interaction_detector.gd per info extra
+#Al momento è un giga cerchio stabile intorno al giocatore
+@onready var interaction_detector = $InteractionDetector 
 
 
 @export_category("Settings")
@@ -53,7 +57,7 @@ func update_velocity(delta: float):
 			self.ACCELERATION * delta,
 		)
 
-
+#When I receive an input, I place it as a Player variable
 func update_input_vector():
 	var new_input = Vector2.ZERO
 
@@ -76,6 +80,8 @@ func update_animated_sprite():
 
 
 func update_interaction_detector_position():
+	if(input == Vector2.ZERO):
+		return
 	const offset_multiplier = 24
 	self.interaction_detector.position = input * offset_multiplier
 

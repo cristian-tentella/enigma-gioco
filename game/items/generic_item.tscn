@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn7glxbd1b4dw"]
+
+[ext_resource type="Script" path="res://game/items/generic_item.gd" id="1_w0j7e"]
+[ext_resource type="Script" path="res://components/interaction/item_interaction/item_interaction.gd" id="2_c6xfl"]
+
+[node name="GenericItem" type="Node2D"]
+script = ExtResource("1_w0j7e")
+
+[node name="ItemInteraction" type="Area2D" parent="."]
+script = ExtResource("2_c6xfl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
