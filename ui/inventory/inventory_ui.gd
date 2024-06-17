@@ -22,6 +22,11 @@ func _instanciate_inventory():
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
+
+func _on_exit_pause_menu_button_pressed():
+	self.exit.emit() # Replace with function body.
+	
+
 """
 func open():
 	self.visible = true

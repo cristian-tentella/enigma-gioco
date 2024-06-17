@@ -96,24 +96,20 @@ func show_dialogue_box(dialogue_lines: Array):
 	await DialogueManager.has_finished_displaying
 	_kil_locking_ui_element(dialogue_box)
 
-
 func show_start_menu():
 	_spawn_locking_ui_element(start_menu)
 	await start_menu.exit
 	_kil_locking_ui_element(start_menu)
-
 
 func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
 	
-func show_or_hide_inventory():
+func show_inventory():
 	_spawn_locking_ui_element(inventory_menu)
 	await inventory_menu.exit
 	_kil_locking_ui_element(inventory_menu)
-	
-
 
 func show_authentication_menu():
 	_spawn_locking_ui_element(authentication_menu)

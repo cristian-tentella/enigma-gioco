@@ -77,9 +77,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ExitPauseMenuButton" type="Button" parent="NinePatchRect"]
+layout_mode = 0
 offset_left = 414.0
 offset_top = 9.0
 offset_right = 448.0
 offset_bottom = 42.0
 icon = ExtResource("4_dia0o")
 flat = true
+
+[connection signal="pressed" from="NinePatchRect/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

@@ -65,7 +65,7 @@ func _process_player_input_event(input_event: InputEvent):
 		UIManager.show_pause_menu()
 	
 	if input_event.is_action_pressed(INVENTORY):
-		UIManager.show_or_hide_inventory()
+		UIManager.show_inventory()
 	
 
 
