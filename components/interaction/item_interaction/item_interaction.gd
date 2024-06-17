@@ -7,5 +7,5 @@ func handle_interaction():
 	item_that_is_in_the_interaction = get_parent().item_resource #Questo è l'oggetto ItemResource con cui avviene l'interazione.
 	
 	"""
-	Probabilmente qui ci andrà una cosa tipo StateManager.add_to_inventory(item_that_is_in_the_interaction)
+	Probabilmente qui ci andrà una cosa tipo StateManager.inventory.add(item_that_is_in_the_interaction)
 	"""

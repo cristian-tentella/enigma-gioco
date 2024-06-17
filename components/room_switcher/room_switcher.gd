@@ -27,7 +27,3 @@ func _on_room_entered(body, room_name):
 func _on_room_exited(body):
 	if body is Player:
 		rooms[current_room].get_node("ColorRect").color = LIGHT_OFF
-
-
-	
-
