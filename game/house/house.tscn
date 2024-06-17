@@ -86,10 +86,10 @@ is_locked = true
 
 [node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(89, 103)
-collision_circle_radius = 24
 item_name = "set_of_keys"
+collision_circle_radius = 100
 
 [node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(335, 105)
-collision_circle_radius = -81
 item_name = "set_of_keys2"
+collision_circle_radius = -81
