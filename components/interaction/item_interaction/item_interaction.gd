@@ -1,10 +1,11 @@
 class_name ItemInteraction
 extends Interaction
 
-var item_that_is_in_the_interaction: ItemResource
+var item_in_interaction: GenericItem
 
 func handle_interaction():
-	item_that_is_in_the_interaction = get_parent().item_resource #Questo è l'oggetto ItemResource con cui avviene l'interazione.
+	item_in_interaction = get_parent() #Questo è l'oggetto ItemResource con cui avviene l'interazione.
+	print(item_in_interaction.collision_circle_radius)
 	
 	"""
 	Probabilmente qui ci andrà una cosa tipo StateManager.add_to_inventory(item_that_is_in_the_interaction)
