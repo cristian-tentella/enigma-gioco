@@ -29,8 +29,7 @@ func handle_interaction():
 class_name Interaction
 extends Area2D
 
-
-#Abstract method for handing interactions. 
+#Abstract method for handing interactions.
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
 func handle_interaction():
 	# Throw an error if this method is not overwritten

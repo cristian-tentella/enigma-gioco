@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://5x4jxgednkpq" path="res://ui/multiuse_common_files/x_icon.png" id="4_dia0o"]
 
 [node name="Control" type="Control"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_right = 80.0

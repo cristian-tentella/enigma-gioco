@@ -32,7 +32,6 @@ signal player_can_move(player_can_move: bool)
 #Invocato grazie all'AUTOLOAD dello script.
 #Si, non c'è nessun nodo visibile, l'autoload crea un nodo nella root di game.tscn, deal with it.
 func _ready():
-	
 	UIManager.lock.connect(
 		func():
 			player_can_move.emit(false)
