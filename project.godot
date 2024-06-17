@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="enigma-gioco"
+config/name="enigma-gioco-old"
 run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 
@@ -23,6 +23,8 @@ StateManager="*res://managers/state.gd"
 UIManager="*res://managers/ui.gd"
 GameManager="*res://managers/game.gd"
 InventorySingleton="*res://components/inventory/inventory.gd"
+Supabase="*res://addons/supabase/Supabase/supabase.gd"
+AuthenticationManager="*res://managers/authentication.gd"
 
 [dialogue_manager]
 
@@ -39,7 +41,13 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
+
+[importer_defaults]
+
+csv_translation={
+"delimiter": 1
+}
 
 [input]
 

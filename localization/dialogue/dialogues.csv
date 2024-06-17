@@ -1,4 +1,4 @@
-keys,en,it
-test_1,Paolino: Hello,Paolino: Ciao
-test_2,Carlo: Goodnight,Carlo: Buonanotte
-test_3,Paolino: Goodbye,Paolino: Arrivederci
+keys;en;it
+test_1;Paolino: Hello;Paolino: Ciao, amico!
+test_2;Carlo: Goodnight;Carlo: Buonanotte
+test_3;Paolino: Goodbye;Paolino: Arrivederci

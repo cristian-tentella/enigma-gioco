@@ -13,6 +13,7 @@ extends Interaction
 @export var close_animation: String
 var container_involved: MyContainer #L'oggetto di tipo container su cui è stata avviata l'interazione. Ad esempio, la porta su cui clicco
 
+#Chiamata quando viene premuta spacebar intersecando la collision shape del container con quella del player (flusso parte da "input.gd")
 func handle_interaction():
 	container_involved = get_parent() #Assegnazione del container. SE NON FUNZIONA E' SBAGLIATA LA STRUTTURA DELLA SCENA!
 	#Ogni container deve avere ContainerInteraction come figlio diretto

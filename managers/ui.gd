@@ -20,6 +20,9 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 @onready var pause_menu: PauseMenu = preload(
 	"res://ui/pause_menu/pause_menu.tscn"
 ).instantiate()
+@onready var authentication_menu: AuthenticationMenu = preload(
+	"res://ui/authentication_menu/authentication_menu.tscn"
+).instantiate()
 
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
@@ -28,7 +31,9 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 """################################################################################
 QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
 ################################################################################"""
+
 @onready var ui_elements: Array[Control] = [
+	authentication_menu,
 	dialogue_box,
 	start_menu,
 	pause_menu,
@@ -108,3 +113,9 @@ func show_or_hide_inventory():
 	await inventory_menu.exit
 	_kil_locking_ui_element(inventory_menu)
 	
+
+
+func show_authentication_menu():
+	_spawn_locking_ui_element(authentication_menu)
+	await AuthenticationManager.exit
+	_kil_locking_ui_element(authentication_menu)
