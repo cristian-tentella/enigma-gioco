@@ -24,6 +24,10 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/authentication_menu/authentication_menu.tscn"
 ).instantiate()
 
+@onready var inventory_menu: InventoryUI = preload(
+	"res://ui/inventory/inventory_ui.tscn"
+).instantiate()
+
 """################################################################################
 QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
 ################################################################################"""
@@ -33,6 +37,7 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	dialogue_box,
 	start_menu,
 	pause_menu,
+	inventory_menu
 ]
 
 #Segnali
@@ -61,8 +66,10 @@ func _ready():
 		ui_element.hide()
 		ui.add_child(ui_element)
 
+
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
+	
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
 	spawn.emit(ui_element)
 	return ui_element
@@ -89,18 +96,20 @@ func show_dialogue_box(dialogue_lines: Array):
 	await DialogueManager.has_finished_displaying
 	_kil_locking_ui_element(dialogue_box)
 
-
 func show_start_menu():
 	_spawn_locking_ui_element(start_menu)
 	await start_menu.exit
 	_kil_locking_ui_element(start_menu)
 
-
 func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
-
+	
+func show_inventory():
+	_spawn_locking_ui_element(inventory_menu)
+	await inventory_menu.exit
+	_kil_locking_ui_element(inventory_menu)
 
 func show_authentication_menu():
 	_spawn_locking_ui_element(authentication_menu)

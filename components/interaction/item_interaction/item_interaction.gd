@@ -8,5 +8,5 @@ func handle_interaction():
 	print(item_in_interaction.collision_circle_radius)
 	
 	"""
-	Probabilmente qui ci andrà una cosa tipo StateManager.add_to_inventory(item_that_is_in_the_interaction)
+	Probabilmente qui ci andrà una cosa tipo StateManager.inventory.add(item_that_is_in_the_interaction)
 	"""

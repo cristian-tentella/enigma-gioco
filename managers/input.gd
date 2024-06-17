@@ -13,6 +13,7 @@ const MOVE_RIGHT = "move_right"
 const MOVE_LEFT = "move_left"
 const INTERACT = "interact"
 const PAUSE = "pause"
+const INVENTORY = "inv"
 
 #Lista di tutti i possibili movimenti che il Player può effettuare. 
 #NOTE: Ognuno di questi è stato prima mappato alla sua stringa, il cui nome è LO STESSO della Mappa Input di Godot
@@ -62,6 +63,10 @@ func _process_player_input_event(input_event: InputEvent):
 	#Gestione del tasto di pausa del gioco
 	if input_event.is_action_pressed(PAUSE):
 		UIManager.show_pause_menu()
+	
+	if input_event.is_action_pressed(INVENTORY):
+		UIManager.show_inventory()
+	
 
 
 #Se non posso muovermi, ho premuto il tasto per fare qualcos'altro. 
