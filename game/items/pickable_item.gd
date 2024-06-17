@@ -1,8 +1,10 @@
 # BaseItem.gd
-class_name GenericItem
+class_name PickableItem
 extends Node2D
 
 """
+(old GenericItem)
+
 TUTORIAL PER UTILIZZO DI OGGETTI ----------
 Ogni oggetto è dato dalla scena generic_item.tscn
 1) Creare la folder col nome del tuo oggetto nome_obj dentro res://items
@@ -23,7 +25,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 @export var properties: Dictionary  # Proprietà varie, per ora inutilizzato. Potrebbe essere un posto per mettere proprietà custom di un oggetto, non in comune con gli altri
 
 var sprite_path: String  # Path to the sprite for this item
-
+var collision_shapes: Array[CollisionShape2D]
 """
 UPDATE QUESTO OGNI VOLTA CHE SI INSERISCE UN ITEM SPECIFICO
 """
@@ -62,10 +64,12 @@ func generate_both_collision_circles():
 	var item_interaction_collision_circle_shape = CollisionShape2D.new()
 	var circle_shape_item = CollisionShapeCreator.create_circle_shape(item_interaction_collision_circle_shape, new_radius)
 	item_interaction.add_child(item_interaction_collision_circle_shape)
+	collision_shapes.append(item_interaction_collision_circle_shape)
 	
 	var actual_collision_circle_shape = CollisionShape2D.new()
 	var circle_shape_static = CollisionShapeCreator.create_circle_shape(actual_collision_circle_shape, new_radius)
 	static_body_2D.add_child(actual_collision_circle_shape)
+	collision_shapes.append(actual_collision_circle_shape)
 
 
 func update_sprite2D_texture():
@@ -73,3 +77,12 @@ func update_sprite2D_texture():
 	var sprite_path = "res://game/items/"+item_name+"/"+item_name+".png"
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
+
+func remove_from_map():
+	self.hide()
+	self.destroy_collision_shapes_forever()
+
+func destroy_collision_shapes_forever():
+	for c in collision_shapes:
+		c.queue_free()
+	collision_shapes.clear()

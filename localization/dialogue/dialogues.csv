@@ -1,4 +1,7 @@
 keys;en;it
-test_1;Paolino: Hello;Paolino: Ciao, amico!
+test_1;Paolino: aa Hello;Paolino: aa Ciao, amico!
+aa;POOP;CACCA
 test_2;Carlo: Goodnight;Carlo: Buonanotte
 test_3;Paolino: Goodbye;Paolino: Arrivederci
+
+pickup_1;Item added to inventory!;hai aggiunto Item all'inventario!

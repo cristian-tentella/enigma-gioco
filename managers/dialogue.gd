@@ -27,6 +27,13 @@ func handle_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 
 	UIManager.show_dialogue_box(dialogue_lines)
 
+#handle_dialogue_interaction_with_dynamic_replace(dialogue_interaction, "Item", item_name)
+func handle_dialogue_interaction_with_dynamic_replace(dialogue_interaction: DialogueInteraction, word_to_be_replaced: String, replace_word: String):
+	var dialogue_lines_ids = _get_dialogue_lines_ids(dialogue_interaction.dialogue_id)
+	var dialogue_lines = _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids)
+
+	UIManager.show_dialogue_box(dialogue_lines.replace(word_to_be_replaced, replace_word))
+
 
 func _get_dialogue_lines_ids(dialogue_id: String) -> Array:
 	assert(dialogues.has(dialogue_id))

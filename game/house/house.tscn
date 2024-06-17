@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bt822pe1r5vam" path="res://game/house/rooms/cucina/cucina.tscn" id="5_objf3"]
 [ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
-[ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/generic_item.tscn" id="8_0lq6k"]
+[ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="8_0lq6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2n7"]
 size = Vector2(171, 170)
@@ -89,7 +89,12 @@ position = Vector2(89, 103)
 item_name = "set_of_keys"
 collision_circle_radius = 100
 
+[node name="DialogueInteraction" parent="GenericItem" instance=ExtResource("3_0llho")]
+dialogue_id = "pick"
+
 [node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(335, 105)
-item_name = "set_of_keys2"
+item_name = "set_of_keys"
 collision_circle_radius = -81
+
+[node name="DialogueInteraction" parent="GenericItem2" instance=ExtResource("3_0llho")]
