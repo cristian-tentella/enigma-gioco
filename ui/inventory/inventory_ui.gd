@@ -2,7 +2,7 @@ class_name InventoryUI
 extends Control
 
 var inv: Inventory
-@onready var slots_UI: Array = $NinePatchRect/GridContainer.get_children() #Array di Inventory_UI_Slot
+@onready var slots_UI: Array = $SlotsGridBackground/CenterContainer/GridContainer.get_children() #Array di Inventory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
 
 signal exit
