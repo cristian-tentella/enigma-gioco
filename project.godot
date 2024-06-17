@@ -42,6 +42,12 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
 
+[importer_defaults]
+
+csv_translation={
+"delimiter": 1
+}
+
 [input]
 
 move_right={

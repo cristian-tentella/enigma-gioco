@@ -39,7 +39,7 @@ signal advance_dialogue  #Segnale per avanzare nei dialoghi
 #Noi useremo esclusivamente questa classe per questa metodo, sarebbe meglio, per disaccoppiamento, evitare altre chiamate a _input() in giro per il codice.
 func _input(input_event: InputEvent):
 	if StateManager.should_player_be_able_to_move: 
-		_process_player_input_event(input_event) #Banalmente, se posso muovermi, chiama la metodo per muovermi
+		_process_player_input_event(input_event) #Banalmente, se posso muovermi, chiama il metodo per muovermi
 	else:
 		_process_ui_input_event(input_event)
 

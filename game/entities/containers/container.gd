@@ -47,9 +47,9 @@ GESTIONE DELLE ANIMAZIONI:
 @export_category("Lock Settings")
 @export var is_locked: bool = false
 @export_group("Requirements")
-@export_enum("key") var requirement_type: String # Variables to hold the requirement type and associated data
-@export_group("Key settings, if key is the unlock item")
-@export_range(0,8) var required_key_number : int = 0 #Zero if key is not the unlocking item
+@export_enum("set_of_keys") var requirement_type: String # Variables to hold the requirement type and associated data
+@export_group("Key settings, if key is the unlock item")											#TODO: remove
+@export_range(0,8) var required_key_number : int = 0 #Zero if key is not the unlocking item			#TODO: remove
 @export_group("Other items requirements (to be implemented)")
 @export var required_item_name: String #MUST BE THE NAME THAT IS IN THE .tres FILE OF THE ITEM ON "item_name" ENTRY. We do inventory search like this, maybe?
 
@@ -58,10 +58,19 @@ var rect_shape_static
 
 func _ready():
 	_load_and_apply_animations_on_startup()
-	generate_both_collision_circles()
+	generate_both_collision_rectangles()
+	
+func free_lock_sprite_image_node():
+	lock_sprite_image.queue_free()
+	
+func remove_physical_collision():
+	physical_collision_shape.shape = null
+
+func restore_physical_collision():
+	physical_collision_shape.shape = rect_shape_static
 
 #Genera dinamicamente i collision shape col loro raggio
-func generate_both_collision_circles():
+func generate_both_collision_rectangles():
 	var x =  container_collision_rect_x as int
 	var y = container_collision_rect_y as int
 
@@ -106,9 +115,6 @@ func update_lock_state():
 		
 		# Add logic to show the door as unlocked (e.g., change sprite or animation)
 
-func free_lock_sprite_image_node():
-	lock_sprite_image.queue_free()
-
 func unlock():
 	self.is_locked = false
 	free_lock_sprite_image_node() # Container not locked anymore, I do not need the node anymore
@@ -123,7 +129,7 @@ func try_to_unlock() -> bool:
 	else: 
 		"""COMPORTAMENTO PER CONTAINER CHE SI DEVE TENTARE DI SBLOCCARE IN BASE AL REQUIREMENT"""
 		match requirement_type:
-			"key":
+			"set_of_keys":
 				var key_locked_manager = KeyLockedContainerBehavior.new()
 				true_if_unlocked = key_locked_manager.try_to_unlock(required_key_number)
 	
@@ -132,8 +138,4 @@ func try_to_unlock() -> bool:
 	
 	return true_if_unlocked
 
-func remove_physical_collision():
-	physical_collision_shape.shape = null
 
-func restore_physical_collision():
-	physical_collision_shape.shape = rect_shape_static
