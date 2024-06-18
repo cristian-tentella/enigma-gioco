@@ -27,21 +27,16 @@ func sign_in(email, password):
 
 
 func on_sign_in_succeeded(user: SupabaseUser):
-	print("ciao sei entrato")
-	print(user)
 	self.exit.emit()
 	
 
 func on_sign_up_succeeded(user: SupabaseUser):
-	print("ciao sei registrato")
-	print(user)
 	self.exit.emit()
 	
 func on_sign_out():
-	print("ciao sei uscito")
 	self.exit.emit()
 	
 func on_sign_error(error: SupabaseAuthError):
-	print(error)
+	pass
 
 
