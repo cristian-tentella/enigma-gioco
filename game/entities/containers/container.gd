@@ -123,19 +123,20 @@ func unlock():
 
 func try_to_unlock() -> bool:
 	#Guardia se la funzione viene invocata nonostante il container sia già sbloccato
-	var true_if_unlocked = true
+	var is_unlocked = true
 	if self.is_locked == false:
-		return true_if_unlocked
+		return is_unlocked				#returna sempre vero perché il container è sbloccato
 	else: 
 		"""COMPORTAMENTO PER CONTAINER CHE SI DEVE TENTARE DI SBLOCCARE IN BASE AL REQUIREMENT"""
 		match requirement_type:
 			"set_of_keys":
-				var key_locked_manager = KeyLockedContainerBehavior.new()
-				true_if_unlocked = key_locked_manager.try_to_unlock(required_key_number)
+				is_unlocked = StateManager.inventory.has_item("set_of_keys")
+			"spada_laser_funzionante":
+				is_unlocked = StateManager.inventory.has_item("spada_laser_funzionante")
 	
-	if true_if_unlocked:
+	if is_unlocked:
 		unlock()
 	
-	return true_if_unlocked
+	return is_unlocked
 
 

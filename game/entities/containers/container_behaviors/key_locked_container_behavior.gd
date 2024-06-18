@@ -1,10 +1,7 @@
 class_name KeyLockedContainerBehavior
 
-#Non avendo l'inventario, per ora returna true sempre, cioè appena ci clicco la sblocco e basta
-func try_to_unlock(key_number) -> bool:
-	return true
-	"""PSEUDOCODE IDEA WHEN INVENTORY WILL BE COMPLETED:
-		var set_of_keys_owned = Inventory.get("set_of_keys")
+"""PSEUDOCODE IDEA WHEN INVENTORY WILL BE COMPLETED:
+	var set_of_keys_owned = Inventory.get("set_of_keys")
 		if set_of_keys_owned == null:
 			#Mostra una finestra di dialogo che dice che ti serve un mazzo di chiavi
 			return false #Non sono riuscito ad aprirla
@@ -14,4 +11,8 @@ func try_to_unlock(key_number) -> bool:
 			return true
 			
 		return false
-	"""
+"""
+
+#Non avendo l'inventario, per ora returna true sempre, cioè appena ci clicco la sblocco e basta
+#func try_to_unlock(key_number) -> bool:
+#	return true
