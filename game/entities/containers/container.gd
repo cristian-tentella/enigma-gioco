@@ -94,9 +94,9 @@ func generate_both_collision_rectangles():
 func _load_and_apply_animations_on_startup():
 	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
 	var container_animation_frames_path = "res://game/entities/containers/"+container_name+"/"+container_name+"_animations.tres" #La path per il file di animazioni
-	var sprite_frames = load(container_animation_frames_path) #Lo sprite di animazioni
-	if sprite_frames: #Se l'ha trovato (Lo deve aver trovato se sono stati rispettati i criteri di path)
-		self.sprite_frames = sprite_frames
+	var _sprite_frames = load(container_animation_frames_path) #Lo sprite di animazioni
+	if _sprite_frames: #Se l'ha trovato (Lo deve aver trovato se sono stati rispettati i criteri di path)
+		self.sprite_frames = _sprite_frames
 		if is_open_at_startup:
 			self.animation = "opened"
 		else:
