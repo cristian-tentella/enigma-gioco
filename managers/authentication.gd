@@ -43,8 +43,8 @@ func on_sign_error(error: SupabaseAuthError):
 	await display_report_message(str(error.message))
 
 
-func display_report_message(message:String):
-	self.message.emit(message)
+func display_report_message(report_message: String):
+	self.message.emit(report_message)
 	await get_tree().create_timer(sleep_after_action).timeout
 	
 
