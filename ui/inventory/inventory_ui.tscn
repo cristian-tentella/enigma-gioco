@@ -1,89 +1,113 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwxmqs7dpwp5y"]
+[gd_scene load_steps=4 format=3 uid="uid://cwxmqs7dpwp5y"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_30054"]
 [ext_resource type="PackedScene" uid="uid://ddkavijkl5ek0" path="res://ui/inventory/inventory_ui_slot.tscn" id="2_fky7l"]
-[ext_resource type="Texture2D" uid="uid://bgwemqsterbdv" path="res://components/inventory/inventory_background.jpg" id="2_iulht"]
-[ext_resource type="Texture2D" uid="uid://5x4jxgednkpq" path="res://ui/multiuse_common_files/x_icon.png" id="4_dia0o"]
 
 [node name="Control" type="Control"]
 z_index = 100
 layout_mode = 3
-anchors_preset = 0
-offset_right = 80.0
-offset_bottom = 56.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cw135")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="SlotsGridBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 453.0
-offset_bottom = 238.0
-texture = ExtResource("2_iulht")
+offset_left = 216.0
+offset_top = 76.0
+offset_right = 424.0
+offset_bottom = 284.0
+texture = ExtResource("2_30054")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -205.5
-offset_top = -85.0
-offset_right = -41.5
-offset_bottom = -12.0
+[node name="CenterContainer" type="CenterContainer" parent="SlotsGridBackground"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 192.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.5, 2.5)
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 10
+
+[node name="GridContainer" type="GridContainer" parent="SlotsGridBackground/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
 columns = 4
 
-[node name="Inventory_UI_slot_1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_1" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_2" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_3" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_4" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_5" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_6" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_8" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_9" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_10" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_11" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_12" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="ExitPauseMenuButton" type="Button" parent="NinePatchRect"]
+[node name="Inventory_UI_slot_13" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_14" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_15" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="Inventory_UI_slot_16" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+layout_mode = 2
+
+[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
+offset_left = 400.0
+offset_top = 48.0
+offset_right = 424.0
+offset_bottom = 72.0
+texture = ExtResource("2_30054")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
 layout_mode = 0
-offset_left = 414.0
-offset_top = 9.0
-offset_right = 448.0
-offset_bottom = 42.0
-icon = ExtResource("4_dia0o")
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
 flat = true
 
-[connection signal="pressed" from="NinePatchRect/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
+[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

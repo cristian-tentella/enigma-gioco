@@ -80,8 +80,8 @@ container_collision_rect_y = 50
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(372, 268)
 container_name = "door"
-container_collision_rect_x = -578
-container_collision_rect_y = -1091
+container_collision_rect_x = 32
+container_collision_rect_y = 64
 is_locked = true
 requirement_type = "set_of_keys"
 
@@ -96,6 +96,5 @@ dialogue_id = "pick"
 [node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(335, 105)
 item_name = "set_of_keys"
-collision_circle_radius = -81
 
 [node name="DialogueInteraction" parent="GenericItem2" instance=ExtResource("3_0llho")]
