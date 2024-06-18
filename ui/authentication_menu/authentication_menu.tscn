@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e57bp")
 
-[node name="email" type="LineEdit" parent="."]
+[node name="Email" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 91.0
@@ -19,7 +19,7 @@ offset_right = 467.0
 offset_bottom = 122.0
 placeholder_text = "email"
 
-[node name="password" type="LineEdit" parent="."]
+[node name="Password" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 143.0
@@ -28,7 +28,7 @@ offset_bottom = 174.0
 placeholder_text = "password"
 secret = true
 
-[node name="sign in" type="Button" parent="."]
+[node name="SignIn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 214.0
@@ -36,7 +36,7 @@ offset_right = 269.0
 offset_bottom = 239.0
 text = "sign in"
 
-[node name="sign up" type="Button" parent="."]
+[node name="SignUp" type="Button" parent="."]
 layout_mode = 0
 offset_left = 360.0
 offset_top = 214.0
@@ -44,5 +44,5 @@ offset_right = 468.0
 offset_bottom = 239.0
 text = "sign out"
 
-[connection signal="pressed" from="sign in" to="." method="_on_sign_in_button_pressed"]
-[connection signal="pressed" from="sign up" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="SignIn" to="." method="_on_sign_in_button_pressed"]
+[connection signal="pressed" from="SignUp" to="." method="_on_sign_up_button_pressed"]
