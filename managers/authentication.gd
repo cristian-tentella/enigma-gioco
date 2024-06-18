@@ -28,23 +28,23 @@ func sign_in(email, password):
 	
 
 func on_sign_in_succeeded(user: SupabaseUser):
-	after_action(str(user.role))
-	
+	await display_report_message(str(user.role))
+	self.exit.emit()
 	
 func on_sign_up_succeeded(user: SupabaseUser):
-	after_action(str(user.role))
-	
+	await display_report_message(str(user.role))
+	self.exit.emit()
 	
 func on_sign_out():
 	self.exit.emit()
 	
 	
 func on_sign_error(error: SupabaseAuthError):
-	after_action(str(error.message))
+	await display_report_message(str(error.message))
 
 
-func after_action(message:String):
+func display_report_message(message:String):
 	self.message.emit(message)
 	await get_tree().create_timer(sleep_after_action).timeout
-	self.exit.emit()
+	
 
