@@ -31,13 +31,13 @@ func sign_in(email: String, password: String):
 	
 
 func on_sign_in_succeeded(auth: SupabaseUser): 
-	save_auth(auth)
+	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
-	save_auth(auth)
+	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
@@ -55,7 +55,7 @@ func display_report_message(report_message: String):
 	await get_tree().create_timer(sleep_after_action).timeout
 	
 	
-func save_auth(auth: SupabaseUser):
+func save_auth_token_to_encrypted_file(auth: SupabaseUser):
 	var encrypted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.WRITE, Supabase.config.supabaseKey)
 	if encrypted_file.get_error() != OK:
 		display_report_message("An error occured while trying to securely store the access token")
