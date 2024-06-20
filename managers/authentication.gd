@@ -58,7 +58,7 @@ func display_report_message(report_message: String):
 func save_auth_token_to_encrypted_file(auth: SupabaseUser):
 	var encrypted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.WRITE, Supabase.config.supabaseKey)
 	if encrypted_file.get_error() != OK:
-		display_report_message("An error occured while trying to securely store the access token")
+		await display_report_message("An error occured while trying to securely store the access token")
 	else:
 		encrypted_file.store_line(JSON.stringify(auth.refresh_token))
 		encrypted_file.store_line(JSON.stringify(auth.expires_in))
@@ -73,8 +73,9 @@ func check_if_access_token_exists():
 func retrieve_access_token_from_file():
 	var encrypted_file_with_access_token = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.READ, Supabase.config.supabaseKey)
 	
-	if encrypted_file_with_access_token.get_error() != OK:
-		display_report_message("An error occured while decrypting the access token")
+	if encrypted_file_with_access_token == null:
+		await get_tree().create_timer(0.01).timeout #Without this line the error message will not be shown
+		await display_report_message("An error occured while decrypting the access token")
 	else:
 		construct_body_request(encrypted_file_with_access_token)
 		
@@ -109,7 +110,7 @@ func _on_refresh_completed(_result: int, response_code: int, _headers: PackedStr
 		self.exit.emit()
 	else:
 		var response_message = "Request failed with response code: " + str(response_code)
-		display_report_message(response_message)
+		await display_report_message(response_message)
 		
 		
 
