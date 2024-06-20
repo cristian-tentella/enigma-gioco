@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=14 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -17,6 +17,12 @@ size = Vector2(176, 177.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
 radius = 20.2237
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wrjm2"]
+radius = 21.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyxkk"]
+size = Vector2(36, 31)
 
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
@@ -74,8 +80,18 @@ shape = SubResource("CircleShape2D_8spsj")
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(461, 135)
 container_name = "door"
+use_editor_collision_shape = true
+same_shape_for_both = false
 container_collision_rect_x = 20
 container_collision_rect_y = 50
+
+[node name="area_di_interazione" type="CollisionShape2D" parent="door"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_wrjm2")
+
+[node name="area_dove_sbatto" type="CollisionShape2D" parent="door"]
+position = Vector2(2, 16)
+shape = SubResource("RectangleShape2D_eyxkk")
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(372, 268)
