@@ -66,12 +66,12 @@ func save_auth_token_to_encrypted_file(auth: SupabaseUser):
 
 
 func load_auth():
-	var encryted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.READ, Supabase.config.supabaseKey)
+	var encrypted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.READ, Supabase.config.supabaseKey)
 	
-	if encryted_file.get_error() != OK:
+	if encrypted_file.get_error() != OK:
 		display_report_message("An error occured while decrypting the access token")
 	else:
-		var refresh_token: String = encryted_file.get_line().strip_edges()
+		var refresh_token: String = encrypted_file.get_line().strip_edges()
 		if refresh_token.begins_with('"') and refresh_token.ends_with('"'):
 			refresh_token = refresh_token.substr(1, refresh_token.length() - 2)
 		var url = Supabase.config.supabaseUrl + SupabaseAuth._refresh_token_endpoint
