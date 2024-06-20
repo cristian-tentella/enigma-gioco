@@ -3,7 +3,7 @@ extends Node
 signal exit
 signal message(message: String)
 
-var sleep_after_action:float = 0.7
+var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
 
 @onready var authentication_menu: AuthenticationMenu = preload(
