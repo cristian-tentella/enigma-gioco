@@ -99,7 +99,6 @@ func _handle_physical_collision_creation_with_given_collision(editor_collision_s
 	physical_collision_shape = editor_collision_shape_2D_node.duplicate()
 	rect_shape_static = physical_collision_shape.shape
 	static_body.add_child(physical_collision_shape)
-	editor_collision_shape_2D_node.queue_free()
 
 #Se si ha flaggato "use_editor_collision_shape" e "same_shape_for_both"
 func _generate_both_collision_shapes_from_editor_node():
@@ -110,6 +109,7 @@ func _generate_both_collision_shapes_from_editor_node():
 		_print_tutorial_errors()
 		return
 	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node)
+	editor_collision_shape_2D_node.queue_free()
 	container_interaction.add_child(editor_collision_shape_2D_node.duplicate())
 
 #Se si ha flaggato "use_editor_collision_shape" e non "same_shape_for_both"
@@ -127,6 +127,7 @@ func _generate_both_collision_shapes_from_two_editor_nodes():
 	
 	#Metti al giusto posto la collisione dove sbatto e elimina il nodo che non si usa più, quello iniziale
 	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node_collisione)
+	editor_collision_shape_2D_node_collisione.queue_free()
 	#Metti al giusto posto la collisione dove interagisco e elimina il nodo che non si usa più, quello iniziale
 	container_interaction.add_child(editor_collision_shape_2D_node_interazione.duplicate())
 	editor_collision_shape_2D_node_interazione.queue_free()
