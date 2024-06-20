@@ -79,7 +79,7 @@ func retrieve_access_token_from_file():
 		construct_body_request(encrypted_file_with_access_token)
 		
 #
-func construct_body_request(encrypted_file_with_access_token):
+func construct_body_request(encrypted_file_with_access_token: FileAccess):
 		var refresh_token: String = encrypted_file_with_access_token.get_line().strip_edges()
 		if refresh_token.begins_with('"') and refresh_token.ends_with('"'):
 			refresh_token = refresh_token.substr(1, refresh_token.length() - 2)
