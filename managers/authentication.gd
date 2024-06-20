@@ -22,11 +22,11 @@ func sign_out():
 	Supabase.auth.sign_out()
 
 
-func sign_up(email, password):
+func sign_up(email: String, password: String):
 	Supabase.auth.sign_up(email, password)
 	
 	
-func sign_in(email, password):
+func sign_in(email: String, password: String):
 	Supabase.auth.sign_in(email, password)
 	
 
@@ -35,10 +35,12 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
+	
 func on_sign_up_succeeded(auth: SupabaseUser):
 	save_auth(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
+	
 	
 func on_sign_out():
 	self.exit.emit()
@@ -56,7 +58,7 @@ func display_report_message(report_message: String):
 func save_auth(auth: SupabaseUser):
 	var encrypted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.WRITE, Supabase.config.supabaseKey)
 	if encrypted_file.get_error() != OK:
-		display_report_message("An error occured while securely storing the access token")
+		display_report_message("An error occured while trying to securely store the access token")
 	else:
 		encrypted_file.store_line(JSON.stringify(auth.refresh_token))
 		encrypted_file.store_line(JSON.stringify(auth.expires_in))
@@ -85,7 +87,7 @@ func load_auth():
  		
 	#
 #
-func _on_refresh_completed(_result, response_code, _headers, body):
+func _on_refresh_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray):
 	if response_code == 200:
 		var json_result = JSON.parse_string(body.get_string_from_utf8())
 		Supabase.auth._auth = json_result.get("access_token")
