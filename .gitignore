@@ -1,5 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
+**/*.translation
+
+# Visual Studio Code
+.vscode/
+
+# Misc
 *.tmp
 .env
-.vscode/
