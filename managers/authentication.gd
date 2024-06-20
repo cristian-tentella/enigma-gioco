@@ -36,6 +36,7 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	self.exit.emit()
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
+	save_auth(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
@@ -44,7 +45,6 @@ func on_sign_out():
 	
 	
 func on_sign_error(error: SupabaseAuthError):
-	print(error.details)
 	await display_report_message(str(error.message))
 
 
@@ -52,21 +52,22 @@ func display_report_message(report_message: String):
 	self.message.emit(report_message)
 	await get_tree().create_timer(sleep_after_action).timeout
 	
+	
 func save_auth(auth: SupabaseUser):
 	var encrypted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.WRITE, Supabase.config.supabaseKey)
-	#var encrypted_file = FileAccess.open("user://user.auth", FileAccess.WRITE)
 	if encrypted_file.get_error() != OK:
-		print("Errore nel salvare i file di auth su disco")
+		display_report_message("An error occured while securely storing the access token")
 	else:
 		encrypted_file.store_line(JSON.stringify(auth.refresh_token))
 		encrypted_file.store_line(JSON.stringify(auth.expires_in))
 		encrypted_file.close()
 
+
 func load_auth():
 	var encryted_file = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.READ, Supabase.config.supabaseKey)
 	
 	if encryted_file.get_error() != OK:
-		print("errore bro")
+		display_report_message("An error occured while decrypting the access token")
 	else:
 		var refresh_token: String = encryted_file.get_line().strip_edges()
 		if refresh_token.begins_with('"') and refresh_token.ends_with('"'):
@@ -80,31 +81,24 @@ func load_auth():
 		var http_request = HTTPRequest.new()
 		add_child(http_request)
 		http_request.request_completed.connect(_on_refresh_completed)
-		var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_body)
+		http_request.request(url, headers, HTTPClient.METHOD_POST, json_body)
  		
-		if error != OK:
-			print_debug(error)
 	#
 #
 func _on_refresh_completed(_result, response_code, _headers, body):
-	print("Response code: ", response_code)
 	if response_code == 200:
-		print("Request successful!")
 		var json_result = JSON.parse_string(body.get_string_from_utf8())
 		Supabase.auth._auth = json_result.get("access_token")
 		Supabase.auth._expires_in = json_result.get("expires_in")
-		print(Supabase.auth._auth)
-		print(Supabase.auth._expires_in)
+		Supabase.auth.refresh_token(Supabase.auth._auth, Supabase.auth._expires_in)
 		await display_report_message("Already Authenticated")
 		self.exit.emit()
 	else:
-		print("Request failed with response code: ", response_code)
-		print("Response body: ", body.get_string_from_utf8())
+		var response_message = "Request failed with response code: " + str(response_code)
+		display_report_message(response_message)
 		
 		
-
 func check_if_access_token_exists():
 	if FileAccess.file_exists(access_token_path):
 		load_auth()
-	else:
-		print("file non esistente")
+
