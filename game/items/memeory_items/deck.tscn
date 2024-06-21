@@ -22,3 +22,9 @@ card_type = "bet"
 position = Vector2(92, 18)
 card_name = "Bet2"
 card_type = "bet"
+
+[node name="Card5" parent="." instance=ExtResource("1_cfiem")]
+card_type = "extralife"
+
+[node name="Card6" parent="." instance=ExtResource("1_cfiem")]
+card_type = "extralife"

@@ -9,5 +9,13 @@ card_name = "card"
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+text = "Carta"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 21.0
+offset_bottom = 20.0
+action_mode = 0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

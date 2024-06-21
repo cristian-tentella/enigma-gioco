@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c72ia170pdba4"]
+[gd_scene load_steps=3 format=3 uid="uid://c72ia170pdba4"]
 
 [ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="1_6cew7"]
+[ext_resource type="Script" path="res://ui/memeory_game/memeory_ui_slot.gd" id="1_oxlxo"]
 
 [node name="MemeoryUiSlot" type="Control"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_oxlxo")
 
 [node name="sprite_casella_vuota" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
@@ -23,3 +25,14 @@ offset_bottom = 24.0
 layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Button" type="Button" parent="CenterContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+flat = true
+
+[connection signal="pressed" from="CenterContainer/Panel/Button" to="." method="_on_button_pressed"]

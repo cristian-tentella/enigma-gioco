@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=5 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://ui/memeory_game/memeory_ui.gd" id="1_hlp5k"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://ui/memeory_game/memeory_ui_slot.tscn" id="2_cnvj3"]
-[ext_resource type="Script" path="res://ui/memeory_game/memeory_ui_slot.gd" id="3_ffdis"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/items/memeory_items/deck.tscn" id="5_407sr"]
 
 [node name="MemeoryUi" type="Control"]
@@ -45,67 +44,51 @@ columns = 4
 
 [node name="MemeoryUiSlot" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot2" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot3" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot4" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot5" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot6" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot8" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot9" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot10" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot11" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot12" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot13" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot14" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot15" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="MemeoryUiSlot16" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
-script = ExtResource("3_ffdis")
 
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
