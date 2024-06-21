@@ -6,15 +6,19 @@
 
 [node name="Card" parent="." instance=ExtResource("1_cfiem")]
 card_name = "Regular1"
+card_type = "regular"
 
 [node name="Card2" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(32, 22)
 card_name = "Regular2"
+card_type = "regular"
 
 [node name="Card3" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(7, 49)
 card_name = "Bet1"
+card_type = "bet"
 
 [node name="Card4" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(92, 18)
 card_name = "Bet2"
+card_type = "bet"

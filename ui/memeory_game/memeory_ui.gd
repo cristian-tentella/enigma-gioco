@@ -8,9 +8,10 @@ var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più 
 signal exit
 
 func _ready():
+	$Deck.hide()
 	mem = Memeory.new()
 	_draw_random_card()
-	#mem.update.connect(update_slots)
+	mem.update.connect(update_slots)
 	update_slots()
 	
 	
@@ -21,14 +22,14 @@ func _draw_random_card():
 	if cards.size() == 0:
 		return
 	cards.shuffle()
-	for i in range (cards.size()):
-		var random_card = cards.pop_front()
+	for random_card in cards:
+		#var random_card = cards.pop_front()
 		#print_debug(cards)
 		#print_debug(random_card.card_name)
 		mem.insert(random_card)
 		#update_slots()
-		print_debug(mem.slots)
-		print_debug(mem.slots[i])
+		#print_debug(mem.slots)
+		#print_debug(mem.slots[i])
 		
 		
 # Doing it dynamically is the only way to make it work.
