@@ -11,6 +11,5 @@ func update(slot: PickableItem):
 		item_visual.visible = false
 	else:
 		item_visual.visible = true
-		print_debug(slot.sprite2D.texture)
 		item_visual.texture = slot.sprite2D.texture #Nello slot ci metto la texture dell'item
-		print_debug(item_visual.texture)
+

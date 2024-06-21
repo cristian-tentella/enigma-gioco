@@ -23,15 +23,7 @@ func _draw_random_card():
 		return
 	cards.shuffle()
 	for random_card in cards:
-		#var random_card = cards.pop_front()
-		#print_debug(cards)
-		#print_debug(random_card.card_name)
 		mem.insert(random_card)
-		#update_slots()
-		#print_debug(mem.slots)
-		#print_debug(mem.slots[i])
-		
-		
 
 func update_slots():
 	for i in range(min(mem.slots.size(), slots_UI.size())):

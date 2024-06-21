@@ -11,6 +11,5 @@ func update(slot: Card):
 		card_visual.visible = false
 	else:
 		card_visual.visible = true
-		#print_debug(slot.card_sprite)
 		card_visual.texture = slot.sprite2D.texture #Nello slot ci metto la texture dell'item
-		#print_debug(card_visual.texture)
+
