@@ -17,7 +17,7 @@ func _ready():
 	
 func update_sprite2D_texture():
 #Carica l'immagine dell'oggetto
-	sprite_path = "res://game/items/memeory_items/"+card_type+"/"+card_type+".png"
+	sprite_path = "res://game/items/memeory_items/"+card_type+"/"+card_type+"_front.png"
 	print_debug(sprite_path)
 	var image_texture = load(sprite_path)
 	print_debug(image_texture)

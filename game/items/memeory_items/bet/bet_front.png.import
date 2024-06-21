@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dt314pqrb6ojt"
-path="res://.godot/imported/bet.png-b08c2e763ae33569682a6f4602a7c889.ctex"
+path="res://.godot/imported/bet_front.png-f48b8ff3e068ed10b2f43ccd43054cfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/items/memeory_items/bet/bet.png"
-dest_files=["res://.godot/imported/bet.png-b08c2e763ae33569682a6f4602a7c889.ctex"]
+source_file="res://game/items/memeory_items/bet/bet_front.png"
+dest_files=["res://.godot/imported/bet_front.png-f48b8ff3e068ed10b2f43ccd43054cfc.ctex"]
 
 [params]
 

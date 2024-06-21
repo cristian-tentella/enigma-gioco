@@ -32,11 +32,6 @@ func _draw_random_card():
 		#print_debug(mem.slots[i])
 		
 		
-# Doing it dynamically is the only way to make it work.
-# Original implementation with .tres was overkill considering I just create 8 empty slots with no properties
-#func _instantiate_memeory():
-	#mem = Memeory.new()
-	#StateManager.inventory = inv
 
 func update_slots():
 	for i in range(min(mem.slots.size(), slots_UI.size())):
