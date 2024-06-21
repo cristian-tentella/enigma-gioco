@@ -1,17 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddkavijkl5ek0"]
+[gd_scene load_steps=2 format=3 uid="uid://c72ia170pdba4"]
 
-[ext_resource type="Script" path="res://ui/inventory/inventory_ui_slot.gd" id="1_soeok"]
-[ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="2_mqia0"]
+[ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="1_6cew7"]
 
-[node name="Inventory_UI_Slot" type="Control"]
+[node name="MemeoryUiSlot" type="Control"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_soeok")
 
 [node name="sprite_casella_vuota" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
-texture = ExtResource("2_mqia0")
+texture = ExtResource("1_6cew7")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(16, 16)
