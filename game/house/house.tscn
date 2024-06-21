@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="8_0lq6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_df2n7"]
-size = Vector2(171, 170)
+size = Vector2(171, 172)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akjyo"]
-size = Vector2(176, 177.5)
+size = Vector2(178, 177)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
 radius = 20.2237
@@ -45,26 +45,26 @@ offset_bottom = 287.0
 text = "Bagno"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Bagno"]
-position = Vector2(206.5, 273)
+position = Vector2(206.5, 274)
 shape = SubResource("RectangleShape2D_df2n7")
 
 [node name="Cucina" parent="Rooms" instance=ExtResource("5_objf3")]
 
 [node name="ColorRect" type="ColorRect" parent="Rooms/Cucina"]
-offset_left = 461.0
+offset_left = 293.0
 offset_top = 183.0
-offset_right = 638.0
+offset_right = 470.0
 offset_bottom = 360.0
 
 [node name="TextEdit" type="TextEdit" parent="Rooms/Cucina"]
-offset_left = 517.0
+offset_left = 349.0
 offset_top = 250.0
-offset_right = 586.0
+offset_right = 418.0
 offset_bottom = 290.0
 text = "Cucina"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Cucina"]
-position = Vector2(550, 271.25)
+position = Vector2(376, 272)
 shape = SubResource("RectangleShape2D_akjyo")
 
 [node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
@@ -94,7 +94,7 @@ position = Vector2(2, 16)
 shape = SubResource("RectangleShape2D_eyxkk")
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(372, 268)
+position = Vector2(597, 195)
 container_name = "door"
 container_collision_rect_x = 32
 container_collision_rect_y = 64

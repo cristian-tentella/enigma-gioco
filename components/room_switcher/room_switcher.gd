@@ -11,7 +11,7 @@ func _ready():
 		if room is Room:
 			rooms[room.name] = room
 			room.body_entered.connect(_on_room_entered.bind(room.name))
-			room.body_exited.connect(_on_room_exited)
+			room.body_exited.connect(_on_room_exited.bind(room.name))
 			if room.name == current_room:
 				room.get_node("ColorRect").color = LIGHT_ON
 			else:
@@ -19,11 +19,10 @@ func _ready():
 				
 	
 
-func _on_room_entered(body, room_name):	
+func _on_room_entered(body, current_room):	
 	if body is Player:
-		current_room = room_name
 		rooms[current_room].get_node("ColorRect").color = LIGHT_ON
 	
-func _on_room_exited(body):
+func _on_room_exited(body, previous_room):
 	if body is Player:
-		rooms[current_room].get_node("ColorRect").color = LIGHT_OFF
+		rooms[previous_room].get_node("ColorRect").color = LIGHT_OFF
