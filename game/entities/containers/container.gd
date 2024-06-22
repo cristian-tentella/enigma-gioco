@@ -75,11 +75,11 @@ func _ready():
 	_load_and_apply_animations_on_startup()
 	if use_editor_collision_shape:
 		if same_shape_for_both: 
-			generate_both_collision_shapes_from_editor_node()
+			_generate_both_collision_shapes_from_editor_node()
 		else:
-			generate_both_collision_shapes_from_two_editor_nodes()
+			_generate_both_collision_shapes_from_two_editor_nodes()
 	else:
-		generate_both_collision_rectangles_from_exported_vars()
+		_generate_both_collision_rectangles_from_exported_vars()
 	
 func free_lock_sprite_image_node():
 	lock_sprite_image.queue_free()
@@ -91,51 +91,49 @@ func restore_physical_collision():
 	physical_collision_shape.shape = rect_shape_static
 
 # Stessi print in parti diverse, li ho messi a fattor comune, move forward
-func print_tutorial_errors():
+func _print_tutorial_errors():
 	print_debug("\n\tERROR] GENERATION OF ", get_name(), " FROM NODE FAILED. A CONTAINER HAS NO HITBOXES. Did you put a CollisionShape2D child in the scene he's used in?\n\tIf you did not mean to use a editor CollisionShape2D, make sure to unflag the exported variable 'use_editor_collision_shape' in container scene")
 	print("\n")
 
+func _handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node: CollisionShape2D):
+	physical_collision_shape = editor_collision_shape_2D_node.duplicate()
+	rect_shape_static = physical_collision_shape.shape
+	static_body.add_child(physical_collision_shape)
+
 #Se si ha flaggato "use_editor_collision_shape" e "same_shape_for_both"
-func generate_both_collision_shapes_from_editor_node():
+func _generate_both_collision_shapes_from_editor_node():
 	var editor_collision_shape_2D_node = $CollisionShape2D
 	
 	#Guard if forgor collision node
 	if editor_collision_shape_2D_node == null:
-		print_tutorial_errors()
+		_print_tutorial_errors()
 		return
-
-	physical_collision_shape = editor_collision_shape_2D_node.duplicate()
-	rect_shape_static = physical_collision_shape.shape
-	container_interaction.add_child(editor_collision_shape_2D_node.duplicate())
-	static_body.add_child(physical_collision_shape)
+	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node)
 	editor_collision_shape_2D_node.queue_free()
-	print(physical_collision_shape)
+	container_interaction.add_child(editor_collision_shape_2D_node.duplicate())
 
 #Se si ha flaggato "use_editor_collision_shape" e non "same_shape_for_both"
-func generate_both_collision_shapes_from_two_editor_nodes():
+func _generate_both_collision_shapes_from_two_editor_nodes():
 	var editor_collision_shape_2D_node_interazione = $area_di_interazione
 	if editor_collision_shape_2D_node_interazione == null: #Guardia per chi non ha letto il tutorial
 		print_debug("IL NODO DELL'INTERAZIONE SI DEVE CHIAMARE NECESSARIAMENTE area_di_interazione")
-		print_tutorial_errors()
+		_print_tutorial_errors()
 		return
 	var editor_collision_shape_2D_node_collisione = $area_dove_sbatto
 	if editor_collision_shape_2D_node_interazione == null: #Guardia per chi non ha letto il tutorial
 		print_debug("IL NODO DELL'INTERAZIONE SI DEVE CHIAMARE NECESSARIAMENTE area_dove_sbatto")
-		print_tutorial_errors()
+		_print_tutorial_errors()
 		return
 	
 	#Metti al giusto posto la collisione dove sbatto e elimina il nodo che non si usa più, quello iniziale
-	physical_collision_shape = editor_collision_shape_2D_node_collisione.duplicate()
-	rect_shape_static = physical_collision_shape.shape
-	static_body.add_child(physical_collision_shape)
+	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node_collisione)
 	editor_collision_shape_2D_node_collisione.queue_free()
-	
 	#Metti al giusto posto la collisione dove interagisco e elimina il nodo che non si usa più, quello iniziale
 	container_interaction.add_child(editor_collision_shape_2D_node_interazione.duplicate())
 	editor_collision_shape_2D_node_interazione.queue_free()
 
 #Se si vuole generare tutti via editor
-func generate_both_collision_rectangles_from_exported_vars():
+func _generate_both_collision_rectangles_from_exported_vars():
 	var x =  container_collision_rect_x as int
 	var y = container_collision_rect_y as int
 
