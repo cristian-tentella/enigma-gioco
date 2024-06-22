@@ -2,10 +2,12 @@ extends Node
 
 signal exit
 signal message(message: String)
-
+signal entries_selected_from_public_database(entries)
+signal entry_inserted_to_public_database
 
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
+
 
 @onready var authentication_menu: AuthenticationMenu = preload(
 	"res://ui/authentication_menu/authentication_menu.tscn"
@@ -17,6 +19,8 @@ func _ready():
 	Supabase.auth.error.connect(on_sign_error)
 	Supabase.auth.signed_out.connect(on_sign_out)
 	Supabase.auth.reset_email_sent.connect(on_reset_succeded)
+	Supabase.database.inserted.connect(on_entry_successfully_added_to_supabase_public_database)
+	Supabase.database.selected.connect(on_selected_from_public_supabase_database)
 	check_if_access_token_exists()
 
 	
@@ -25,10 +29,31 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
+	var query_result = await add_entry_to_supabase_public_database(email)
+	await entry_inserted_to_public_database
 	Supabase.auth.sign_up(email, password)
+
+func add_entry_to_supabase_public_database(user_email: String):
+	var query = SupabaseQuery.new().from("Users").insert([{"email" : user_email}])
+	Supabase.database.query(query)
+
+func on_entry_successfully_added_to_supabase_public_database(result):
+	self.entry_inserted_to_public_database.emit()
+	
 	
 func recover_password(email : String):
-	Supabase.auth.reset_password_for_email(email)
+	var query = SupabaseQuery.new().from("Users").select(["email"])
+	Supabase.database.query(query)
+	
+	var already_registered_users = await entries_selected_from_public_database
+	
+	if already_registered_users.has({"email" : email}):
+		Supabase.auth.reset_password_for_email(email)
+	else:
+		display_report_message("User not found in database")
+
+func on_selected_from_public_supabase_database(users):
+	self.entries_selected_from_public_database.emit(users)
 	
 	
 func sign_in(email: String, password: String):
@@ -50,6 +75,7 @@ func on_reset_succeded():
 	await display_report_message("Email inviata con successo")	
 	self.exit.emit()
 	await display_report_message("Prova a loggare con la nuova password")	
+	
 	
 func on_sign_out():
 	self.exit.emit()
