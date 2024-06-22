@@ -37,10 +37,25 @@ GESTIONE DELLE ANIMAZIONI:
 @onready var static_body = $StaticBody2D
 @onready var container_interaction = $ContainerInteraction
 
+"""
+SE VUOI USARE INTERAZIONI CUSTOM, CREA NODI "COLLISIONSHAPE2D" COME FIGLI DEL CONTAINER CHE VUOI USARE.
+Ovviamente NON dentro container.tscn ma dentro la scena in cui usi la porta.
 
+Se usi un solo CollisionShape2D per interazione e collisione, flagga "same_shape_for_both"
+
+Se usi uno per l'interazione (dove clicchi) e uno per la collisione (dove sbatti):
+	il nodo CollisionShape2D dell'interazione si chiama "area_di_interazione"
+	il nodo CollisionShape2D della collisione si chiama "area_dove_sbatto"
+"""
 @export_category("Container settings")
+@export var description_of_above: String = "guarda game/containers/container.gd"
 @export var is_open_at_startup: bool = false
 @export_enum("door") var container_name: String
+@export_group("Editor shapes settings")
+@export var use_editor_collision_shape : bool = false
+@export var same_shape_for_both: bool = true
+@export_enum("area_di_interazione", "area_dove_sbatto", "vedi il tutorial.") var use_these_names_for_nodes: String
+"Se vuoi usare un CollisionShape2D fatto nell'editor, NON CAMBIARGLI NOME, e mettilo come figlio del container stesso nella tua scena"
 @export_category("Rectangle collision values")
 @export var container_collision_rect_x : int = -1 #Negative means default
 @export var container_collision_rect_y : int = -1 #Negative means default
@@ -58,7 +73,13 @@ var rect_shape_static
 
 func _ready():
 	_load_and_apply_animations_on_startup()
-	generate_both_collision_rectangles()
+	if use_editor_collision_shape:
+		if same_shape_for_both: 
+			_generate_both_collision_shapes_from_editor_node()
+		else:
+			_generate_both_collision_shapes_from_two_editor_nodes()
+	else:
+		_generate_both_collision_rectangles_from_exported_vars()
 	
 func free_lock_sprite_image_node():
 	lock_sprite_image.queue_free()
@@ -69,8 +90,50 @@ func remove_physical_collision():
 func restore_physical_collision():
 	physical_collision_shape.shape = rect_shape_static
 
-#Genera dinamicamente i collision shape col loro raggio
-func generate_both_collision_rectangles():
+# Stessi print in parti diverse, li ho messi a fattor comune, move forward
+func _print_tutorial_errors():
+	print_debug("\n\tERROR] GENERATION OF ", get_name(), " FROM NODE FAILED. A CONTAINER HAS NO HITBOXES. Did you put a CollisionShape2D child in the scene he's used in?\n\tIf you did not mean to use a editor CollisionShape2D, make sure to unflag the exported variable 'use_editor_collision_shape' in container scene")
+	print("\n")
+
+func _handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node: CollisionShape2D):
+	physical_collision_shape = editor_collision_shape_2D_node.duplicate()
+	rect_shape_static = physical_collision_shape.shape
+	static_body.add_child(physical_collision_shape)
+
+#Se si ha flaggato "use_editor_collision_shape" e "same_shape_for_both"
+func _generate_both_collision_shapes_from_editor_node():
+	var editor_collision_shape_2D_node = $CollisionShape2D
+	
+	#Guard if forgor collision node
+	if editor_collision_shape_2D_node == null:
+		_print_tutorial_errors()
+		return
+	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node)
+	editor_collision_shape_2D_node.queue_free()
+	container_interaction.add_child(editor_collision_shape_2D_node.duplicate())
+
+#Se si ha flaggato "use_editor_collision_shape" e non "same_shape_for_both"
+func _generate_both_collision_shapes_from_two_editor_nodes():
+	var editor_collision_shape_2D_node_interazione = $area_di_interazione
+	if editor_collision_shape_2D_node_interazione == null: #Guardia per chi non ha letto il tutorial
+		print_debug("IL NODO DELL'INTERAZIONE SI DEVE CHIAMARE NECESSARIAMENTE area_di_interazione")
+		_print_tutorial_errors()
+		return
+	var editor_collision_shape_2D_node_collisione = $area_dove_sbatto
+	if editor_collision_shape_2D_node_interazione == null: #Guardia per chi non ha letto il tutorial
+		print_debug("IL NODO DELL'INTERAZIONE SI DEVE CHIAMARE NECESSARIAMENTE area_dove_sbatto")
+		_print_tutorial_errors()
+		return
+	
+	#Metti al giusto posto la collisione dove sbatto e elimina il nodo che non si usa più, quello iniziale
+	_handle_physical_collision_creation_with_given_collision(editor_collision_shape_2D_node_collisione)
+	editor_collision_shape_2D_node_collisione.queue_free()
+	#Metti al giusto posto la collisione dove interagisco e elimina il nodo che non si usa più, quello iniziale
+	container_interaction.add_child(editor_collision_shape_2D_node_interazione.duplicate())
+	editor_collision_shape_2D_node_interazione.queue_free()
+
+#Se si vuole generare tutti via editor
+func _generate_both_collision_rectangles_from_exported_vars():
 	var x =  container_collision_rect_x as int
 	var y = container_collision_rect_y as int
 
