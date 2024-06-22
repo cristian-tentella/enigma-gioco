@@ -3,6 +3,7 @@ extends Node
 signal exit
 signal message(message: String)
 
+
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
 
@@ -15,6 +16,7 @@ func _ready():
 	Supabase.auth.signed_in.connect(on_sign_in_succeeded)
 	Supabase.auth.error.connect(on_sign_error)
 	Supabase.auth.signed_out.connect(on_sign_out)
+	Supabase.auth.reset_email_sent.connect(on_reset_succeded)
 	check_if_access_token_exists()
 
 	
@@ -24,6 +26,9 @@ func sign_out():
 
 func sign_up(email: String, password: String):
 	Supabase.auth.sign_up(email, password)
+	
+func recover_password(email : String):
+	Supabase.auth.reset_password_for_email(email)
 	
 	
 func sign_in(email: String, password: String):
@@ -41,6 +46,10 @@ func on_sign_up_succeeded(auth: SupabaseUser):
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
+func on_reset_succeded():
+	await display_report_message("Email inviata con successo")	
+	self.exit.emit()
+	await display_report_message("Prova a loggare con la nuova password")	
 	
 func on_sign_out():
 	self.exit.emit()

@@ -21,5 +21,8 @@ func _ready():
 	StateManager.inventory_UI = inventory_UI
 	StateManager.inventory = inventory_UI.inv
 	
+
+	
+	
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

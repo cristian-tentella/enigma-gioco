@@ -13,9 +13,12 @@ func start():
 	StateManager.player.hide()
 	StateManager.house.hide()
 
-	#UIManager.show_authentication_menu()
-	#await AuthenticationManager.exit
-  
+	UIManager.show_authentication_menu()
+	await AuthenticationManager.exit
+  	
+	UIManager.show_authentication_reset_menu()
+	await AuthenticationManager.exit
+	
 	#Mostra il menu iniziale
 	UIManager.show_start_menu() 
 	
@@ -25,6 +28,7 @@ func start():
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()
+
 
 
 #Se clicca il tasto di EXIT, distruggi tutto e addio.
