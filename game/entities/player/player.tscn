@@ -306,6 +306,7 @@ height = 48.0
 radius = 24.0208
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 3
 script = ExtResource("1_yt8ds")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -320,3 +321,5 @@ shape = SubResource("CapsuleShape2D_krkt7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
 shape = SubResource("CircleShape2D_yd28a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
