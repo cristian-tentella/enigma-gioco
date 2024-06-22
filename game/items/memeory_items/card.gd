@@ -1,6 +1,7 @@
 class_name Card
 extends Node2D
 
+@onready var area = $Sprite2D/Area2D/CollisionShape2D
 @onready var sprite2D = $Sprite2D
 @onready var button = $Button
 @onready var card_name_label = $Label
@@ -23,7 +24,8 @@ func update_sprite2D_texture():
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
 	
-
-
+	
 func _on_button_pressed():
 	print("ciao") # Replace with function body.
+
+

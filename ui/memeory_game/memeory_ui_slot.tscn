@@ -26,6 +26,10 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CenterContainer/Panel"]
 
+[node name="Area2D" type="Area2D" parent="CenterContainer/Panel/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterContainer/Panel/Sprite/Area2D"]
+
 [node name="Button" type="Button" parent="CenterContainer/Panel"]
 visible = false
 layout_mode = 0
