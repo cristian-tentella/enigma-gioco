@@ -42,15 +42,8 @@ func on_entry_successfully_added_to_supabase_public_database(result):
 	
 	
 func recover_password(email : String):
-	var query = SupabaseQuery.new().from("Users").select(["email"])
-	Supabase.database.query(query)
+	Supabase.auth.reset_password_for_email(email)
 	
-	var already_registered_users = await entries_selected_from_public_database
-	
-	if already_registered_users.has({"email" : email}):
-		Supabase.auth.reset_password_for_email(email)
-	else:
-		display_report_message("User not found in database")
 
 func on_selected_from_public_supabase_database(users):
 	self.entries_selected_from_public_database.emit(users)
@@ -72,9 +65,9 @@ func on_sign_up_succeeded(auth: SupabaseUser):
 	self.exit.emit()
 	
 func on_reset_succeded():
-	await display_report_message("Email inviata con successo")	
-	self.exit.emit()
-	await display_report_message("Prova a loggare con la nuova password")	
+	await display_report_message("An email has been sent to the speciefied email")
+	await display_report_message("Go back and try to log in again")
+	
 	
 	
 func on_sign_out():
