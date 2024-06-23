@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=21 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="SpriteFrames" uid="uid://clvhip3cjj2eg" path="res://game/entities/containers/door_side_right_handle/door_side_right_handle_animations.tres" id="9_gny80"]
+[ext_resource type="SpriteFrames" uid="uid://dmswpryknqh1g" path="res://game/entities/containers/door_side_left_handle/door_side_left_handle_animations.tres" id="11_3pwkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
 texture = ExtResource("8_51wt1")
@@ -2253,15 +2254,15 @@ dialogue_id = "test"
 shape = SubResource("CircleShape2D_8spsj")
 
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(130, 530)
+position = Vector2(130, 528)
 sprite_frames = ExtResource("9_gny80")
 container_name = "door_side_right_handle"
 container_collision_rect_x = -748
 container_collision_rect_y = -721
 
 [node name="door2" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(286, 529)
-sprite_frames = ExtResource("9_gny80")
+position = Vector2(286, 528)
+sprite_frames = ExtResource("11_3pwkj")
 container_name = "door_side_left_handle"
 container_collision_rect_x = -748
 container_collision_rect_y = -721

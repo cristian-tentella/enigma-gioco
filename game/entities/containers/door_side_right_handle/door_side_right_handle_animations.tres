@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="1_fothf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lb0n4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8mer"]
 atlas = ExtResource("1_fothf")
-region = Rect2(96, 288, 32, 32)
+region = Rect2(0, 320, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqfid"]
 atlas = ExtResource("1_fothf")
@@ -14,7 +14,7 @@ region = Rect2(192, 320, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lb0n4")
+"texture": SubResource("AtlasTexture_n8mer")
 }],
 "loop": true,
 "name": &"closed",
