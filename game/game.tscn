@@ -1,11 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=9 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ekkn1"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_rxc26"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_oecrg"]
 
-[node name="Game" type="Node"]
+[sub_resource type="Resource" id="Resource_2gdoi"]
+script = ExtResource("5_oecrg")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_t1ykf"]
+script = ExtResource("5_oecrg")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Game" type="Node2D"]
 script = ExtResource("1_oaeyu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("2_ekkn1")
 
 [node name="House" parent="." instance=ExtResource("2_535vp")]
 
@@ -17,5 +37,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." instance=ExtResource("3_8jufx")]
+[node name="PhantomCamera2D" type="Node2D" parent="UI"]
+unique_name_in_owner = true
+script = ExtResource("4_rxc26")
+tween_resource = SubResource("Resource_2gdoi")
+draw_limits = true
+
+[node name="Player" type="Node" parent="."]
+
+[node name="PlayerPhantomCamera2D" type="Node2D" parent="Player" node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+position = Vector2(262, 187)
+script = ExtResource("4_rxc26")
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_t1ykf")
+draw_limits = true
+
+[node name="Player" parent="Player" instance=ExtResource("3_8jufx")]
 position = Vector2(262, 187)

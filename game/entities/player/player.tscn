@@ -321,5 +321,3 @@ shape = SubResource("CapsuleShape2D_krkt7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
 shape = SubResource("CircleShape2D_yd28a")
-
-[node name="Camera2D" type="Camera2D" parent="."]

@@ -18,6 +18,9 @@ var house: House #Caricato da game/game.gd, lanciato in game/game.tscn
 var inventory_UI: InventoryUI
 var inventory: Inventory
 
+var player_phantom_camera: PhantomCamera2D
+var ui_phantom_camera: PhantomCamera2D
+
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
 ######################################################################################"""
