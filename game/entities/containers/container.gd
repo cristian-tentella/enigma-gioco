@@ -20,9 +20,11 @@ Ad esempio:
 	Voglio una porta
 		1) Trascino la scena container.tscn nella scena dove mi serve la porta, tipo la scena "cucina.tscn"
 		2) Seleziono dall'inspector a destra le proprietà della porta
-		3) Chiamo la scena che rappresenta la porta "door", perché ho res://game/entities/containers/door
-		4) Il png della porta si deve chiamare necessariamente door.png, come la folder
-
+		3) In particolare, su Container Name metto la cosa giusta
+		4) CONSIGLIO: Per migliorare l'esperienza grafica mentre editi:
+			In inspector, dentro AnimatedSprite2D -> Animation -> Sprite Frames, trascina dentro Sprite Frames il file di animazione che ti serve
+			Mettere il Container Name giusto rispetto allo Sprite Frames che vuoi. Se sbagli, lo noterai grazie a dei check, non preoccuparti.
+			
 
 GESTIONE DELLE ANIMAZIONI:
 	
@@ -50,7 +52,7 @@ Se usi uno per l'interazione (dove clicchi) e uno per la collisione (dove sbatti
 @export_category("Container settings")
 @export var description_of_above: String = "guarda game/containers/container.gd"
 @export var is_open_at_startup: bool = false
-@export_enum("door") var container_name: String
+@export_enum("door_front", "door_side_left_handle", "door_side_right_handle") var container_name: String
 @export_group("Editor shapes settings")
 @export var use_editor_collision_shape : bool = false
 @export var same_shape_for_both: bool = true
@@ -72,7 +74,14 @@ var physical_collision_shape
 var rect_shape_static
 
 func _ready():
+	if has_initialization_issues():
+		#Show which container had issues by putting a literal pixelated trash bin on it
+		lock_sprite_image.texture = load("res://game/house/assets/creation_of_something_failed_so_this_is_the_texture_now.jpg")
+		self.sprite_frames = null
+		return
+		
 	_load_and_apply_animations_on_startup()
+	
 	if use_editor_collision_shape:
 		if same_shape_for_both: 
 			_generate_both_collision_shapes_from_editor_node()
@@ -80,7 +89,18 @@ func _ready():
 			_generate_both_collision_shapes_from_two_editor_nodes()
 	else:
 		_generate_both_collision_rectangles_from_exported_vars()
-	
+
+#Se c'è qualche problema qui, la creazione del container viene bloccata
+func has_initialization_issues():
+	#Check mismatch between container_name and given sprite_frames
+	if self.sprite_frames != null:
+		var supposed_container_name : String = sprite_frames.resource_path
+		if container_name not in supposed_container_name:
+			print_debug("\n\t- ERROR:\n\tContainer "+get_name()+" has mismatch between given Container Name = ["+container_name+"] and Sprite Frames associated\n\t["+supposed_container_name+"]\n\tContainer not created.")
+			return true
+
+	return false
+
 func free_lock_sprite_image_node():
 	lock_sprite_image.queue_free()
 	
@@ -89,6 +109,23 @@ func remove_physical_collision():
 
 func restore_physical_collision():
 	physical_collision_shape.shape = rect_shape_static
+
+
+func _load_and_apply_animations_on_startup():
+	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
+	var container_animation_frames_path = "res://game/entities/containers/"+container_name+"/"+container_name+"_animations.tres" #La path per il file di animazioni
+	var _sprite_frames = load(container_animation_frames_path) #Lo sprite di animazioni
+	if _sprite_frames: #Se l'ha trovato (Lo deve aver trovato se sono stati rispettati i criteri di path)
+		self.sprite_frames = _sprite_frames
+		if is_open_at_startup:
+			self.animation = "opened"
+		else:
+			self.animation = "closed"
+	else:
+		print_debug("SPRITE FRAMES FOR "+container_name+" NOT LOADED! A CONTAINER HAS NO TEXTURE!\n")
+	
+	"""SE E' UN CONTAINER BLOCCATO, METTICI SOPRA LO SPRITE DEL LUCCHETTO, ALTRIMENTI CANCELLA IL NODO DALLA MEMORIA"""
+	update_lock_state()
 
 # Stessi print in parti diverse, li ho messi a fattor comune, move forward
 func _print_tutorial_errors():
@@ -134,41 +171,40 @@ func _generate_both_collision_shapes_from_two_editor_nodes():
 
 #Se si vuole generare tutti via editor
 func _generate_both_collision_rectangles_from_exported_vars():
-	var x =  container_collision_rect_x as int
-	var y = container_collision_rect_y as int
 
-	"""DEFAULT VALUES IF NEGATIVE IN INPUT"""
-	if x < 0:
-		x = 32
-	if y < 0:
-		y = 64
-	
+	"""DEFAULT VALUES IF NEGATIVE IN INPUT, SO I MUST GENERATE THE DEFAULT VALUES DEPENDING ON CONTAINER TYPE"""
+	if container_collision_rect_x <= 0 and container_collision_rect_y <= 0:
+		self.associate_default_variables_for_container_hitbox()
+
 	#Generate Collision Shape for interaction
 	var interaction_collision_shape = CollisionShape2D.new()
-	CollisionShapeCreator.create_rect_shape(interaction_collision_shape, x, y)
+	CollisionShapeCreator.create_rect_shape(interaction_collision_shape, container_collision_rect_x, container_collision_rect_y)
 	container_interaction.add_child(interaction_collision_shape)
 	
 	#Generate Collision Shape for physical collisions
 	physical_collision_shape = CollisionShape2D.new()
-	rect_shape_static = CollisionShapeCreator.create_rect_shape(physical_collision_shape, x, y)
+	rect_shape_static = CollisionShapeCreator.create_rect_shape(physical_collision_shape, container_collision_rect_x, container_collision_rect_y)
 	static_body.add_child(physical_collision_shape)
 
+# Funzione che associa a X e Y dei rettangoli di hitbox il valore di default
+# Credo che il polimorfismo o altro sia overkill, un match case è sufficiente
+func associate_default_variables_for_container_hitbox():
+	match container_name:
+		"door_front":
+			container_collision_rect_x = 32
+			container_collision_rect_y = 64
+		"door_side_left_handle", "door_side_right_handle": #Sono uguali
+			container_collision_rect_x = 4
+			container_collision_rect_y = 64
 
-func _load_and_apply_animations_on_startup():
-	"""CARICA GLI SPRITE FRAMES DEL CONTAINER ADEGUATO"""
-	var container_animation_frames_path = "res://game/entities/containers/"+container_name+"/"+container_name+"_animations.tres" #La path per il file di animazioni
-	var _sprite_frames = load(container_animation_frames_path) #Lo sprite di animazioni
-	if _sprite_frames: #Se l'ha trovato (Lo deve aver trovato se sono stati rispettati i criteri di path)
-		self.sprite_frames = _sprite_frames
-		if is_open_at_startup:
-			self.animation = "opened"
-		else:
-			self.animation = "closed"
-	else:
-		print("SPRITE FRAMES FOR "+container_name+" NOT LOADED! A CONTAINER HAS DEFAULT DOOR TEXTURE!\n")
+func _generate_default_door_front_hitboxes():
+	pass
 	
-	"""SE E' UN CONTAINER BLOCCATO, METTICI SOPRA LO SPRITE DEL LUCCHETTO, ALTRIMENTI CANCELLA IL NODO DALLA MEMORIA"""
-	update_lock_state()
+func _generate_default_door_side_hitboxes():
+	pass
+	
+	
+	
 
 func update_lock_state():
 	if is_locked:

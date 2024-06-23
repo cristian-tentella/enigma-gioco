@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dpxphqev4d3b1"]
+
+[ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="1_sf18f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc8l7"]
+atlas = ExtResource("1_sf18f")
+region = Rect2(160, 320, 32, 64)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mb5rv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckdbp"]
+atlas = SubResource("CompressedTexture2D_mb5rv")
+region = Rect2(32, 0, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc8l7")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckdbp")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
