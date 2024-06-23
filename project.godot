@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="enigma-gioco"
+config/name="enigma-gioco-phantom-camera"
 run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 
@@ -26,6 +26,7 @@ InventorySingleton="*res://components/inventory/inventory.gd"
 Supabase="*res://addons/supabase/Supabase/supabase.gd"
 AuthenticationManager="*res://managers/authentication.gd"
 ContainerDefaultHitboxGenerator="*res://game/entities/containers/container_default_hitbox_generator.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogue_manager]
 
@@ -42,7 +43,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/supabase/plugin.cfg")
 
 [importer_defaults]
 
