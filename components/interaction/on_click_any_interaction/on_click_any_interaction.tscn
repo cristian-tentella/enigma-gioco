@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciu5hdnyfuthf"]
+
+[ext_resource type="Script" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.gd" id="1_ormsf"]
+
+[node name="OnClickAnyInteraction" type="Area2D"]
+script = ExtResource("1_ormsf")
