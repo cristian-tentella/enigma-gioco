@@ -2,8 +2,7 @@ extends Node
 
 signal exit
 signal message(message: String)
-signal entries_selected_from_public_database(entries)
-signal entry_inserted_to_public_database
+
 
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
@@ -19,8 +18,7 @@ func _ready():
 	Supabase.auth.error.connect(on_sign_error)
 	Supabase.auth.signed_out.connect(on_sign_out)
 	Supabase.auth.reset_email_sent.connect(on_reset_succeded)
-	Supabase.database.inserted.connect(on_entry_successfully_added_to_supabase_public_database)
-	Supabase.database.selected.connect(on_selected_from_public_supabase_database)
+	Supabase.database.error.connect(on_database_query_error)
 	check_if_access_token_exists()
 
 	
@@ -30,23 +28,21 @@ func sign_out():
 
 func sign_up(email: String, password: String):
 	var query_result = await add_entry_to_supabase_public_database(email)
-	await entry_inserted_to_public_database
+	await Supabase.database.inserted
 	Supabase.auth.sign_up(email, password)
+
 
 func add_entry_to_supabase_public_database(user_email: String):
 	var query = SupabaseQuery.new().from("Users").insert([{"email" : user_email}])
 	Supabase.database.query(query)
 
-func on_entry_successfully_added_to_supabase_public_database(result):
-	self.entry_inserted_to_public_database.emit()
-	
-	
+
 func recover_password(email : String):
 	Supabase.auth.reset_password_for_email(email)
-	
 
-func on_selected_from_public_supabase_database(users):
-	self.entries_selected_from_public_database.emit(users)
+
+func on_database_query_error(body):
+	await display_report_message(body)	
 	
 	
 func sign_in(email: String, password: String):
@@ -64,10 +60,10 @@ func on_sign_up_succeeded(auth: SupabaseUser):
 	await display_report_message(str(auth.role))
 	self.exit.emit()
 	
+	
 func on_reset_succeded():
 	await display_report_message("An email has been sent to the speciefied email")
 	await display_report_message("Go back and try to log in again")
-	
 	
 	
 func on_sign_out():
