@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwdsrqkvev8w7"]
+
+[ext_resource type="Script" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.gd" id="1_t31d8"]
+
+[node name="OnCollisionAnyInteraction" type="Area2D"]
+script = ExtResource("1_t31d8")
