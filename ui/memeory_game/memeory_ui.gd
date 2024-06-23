@@ -15,7 +15,6 @@ func _ready():
 	update_slots()
 	
 	
-	
 func _draw_random_card():
 	var card_container = $Deck
 	var cards = card_container.get_children()
@@ -27,7 +26,6 @@ func _draw_random_card():
 		
 func update_slots():
 	for i in range(min(mem.slots.size(), slots_UI.size())):
-		#print_debug(slots_UI[i].button)
 		slots_UI[i].update(mem.slots[i])
 
 func _on_exit_pause_menu_button_pressed():

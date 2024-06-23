@@ -3,7 +3,7 @@ extends Node
 class_name Memeory
 
 signal update
-var slots: Array[Card] #Gli slot dell'inventario
+var slots: Array[Card] #Gli slot del memeory
 
 func insert(card: Card):
 	slots.append(card)

@@ -14,18 +14,21 @@ var sprite_path: String
 
 func _ready():
 	card_name_label.text = card_name
-	update_sprite2D_texture()
+	update_card_sprite2D_back_texture()
 	#sprite2D.texture = texture
 	
 	
-func update_sprite2D_texture():
+func update_card_sprite2D_front_texture():
 #Carica l'immagine dell'oggetto
 	sprite_path = "res://game/items/memeory_items/"+card_type+"/"+card_type+"_front.png"
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
 	
+func update_card_sprite2D_back_texture():
+	sprite_path = "res://game/items/memeory_items/card_back.png"
+	var image_texture = load(sprite_path)
+	sprite2D.texture = image_texture
 	
-func _on_button_pressed():
-	print("ciao") # Replace with function body.
+
 
 
