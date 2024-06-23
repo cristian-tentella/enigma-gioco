@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=21 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
+[ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door_front/door_front_animations.tres" id="5_fuh1f"]
 [ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
 [ext_resource type="Texture2D" uid="uid://bryxwghae3k7c" path="res://game/house/assets/floors.png" id="7_dmabe"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="8_0lq6k"]
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
+[ext_resource type="SpriteFrames" uid="uid://clvhip3cjj2eg" path="res://game/entities/containers/door_side_right_handle/door_side_right_handle_animations.tres" id="9_gny80"]
+[ext_resource type="SpriteFrames" uid="uid://dmswpryknqh1g" path="res://game/entities/containers/door_side_left_handle/door_side_left_handle_animations.tres" id="11_3pwkj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
 texture = ExtResource("8_51wt1")
@@ -2201,7 +2204,9 @@ position = Vector2(155, 191)
 
 [node name="door2" parent="Rooms" instance=ExtResource("7_qq4fd")]
 position = Vector2(208, 256)
-container_name = "door"
+sprite_frames = ExtResource("5_fuh1f")
+flip_h = true
+container_name = "door_front"
 container_collision_rect_x = 32
 container_collision_rect_y = 64
 is_locked = true
@@ -2249,8 +2254,16 @@ dialogue_id = "test"
 shape = SubResource("CircleShape2D_8spsj")
 
 [node name="door" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(144, 544)
-container_name = "door"
+position = Vector2(130, 528)
+sprite_frames = ExtResource("9_gny80")
+container_name = "door_side_right_handle"
+container_collision_rect_x = -748
+container_collision_rect_y = -721
+
+[node name="door2" parent="." instance=ExtResource("7_qq4fd")]
+position = Vector2(286, 528)
+sprite_frames = ExtResource("11_3pwkj")
+container_name = "door_side_left_handle"
 container_collision_rect_x = -748
 container_collision_rect_y = -721
 

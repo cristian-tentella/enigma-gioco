@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dd0twhi7cibmf"]
+
+[ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="1_stg5o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3f0k"]
+atlas = ExtResource("1_stg5o")
+region = Rect2(32, 256, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exd1m"]
+atlas = ExtResource("1_stg5o")
+region = Rect2(0, 256, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3f0k")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exd1m")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]

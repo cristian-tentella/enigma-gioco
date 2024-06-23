@@ -25,6 +25,7 @@ GameManager="*res://managers/game.gd"
 InventorySingleton="*res://components/inventory/inventory.gd"
 Supabase="*res://addons/supabase/Supabase/supabase.gd"
 AuthenticationManager="*res://managers/authentication.gd"
+ContainerDefaultHitboxGenerator="*res://game/entities/containers/container_default_hitbox_generator.gd"
 
 [dialogue_manager]
 
