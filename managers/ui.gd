@@ -28,6 +28,10 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate()
 
+@onready var memeory_menu: MemeoryUI = preload(
+	"res://ui/memeory_game/memeory_ui.tscn"
+).instantiate()
+
 """################################################################################
 QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
 ################################################################################"""
@@ -37,7 +41,8 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	dialogue_box,
 	start_menu,
 	pause_menu,
-	inventory_menu
+	inventory_menu,
+	memeory_menu
 ]
 
 #Segnali
@@ -115,3 +120,8 @@ func show_authentication_menu():
 	_spawn_locking_ui_element(authentication_menu)
 	await AuthenticationManager.exit
 	_kil_locking_ui_element(authentication_menu)
+	
+func show_memeory():
+	_spawn_locking_ui_element(memeory_menu)
+	await memeory_menu.exit
+	_kil_locking_ui_element(memeory_menu)
