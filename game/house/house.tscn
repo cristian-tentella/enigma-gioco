@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=23 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="SpriteFrames" uid="uid://clvhip3cjj2eg" path="res://game/entities/containers/door_side_right_handle/door_side_right_handle_animations.tres" id="9_gny80"]
 [ext_resource type="SpriteFrames" uid="uid://dmswpryknqh1g" path="res://game/entities/containers/door_side_left_handle/door_side_left_handle_animations.tres" id="11_3pwkj"]
+[ext_resource type="Script" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.gd" id="13_abr78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
 texture = ExtResource("8_51wt1")
@@ -2194,6 +2195,9 @@ sources/1 = SubResource("TileSetAtlasSource_h5t20")
 [sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
 radius = 20.2237
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kjj"]
+size = Vector2(20, 162)
+
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -2275,3 +2279,12 @@ collision_circle_radius = 24
 [node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(264, 192)
 item_name = "set_of_keys"
+
+[node name="OnCollisionAnyInteraction" type="Area2D" parent="."]
+script = ExtResource("13_abr78")
+script_path = "res://components/interaction/on_collision_any_interaction/scripts_dump/test_interaction.gd"
+method_name = "pure_testing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
+position = Vector2(301, 110)
+shape = SubResource("RectangleShape2D_b5kjj")
