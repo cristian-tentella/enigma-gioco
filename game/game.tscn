@@ -18,4 +18,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("3_8jufx")]
-position = Vector2(262, 187)
+position = Vector2(111, 127)
