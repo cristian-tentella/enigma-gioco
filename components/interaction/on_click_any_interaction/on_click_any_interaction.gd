@@ -13,7 +13,7 @@ TUTORIAL COME USARE:
 	] Mettere on_collision_any_interaction.tscn dentro house
 	] Mettere figlio un CollisionShape2D che rappresenta il punto dove, se il player entra, l'interazione parte
 	] Crea uno script con la funzione che vuoi associare.
-	  Lo script mettilo in un posto sensato, se hai dubbi, mettilo dentro res://components/interaction/on_collision_any_interaction/scripts_dump/
+	  Lo script mettilo in un posto sensato, se hai dubbi, mettilo dentro res://components/interaction/on_click_any_interaction/scripts_dump/
 	  Una volta fatto, copia il path verso lo script e mettilo dentro la variabile esportata script_path
 	  La funzione che chiami deve essere definita come static, e il suo nome deve essere messo nella variabile esportata
 	
