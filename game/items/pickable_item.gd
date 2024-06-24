@@ -19,6 +19,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 @export_category("Item Base Values")
 @export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
 @export var description: String #La descrizione che faremo vedere nell'inventario
+@export var is_corporeo: bool = false
 #NOTE: La descrizione, cosi come il nome degli item va adattato in funzione della lingua. InventoryManager con un file csv?
 @export_group("Extra values")
 @export var collision_circle_radius : int = 16 #Negativo se vuoi usare il default
@@ -66,10 +67,11 @@ func generate_both_collision_circles():
 	item_interaction.add_child(item_interaction_collision_circle_shape)
 	collision_shapes.append(item_interaction_collision_circle_shape)
 	
-	var actual_collision_circle_shape = CollisionShape2D.new()
-	CollisionShapeCreator.create_circle_shape(actual_collision_circle_shape, new_radius)
-	static_body_2D.add_child(actual_collision_circle_shape)
-	collision_shapes.append(actual_collision_circle_shape)
+	if is_corporeo:
+		var actual_collision_circle_shape = CollisionShape2D.new()
+		CollisionShapeCreator.create_circle_shape(actual_collision_circle_shape, new_radius)
+		static_body_2D.add_child(actual_collision_circle_shape)
+		collision_shapes.append(actual_collision_circle_shape)
 
 
 func update_sprite2D_texture():

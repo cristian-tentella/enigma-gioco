@@ -28,6 +28,7 @@ AuthenticationManager="*res://managers/authentication.gd"
 ContainerDefaultHitboxGenerator="*res://game/entities/containers/container_default_hitbox_generator.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
+
 [dialogue_manager]
 
 general/balloon_path="res://ui/dialogue_balloon/dialogue_balloon.tscn"
