@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crbudpuk5xyqu"]
+
+[ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
+[ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
+
+[node name="AudioPlayer" type="Node"]
+script = ExtResource("1_oq8ox")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="Click" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("1_rlg06")
+
+[node name="Music" type="Node" parent="."]
