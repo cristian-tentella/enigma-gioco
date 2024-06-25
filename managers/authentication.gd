@@ -35,9 +35,21 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
-	var query_result = await add_entry_to_supabase_public_database(email)
-	await Supabase.database.inserted
-	Supabase.auth.sign_up(email, password)
+	if ! (await does_this_user_exist(email)):
+		var query_result = await add_entry_to_supabase_public_database(email)
+		await Supabase.database.inserted
+		Supabase.auth.sign_up(email, password)
+	
+
+func does_this_user_exist(email: String):
+	var query = SupabaseQuery.new().from("Users").select(["email"])
+	Supabase.database.query(query)
+	var query_result = await Supabase.database.selected
+	if query_result.has({"email" : email}):
+		display_report_message("User already registered")
+		return true
+		
+		
 
 
 func add_entry_to_supabase_public_database(user_email: String):
