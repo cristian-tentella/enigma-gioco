@@ -2282,7 +2282,7 @@ position = Vector2(264, 192)
 item_name = "set_of_keys"
 
 [node name="OnClickAnyInteraction" parent="." instance=ExtResource("14_7aw2o")]
-script_path = "res://components/interaction/on_collision_any_interaction/scripts_dump/test_interaction.gd"
+script_path = "res://components/interaction/on_click_any_interaction/scripts_dump/test_interaction.gd"
 method_name = "pure_testing"
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="OnClickAnyInteraction"]
@@ -2292,6 +2292,7 @@ shape = SubResource("RectangleShape2D_b5kjj")
 [node name="OnCollisionAnyInteraction" parent="." instance=ExtResource("14_0u62w")]
 script_path = "res://components/interaction/on_collision_any_interaction/scripts_dump/test_interaction.gd"
 method_name = "pure_testing"
+minigame_requirement = 1
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
 position = Vector2(305, 118)
