@@ -4,6 +4,14 @@ signal exit
 signal message(message: String)
 
 
+# Controlla se i menu di autenticazione sono mostrati all'avvio del gioco.
+# Il valore default è false per facilitare il testing delle funzionalità di
+# gioco.
+#
+# Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
+# versione esportata, cioè quando NON si sta eseguendo via editor.
+const is_enabled = false
+
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
 
