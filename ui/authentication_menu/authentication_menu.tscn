@@ -42,15 +42,24 @@ offset_left = 360.0
 offset_top = 214.0
 offset_right = 468.0
 offset_bottom = 239.0
-text = "sign out"
+text = "sign up"
 
 [node name="ReportMessage" type="Label" parent="."]
 layout_mode = 0
 offset_left = 161.0
-offset_top = 276.0
-offset_right = 468.0
-offset_bottom = 299.0
+offset_top = 63.0
+offset_right = 467.0
+offset_bottom = 86.0
 horizontal_alignment = 1
+
+[node name="ResetPassword" type="Button" parent="."]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 276.0
+offset_right = 385.0
+offset_bottom = 307.0
+text = "Reset password"
 
 [connection signal="pressed" from="SignIn" to="." method="_on_sign_in_button_pressed"]
 [connection signal="pressed" from="SignUp" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="ResetPassword" to="." method="_on_reset_password_button_pressed"]
