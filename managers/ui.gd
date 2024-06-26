@@ -24,6 +24,11 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/authentication_menu/authentication_menu.tscn"
 ).instantiate()
 
+@onready var authentication_reset_menu: AuthenticationResetMenu = preload(
+	"res://ui/authentication_menu/authentication_reset_menu.tscn"
+).instantiate()
+
+
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate()
@@ -34,6 +39,7 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 
 @onready var ui_elements: Array[Control] = [
 	authentication_menu,
+	authentication_reset_menu,
 	dialogue_box,
 	start_menu,
 	pause_menu,
@@ -115,3 +121,8 @@ func show_authentication_menu():
 	_spawn_locking_ui_element(authentication_menu)
 	await AuthenticationManager.exit
 	_kil_locking_ui_element(authentication_menu)
+
+func show_authentication_reset_menu():
+	_spawn_locking_ui_element(authentication_reset_menu)
+	await AuthenticationManager.exit
+	_kil_locking_ui_element(authentication_reset_menu)
