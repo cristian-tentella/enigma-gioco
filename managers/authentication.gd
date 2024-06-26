@@ -3,8 +3,18 @@ extends Node
 signal exit
 signal message(message: String)
 
+
+# Controlla se i menu di autenticazione sono mostrati all'avvio del gioco.
+# Il valore default è false per facilitare il testing delle funzionalità di
+# gioco.
+#
+# Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
+# versione esportata, cioè quando NON si sta eseguendo via editor.
+const is_enabled = false
+
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
+
 
 @onready var authentication_menu: AuthenticationMenu = preload(
 	"res://ui/authentication_menu/authentication_menu.tscn"
@@ -15,6 +25,8 @@ func _ready():
 	Supabase.auth.signed_in.connect(on_sign_in_succeeded)
 	Supabase.auth.error.connect(on_sign_error)
 	Supabase.auth.signed_out.connect(on_sign_out)
+	Supabase.auth.reset_email_sent.connect(on_reset_succeded)
+	Supabase.database.error.connect(on_database_query_error)
 	check_if_access_token_exists()
 
 	
@@ -23,7 +35,34 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
-	Supabase.auth.sign_up(email, password)
+	if ! (await does_this_user_exist(email)):
+		var query_result = await add_entry_to_supabase_public_database(email)
+		await Supabase.database.inserted
+		Supabase.auth.sign_up(email, password)
+	
+
+func does_this_user_exist(email: String):
+	var query = SupabaseQuery.new().from("Users").select(["email"])
+	Supabase.database.query(query)
+	var query_result = await Supabase.database.selected
+	if query_result.has({"email" : email}):
+		display_report_message("User already registered")
+		return true
+		
+		
+
+
+func add_entry_to_supabase_public_database(user_email: String):
+	var query = SupabaseQuery.new().from("Users").insert([{"email" : user_email}])
+	Supabase.database.query(query)
+
+
+func recover_password(email : String):
+	Supabase.auth.reset_password_for_email(email)
+
+
+func on_database_query_error(body):
+	await display_report_message(body)	
 	
 	
 func sign_in(email: String, password: String):
@@ -40,6 +79,11 @@ func on_sign_up_succeeded(auth: SupabaseUser):
 	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
+	
+	
+func on_reset_succeded():
+	await display_report_message("An email has been sent to the speciefied email")
+	await display_report_message("Go back and try to log in again")
 	
 	
 func on_sign_out():

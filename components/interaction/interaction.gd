@@ -29,6 +29,8 @@ func handle_interaction():
 class_name Interaction
 extends Area2D
 
+@export var minigame_requirement : int = 0 # L'interazione sarà disponibile quando ti trovi su quel minigame O SUPERIORE
+
 #Abstract method for handing interactions.
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
 func handle_interaction():

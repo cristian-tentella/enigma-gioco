@@ -3,7 +3,7 @@ extends Node2D
 @onready var rooms_node = $".."
 var rooms = {}
 const LIGHT_ON: Color = Color(0, 0, 0, 0) 
-const LIGHT_OFF: Color = Color(0, 0, 0, 1) 
+const LIGHT_OFF: Color = Color(0.12549, 0.117647, 0.113725, 1)
 
 func _ready():
 	for room in rooms_node.get_children():
