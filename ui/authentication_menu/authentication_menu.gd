@@ -5,6 +5,7 @@ extends Control
 @onready var password = $Password
 @onready var report_message = $ReportMessage
 
+
 func _ready():
 	AuthenticationManager.message.connect(_show_report_message)
 
@@ -17,3 +18,7 @@ func _on_sign_in_button_pressed():
 func _show_report_message(message: String):
 	report_message.text = message
 
+func _on_reset_password_button_pressed():
+	AuthenticationManager.exit.emit()
+	
+	

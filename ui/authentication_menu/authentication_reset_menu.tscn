@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw77fqlykqrna"]
+
+[ext_resource type="Script" path="res://ui/authentication_menu/authentication_reset_menu.gd" id="1_m60ch"]
+
+[node name="AuthenticationResetMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m60ch")
+
+[node name="Email" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 121.0
+offset_right = 447.0
+offset_bottom = 152.0
+placeholder_text = "email"
+
+[node name="ReportMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 80.0
+offset_right = 447.0
+offset_bottom = 103.0
+
+[node name="SendReset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 174.0
+offset_right = 380.0
+offset_bottom = 205.0
+text = "Send reset email"
+
+[connection signal="pressed" from="SendReset" to="." method="_on_send_reset_button_pressed"]
