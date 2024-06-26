@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgja87jphwwyv"]
+[gd_scene load_steps=3 format=3 uid="uid://cgja87jphwwyv"]
 
 [ext_resource type="Script" path="res://ui/dialogue_box/dialogue_box.gd" id="1_g1506"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_i2ner"]
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -24,6 +25,7 @@ offset_right = 160.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("2_i2ner")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -38,8 +40,11 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_i2ner")
+theme_override_font_sizes/font_size = 16
 
 [node name="Body" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
+theme = ExtResource("2_i2ner")
 autowrap_mode = 3

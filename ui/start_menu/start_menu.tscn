@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqj6624ni3cyj"]
+[gd_scene load_steps=3 format=3 uid="uid://dqj6624ni3cyj"]
 
 [ext_resource type="Script" path="res://ui/start_menu/start_menu.gd" id="1_6640u"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_vdu52"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6640u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.831373, 0.815686, 0.811765, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -24,19 +34,23 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Play"
+theme = ExtResource("2_vdu52")
+text = "PLAY"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
+theme = ExtResource("2_vdu52")
+text = "SETTINGS"
 
 [node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+theme = ExtResource("2_vdu52")
+text = "EXIT"
 
 [node name="LogOutButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Log Out"
+theme = ExtResource("2_vdu52")
+text = "LOG OUT"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
