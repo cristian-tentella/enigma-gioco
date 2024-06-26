@@ -3080,7 +3080,6 @@ shape = SubResource("RectangleShape2D_cvj58")
 [node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/door3"]
 position = Vector2(0.171535, -14.2381)
 rotation = 0.0026857
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xqr3h")
 
 [node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
