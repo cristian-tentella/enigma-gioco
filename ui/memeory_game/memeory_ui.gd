@@ -9,7 +9,8 @@ signal exit
 
 func _ready():
 	$Deck.hide()
-	mem = Memeory.new()
+	#mem = Memeory.new()
+	_instantiate_memeory()
 	_draw_random_card()
 	mem.update.connect(update_slots)
 	update_slots()
@@ -23,6 +24,11 @@ func _draw_random_card():
 	cards.shuffle()
 	for random_card in cards:
 		mem.insert(random_card)
+		#print_debug(StateManager.memeory)
+		
+func _instantiate_memeory():
+	mem = Memeory.new()
+	StateManager.memeory = mem
 		
 func update_slots():
 	for i in range(min(mem.slots.size(), slots_UI.size())):
