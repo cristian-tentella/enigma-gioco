@@ -26,6 +26,7 @@ InventorySingleton="*res://components/inventory/inventory.gd"
 Supabase="*res://addons/supabase/Supabase/supabase.gd"
 AuthenticationManager="*res://managers/authentication.gd"
 MinigameManager="*res://managers/minigames.gd"
+MemeoryManager="*res://components/memeory/memeory.gd"
 
 [dialogue_manager]
 

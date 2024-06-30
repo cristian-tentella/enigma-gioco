@@ -18,6 +18,7 @@ var house: House #Caricato da game/game.gd, lanciato in game/game.tscn
 var inventory_UI: InventoryUI
 var inventory: Inventory
 
+#Memeory variables
 var memeory_UI : MemeoryUI
 var memeory : Memeory
 

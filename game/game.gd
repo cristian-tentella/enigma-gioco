@@ -9,6 +9,7 @@ extends Node
 @onready var player = $Player
 @onready var house = $House
 @onready var inventory_UI = UIManager.inventory_menu
+@onready var memeory_UI = UIManager.memeory_menu
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
@@ -20,6 +21,8 @@ func _ready():
 	StateManager.house = house
 	StateManager.inventory_UI = inventory_UI
 	StateManager.inventory = inventory_UI.inv
+	StateManager.memeory_UI = memeory_UI
+	StateManager.memeory = memeory_UI.mem
 
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

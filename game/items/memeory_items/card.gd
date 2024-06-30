@@ -8,6 +8,8 @@ extends Node2D
 @export var card_name: String
 @export_enum("regular", "bet", "extralife") var card_type: String
 @export var description: String
+@onready var index = 0;
+@onready var clickable = true
 
 var sprite_path: String
 #@export var texture : sprite2D.texture

@@ -127,7 +127,6 @@ func show_authentication_menu():
 	await AuthenticationManager.exit
 	_kil_locking_ui_element(authentication_menu)
 
-	
 func show_memeory():
 	_spawn_locking_ui_element(memeory_menu)
 	await memeory_menu.exit

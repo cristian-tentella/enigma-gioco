@@ -4,12 +4,12 @@ extends Control
 var mem: Memeory
 @onready var slots_UI: Array = $SlotsGridBackground/CenterContainer/GridContainer.get_children() #Array di Memeory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
+var i = 0
 
 signal exit
 
 func _ready():
 	$Deck.hide()
-	#mem = Memeory.new()
 	_instantiate_memeory()
 	_draw_random_card()
 	mem.update.connect(update_slots)
@@ -23,12 +23,14 @@ func _draw_random_card():
 		return
 	cards.shuffle()
 	for random_card in cards:
+		random_card.index = i
 		mem.insert(random_card)
-		#print_debug(StateManager.memeory)
-		
+		i = i+1
+	print_debug(MemeoryManager.slots)
+	
+	
 func _instantiate_memeory():
-	mem = Memeory.new()
-	StateManager.memeory = mem
+	mem = MemeoryManager
 		
 func update_slots():
 	for i in range(min(mem.slots.size(), slots_UI.size())):
