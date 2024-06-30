@@ -4,6 +4,7 @@ extends Node2D
 var rooms = {}
 const LIGHT_ON: Color = Color(0, 0, 0, 0) 
 const LIGHT_OFF: Color = Color(0.12549, 0.117647, 0.113725, 1)
+const Z_INDEX_VALUE = 100
 
 func _ready():
 	for room in rooms_node.get_children():
@@ -12,7 +13,7 @@ func _ready():
 			room.body_entered.connect(_on_room_entered.bind(room.name))
 			room.body_exited.connect(_on_room_exited.bind(room.name))
 			room.get_node("ColorRect").color = LIGHT_OFF
-				
+			room.get_node("ColorRect").z_index = Z_INDEX_VALUE
 	
 
 func _on_room_entered(body, current_room):	
