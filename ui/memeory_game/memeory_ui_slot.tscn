@@ -34,7 +34,6 @@ visible = false
 visible = false
 
 [node name="Button" type="Button" parent="CenterContainer/Panel"]
-visible = false
 modulate = Color(1, 0.376471, 1, 1)
 layout_mode = 0
 offset_left = -12.0

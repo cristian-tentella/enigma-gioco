@@ -24,7 +24,9 @@ card_name = "Bet2"
 card_type = "bet"
 
 [node name="Card5" parent="." instance=ExtResource("1_cfiem")]
+card_name = "Extra1"
 card_type = "extralife"
 
 [node name="Card6" parent="." instance=ExtResource("1_cfiem")]
+card_name = "Extra2"
 card_type = "extralife"

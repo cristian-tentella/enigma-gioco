@@ -24,7 +24,6 @@ position = Vector2(10.75, 15.5)
 shape = SubResource("RectangleShape2D_ic55s")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 modulate = Color(1, 0.415686, 1, 1)
 offset_top = 6.0
 offset_right = 21.0

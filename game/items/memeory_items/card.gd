@@ -21,7 +21,7 @@ func _ready():
 	
 	
 func update_card_sprite2D_front_texture():
-#Carica l'immagine dell'oggetto
+#Carica l'immagine frontale della carta
 	sprite_path = "res://game/items/memeory_items/"+card_type+"/"+card_type+"_front.png"
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
