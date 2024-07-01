@@ -11,7 +11,7 @@ var card_in_slot : Card
 
 #Funzione chiamata ogni volta che memeory ha qualche cambiamento, quindi il singolo slot si gestisce da solo
 func update(slot: Card):
-	if !slot:
+	if (!slot):
 		card_visual.visible = false
 		button.hide()
 	else:

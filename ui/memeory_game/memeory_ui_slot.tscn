@@ -4,28 +4,37 @@
 [ext_resource type="Script" path="res://ui/memeory_game/memeory_ui_slot.gd" id="1_oxlxo"]
 
 [node name="MemeoryUiSlot" type="Control"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(32, 48)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 48.0
 script = ExtResource("1_oxlxo")
 
 [node name="sprite_casella_vuota" type="Sprite2D" parent="."]
-position = Vector2(16, 16)
+position = Vector2(16, 24)
+scale = Vector2(1, 1.5)
 texture = ExtResource("1_6cew7")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 24.0
-offset_bottom = 24.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -21.0
+offset_right = 14.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CenterContainer/Panel"]
-visible = false
 
 [node name="Area2D" type="Area2D" parent="CenterContainer/Panel/Sprite"]
 visible = false
@@ -34,12 +43,20 @@ visible = false
 visible = false
 
 [node name="Button" type="Button" parent="CenterContainer/Panel"]
+visible = false
 modulate = Color(1, 0.376471, 1, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -12.0
-offset_top = -12.0
+offset_top = -18.0
 offset_right = 12.0
-offset_bottom = 12.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
 flat = true
 
 [connection signal="pressed" from="CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
