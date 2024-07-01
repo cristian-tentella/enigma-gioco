@@ -12,12 +12,10 @@ extends Node2D
 @onready var clickable = true
 
 var sprite_path: String
-#@export var texture : sprite2D.texture
 
 func _ready():
 	card_name_label.text = card_name
 	update_card_sprite2D_back_texture()
-	#sprite2D.texture = texture
 	
 	
 func update_card_sprite2D_front_texture():
