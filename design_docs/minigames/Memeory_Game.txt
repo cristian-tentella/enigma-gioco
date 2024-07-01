@@ -1,0 +1,83 @@
+MINIGIOCO MEMEORY
+
+REGOLAMENTO SINGLEPLAYER
+
+Di base è un classico memory, con la differenza che le carte hanno delle proprietà particolari.
+Il giocatore avrà inizialmente 3 vite. Se termina le vite, perde e deve tentare nuovamente il minigame.
+Se invece riesce a trovare tutte le coppie senza terminare le vite, vince il minigame ed ottiene l’item premio del minigame (polipetto).
+
+Coppia Regolare: non fa nulla, vai avanti
+
+Coppia Malus: se acquisita perdi una vita, ma solo se non è la tua ultima vita rimasta (nel caso fosse così allora la Coppia Malus si comporta come una Coppia Regolare)
+
+Coppia Rimescola: se scelta una delle due carte Rimescola ma non vi è la coppia vengono rimescolate le carte rimaste ancora a tavola, se presa coppia non rimescola e vai avanti.
+
+Coppia Vita Extra: se acquisita recuperi una vita (o ne acquisisci una extra se eri già full vite)
+
+Coppia Meme: se acquisito, appare la grafica di yu gi oh dei life points al posto dei cuori delle vite e da quel momento in poi ogni cuore che perdi è -2000 life points (ogni cuore viene convertito in 2000lp) (di base non fa niente, solo questo)
+
+Coppia Virus/Spam: mentre giochi ti appaiono png a random chiudibili (se non li chiudi naturalmente si accumulano sullo schermo).
+
+Coppia Scommessa: se acquisita il giocatore può pagare una vita per fare un turno in cui se acquisisce una coppia ottiene due vite, altrimenti se sbaglia perde altre due vite oltre a quella che ha già scommesso (da bilanciare forse) (se giocatore è rimasto con una vita sola Coppia Scommessa diventa Coppia All In, ossia uguale ma se giocatore sbaglia perde automaticamente (da gestire lato codice)).
+
+Coppia Veggente: se acquisita ti scopre due carte a random tra le carte a tavola (non toglie vite se sono diverse le carte).
+
+
+
+
+Totale coppie: 8
+Totale carte: 16
+Dimensione: 4x4
+
+Coppia Regolare: 1
+Coppia Malus: 1
+Coppia Rimescola: 1 (Carte Rimescola: 2)
+
+Coppia Vita Extra: 1
+Coppia Meme: 1
+Coppia Virus/Spam: 1
+Coppia Scommessa: 1
+Coppia Veggente: 1
+
+
+
+
+
+REGOLAMENTO MULTIPLAYER (NON SI FA)
+Di base è un classico memory, con la differenza che le carte hanno delle proprietà particolari.
+Ci saranno per esempio una coppia che se acquisita vale 2 punti, una che se presa ruba un punto all’avversario, un’altra che se scelta una delle due ma non vi è la coppia vengono rimescolate le carte ancora a tavola.
+
+Coppia Regolare: dà un punto
+
+Coppia Punti Doppi: se acquisita vale 2 punti.
+
+Coppia Malus: perdi un punto.
+
+Coppia Ruba Punti: se presa ruba un punto all’avversario e lo aggiunge ai propri (non dà punti in sé la coppia).
+
+Coppia Rimescola: se scelta una delle due carte Rimescola ma non vi è la coppia vengono rimescolate le carte rimaste ancora a tavola, se presa coppia dà un punto.
+
+Coppia Doppio Turno: se acquisita ti permette di fare un nuovo turno a seguito di un errore (dà un punto).
+
+Coppia Meme: se acquisita non fa nulla, non dà nemmeno punti.
+
+Coppia Scommessa: se acquisita il giocatore può pagare un punto per fare un turno in cui le carte danno punti doppi (quindi Regolare = 2 punti, Punti Doppi = 4, Ruba punti = -2 all’avversario e +2 al giocatore, Rimescola = 2 punti, Doppio Turno = 2 punti, Coppia Meme = 0). 
+Se giocatore sbaglia perde il bonus della Coppia Scommessa e passa il turno all’avversario (a meno che prima della Coppia Scommessa non abbia preso la Coppia Doppio Turno e non abbia fatto errori fino a questo momento).
+
+
+Totale coppie: 8
+Totale carte: 16
+Dimensione: 4x4
+
+Coppia Regolare: 1
+Coppia Punti Doppi: 1
+Coppia Malus: 1
+Coppia Ruba Punti: 1
+Coppia Rimescola: 1 (Carte Rimescola: 2)
+Coppia Doppio Turno: 1
+Coppia Meme: 1
+Coppia Scommessa: 1
+
+Quando sono terminate le carte a tavola, il giocatore che avrà più punti avrà vinto.
+
+
