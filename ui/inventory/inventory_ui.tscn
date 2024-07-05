@@ -90,6 +90,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_left = 400.0
 offset_top = 48.0
 offset_right = 424.0
