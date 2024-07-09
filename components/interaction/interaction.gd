@@ -11,6 +11,9 @@ Dentro myInteractionName_interaction.gd , bisogna gestire il tipo di interazione
 Se non ci sta, viene lanciato l'errore!
 
 Se la tua interazione è stata gestita con una funzione con un nome diverso, cerca di risolvere nell'ambito del tuo script piuttosto che qui dentro, se possibile <3
+
+METTI ASSOLUTAMENTE _remove_if_proc_only_once() ALLA FINE!!!
+
 ###################################################################################
 
 TUTORIAL ->
@@ -23,16 +26,25 @@ extends Interaction
 @export var quello_che_ti_serve: tipo_che_ti_serve
 
 func handle_interaction():
-	pass
+	# Interaction logic
+	_remove_if_proc_only_once()
 """
 
 class_name Interaction
 extends Area2D
 
 @export var minigame_requirement : int = 0 # L'interazione sarà disponibile quando ti trovi su quel minigame O SUPERIORE
+@export var just_proc_once : bool = true #Se voglio che l'interazione ci sia una volta sola in tutto il gioco
 
 #Abstract method for handing interactions.
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
 func handle_interaction():
 	# Throw an error if this method is not overwritten
 	push_error("Method 'interact' must be overwritten in EVERY subclass. Check interaction/interaction.gd for extra infos")
+	
+func _exit_tree():
+	print(get_name()+" exiting!\n")
+	
+func _remove_if_proc_only_once():
+	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
+		self.queue_free()

@@ -13,11 +13,11 @@ func start():
 	StateManager.player.hide()
 	StateManager.house.hide()
 
-	UIManager.show_authentication_menu()
-	await AuthenticationManager.exit
+	#UIManager.show_authentication_menu()
+	#await AuthenticationManager.exit
   	
-	UIManager.show_authentication_reset_menu()
-	await AuthenticationManager.exit
+	#UIManager.show_authentication_reset_menu()
+	#await AuthenticationManager.exit
 	
 	#Mostra il menu iniziale
 	UIManager.show_start_menu() 

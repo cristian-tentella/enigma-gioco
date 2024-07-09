@@ -13,6 +13,7 @@ extends Interaction
 @export var close_animation: String
 var container_involved: MyContainer #L'oggetto di tipo container su cui è stata avviata l'interazione. Ad esempio, la porta su cui clicco
 
+
 #Chiamata quando viene premuta spacebar intersecando la collision shape del container con quella del player (flusso parte da "input.gd")
 func handle_interaction():
 	container_involved = get_parent() #Assegnazione del container. SE NON FUNZIONA E' SBAGLIATA LA STRUTTURA DELLA SCENA!
@@ -31,3 +32,5 @@ func _handle_open_close_animation():
 	else:
 		self.animated_sprite.animation = self.open_animation
 		container_involved.remove_physical_collision() # Fa in modo che se sia aperta ci puoi passare attraverso
+	
+	#_remove_if_proc_only_once() #I container non ha senso che si possano aprire una sola volta... No?

@@ -8,4 +8,5 @@ func handle_interaction():
 	item_in_interaction.remove_from_map() #Rimuovi dalla mappa le sue 
 	StateManager.inventory.insert(item_in_interaction)
 	#TODO: Dialogo che ti dice che hai preso un item
-
+	
+	_remove_if_proc_only_once()

@@ -33,7 +33,6 @@ TUTORIAL COME USARE:
 #	self.queue_free() -> questo controllo meglio farlo dentro handle_interaction() qui dentro, magari con una var esportata!
 
 var class_resource
-@export var just_proc_once : bool = true #Se voglio che l'interazione ci sia una volta sola in tutto il gioco
 
 func _ready():
 	class_resource = ResourceLoader.load(script_path)
@@ -50,6 +49,5 @@ func handle_interaction():
 	else: #Print per capire cosa si ha sbagliato
 		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 	
-	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
-		self.queue_free()
+	_remove_if_proc_only_once()
 
