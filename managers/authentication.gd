@@ -4,6 +4,14 @@ signal exit
 signal message(message: String)
 
 
+# Controlla se i menu di autenticazione sono mostrati all'avvio del gioco.
+# Il valore default è false per facilitare il testing delle funzionalità di
+# gioco.
+#
+# Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
+# versione esportata, cioè quando NON si sta eseguendo via editor.
+const is_enabled = false
+
 var sleep_after_action = 0.7
 var access_token_path = "user://user.auth"
 
@@ -27,9 +35,21 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
-	var query_result = await add_entry_to_supabase_public_database(email)
-	await Supabase.database.inserted
-	Supabase.auth.sign_up(email, password)
+	if ! (await does_this_user_exist(email)):
+		var query_result = await add_entry_to_supabase_public_database(email)
+		await Supabase.database.inserted
+		Supabase.auth.sign_up(email, password)
+	
+
+func does_this_user_exist(email: String):
+	var query = SupabaseQuery.new().from("Users").select(["email"])
+	Supabase.database.query(query)
+	var query_result = await Supabase.database.selected
+	if query_result.has({"email" : email}):
+		display_report_message("User already registered")
+		return true
+		
+		
 
 
 func add_entry_to_supabase_public_database(user_email: String):
