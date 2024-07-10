@@ -24,5 +24,8 @@ func _on_button_pressed():
 func play_click_sound_effect():
 	self.play_sound_effect.emit("click")
 
+func play_step_sound_effect():
+	self.play_sound_effect.emit("step")
+
 func play_lullaby_sound_track():
 	self.play_sound_track.emit("Lullaby")

@@ -5,7 +5,6 @@ var audio_stream_player_for_sound_track: AudioStreamPlayer
 var current_audio_stream_player_for_sound_track: AudioStreamPlayer
 
 
-
 func _ready():
 	AudioManager.play_sound_effect.connect(_on_audio_manager_play_sound_effect)
 	AudioManager.play_sound_track.connect(_on_audio_manager_play_sound_track)
@@ -58,6 +57,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 	match sound_effect_name:
 		"click":
 			audio_stream_player_for_sound_effects = $SoundEffects/Click
+		"step":
+			audio_stream_player_for_sound_effects = $SoundEffects/Step
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null
