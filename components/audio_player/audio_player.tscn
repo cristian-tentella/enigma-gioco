@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=4 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
 [ext_resource type="AudioStream" uid="uid://llus6ab1mltb" path="res://audio/sound_tracks/lullaby.ogg" id="3_mc1xh"]
-[ext_resource type="AudioStream" uid="uid://ct0plff8tcq8g" path="res://audio/sound_tracks/dragonball.ogg" id="4_6p6nd"]
-[ext_resource type="AudioStream" uid="uid://qf8e1s8tbcbo" path="res://audio/sound_tracks/arale.ogg" id="5_8ihnk"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -18,10 +16,3 @@ stream = ExtResource("1_rlg06")
 
 [node name="Lullaby" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("3_mc1xh")
-
-[node name="Dragonball" type="AudioStreamPlayer" parent="SoundTracks"]
-stream = ExtResource("4_6p6nd")
-
-[node name="Arale" type="AudioStreamPlayer" parent="SoundTracks"]
-stream = ExtResource("5_8ihnk")
-volume_db = 15.928
