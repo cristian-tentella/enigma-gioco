@@ -48,3 +48,16 @@ func _exit_tree():
 func _remove_if_proc_only_once():
 	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
 		self.queue_free()
+		
+		#Per il salvataggio ----------
+		#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
+		self._insert_into_minigameManager_dictionary()
+			
+			
+func _insert_into_minigameManager_dictionary():
+	var node_name = self.get_name()
+	if node_name != "ItemInteraction": #Per questo ci pensa l'Inventory
+		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
+		MinigameManager.all_exited_interactions.append(path_to_node)
+		#print_debug(MinigameManager.all_exited_interactions)
+
