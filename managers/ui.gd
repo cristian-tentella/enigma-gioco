@@ -75,8 +75,8 @@ func _ready():
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
-	
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
+	AudioManager.setup_sound_triggers()
 	spawn.emit(ui_element)
 	return ui_element
 
