@@ -2,6 +2,9 @@ class_name AudioPlayer
 extends Node
 
 var audio_stream_player_for_sound_track: AudioStreamPlayer
+var current_audio_stream_player_for_sound_track: AudioStreamPlayer
+
+
 
 func _ready():
 	AudioManager.play_sound_effect.connect(_on_audio_manager_play_sound_effect)
@@ -19,14 +22,34 @@ func _on_audio_manager_play_sound_effect(sound_effect_name: String):
 	audio_stream_player.play()
 
 func _on_audio_manager_play_sound_track(sound_track_name: String):
-	if !audio_stream_player_for_sound_track.is_playing():
-		audio_stream_player_for_sound_track = _convert_sound_effect_name_to_audio_stream_player(sound_track_name)
-		if audio_stream_player_for_sound_track == null:
-			return
 
-		audio_stream_player_for_sound_track.play()
+	if audio_stream_player_for_sound_track != null:	
+		if  audio_stream_player_for_sound_track.is_playing():
+			current_audio_stream_player_for_sound_track = audio_stream_player_for_sound_track
+			fade_out_audio_track(current_audio_stream_player_for_sound_track)
+			convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
+
 	else:
-		push_error("Non puoi suonare due sound track in contemporanea")
+		convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
+	
+	print("Currently playing : " + str(audio_stream_player_for_sound_track))
+	
+func convert_and_play_track(audio_track: AudioStreamPlayer, sound_track_name: String):
+	audio_track = _convert_sound_track_name_to_audio_stream_player(sound_track_name)
+	audio_track.play()
+	fade_in_audio_track(audio_track)
+
+func fade_in_audio_track(audio_track):
+	audio_track.set_volume_db(-20)
+	for i in range(15):
+		audio_track.set_volume_db(audio_track.get_volume_db() + 1)
+		await get_tree().create_timer(0.2).timeout 
+
+func fade_out_audio_track(audio_track):
+	for i in range(15):
+		audio_track.set_volume_db(audio_track.get_volume_db() - 1)
+		await get_tree().create_timer(0.2).timeout 
+	audio_track.stop()
 	
 	
 func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String) -> AudioStreamPlayer:
@@ -46,6 +69,10 @@ func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) 
 	match sound_track_name:
 		"Lullaby":
 			audio_stream_player_for_sound_track = $SoundTracks/Lullaby
+		"Dragonball":
+			audio_stream_player_for_sound_track = $SoundTracks/Dragonball
+		"Arale":
+			audio_stream_player_for_sound_track = $SoundTracks/Arale
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_track_name]))
 			return null
