@@ -58,6 +58,6 @@ func _insert_into_minigameManager_dictionary():
 	var node_name = self.get_name()
 	if node_name != "ItemInteraction": #Per questo ci pensa l'Inventory
 		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
-		MinigameManager.all_exited_interactions.append(path_to_node)
-		#print_debug(MinigameManager.all_exited_interactions)
+		SaveManager.all_exited_interactions.append(path_to_node)
+		#print_debug(SaveManager.all_exited_interactions)
 

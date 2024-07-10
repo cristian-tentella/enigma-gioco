@@ -14,5 +14,10 @@ func has_item(needed_item_name: String):
 		if i.item_name == needed_item_name:
 			return true
 	return false
-		
+
+func return_item_names():
+	var item_names = []
+	for slot in slots:
+		item_names.append(slot.item_name)
+	return item_names
  
