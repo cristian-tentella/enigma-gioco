@@ -12,7 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eu50j")
 
+[node name="backgroud_placeholder" type="ColorRect" parent="."]
+z_index = 100
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 361.0
+color = Color(0.303739, 0.106699, 0.0250893, 1)
+
 [node name="digits_container" type="HBoxContainer" parent="."]
+z_index = 105
 layout_mode = 0
 offset_left = 181.0
 offset_top = 140.0
@@ -21,32 +29,22 @@ offset_bottom = 207.0
 alignment = 1
 
 [node name="digit1" type="Label" parent="digits_container"]
-z_index = 95
+z_index = 105
 layout_mode = 2
 text = "0"
 
 [node name="digit2" type="Label" parent="digits_container"]
-z_index = 95
+z_index = 105
 layout_mode = 2
 text = "0"
 
 [node name="digit3" type="Label" parent="digits_container"]
-z_index = 95
+z_index = 105
 layout_mode = 2
 text = "0"
 
-[node name="background_placeholder" type="ColorRect" parent="."]
-z_index = 90
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.267049, 0.0943796, 0.0322357, 1)
-
 [node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
-z_index = 95
+z_index = 105
 offset_left = 258.0
 offset_top = 161.0
 offset_right = 282.0
@@ -68,7 +66,7 @@ text = "X"
 flat = true
 
 [node name="serratura_placeholder" type="ColorRect" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 0
 offset_left = 150.0
 offset_top = 168.0
@@ -77,7 +75,7 @@ offset_bottom = 197.0
 color = Color(0.596078, 1, 1, 1)
 
 [node name="serratura_placeholder2" type="ColorRect" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 0
 offset_left = 145.0
 offset_top = 163.0
@@ -86,7 +84,7 @@ offset_bottom = 171.0
 color = Color(0.596078, 1, 1, 1)
 
 [node name="key1" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 173.0
@@ -95,7 +93,7 @@ offset_right = 195.0
 offset_bottom = 339.0
 
 [node name="key2" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 210.0
@@ -104,7 +102,7 @@ offset_right = 232.0
 offset_bottom = 338.0
 
 [node name="key3" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 247.0
@@ -113,7 +111,7 @@ offset_right = 269.0
 offset_bottom = 339.0
 
 [node name="key4" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 283.0
@@ -122,7 +120,7 @@ offset_right = 305.0
 offset_bottom = 340.0
 
 [node name="key5" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 318.0
@@ -131,7 +129,7 @@ offset_right = 340.0
 offset_bottom = 342.0
 
 [node name="key6" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 358.0
@@ -140,7 +138,7 @@ offset_right = 380.0
 offset_bottom = 339.0
 
 [node name="key7" type="Button" parent="."]
-z_index = 95
+z_index = 105
 layout_mode = 1
 anchors_preset = -1
 offset_left = 395.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uc8agtk4h134"]
+[gd_scene load_steps=6 format=3 uid="uid://uc8agtk4h134"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_1/minigame_1.gd" id="1_n1pno"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_4ba4r"]
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="3_s101a"]
+[ext_resource type="PackedScene" uid="uid://drdaodrpkx0no" path="res://game/minigames/minigame_1/combination_lock.tscn" id="4_mcnxc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vn7l"]
 radius = 8.06226
@@ -23,3 +24,5 @@ shape = SubResource("CircleShape2D_4vn7l")
 position = Vector2(46, 7)
 item_name = "set_of_keys"
 dialogue_id = "pickup_set_of_keys"
+
+[node name="CombinationLock" parent="." instance=ExtResource("4_mcnxc")]

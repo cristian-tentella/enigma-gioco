@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=25 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,7 +12,6 @@
 [ext_resource type="SpriteFrames" uid="uid://clvhip3cjj2eg" path="res://game/entities/containers/door_side_right_handle/door_side_right_handle_animations.tres" id="9_gny80"]
 [ext_resource type="SpriteFrames" uid="uid://dmswpryknqh1g" path="res://game/entities/containers/door_side_left_handle/door_side_left_handle_animations.tres" id="11_3pwkj"]
 [ext_resource type="PackedScene" uid="uid://cwdsrqkvev8w7" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.tscn" id="14_0u62w"]
-[ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="14_2b3p5"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="14_7aw2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
@@ -3169,6 +3168,3 @@ method_name = "pure_testing"
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
 position = Vector2(305, 100)
 shape = SubResource("RectangleShape2D_b5kjj")
-
-[node name="Minigame1KeyCombination" parent="." instance=ExtResource("14_2b3p5")]
-position = Vector2(121, 100)

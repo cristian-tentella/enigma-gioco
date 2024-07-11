@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=6 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
 [ext_resource type="PackedScene" uid="uid://crbudpuk5xyqu" path="res://components/audio_player/audio_player.tscn" id="4_4h6kr"]
+[ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="5_5vjhe"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oaeyu")
@@ -16,3 +17,6 @@ position = Vector2(111, 127)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
+
+[node name="Minigame1KeyCombination" parent="." instance=ExtResource("5_5vjhe")]
+position = Vector2(121, 100)

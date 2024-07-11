@@ -30,7 +30,7 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
-).instantiate()
+).instantiate() 
 
 """################################################################################
 QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
