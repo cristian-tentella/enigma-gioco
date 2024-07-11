@@ -4,4 +4,4 @@ aa;POOP;CACCA
 test_2;Carlo: Goodnight;Carlo: Buonanotte
 test_3;Paolino: Goodbye;Paolino: Arrivederci
 
-pickup_1;Item added to inventory!;hai aggiunto Item all'inventario!
+pickup_item_generic;Item added to inventory!;Oggetto aggiunto all'inventario!

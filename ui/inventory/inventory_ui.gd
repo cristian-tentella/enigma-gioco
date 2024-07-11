@@ -9,7 +9,7 @@ signal exit
 
 func _ready():
 	_instantiate_inventory()
-	
+	self.inv.item_pickup_dialogue = $ItemPickupDialogue
 	inv.update.connect(update_slots)
 	update_slots()
 	
