@@ -3154,11 +3154,6 @@ container_name = "door_side_left_handle"
 container_collision_rect_x = -748
 container_collision_rect_y = -721
 
-[node name="SOT_sotto_sdraio_balcone" parent="." instance=ExtResource("8_0lq6k")]
-position = Vector2(416, 116)
-item_name = "set_of_keys"
-collision_circle_radius = 24
-
 [node name="OnClickAnyInteraction-1" parent="." instance=ExtResource("14_7aw2o")]
 script_path = "res://components/interaction/on_click_any_interaction/scripts_dump/test_interaction.gd"
 method_name = "pure_testing"
@@ -3174,3 +3169,8 @@ method_name = "pure_testing"
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
 position = Vector2(305, 100)
 shape = SubResource("RectangleShape2D_b5kjj")
+
+[node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
+position = Vector2(223, 159)
+item_name = "set_of_keys"
+dialogue_id = "test"

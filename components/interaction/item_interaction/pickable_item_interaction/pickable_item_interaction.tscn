@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2uhmhrb12trk"]
+[gd_scene load_steps=3 format=3 uid="uid://b2uhmhrb12trk"]
 
 [ext_resource type="Script" path="res://components/interaction/item_interaction/pickable_item_interaction/pickable_item_interaction.gd" id="1_lwqwt"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_gu0lf"]
 
-[node name="ItemInteraction" type="Node2D"]
+[node name="PickableItemInteraction" type="Area2D"]
 script = ExtResource("1_lwqwt")
+
+[node name="DialogueInteraction" parent="." instance=ExtResource("2_gu0lf")]

@@ -51,7 +51,7 @@ func load_game_save_from_json():
 	var content = json.parse_string(json_file.get_as_text())
 	
 	if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
-		print_debug("Save file not well made, missing parts.")
+		print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 		return
 		
 	all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
