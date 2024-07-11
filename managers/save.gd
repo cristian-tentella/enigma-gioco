@@ -53,7 +53,11 @@ func load_game_save_from_json():
 	if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
 		print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 		return
-		
+	
+	
+	#TODO: Fai che in base al current_minigame si rompono le Interactions con il giusto Destroy
+	
+	
 	all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
 	var root_node = self.get_tree().root
 	var all_nodes = self.get_all_children(root_node)

@@ -27,7 +27,7 @@ func handle_interaction():
 	await DialogueManager.has_finished_displaying
 	
 	StateManager.inventory.insert(item_in_interaction)
-
+	
 	_remove_if_proc_only_once()
 	
 func _ready():
@@ -44,5 +44,5 @@ func setup_dialogue_interaction_id():
 	else:
 		dialogue_interaction.dialogue_id = self.dialogue_id
 		dialogue_interaction.minigame_requirement = self.minigame_requirement
-		
+	
 

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://uc8agtk4h134"]
+
+[ext_resource type="Script" path="res://game/minigames/minigame_1/minigame_1.gd" id="1_n1pno"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_4ba4r"]
+[ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="3_s101a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4vn7l"]
+radius = 8.06226
+
+[node name="Minigame1KeyCombination" type="Node2D"]
+script = ExtResource("1_n1pno")
+
+[node name="porta_da_letto_after_combination_minigame_1_fail" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(-1, 5)
+dialogue_id = "porta_da_letto_after_combination_minigame_1_fail"
+destroy_after_minigame_requirement_number = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="porta_da_letto_after_combination_minigame_1_fail"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4vn7l")
+
+[node name="SOK_sotto_sdraio_balcone" parent="." instance=ExtResource("3_s101a")]
+position = Vector2(46, 7)
+item_name = "set_of_keys"
+dialogue_id = "pickup_set_of_keys"

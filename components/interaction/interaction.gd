@@ -34,17 +34,22 @@ class_name Interaction
 extends Area2D
 
 @export var minigame_requirement : int = 0 # L'interazione sarà disponibile quando ti trovi su quel minigame O SUPERIORE
+@export var destroy_after_minigame_requirement_number: int = -1 #Se provo a interagire con questa interazione una volta superato questo requirement, fa queue_free()
 @export var just_proc_once : bool = true #Se voglio che l'interazione ci sia una volta sola in tutto il gioco
+
+func _ready():
+	if destroy_after_minigame_requirement_number > minigame_requirement: #Se è intended che si rompe dopo tot step
+		just_proc_once = false
 
 #Abstract method for handing interactions.
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
 func handle_interaction():
 	# Throw an error if this method is not overwritten
 	push_error("Method 'interact' must be overwritten in EVERY subclass. Check interaction/interaction.gd for extra infos")
-	
+
 func _exit_tree():
 	print(get_name()+" exiting!\n")
-	
+
 func _remove_if_proc_only_once():
 	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
 		self.queue_free()
@@ -52,12 +57,10 @@ func _remove_if_proc_only_once():
 		#Per il salvataggio ----------
 		#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
 		self._insert_into_minigameManager_dictionary()
-			
-			
+
+
 func _insert_into_minigameManager_dictionary():
 	var node_name = self.get_name()
 	if node_name != "ItemInteraction": #Per questo ci pensa l'Inventory
 		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
 		SaveManager.all_exited_interactions.append(path_to_node)
-		#print_debug(SaveManager.all_exited_interactions)
-
