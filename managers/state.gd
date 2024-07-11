@@ -19,6 +19,8 @@ var current_minigame = 0 #This gets updated when a new minigame is started
 var inventory_UI: InventoryUI
 var inventory: Inventory
 
+var audio_player: AudioPlayer
+
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
 ######################################################################################"""

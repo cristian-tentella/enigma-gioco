@@ -29,7 +29,7 @@ offset_bottom = 174.0
 placeholder_text = "password"
 secret = true
 
-[node name="SignIn" type="Button" parent="."]
+[node name="SignIn" type="Button" parent="." groups=["Buttons"]]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 214.0
@@ -38,7 +38,7 @@ offset_bottom = 239.0
 theme = ExtResource("2_qckts")
 text = "sign in"
 
-[node name="SignUp" type="Button" parent="."]
+[node name="SignUp" type="Button" parent="." groups=["Buttons"]]
 layout_mode = 0
 offset_left = 360.0
 offset_top = 214.0
@@ -55,7 +55,7 @@ offset_right = 467.0
 offset_bottom = 86.0
 horizontal_alignment = 1
 
-[node name="ResetPassword" type="Button" parent="."]
+[node name="ResetPassword" type="Button" parent="." groups=["Buttons"]]
 layout_mode = 0
 offset_left = 241.0
 offset_top = 276.0
