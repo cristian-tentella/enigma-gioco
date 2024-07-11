@@ -115,5 +115,6 @@ flat = true
 [node name="ItemPickupDialogue" parent="." instance=ExtResource("4_6oj7c")]
 position = Vector2(209, 100)
 dialogue_id = "pickup_item_generic"
+just_proc_once = false
 
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
