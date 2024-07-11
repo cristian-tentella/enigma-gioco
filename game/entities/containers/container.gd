@@ -53,6 +53,7 @@ Se usi uno per l'interazione (dove clicchi) e uno per la collisione (dove sbatti
 @export var description_of_above: String = "guarda game/containers/container.gd"
 @export var is_open_at_startup: bool = false
 @export_enum("door_front", "door_side_left_handle", "door_side_right_handle") var container_name: String
+@export var minigame_requirement: int = 0
 @export_group("Editor shapes settings")
 @export var use_editor_collision_shape : bool = false
 @export var same_shape_for_both: bool = true
@@ -89,6 +90,8 @@ func _ready():
 			_generate_both_collision_shapes_from_two_editor_nodes()
 	else:
 		_generate_both_collision_rectangles_from_exported_vars()
+	
+	container_interaction.minigame_requirement = self.minigame_requirement
 
 #Se c'è qualche problema qui, la creazione del container viene bloccata
 func has_initialization_issues():

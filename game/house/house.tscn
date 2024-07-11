@@ -3085,11 +3085,12 @@ shape = SubResource("RectangleShape2D_xqr3h")
 [node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
 position = Vector2(155, 191)
 
-[node name="door2" parent="Rooms" instance=ExtResource("7_qq4fd")]
+[node name="Porta_camera_da_letto" parent="Rooms" instance=ExtResource("7_qq4fd")]
 position = Vector2(176, 288)
 sprite_frames = ExtResource("5_fuh1f")
 flip_h = true
 container_name = "door_front"
+minigame_requirement = 1
 use_editor_collision_shape = true
 same_shape_for_both = false
 use_these_names_for_nodes = "area_di_interazione"
@@ -3097,11 +3098,11 @@ container_collision_rect_x = 32
 container_collision_rect_y = 64
 is_locked = true
 
-[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/door2"]
+[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/Porta_camera_da_letto"]
 position = Vector2(0, -15.875)
 shape = SubResource("RectangleShape2D_cvj58")
 
-[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/door2"]
+[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/Porta_camera_da_letto"]
 position = Vector2(0.0635681, -14.0419)
 shape = SubResource("RectangleShape2D_xqr3h")
 
@@ -3153,14 +3154,10 @@ container_name = "door_side_left_handle"
 container_collision_rect_x = -748
 container_collision_rect_y = -721
 
-[node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
-position = Vector2(24, 152)
+[node name="SOT_sotto_sdraio_balcone" parent="." instance=ExtResource("8_0lq6k")]
+position = Vector2(416, 116)
 item_name = "set_of_keys"
 collision_circle_radius = 24
-
-[node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
-position = Vector2(264, 192)
-item_name = "set_of_keys"
 
 [node name="OnClickAnyInteraction-1" parent="." instance=ExtResource("14_7aw2o")]
 script_path = "res://components/interaction/on_click_any_interaction/scripts_dump/test_interaction.gd"
