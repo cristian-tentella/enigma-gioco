@@ -3173,4 +3173,4 @@ shape = SubResource("RectangleShape2D_b5kjj")
 [node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
 position = Vector2(223, 159)
 item_name = "set_of_keys"
-dialogue_id = "test"
+dialogue_id = "pickup_set_of_keys"
