@@ -22,6 +22,8 @@ func has_item(needed_item_name: String):
 			return true
 	return false
 
+#Se quando salvi lancia qui un errore, probabilmente hai fatto la queue free di un minigioco.tscn ma li dentro ci stava l'oggetto
+#Metti l'oggetto nella mappa!
 func return_item_names():
 	var item_names = []
 	for slot in slots:

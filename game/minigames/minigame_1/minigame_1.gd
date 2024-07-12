@@ -117,6 +117,12 @@ func open_combination_lock_real():
 	
 	if StateManager.current_minigame == 4: #Quindi se ho vinto il primo minigame, che si vince in 4 steps
 	#Se ha workato, fai vedere che è felice che ha vinto, altrimenti esci senza nessun dialogo (seems fair per gameplay)
-		$actual_minigame_launcher.forcefully_remove_as_if_proc_only_once()
 		combination_minigame_won.handle_interaction()
+		self._free_every_node_related_to_the_minigame()
 		await DialogueManager.has_finished_displaying
+
+#Gioco vinto, adios!
+func _free_every_node_related_to_the_minigame():
+	UIManager.combination_key_minigame.queue_free()
+	UIManager.combination_key_minigame = null
+	self.queue_free()

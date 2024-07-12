@@ -22,7 +22,6 @@ func handle_interaction():
 		_handle_open_close_animation()
 	else:
 		container_involved.try_to_unlock()
-		
 
 func _handle_open_close_animation():
 	"""Se è aperto fai animazione per chiuderlo, e viceversa"""

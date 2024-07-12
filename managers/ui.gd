@@ -140,6 +140,7 @@ func show_authentication_reset_menu():
 
 """MINIGAME UIs"""
 
+#Minigame_1
 func show_combination_key_minigame():
 	_spawn_locking_ui_element(combination_key_minigame)
 
@@ -147,4 +148,4 @@ func show_combination_key_minigame():
 
 	_kil_locking_ui_element(combination_key_minigame)
 	
-	
+

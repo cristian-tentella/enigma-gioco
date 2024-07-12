@@ -49,8 +49,10 @@ func handle_interaction():
 	# Throw an error if this method is not overwritten
 	push_error("Method 'interact' must be overwritten in EVERY subclass. Check interaction/interaction.gd for extra infos")
 
+#Pure debugging
 func _exit_tree():
-	print(get_name()+" exiting!\n")
+	#print(get_name()+" exiting!\n")
+	pass
 
 func _remove_if_proc_only_once():
 	

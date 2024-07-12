@@ -71,8 +71,6 @@ func load_game_save_from_json():
 	var inventory_owned_items_names = content.get("inventory_owned_items_names")
 	#Carica nell'inventario questi nodi
 	self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
-	
-	
 
 
 	#Adesso fai che rompe i nodi con stesso nome di all_exited_interactions
@@ -148,13 +146,11 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 	for item in item_nodes:
 		var current_item_name = item.item_in_interaction.item_name
 		if current_item_name in items_names:
-			print(current_item_name)
 			item.just_insert_in_inventory()
 		
 
 func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 	#Struttura dizionario: {"minigame_1": Minigame1KeyCombination:<Node2D#65380813108> , ...}
-
 	var curr_minigame = StateManager.current_minigame
 	for minigame_number in all_minigame_dict:
 		var destroy_requirement = minigame_to_current_minigame_requirement["minigame_1"] #Prendo il requirement dal dict delle var di classe
