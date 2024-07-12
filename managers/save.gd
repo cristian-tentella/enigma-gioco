@@ -16,6 +16,13 @@ NOTES:
 	prenderà sempre tutti insieme, ma da specifiche di gioco questo è rispettato.
 """
 
+"""
+DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico...) PER DEFINIRE QUANDO UN MINIGAME E' CONSIDERATO COMPLETATO
+"""
+var minigame_to_current_minigame_requirement = {
+	"minigame_1" : 4 #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
+}
+
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
 var json = JSON.new()
@@ -54,9 +61,7 @@ func load_game_save_from_json():
 		print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 		return
 	
-	
-	#TODO: Fai che in base al current_minigame si rompono le Interactions con il giusto Destroy
-	
+	StateManager.current_minigame = content.get("current_minigame")
 	
 	all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
 	var root_node = self.get_tree().root
@@ -67,7 +72,7 @@ func load_game_save_from_json():
 	#Carica nell'inventario questi nodi
 	self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
 	
-	StateManager.current_minigame = content.get("current_minigame")
+	
 
 
 	#Adesso fai che rompe i nodi con stesso nome di all_exited_interactions
@@ -90,9 +95,30 @@ func _get_all_children_recursive(node: Node, children: Array):
 #stringhe.
 func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(node_list: Array, name_list: Array):
 	var pickableItemInteraction_nodes = []
+	var all_minigame_nodes = {}
 	var root_node = self.get_tree().root
+	
 	for node in node_list:
+		
+		#Controllo se il nodo è un minigame, se si, poi controllo se va rimosso totalmente chiamando la funzione a fine metodo
+		var node_script = node.get_script()
+		if node_script != null:
+			var node_script_path = node_script.get_path()
+			if node_script_path.begins_with("res://game/minigames/"):
+				var key = node_script_path.substr(21, 10) #minigame_1 ad esempio. Il parsing funziona
+				if all_minigame_nodes.has(key):
+					all_minigame_nodes[key].append(node) #Aggiungo alla lista se c'è già
+				else:
+					all_minigame_nodes[key] = [node] #Se non c'è la chiave, creo la lista
+				continue
+		node_script = null
+		
 		if node is Interaction:
+			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
+			if not node is PickableItemInteraction and node.destroy_after_minigame_requirement_number > node.minigame_requirement and node.destroy_after_minigame_requirement_number <= StateManager.current_minigame: #Va rotto
+				node.queue_free()
+				node = null
+			
 			#Se ho un pickableItemInteraction lo returno alla fine in lista, per efficienza di popolazione inventario
 			if node is PickableItemInteraction:
 				pickableItemInteraction_nodes.append(node)
@@ -101,6 +127,9 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 			var path_to_node = root_node.get_path_to(node) as String
 			if(path_to_node in name_list):
 				node.queue_free()
+				node = null
+	
+	self.delete_minigames_that_have_been_completed(all_minigame_nodes)
 	return pickableItemInteraction_nodes
 
 #Funzione che dato un elenco di nodi PickableItemInteraction, esegue l'inserimento nell'inventario di quelli il cui nome
@@ -109,9 +138,18 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 	for item in item_nodes:
 		var current_item_name = item.item_in_interaction.item_name
 		if current_item_name in items_names:
-			item.handle_interaction()
+			item.just_insert_in_inventory()
 		
 
+func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
+	#Struttura dizionario: {"minigame_1": Minigame1KeyCombination:<Node2D#65380813108> , ...}
 
+	var curr_minigame = StateManager.current_minigame
+	for minigame_number in all_minigame_dict:
+		var destroy_requirement = minigame_to_current_minigame_requirement["minigame_1"] #Prendo il requirement dal dict delle var di classe
+		if destroy_requirement <= curr_minigame: #Va rotto
+			for minigame_node in all_minigame_dict[minigame_number]:
+				minigame_node.queue_free()
+				
 
 

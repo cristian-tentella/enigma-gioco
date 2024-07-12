@@ -45,6 +45,7 @@ text = "0"
 
 [node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
 z_index = 105
+layout_mode = 0
 offset_left = 258.0
 offset_top = 161.0
 offset_right = 282.0
@@ -148,6 +149,7 @@ offset_bottom = 336.0
 
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 z_index = 110
+layout_mode = 0
 offset_left = 601.0
 offset_top = 12.0
 offset_right = 625.0

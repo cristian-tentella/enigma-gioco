@@ -46,6 +46,15 @@ destroy_after_minigame_requirement_number = 3
 position = Vector2(-3, 2)
 shape = SubResource("CircleShape2D_tvfik")
 
+[node name="door_locked_basic_dialogue" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(207, 198)
+dialogue_id = "door_locked_basic_dialogue"
+destroy_after_minigame_requirement_number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_locked_basic_dialogue"]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_tvfik")
+
 [node name="SOK_sotto_sdraio_balcone" parent="." instance=ExtResource("3_s101a")]
 position = Vector2(258, 131)
 item_name = "set_of_keys"

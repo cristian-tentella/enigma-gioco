@@ -11,7 +11,10 @@ func insert(item: PickableItem):
 	slots.append(item)
 	update.emit()
 	item_pickup_dialogue.handle_interaction()
-	
+
+func insert_no_dialogue(item: PickableItem):
+	slots.append(item)
+	update.emit()
 
 func has_item(needed_item_name: String):
 	for i in slots:

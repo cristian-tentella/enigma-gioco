@@ -28,9 +28,18 @@ func handle_interaction():
 	
 	StateManager.inventory.insert(item_in_interaction)
 	StateManager.current_minigame += 1 #Incremento il contatore dei progressi
-	_remove_if_proc_only_once()
+	#_remove_if_proc_only_once()
 	_increment_current_minigame_if_told_so()
+
+func just_insert_in_inventory():
+	item_in_interaction.remove_from_map() #Rimuovi dalla mappa visualmente
 	
+	StateManager.inventory.insert_no_dialogue(item_in_interaction)
+
+	#_remove_if_proc_only_once()
+	#_increment_current_minigame_if_told_so()
+
+
 func _ready():
 	item_in_interaction = get_parent() #Questo è l'oggetto ItemResource con cui avviene l'interazione.
 	

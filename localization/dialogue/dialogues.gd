@@ -4,6 +4,7 @@ extends Node
 const dialogues: Dictionary = {
 	"test": ["test_1", "test_2", "test_3"],
 	"pickup_item_generic": ["pickup_item_generic"],
+	"door_locked_basic_dialogue": ["door_locked_basic_dialogue_1"],
 	"pickup_set_of_keys": ["pickup_set_of_keys_1", "pickup_set_of_keys_2"],
 	"first_open_minigame_combination": ["first_open_minigame_combination_1", "first_open_minigame_combination_2"],
 	"first_minigame_combination_door_fail": ["first_minigame_combination_door_fail_1", "first_minigame_combination_door_fail_2"],

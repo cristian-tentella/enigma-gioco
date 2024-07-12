@@ -1,4 +1,4 @@
-class_name Minigame1
+class_name Minigame1 #SI CONSIDERA SUPERATO CON current_minigame = 3
 extends Node
 
 """
@@ -112,8 +112,8 @@ func open_combination_lock_real():
 	#Ora mostra il minigame vero e proprio
 	UIManager.show_combination_key_minigame()
 	await UIManager.unlock
-	
-	if StateManager.current_minigame == 4: #Quindi se ho vinto il primo minigame, che si vince in 4 steps
+
+	if StateManager.current_minigame == 3: #Quindi se ho vinto il primo minigame, che si vince in 4 steps
 	#Se ha workato, fai vedere che è felice che ha vinto, altrimenti esci senza nessun dialogo (seems fair per gameplay)
 		combination_minigame_won.handle_interaction()
 		await DialogueManager.has_finished_displaying
