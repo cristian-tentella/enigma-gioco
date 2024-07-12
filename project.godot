@@ -27,6 +27,7 @@ Supabase="*res://addons/supabase/Supabase/supabase.gd"
 AuthenticationManager="*res://managers/authentication.gd"
 SaveManager="*res://managers/save.gd"
 AudioManager="*res://managers/audio.gd"
+MinigameManager="*res://managers/minigame.gd"
 
 [dialogue_manager]
 

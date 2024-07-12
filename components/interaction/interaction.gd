@@ -74,3 +74,11 @@ func _increment_current_minigame_if_told_so():
 		StateManager.current_minigame += 1
 		increments_current_minigame = false
 
+#Funzione utile per quei casi in cui si dovrebbe rompere l'interazione guardandola ma se ci riclicchi sopra senza girarti si scassa tutto il gioco...
+#Quindi lo togliamo a mano
+func forcefully_remove_as_if_proc_only_once():
+	self.queue_free()
+		
+	#Per il salvataggio ----------
+	#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
+	self._insert_into_minigameManager_dictionary()

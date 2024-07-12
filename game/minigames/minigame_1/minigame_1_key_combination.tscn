@@ -25,6 +25,7 @@ position = Vector2(-1, 5)
 dialogue_id = "actual_minigame_combination_first_dialogue"
 minigame_requirement = 3
 destroy_after_minigame_requirement_number = 4
+just_proc_once = false
 
 [node name="combination_minigame_won" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(-1, 5)
@@ -41,6 +42,7 @@ position = Vector2(207, 198)
 dialogue_id = "first_minigame_combination_door_fail"
 minigame_requirement = 2
 destroy_after_minigame_requirement_number = 3
+just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="second_dialogue_on_first_open_static_until_poster"]
 position = Vector2(-3, 2)

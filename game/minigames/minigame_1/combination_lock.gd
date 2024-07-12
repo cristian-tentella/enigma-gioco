@@ -38,18 +38,20 @@ func _insert_into_next_slot(key_number: String):
 		#Bruh se cheattano o sculano non è colpa mia... Non mi va di gestirlo :D
 		if is_it_first_time:
 			is_it_first_time = false
-			self.exit.emit()
 			StateManager.current_minigame += 1
+			self.exit.emit()
 			_on_reset_minigame_button_pressed()
 			return
 		
 		if current_combination == real_combination:
 			print_debug("Heya! Nice, you got it!")
-			self.exit.emit()
 			StateManager.current_minigame += 1
+			MinigameManager.porta_camera_da_letto.unlock()
+			MinigameManager.porta_camera_da_letto = null
+			self.exit.emit()
 			return
 		
-		_on_reset_minigame_button_pressed()
+		_on_reset_minigame_button_pressed() #Non ci ho azzeccato e non è la prima volta
 		return
 	
 	current_slot += 1
