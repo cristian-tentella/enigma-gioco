@@ -49,6 +49,8 @@ SPIEGAZIONE NODI DELLA SCENA:
 	actual_minigame_launcher -> AnyClickInteraction che lancia open_combination_lock_real(), quindi il vero minigame
 	
 	combination_minigame_won -> hai vinto, dialogo, gg (4, -1)
+	
+	door_locked_basic_dialogue -> è bloccata ma non hai ancora trovato le chiavi (0, 1)
 """
 
 

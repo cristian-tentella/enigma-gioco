@@ -113,7 +113,17 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				continue
 		node_script = null
 		
+		#è un if molto lungo
 		if node is Interaction:
+			
+			if node is ContainerInteraction:
+				var container = node.get_parent()
+				var is_it_locked = container.is_locked
+				if is_it_locked:
+					var path_to_node = root_node.get_path_to(container) as String
+					if(path_to_node in name_list):
+						container.unlock_unchange_status()
+					
 			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
 			if not node is PickableItemInteraction and node.destroy_after_minigame_requirement_number > node.minigame_requirement and node.destroy_after_minigame_requirement_number <= StateManager.current_minigame: #Va rotto
 				node.queue_free()
@@ -138,6 +148,7 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 	for item in item_nodes:
 		var current_item_name = item.item_in_interaction.item_name
 		if current_item_name in items_names:
+			print(current_item_name)
 			item.just_insert_in_inventory()
 		
 

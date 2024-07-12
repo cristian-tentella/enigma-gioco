@@ -49,7 +49,8 @@ shape = SubResource("CircleShape2D_tvfik")
 [node name="door_locked_basic_dialogue" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(207, 198)
 dialogue_id = "door_locked_basic_dialogue"
-destroy_after_minigame_requirement_number = 3
+destroy_after_minigame_requirement_number = 1
+just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_locked_basic_dialogue"]
 position = Vector2(-3, 2)

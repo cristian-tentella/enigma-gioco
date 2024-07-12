@@ -40,6 +40,8 @@ func _insert_into_next_slot(key_number: String):
 			is_it_first_time = false
 			self.exit.emit()
 			StateManager.current_minigame += 1
+			_on_reset_minigame_button_pressed()
+			return
 		
 		if current_combination == real_combination:
 			print_debug("Heya! Nice, you got it!")
