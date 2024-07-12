@@ -1,9 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=9 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
 [ext_resource type="AudioStream" uid="uid://ccyrj3xawtcdb" path="res://audio/sound_effects/step.ogg" id="3_bp182"]
 [ext_resource type="AudioStream" uid="uid://llus6ab1mltb" path="res://audio/sound_tracks/lullaby.ogg" id="3_mc1xh"]
+[ext_resource type="AudioStream" uid="uid://cjn36xwmy8won" path="res://audio/sound_effects/item_pickup.ogg" id="4_iwe6a"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -15,6 +17,9 @@ stream = ExtResource("1_rlg06")
 
 [node name="Step" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("3_bp182")
+[node name="ItemPickup" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("4_iwe6a")
+volume_db = -10.0
 
 [node name="SoundTracks" type="Node" parent="."]
 
