@@ -58,7 +58,13 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 		"click":
 			audio_stream_player_for_sound_effects = $SoundEffects/Click
 		"step":
-			audio_stream_player_for_sound_effects = $SoundEffects/Step
+			var footsteps = [
+				$SoundEffects/Footstep1,
+				$SoundEffects/Footstep2,
+				$SoundEffects/Footstep3,
+				$SoundEffects/Footstep4
+			]
+			audio_stream_player_for_sound_effects = footsteps[randi() % footsteps.size()]
 		"item_pickup":
 			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
 		_:
