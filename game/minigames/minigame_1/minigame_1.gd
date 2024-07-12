@@ -86,6 +86,9 @@ func _ready():
 
 
 func open_combination_lock_first_time():
+	#Nascondi pulsante per quittare, why would they?
+	self.combination_lock_minigame.exit_button.hide()
+	
 	#Fai vedere il primo dialogo prima che si apra il menu
 	first_dialogue_on_first_open.handle_interaction()
 	await DialogueManager.has_finished_displaying
@@ -99,14 +102,18 @@ func open_combination_lock_first_time():
 	await DialogueManager.has_finished_displaying
 	
 func open_combination_lock_real():
-		#Fai vedere il primo dialogo prima che si apra il menu
+	#Fai vedere di nuovo il pulsante per uscire
+	self.combination_lock_minigame.exit_button.show()
+	
+	#Fai vedere il dialogo prima che si apra il menu in cui si incita
 	actual_minigame_combination_first_dialogue.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	
-	#Ora mostra il minigame scriptato per fallire al primo tentativo, anche se è giusto (tired, non lo azzeccano subito dai...)
+	#Ora mostra il minigame vero e proprio
 	UIManager.show_combination_key_minigame()
 	await UIManager.unlock
 	
-	#Fai vedere la frustrazione di Daniel dopo aver fallito e dice che deve guardarsi in giro
-	combination_minigame_won.handle_interaction()
-	await DialogueManager.has_finished_displaying
+	if StateManager.current_minigame == 4: #Quindi se ho vinto il primo minigame, che si vince in 4 steps
+	#Se ha workato, fai vedere che è felice che ha vinto, altrimenti esci senza nessun dialogo (seems fair per gameplay)
+		combination_minigame_won.handle_interaction()
+		await DialogueManager.has_finished_displaying

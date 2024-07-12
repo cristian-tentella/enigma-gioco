@@ -80,6 +80,7 @@ method_name = "open_combination_lock_real"
 is_method_in_direct_parent = true
 minigame_requirement = 3
 destroy_after_minigame_requirement_number = 4
+just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="actual_minigame_launcher"]
 position = Vector2(-1, 2)

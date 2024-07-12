@@ -1,6 +1,8 @@
 class_name CombinationLock
 extends Control
 
+@onready var exit_button = $CloseButtonBackground #Serve per nascondere il pulsante per quittare al primo start, quello scriptato che fallisce subito
+
 @onready var slot_digit1 = $digits_container/digit1
 @onready var slot_digit2 = $digits_container/digit2
 @onready var slot_digit3 = $digits_container/digit3
@@ -10,6 +12,8 @@ var real_combination = "314"
 var current_combination = ""
 
 var is_it_first_time = true
+
+
 
 signal exit
 
@@ -84,3 +88,8 @@ func _on_key_6_pressed():
 	
 func _on_key_7_pressed():
 	_insert_into_next_slot("7")
+
+
+func _on_exit_pause_menu_button_pressed():
+	_on_reset_minigame_button_pressed()
+	self.exit.emit()
