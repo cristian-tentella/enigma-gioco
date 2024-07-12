@@ -28,7 +28,6 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/authentication_menu/authentication_reset_menu.tscn"
 ).instantiate()
 
-
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate()
