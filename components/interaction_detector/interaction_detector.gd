@@ -30,8 +30,8 @@ func activate_closest_interaction():
 func _on_area_entered(area: Area2D):
 	
 	if area is Interaction:
+		
 		var curr_minigame = StateManager.current_minigame
-		print(curr_minigame)
 		#Controllo se va rotta l'interazione in base alla sua variabile
 		#Il check > iniziale serve perché è impossibile avere requirement più alto di quando va distrutto, quindi sicuramente non va fatto!
 		#Se chiedo minigame 2 per poterci interagire e lo faccio rompere al minigame 1, non va bene...
