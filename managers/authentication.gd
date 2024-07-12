@@ -35,25 +35,12 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
-	if ! (await does_this_user_exist(email)):
-		var query_result = await add_entry_to_supabase_public_database(email)
-		await Supabase.database.inserted
 		Supabase.auth.sign_up(email, password)
-	
-
-func does_this_user_exist(email: String):
-	var query = SupabaseQuery.new().from("Users").select(["email"])
-	Supabase.database.query(query)
-	var query_result = await Supabase.database.selected
-	if query_result.has({"email" : email}):
-		display_report_message("User already registered")
-		return true
-		
-		
+			
 
 
-func add_entry_to_supabase_public_database(user_email: String):
-	var query = SupabaseQuery.new().from("Users").insert([{"email" : user_email}])
+func add_entry_to_supabase_public_database(id: String):
+	var query = SupabaseQuery.new().from("Users").insert([{"id" : id}])
 	Supabase.database.query(query)
 
 
@@ -62,7 +49,7 @@ func recover_password(email : String):
 
 
 func on_database_query_error(body):
-	await display_report_message(body)	
+	await display_report_message(str(body))	
 	
 	
 func sign_in(email: String, password: String):
@@ -76,6 +63,8 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
+	var query_result = await add_entry_to_supabase_public_database(auth.id)
+	await Supabase.database.inserted
 	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()

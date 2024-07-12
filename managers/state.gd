@@ -18,6 +18,8 @@ var house: House #Caricato da game/game.gd, lanciato in game/game.tscn
 var inventory_UI: InventoryUI
 var inventory: Inventory
 
+var audio_player: AudioPlayer
+
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
 ######################################################################################"""

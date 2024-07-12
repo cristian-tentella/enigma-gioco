@@ -28,7 +28,6 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/authentication_menu/authentication_reset_menu.tscn"
 ).instantiate()
 
-
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate()
@@ -75,8 +74,8 @@ func _ready():
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
-	
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
+	AudioManager.setup_sound_triggers()
 	spawn.emit(ui_element)
 	return ui_element
 
