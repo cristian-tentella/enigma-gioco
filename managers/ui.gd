@@ -32,6 +32,15 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate() 
 
+
+"""################################################################################
+MINIGAMES UI ELEMENTS
+################################################################################"""
+
+@onready var combination_key_minigame: CombinationLock = preload(
+	"res://game/minigames/minigame_1/combination_lock.tscn"
+).instantiate()
+
 """################################################################################
 QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DENTRO PER L'INIZIALIZZAZIONE DEI NODI FIGLI
 ################################################################################"""
@@ -42,7 +51,8 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	dialogue_box,
 	start_menu,
 	pause_menu,
-	inventory_menu
+	inventory_menu,
+	combination_key_minigame
 ]
 
 #Segnali
@@ -64,6 +74,7 @@ UNLOCK:
 		player_can_move.emit(true)
 		self.should_player_be_able_to_move = true
 """
+
 
 #Inizializza come nodi figli di Control tutti gli elementi UI prima elencati, per una veloce selezione in runtime
 func _ready():
@@ -125,3 +136,15 @@ func show_authentication_reset_menu():
 	_spawn_locking_ui_element(authentication_reset_menu)
 	await AuthenticationManager.exit
 	_kil_locking_ui_element(authentication_reset_menu)
+
+
+"""MINIGAME UIs"""
+
+func show_combination_key_minigame():
+	_spawn_locking_ui_element(combination_key_minigame)
+
+	await combination_key_minigame.exit
+
+	_kil_locking_ui_element(combination_key_minigame)
+	
+	

@@ -1,3 +1,4 @@
+class_name CombinationLock
 extends Control
 
 @onready var slot_digit1 = $digits_container/digit1
@@ -7,6 +8,10 @@ extends Control
 var current_slot = 1
 var real_combination = "314"
 var current_combination = ""
+
+var is_it_first_time = true
+
+signal exit
 
 func _insert_into_next_slot(key_number: String):
 	#Se mettono troppe chiavi o spamcliccano una chiave, just do nothing...
@@ -23,8 +28,23 @@ func _insert_into_next_slot(key_number: String):
 	
 	current_combination += key_number
 	
-	if current_combination == real_combination:
-		print_debug("Heya! Nice!")
+	if len(current_combination) == 3:
+		
+		#Qua pure se ha azzeccato, se è la prima volta, perde a prescindere
+		#Bruh se cheattano o sculano non è colpa mia... Non mi va di gestirlo :D
+		if is_it_first_time:
+			is_it_first_time = false
+			self.exit.emit()
+			StateManager.current_minigame += 1
+		
+		if current_combination == real_combination:
+			print_debug("Heya! Nice, you got it!")
+			self.exit.emit()
+			StateManager.current_minigame += 1
+			return
+		
+		_on_reset_minigame_button_pressed()
+		return
 	
 	current_slot += 1
 

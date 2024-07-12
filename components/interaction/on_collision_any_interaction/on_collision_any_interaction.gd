@@ -50,4 +50,5 @@ func handle_interaction():
 		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 	
 	_remove_if_proc_only_once()
+	_increment_current_minigame_if_told_so()
 

@@ -34,3 +34,4 @@ func _handle_open_close_animation():
 		container_involved.remove_physical_collision() # Fa in modo che se sia aperta ci puoi passare attraverso
 	
 	#_remove_if_proc_only_once() #I container non ha senso che si possano aprire una sola volta... No?
+	#_increment_current_minigame_if_told_so() #I container non ha senso che facciamo andare avanti nel gioco... No?

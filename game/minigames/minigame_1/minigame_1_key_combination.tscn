@@ -1,28 +1,86 @@
-[gd_scene load_steps=6 format=3 uid="uid://uc8agtk4h134"]
+[gd_scene load_steps=8 format=3 uid="uid://uc8agtk4h134"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_1/minigame_1.gd" id="1_n1pno"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_4ba4r"]
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="3_s101a"]
-[ext_resource type="PackedScene" uid="uid://drdaodrpkx0no" path="res://game/minigames/minigame_1/combination_lock.tscn" id="4_mcnxc"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="4_4877t"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4vn7l"]
-radius = 8.06226
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvfik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5gkx"]
+radius = 17.2627
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c42ab"]
 
 [node name="Minigame1KeyCombination" type="Node2D"]
 script = ExtResource("1_n1pno")
 
-[node name="porta_da_letto_after_combination_minigame_1_fail" parent="." instance=ExtResource("2_4ba4r")]
+[node name="first_dialogue_on_first_open" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(-1, 5)
-dialogue_id = "porta_da_letto_after_combination_minigame_1_fail"
-destroy_after_minigame_requirement_number = 1
+dialogue_id = "first_open_minigame_combination"
+minigame_requirement = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="porta_da_letto_after_combination_minigame_1_fail"]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_4vn7l")
+[node name="actual_minigame_combination_first_dialogue" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(-1, 5)
+dialogue_id = "actual_minigame_combination_first_dialogue"
+minigame_requirement = 3
+destroy_after_minigame_requirement_number = 4
+
+[node name="combination_minigame_won" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(-1, 5)
+dialogue_id = "combination_minigame_won"
+minigame_requirement = 4
+
+[node name="second_dialogue_on_first_open" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(-1, 5)
+dialogue_id = "first_minigame_combination_door_fail"
+minigame_requirement = 1
+
+[node name="second_dialogue_on_first_open_static_until_poster" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(207, 198)
+dialogue_id = "first_minigame_combination_door_fail"
+minigame_requirement = 2
+destroy_after_minigame_requirement_number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="second_dialogue_on_first_open_static_until_poster"]
+position = Vector2(-3, 2)
+shape = SubResource("CircleShape2D_tvfik")
 
 [node name="SOK_sotto_sdraio_balcone" parent="." instance=ExtResource("3_s101a")]
-position = Vector2(46, 7)
+position = Vector2(258, 131)
 item_name = "set_of_keys"
 dialogue_id = "pickup_set_of_keys"
 
-[node name="CombinationLock" parent="." instance=ExtResource("4_mcnxc")]
+[node name="dialogue_with_pi_poster" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(188, -43)
+dialogue_id = "dialogue_with_pi_poster"
+minigame_requirement = 2
+destroy_after_minigame_requirement_number = 4
+just_proc_once = false
+increments_current_minigame = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_with_pi_poster"]
+shape = SubResource("CircleShape2D_r5gkx")
+
+[node name="first_click_on_door_after_keys_taken" parent="." instance=ExtResource("4_4877t")]
+position = Vector2(205, 194)
+script_path = "res://game/minigames/minigame_1/minigame_1.gd"
+method_name = "open_combination_lock_first_time"
+is_method_in_direct_parent = true
+minigame_requirement = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="first_click_on_door_after_keys_taken"]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_c42ab")
+
+[node name="actual_minigame_launcher" parent="." instance=ExtResource("4_4877t")]
+position = Vector2(205, 194)
+script_path = "res://game/minigames/minigame_1/minigame_1.gd"
+method_name = "open_combination_lock_real"
+is_method_in_direct_parent = true
+minigame_requirement = 3
+destroy_after_minigame_requirement_number = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="actual_minigame_launcher"]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_c42ab")
