@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=15 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -9,6 +9,11 @@
 [ext_resource type="AudioStream" uid="uid://c16hput8wsaf7" path="res://audio/sound_effects/footstep3.ogg" id="6_gpbjn"]
 [ext_resource type="AudioStream" uid="uid://csbil23yr2jbq" path="res://audio/sound_effects/footstep4.ogg" id="7_hmvts"]
 [ext_resource type="AudioStream" uid="uid://bykfp5iwshi6j" path="res://audio/sound_effects/menu.ogg" id="8_u1b0f"]
+[ext_resource type="AudioStream" uid="uid://blkgsnnd2h8g0" path="res://audio/sound_effects/door_open.ogg" id="9_qg0wr"]
+[ext_resource type="AudioStream" uid="uid://c3c6fnk0wb5j3" path="res://audio/sound_effects/door_close.ogg" id="10_lqy5h"]
+[ext_resource type="AudioStream" uid="uid://b23ah1sk8vqkn" path="res://audio/sound_effects/door_unlock.ogg" id="11_7p3ra"]
+[ext_resource type="AudioStream" uid="uid://pgfa4grbnhrf" path="res://audio/sound_effects/success.ogg" id="12_v17nx"]
+[ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -40,6 +45,23 @@ volume_db = -9.0
 
 [node name="Menu" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("8_u1b0f")
+volume_db = -6.0
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("9_qg0wr")
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("10_lqy5h")
+
+[node name="DoorUnlock" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("11_7p3ra")
+
+[node name="Success" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("12_v17nx")
+volume_db = -6.0
+
+[node name="Failure" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("13_a80vk")
 volume_db = -6.0
 
 [node name="SoundTracks" type="Node" parent="."]
