@@ -54,6 +54,7 @@ func save_current_state_into_json():
 #self.all_exited_interactions = ?
 #StateManager.inventory_UI.inv = ?
 func load_game_save_from_json():
+	
 	var json_file = FileAccess.open(json_path, FileAccess.READ)
 	var content = json.parse_string(json_file.get_as_text())
 	
