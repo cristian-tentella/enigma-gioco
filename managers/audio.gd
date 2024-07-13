@@ -33,5 +33,11 @@ func play_item_pickup_sound_effect():
 func play_menu_sound_effect():
 	self.play_sound_effect.emit("menu")
 
+func play_success_sound_effect():
+	self.play_sound_effect.emit("success")
+
+func play_failure_sound_effect():
+	self.play_sound_effect.emit("failure")
+
 func play_lullaby_sound_track():
 	self.play_sound_track.emit("Lullaby")
