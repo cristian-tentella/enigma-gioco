@@ -26,20 +26,12 @@ var player_id
 
 func _ready():
 	Supabase.database.error.connect(on_database_query_error)
-	Supabase.database.inserted.connect(on_database_query_inserted)
-	Supabase.database.selected.connect(on_database_query_selected)
 	Supabase.database.updated.connect(on_database_query_updated)
 	if FileAccess.file_exists(user_file):
 		player_id = get_player_id()
 	
 func on_database_query_error(query_result):
-	print("I dati non sono stati correttamente inseriti nel database" + str(query_result))
-
-func on_database_query_inserted(query_result):
-	print("I dati sono stati correttamente inseriti nel database" + str(query_result))
-
-func on_database_query_selected(query_result):
-	print("I dati sono stati correttamente selezionati nel database" + str(query_result))
+	print_debug("I dati non sono stati correttamente inseriti nel database" + str(query_result))
 
 func on_database_query_updated(query_result):
 	print("I dati sono stati correttamente updatati nel database" + str(query_result))
