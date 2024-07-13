@@ -59,70 +59,54 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 
 
 func _on_inventory_ui_slot_1_button_pressed():
-	print("Slot 1 pressed")
 	_change_description_label_on_slot_button_pressed(1)
 
 
 func _on_inventory_ui_slot_2_button_pressed():
-	print("Slot 2 pressed")
 	_change_description_label_on_slot_button_pressed(2)
 
 func _on_inventory_ui_slot_3_button_pressed():
-	print("Slot 3 pressed")
 	_change_description_label_on_slot_button_pressed(3)
 
 
 func _on_inventory_ui_slot_4_button_pressed():
-	print("Slot 4 pressed")
 	_change_description_label_on_slot_button_pressed(4)
 
 
 func _on_inventory_ui_slot_5_button_pressed():
-	print("Slot 5 pressed")
 	_change_description_label_on_slot_button_pressed(5)
 
 func _on_inventory_ui_slot_6_button_pressed():
-	print("Slot 6 pressed")
 	_change_description_label_on_slot_button_pressed(6)
 
 func _on_inventory_ui_slot_7_button_pressed():
-	print("Slot 7 pressed")
 	_change_description_label_on_slot_button_pressed(7)
 
 
 func _on_inventory_ui_slot_8_button_pressed():
-	print("Slot 8 pressed")
 	_change_description_label_on_slot_button_pressed(8)
 
 
 func _on_inventory_ui_slot_9_button_pressed():
-	print("Slot 9 pressed")
 	_change_description_label_on_slot_button_pressed(9)
 
 func _on_inventory_ui_slot_10_button_pressed():
-	print("Slot 10 pressed")
 	_change_description_label_on_slot_button_pressed(10)
 
 func _on_inventory_ui_slot_11_button_pressed():
-	print("Slot 11 pressed")
 	_change_description_label_on_slot_button_pressed(11)
 
 func _on_inventory_ui_slot_12_button_pressed():
-	print("Slot 12 pressed")
 	_change_description_label_on_slot_button_pressed(12)
 
 func _on_inventory_ui_slot_13_button_pressed():
-	print("Slot 13 pressed")
 	_change_description_label_on_slot_button_pressed(13)
 
 func _on_inventory_ui_slot_14_button_pressed():
-	print("Slot 14 pressed")
 	_change_description_label_on_slot_button_pressed(14)
 
 func _on_inventory_ui_slot_15_button_pressed():
-	print("Slot 15 pressed")
 	_change_description_label_on_slot_button_pressed(15)
 
 func _on_inventory_ui_slot_16_button_pressed():
-	print("Slot 16 pressed")
 	_change_description_label_on_slot_button_pressed(16)
