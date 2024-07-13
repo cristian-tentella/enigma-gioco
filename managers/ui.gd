@@ -110,6 +110,7 @@ func show_start_menu():
 func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
 	AudioManager.play_menu_sound_effect()
+	UIManager.mobile_only_ui.hide()
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
 	
