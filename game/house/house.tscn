@@ -1,15 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=31 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
 [ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door_front/door_front_animations.tres" id="5_fuh1f"]
 [ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
+[ext_resource type="PackedScene" uid="uid://rqb8t5u7c2vy" path="res://game/house/rooms/bagno/bagno.tscn" id="7_2sykb"]
 [ext_resource type="Texture2D" uid="uid://bryxwghae3k7c" path="res://game/house/assets/floors.png" id="7_dmabe"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
+[ext_resource type="PackedScene" uid="uid://dltqyn54206f0" path="res://game/house/rooms/cameretta/cameretta.tscn" id="7_y6vii"]
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="8_0lq6k"]
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
+[ext_resource type="PackedScene" uid="uid://df5wqp6kp84ap" path="res://game/house/rooms/corridoio_floor_1/corridoio_floor_1.tscn" id="10_6d6f3"]
+[ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cwdsrqkvev8w7" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.tscn" id="14_0u62w"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="14_7aw2o"]
 
@@ -1094,6 +1098,15 @@ size = Vector2(31.9353, 31.9581)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqr3h"]
 size = Vector2(32, 31.0003)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58wwt"]
+size = Vector2(357.055, 235.416)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ar7l"]
+size = Vector2(332.001, 223.468)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61lg6"]
+size = Vector2(227.553, 199.956)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5t20"]
 texture = ExtResource("8_51wt1")
@@ -3064,27 +3077,9 @@ layer_3/tile_data = PackedInt32Array(393223, 7, 1610612743, 393219, 7, 805306375
 [node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
 position = Vector2(155, 191)
 
-[node name="porta_bagno" parent="Rooms" instance=ExtResource("7_qq4fd")]
-position = Vector2(-16.0065, 576.004)
-scale = Vector2(1.00006, 1)
-sprite_frames = ExtResource("5_fuh1f")
-flip_h = true
-container_name = "door_front"
-use_editor_collision_shape = true
-same_shape_for_both = false
-use_these_names_for_nodes = "area_di_interazione"
-container_collision_rect_x = 32
-container_collision_rect_y = 64
+[node name="Cameretta" parent="Rooms" instance=ExtResource("7_y6vii")]
 
-[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/porta_bagno"]
-position = Vector2(0.0323792, -16.021)
-shape = SubResource("RectangleShape2D_cvj58")
-
-[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/porta_bagno"]
-position = Vector2(-0.00380072, -16)
-shape = SubResource("RectangleShape2D_xqr3h")
-
-[node name="porta_camera" parent="Rooms" instance=ExtResource("7_qq4fd")]
+[node name="porta_camera" parent="Rooms/Cameretta" instance=ExtResource("7_qq4fd")]
 position = Vector2(176.006, 287.958)
 sprite_frames = ExtResource("5_fuh1f")
 flip_h = true
@@ -3096,13 +3091,88 @@ container_collision_rect_x = 32
 container_collision_rect_y = 64
 is_locked = true
 
-[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/porta_camera"]
+[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/Cameretta/porta_camera"]
 position = Vector2(0.0323792, -16.021)
 shape = SubResource("RectangleShape2D_cvj58")
 
-[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/porta_camera"]
+[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/Cameretta/porta_camera"]
 position = Vector2(0.0649719, -15.5419)
 shape = SubResource("RectangleShape2D_xqr3h")
+
+[node name="Collision" type="CollisionShape2D" parent="Rooms/Cameretta"]
+visible = false
+position = Vector2(175.528, 114.208)
+shape = SubResource("RectangleShape2D_58wwt")
+
+[node name="Color" type="ColorRect" parent="Rooms/Cameretta"]
+z_index = 8
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 364.0
+offset_bottom = 232.0
+color = Color(1, 1, 1, 0)
+
+[node name="GenericRoom" parent="Rooms" instance=ExtResource("10_330gl")]
+
+[node name="Collision" type="CollisionShape2D" parent="Rooms/GenericRoom"]
+visible = false
+position = Vector2(416.125, 424.166)
+shape = SubResource("RectangleShape2D_3ar7l")
+
+[node name="Color" type="ColorRect" parent="Rooms/GenericRoom"]
+offset_left = 252.0
+offset_top = 314.0
+offset_right = 578.0
+offset_bottom = 519.0
+color = Color(1, 1, 1, 0)
+
+[node name="Bagno" parent="Rooms" instance=ExtResource("7_2sykb")]
+
+[node name="porta_bagno" parent="Rooms/Bagno" instance=ExtResource("7_qq4fd")]
+position = Vector2(-16.0065, 576.004)
+scale = Vector2(1.00006, 1)
+sprite_frames = ExtResource("5_fuh1f")
+flip_h = true
+container_name = "door_front"
+use_editor_collision_shape = true
+same_shape_for_both = false
+use_these_names_for_nodes = "area_di_interazione"
+container_collision_rect_x = 32
+container_collision_rect_y = 64
+
+[node name="area_dove_sbatto" type="CollisionShape2D" parent="Rooms/Bagno/porta_bagno"]
+position = Vector2(0.0323792, -16.021)
+shape = SubResource("RectangleShape2D_cvj58")
+
+[node name="area_di_interazione" type="CollisionShape2D" parent="Rooms/Bagno/porta_bagno"]
+position = Vector2(-0.00380072, -16)
+shape = SubResource("RectangleShape2D_xqr3h")
+
+[node name="Collision" type="CollisionShape2D" parent="Rooms/Bagno"]
+visible = false
+z_index = 4
+position = Vector2(-16.6535, 415.999)
+shape = SubResource("RectangleShape2D_61lg6")
+
+[node name="Color" type="ColorRect" parent="Rooms/Bagno"]
+z_index = 8
+offset_left = -135.0
+offset_top = 316.0
+offset_right = 101.0
+offset_bottom = 518.0
+color = Color(1, 1, 1, 0)
+
+[node name="CorridoioFloor1" parent="Rooms" instance=ExtResource("10_6d6f3")]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Rooms/CorridoioFloor1"]
+visible = false
+z_index = 7
+polygon = PackedVector2Array(117.06, 250.972, 117.126, 530.972, -148.874, 530.035, -148.792, 873.035, 587.208, 873.86, 587.126, 527.86, 238.126, 527.943, 238.057, 237.943, 112.057, 237.973)
+
+[node name="Color" type="Polygon2D" parent="Rooms/CorridoioFloor1"]
+z_index = 8
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(105.056, 233.975, 105.126, 529.975, -148.874, 530.035, -148.792, 873.035, 588.208, 872.86, 588.125, 525.86, 237.125, 525.944, 237.056, 234.944)
 
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)
