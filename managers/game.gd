@@ -25,7 +25,12 @@ func start():
 	UIManager.show_start_menu() 
 
 	#Resta nella schermata di selezione finché non viene cliccato un tasto
-	await UIManager.start_menu.exit 
+	await UIManager.start_menu.exit
+	
+	if PlatformHelper.is_mobile():
+		UIManager.mobile_only_ui.show()
+	else:
+		UIManager.mobile_only_ui.hide()
 
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
