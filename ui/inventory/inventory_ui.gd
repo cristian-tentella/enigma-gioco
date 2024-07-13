@@ -24,4 +24,4 @@ func update_slots():
 		slots_UI[i].update(inv.slots[i])
 
 func _on_exit_pause_menu_button_pressed():
-	self.exit.emit() # Replace with function body.
+	self.exit.emit()
