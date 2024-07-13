@@ -27,7 +27,7 @@ func start():
 	#Resta nella schermata di selezione finché non viene cliccato un tasto
 	await UIManager.start_menu.exit
 	
-	if not PlatformHelper.is_mobile():
+	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
 	else:
 		UIManager.mobile_only_ui.hide()
