@@ -44,27 +44,27 @@ func on_database_query_selected(query_result):
 func on_database_query_updated(query_result):
 	print("I dati sono stati correttamente updatati nel database" + str(query_result))
 
-func save_current_state_into_json():
+
+func prepare_data_to_be_saved_and_save():
 	player_id = get_player_id()
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
 	var current_minigame = StateManager.current_minigame as int
-	
-	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
 		"current_minigame": current_minigame
 	}
-
+	save_current_state_into_json(data_for_json_file)
+	
+	
+func save_current_state_into_json(data_for_json_file):
+	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
 	var into_json = json.stringify(data_for_json_file)
 	json_file.store_string(into_json)
-	
 	save_current_state_to_online_database(data_for_json_file)
-	
-	
 	json_file.close()
 	json_file = null
+	
 	
 func save_current_state_to_online_database(save_file: Dictionary):
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).update({save_file = save_file})
@@ -90,11 +90,10 @@ func is_online() -> bool:
 	
 func load_game_save_from_json():
 	if await is_online() and player_id != null:
-		retrieve_save_file_from_database_and_write_it_to_filesystem()
+		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 	if FileAccess.file_exists(json_path):
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = json.parse_string(json_file.get_as_text())
-		
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
 			print_debug("Save file not well made, missing parts.")
 			return
@@ -114,7 +113,14 @@ func load_game_save_from_json():
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
 	Supabase.database.query(query)
+	var data = await Supabase.database.selected
+	data = data[0]["save_file"]
+	save_current_state_into_json(data)
 	
+	
+
+	#var into_json = json.stringify(data_for_json_file)
+	#json_file.store_string(into_json)
 
 	#Adesso fai che rompe i nodi con stesso nome di all_exited_interactions
 	#E fai in modo che prende i nodi degli oggetti e fa l'aggiunta all'inventario in base a quello che ho nel json
@@ -122,10 +128,11 @@ func retrieve_save_file_from_database_and_write_it_to_filesystem():
 
 #Funzione di supporto per ottenere tutti i nodi del gioco
 func get_player_id() -> String: 
-	var encrypted_file_with_user_data = FileAccess.open_encrypted_with_pass(user_file, FileAccess.READ, Supabase.config.supabaseKey)
-	var user_data = JSON.parse_string(encrypted_file_with_user_data.get_as_text()) 
-	return user_data["player_id"]
-
+		var encrypted_file_with_user_data = FileAccess.open_encrypted_with_pass(user_file, FileAccess.READ, Supabase.config.supabaseKey)
+		var user_data = JSON.parse_string(encrypted_file_with_user_data.get_as_text()) 
+		return user_data.get("player_id")
+	
+	
 func get_all_children(node: Node) -> Array:
 	var children = []
 	_get_all_children_recursive(node, children)
