@@ -109,11 +109,13 @@ func show_start_menu():
 
 func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
+	AudioManager.play_menu_sound_effect()
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
 	
 func show_inventory():
 	_spawn_locking_ui_element(inventory_menu)
+	AudioManager.play_menu_sound_effect()
 	await inventory_menu.exit
 	_kil_locking_ui_element(inventory_menu)
 
