@@ -18,7 +18,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 
 @export_category("Item Base Values")
 @export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
-@export var description: String #La descrizione che faremo vedere nell'inventario
+var description: String #La descrizione che faremo vedere nell'inventario. Viene pescata dal file di traduzioni nel _ready()
 @export var is_corporeo: bool = false
 #NOTE: La descrizione, cosi come il nome degli item va adattato in funzione della lingua. InventoryManager con un file csv?
 @export_group("Extra values")
@@ -41,8 +41,12 @@ func _ready():
 			
 			RISPETTA RIGOROSAMENTE QUESTA SINTASSI!
 	""" 
+	
+	assert(item_name!=null)
+	
 	generate_both_collision_circles()
 	update_sprite2D_texture()
+	_associate_description_from_traslation_file()
 
 
 """
@@ -88,3 +92,6 @@ func destroy_collision_shapes_forever():
 	for c in collision_shapes:
 		c.queue_free()
 	collision_shapes.clear()
+
+func _associate_description_from_traslation_file():
+	self.description = DialogueManager._item_description_id_to_item_description(self.item_name)

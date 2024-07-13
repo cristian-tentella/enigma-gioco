@@ -43,6 +43,7 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	var item_count_into_inventory = len(self.inv.slots)
 
 	if item_count_into_inventory < slot_number: #Ha cliccato su uno slot senza items, via di qui
+		self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
 		return
 	
 	#Uso slot number -1 perché non voglio disallineare il nome dei nodi e il fatto che l'array inizia da 0
@@ -51,7 +52,7 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	
 	#Nome -> item_to_show.item_name
 	#Descrizione -> item_to_show.description
-	self.description_label.text = item_to_show.item_name+"\n"+item_to_show.description
+	self.description_label.text = item_to_show.item_name+"\n\n"+item_to_show.description
 
 
 func _on_inventory_ui_slot_1_button_pressed():

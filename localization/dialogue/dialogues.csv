@@ -5,3 +5,5 @@ test_2;Carlo: Goodnight;Carlo: Buonanotte
 test_3;Paolino: Goodbye;Paolino: Arrivederci
 
 pickup_item_generic;Item added to inventory!;Oggetto aggiunto all'inventario!
+
+set_of_keys_description;A very amusing set of keys.\nThey range from 1 to 8, and each have a different color assigned;Un bellissimo mazzo di chiavi.\nVanno dal numero 1 al numero 8, ed ognuna ha un colore diverso.
