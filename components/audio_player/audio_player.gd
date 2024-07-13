@@ -69,6 +69,12 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
 		"menu":
 			audio_stream_player_for_sound_effects = $SoundEffects/Menu
+		"door_open":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorOpen
+		"door_close":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorClose
+		"door_unlock":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorUnlock
 		"success":
 			audio_stream_player_for_sound_effects = $SoundEffects/Success
 		"failure":
