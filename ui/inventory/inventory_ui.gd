@@ -1,7 +1,7 @@
 class_name InventoryUI
 extends Control
 
-const NO_ITEM_SELECTED_DESC_STRING = "Seleziona un oggetto per visualizzarne la descrizione"
+var NO_ITEM_SELECTED_DESC_STRING #è quello che esce quando non hai selezionato nessun item, viene assegnato nel _ready()
 
 
 var inv: Inventory
@@ -13,12 +13,12 @@ var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più 
 signal exit
 
 
-
 func _ready():
 	_instantiate_inventory()
 	self.inv.item_pickup_dialogue = $ItemPickupDialogue
 	inv.update.connect(update_slots)
 	update_slots()
+	_assign_NO_ITEM_SELECTED_DESC_STRING()
 	
 # Doing it dynamically is the only way to make it work.
 # Original implementation with .tres was overkill considering I just create 8 empty slots with no properties
@@ -29,6 +29,9 @@ func _instantiate_inventory():
 func update_slots():
 	for i in range(min(inv.slots.size(), slots_UI.size())):
 		slots_UI[i].update(inv.slots[i])
+
+func _assign_NO_ITEM_SELECTED_DESC_STRING():
+	self.NO_ITEM_SELECTED_DESC_STRING = DialogueManager._item_description_id_to_item_description("NO_ITEM_SELECTED_DESC_STRING")
 
 func _on_exit_pause_menu_button_pressed():
 	#Rimetti il testo di quando non hai selezionato nessun item

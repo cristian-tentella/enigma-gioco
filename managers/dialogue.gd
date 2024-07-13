@@ -52,6 +52,5 @@ func _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids: Array) -> Array:
 
 #Utilizzo improprio ma funzionale del sistema dei dialoghi anche per le traduzioni degli item
 #Non vale la pena implementarlo in modo diverso
-func _item_description_id_to_item_description(item_name: String):
-	var item_description_id = item_name+"_description" #Chiamare il dialogo set_of_keys_description
+func _item_description_id_to_item_description(item_description_id: String):
 	return _dialogue_lines_ids_to_dialogue_lines([item_description_id])[0]

@@ -94,4 +94,5 @@ func destroy_collision_shapes_forever():
 	collision_shapes.clear()
 
 func _associate_description_from_traslation_file():
-	self.description = DialogueManager._item_description_id_to_item_description(self.item_name)
+	var item_description_id = item_name+"_description" #Chiamare il dialogo set_of_keys_description
+	self.description = DialogueManager._item_description_id_to_item_description(item_description_id)
