@@ -3100,6 +3100,7 @@ position = Vector2(0.0649719, -15.5419)
 shape = SubResource("RectangleShape2D_xqr3h")
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/Cameretta"]
+visible = false
 position = Vector2(175.528, 114.208)
 shape = SubResource("RectangleShape2D_58wwt")
 
@@ -3109,18 +3110,21 @@ offset_left = -9.0
 offset_top = -12.0
 offset_right = 364.0
 offset_bottom = 232.0
+color = Color(1, 1, 1, 0)
 
 [node name="GenericRoom" parent="Rooms" instance=ExtResource("10_330gl")]
+
+[node name="Collision" type="CollisionShape2D" parent="Rooms/GenericRoom"]
+visible = false
+position = Vector2(416.125, 424.166)
+shape = SubResource("RectangleShape2D_3ar7l")
 
 [node name="Color" type="ColorRect" parent="Rooms/GenericRoom"]
 offset_left = 252.0
 offset_top = 314.0
 offset_right = 578.0
 offset_bottom = 519.0
-
-[node name="Collision" type="CollisionShape2D" parent="Rooms/GenericRoom"]
-position = Vector2(416.125, 424.166)
-shape = SubResource("RectangleShape2D_3ar7l")
+color = Color(1, 1, 1, 0)
 
 [node name="Bagno" parent="Rooms" instance=ExtResource("7_2sykb")]
 
@@ -3145,6 +3149,7 @@ position = Vector2(-0.00380072, -16)
 shape = SubResource("RectangleShape2D_xqr3h")
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/Bagno"]
+visible = false
 z_index = 4
 position = Vector2(-16.6535, 415.999)
 shape = SubResource("RectangleShape2D_61lg6")
@@ -3155,15 +3160,18 @@ offset_left = -135.0
 offset_top = 316.0
 offset_right = 101.0
 offset_bottom = 518.0
+color = Color(1, 1, 1, 0)
 
 [node name="CorridoioFloor1" parent="Rooms" instance=ExtResource("10_6d6f3")]
 
 [node name="Collision" type="CollisionPolygon2D" parent="Rooms/CorridoioFloor1"]
+visible = false
 z_index = 7
 polygon = PackedVector2Array(117.06, 250.972, 117.126, 530.972, -148.874, 530.035, -148.792, 873.035, 587.208, 873.86, 587.126, 527.86, 238.126, 527.943, 238.057, 237.943, 112.057, 237.973)
 
 [node name="Color" type="Polygon2D" parent="Rooms/CorridoioFloor1"]
 z_index = 8
+color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(105.056, 233.975, 105.126, 529.975, -148.874, 530.035, -148.792, 873.035, 588.208, 872.86, 588.125, 525.86, 237.125, 525.944, 237.056, 234.944)
 
 [node name="Objects" type="TileMap" parent="Rooms"]
