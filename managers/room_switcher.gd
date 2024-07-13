@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 const DEFAULT_Z_INDEX_VALUE = 100

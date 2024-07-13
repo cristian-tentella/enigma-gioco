@@ -28,6 +28,7 @@ AuthenticationManager="*res://managers/authentication.gd"
 MinigameManager="*res://managers/minigames.gd"
 AudioManager="*res://managers/audio.gd"
 PlatformHelper="*res://managers/platform.gd"
+RoomSwitcher="*res://managers/room_switcher.gd"
 
 [dialogue_manager]
 
