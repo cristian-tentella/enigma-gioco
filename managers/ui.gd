@@ -10,6 +10,7 @@ extends Node
 PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 ################################################################################"""
 @onready var ui = get_node("/root/Game/UI")
+@onready var mobile_only_ui = get_node("/root/Game/UI/MobileOnlyUI")
 
 @onready var dialogue_box: DialogueBox = preload(
 	"res://ui/dialogue_box/dialogue_box.tscn"
