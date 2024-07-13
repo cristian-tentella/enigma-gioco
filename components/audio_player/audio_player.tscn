@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=10 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cy2b26ujkt8q1" path="res://audio/sound_effects/footstep2.ogg" id="5_kug4d"]
 [ext_resource type="AudioStream" uid="uid://c16hput8wsaf7" path="res://audio/sound_effects/footstep3.ogg" id="6_gpbjn"]
 [ext_resource type="AudioStream" uid="uid://csbil23yr2jbq" path="res://audio/sound_effects/footstep4.ogg" id="7_hmvts"]
+[ext_resource type="AudioStream" uid="uid://bykfp5iwshi6j" path="res://audio/sound_effects/menu.ogg" id="8_u1b0f"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -36,6 +37,10 @@ volume_db = -9.0
 [node name="Footstep4" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("7_hmvts")
 volume_db = -9.0
+
+[node name="Menu" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("8_u1b0f")
+volume_db = -6.0
 
 [node name="SoundTracks" type="Node" parent="."]
 
