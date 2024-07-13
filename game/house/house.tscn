@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=30 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="8_0lq6k"]
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
-[ext_resource type="PackedScene" uid="uid://df5wqp6kp84ap" path="res://game/house/rooms/corridoio_floor_1/corridoio_floor_1.tscn" id="10_6d6f3"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cwdsrqkvev8w7" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.tscn" id="14_0u62w"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="14_7aw2o"]
@@ -3077,7 +3076,7 @@ layer_3/tile_data = PackedInt32Array(393223, 7, 1610612743, 393219, 7, 805306375
 [node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
 position = Vector2(155, 191)
 
-[node name="Cameretta" parent="Rooms" instance=ExtResource("7_y6vii")]
+[node name="Cameretta" parent="Rooms" groups=["Rooms"] instance=ExtResource("7_y6vii")]
 
 [node name="porta_camera" parent="Rooms/Cameretta" instance=ExtResource("7_qq4fd")]
 position = Vector2(176.006, 287.958)
@@ -3112,7 +3111,7 @@ offset_right = 364.0
 offset_bottom = 232.0
 color = Color(1, 1, 1, 0)
 
-[node name="GenericRoom" parent="Rooms" instance=ExtResource("10_330gl")]
+[node name="GenericRoom" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/GenericRoom"]
 visible = false
@@ -3126,7 +3125,7 @@ offset_right = 578.0
 offset_bottom = 519.0
 color = Color(1, 1, 1, 0)
 
-[node name="Bagno" parent="Rooms" instance=ExtResource("7_2sykb")]
+[node name="Bagno" parent="Rooms" groups=["Rooms"] instance=ExtResource("7_2sykb")]
 
 [node name="porta_bagno" parent="Rooms/Bagno" instance=ExtResource("7_qq4fd")]
 position = Vector2(-16.0065, 576.004)
@@ -3161,18 +3160,6 @@ offset_top = 316.0
 offset_right = 101.0
 offset_bottom = 518.0
 color = Color(1, 1, 1, 0)
-
-[node name="CorridoioFloor1" parent="Rooms" instance=ExtResource("10_6d6f3")]
-
-[node name="Collision" type="CollisionPolygon2D" parent="Rooms/CorridoioFloor1"]
-visible = false
-z_index = 7
-polygon = PackedVector2Array(117.06, 250.972, 117.126, 530.972, -148.874, 530.035, -148.792, 873.035, 587.208, 873.86, 587.126, 527.86, 238.126, 527.943, 238.057, 237.943, 112.057, 237.973)
-
-[node name="Color" type="Polygon2D" parent="Rooms/CorridoioFloor1"]
-z_index = 8
-color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(105.056, 233.975, 105.126, 529.975, -148.874, 530.035, -148.792, 873.035, 588.208, 872.86, 588.125, 525.86, 237.125, 525.944, 237.056, 234.944)
 
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)

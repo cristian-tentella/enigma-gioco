@@ -1,33 +1,50 @@
 extends Node2D
 
-@onready var rooms_node = $".."
-var rooms = {}
-const LIGHT_ON: Color = Color(0, 0, 0, 0) 
-var LIGHT_OFF: Color = Color.hex(0x201e1dff)
-const Z_INDEX_VALUE = 100
-const fade_duration = 0.3
+
+const DEFAULT_Z_INDEX_VALUE = 100
+const FADE_DURATION_IN_SECONDS = 0.3
+
+const LIGHT_ON_COLOR_HEX = 0x00000000
+const LIGHT_OFF_COLOR_HEX = 0x201e1dff
+
+var room_name_to_room_area = {}
+
 
 func _ready():
-	for room in rooms_node.get_children():
-		if room is Room:
-			rooms[room.name] = room
-			room.body_entered.connect(_on_room_entered.bind(room.name))
-			room.body_exited.connect(_on_room_exited.bind(room.name))
-			room.get_node("Color").color = LIGHT_OFF
-			room.get_node("Color").z_index = Z_INDEX_VALUE
-			
+	_init_rooms()
 
-func _on_room_entered(body, current_room):	
+
+func _init_rooms():
+	for room in get_tree().get_nodes_in_group("Rooms"):
+		room_name_to_room_area[room.name] = room
+
+		room.body_entered.connect(_on_room_entered.bind(room.name))
+		room.body_exited.connect(_on_room_exited.bind(room.name))
+
+		var room_color_polygon = room.get_node("Color")
+		room_color_polygon.color = Color.hex(LIGHT_OFF_COLOR_HEX)
+		room_color_polygon.z_index = DEFAULT_Z_INDEX_VALUE
+
+
+func _on_room_entered(body: Node2D, current_room_name: String):
 	if body is Player:
-		var tween = create_tween()
-		#rooms[current_room].get_node("ColorRect").color = LIGHT_ON
-		tween.tween_property(rooms[current_room].get_node("Color"), "color", LIGHT_ON, 0.2).set_ease(Tween.EASE_IN)
-		
-func _on_room_exited(body, previous_room):
+		_tween_room_color(current_room_name, Color.hex(LIGHT_ON_COLOR_HEX), true)
+
+
+func _on_room_exited(body: Node2D, previous_room_name: String):
 	if body is Player:
-		#rooms[previous_room].get_node("ColorRect").color = LIGHT_OFF
-		var tween = create_tween()
-		tween.tween_property(rooms[previous_room].get_node("Color"), "color", LIGHT_OFF, 0.2).set_trans(Tween.TRANS_LINEAR)
+		_tween_room_color(previous_room_name, Color.hex(LIGHT_OFF_COLOR_HEX), false)
 
 
-		
+func _tween_room_color(room_name: String, target_color: Color, ease_in: bool):
+	var tween = create_tween()
+	
+	tween.tween_property(
+		room_name_to_room_area[room_name].get_node("Color"),
+		"color",
+		target_color,
+		FADE_DURATION_IN_SECONDS
+	)
+
+	if ease_in:
+		tween.set_ease(Tween.EASE_IN)
