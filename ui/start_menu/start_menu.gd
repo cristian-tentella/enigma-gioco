@@ -4,9 +4,12 @@ extends Control
 
 signal exit
 
-
+#Quando si clicca su play, viene caricato il salvataggio
 func _on_play_button_pressed():
-	#SaveManager.load_game_save_from_json()
+	UIManager.show_loading_screen() #Fai vedere il loading screen
+	await SaveManager.load_game_save_from_json() #Fai il caricamento dei file di gioco
+	await UIManager.loading_screen.exit_from_loading_screen_evenly() #Se ha finito di caricare, la barra va al 100%
+	UIManager.kil_loading_screen() #Sono uscito dal loading screen, quindi faccio killare l'elemento UI alla UIManager
 	self.exit.emit()
 
 

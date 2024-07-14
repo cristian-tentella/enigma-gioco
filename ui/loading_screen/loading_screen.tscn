@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://3hpjowc2rtv4"]
+
+[ext_resource type="Script" path="res://ui/loading_screen/loading_screen.gd" id="1_rpau8"]
+[ext_resource type="Texture2D" uid="uid://dlv0krvephb32" path="res://ui/loading_screen/progress-bar-circle.png" id="2_rijfe"]
+[ext_resource type="Texture2D" uid="uid://ddmqu4qhf66em" path="res://ui/loading_screen/progress-bar-frame.png" id="3_jyvf0"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rpau8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.831373, 0.815686, 0.811765, 0.443137)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CenterContainer"]
+z_index = 150
+layout_mode = 2
+value = 80.0
+fill_mode = 4
+texture_under = ExtResource("2_rijfe")
+texture_over = ExtResource("3_jyvf0")
+texture_progress = ExtResource("2_rijfe")
+tint_under = Color(1, 1, 1, 0.356863)
+tint_over = Color(0, 0, 0, 1)
+tint_progress = Color(0, 1, 0, 1)

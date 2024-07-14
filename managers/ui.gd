@@ -33,6 +33,10 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 	"res://ui/inventory/inventory_ui.tscn"
 ).instantiate() 
 
+#Nessuno script associato, ci accedo tramite la sua variabile .value
+@onready var loading_screen: LoadingScreen = preload(
+	"res://ui/loading_screen/loading_screen.tscn"
+).instantiate()
 
 """################################################################################
 MINIGAMES UI ELEMENTS
@@ -53,7 +57,8 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	start_menu,
 	pause_menu,
 	inventory_menu,
-	combination_key_minigame
+	combination_key_minigame,
+	loading_screen
 ]
 
 #Segnali
@@ -141,6 +146,12 @@ func show_authentication_reset_menu():
 	await AuthenticationManager.exit
 	_kil_locking_ui_element(authentication_reset_menu)
 
+func show_loading_screen():
+	self.loading_screen.set_value(0)
+	_spawn_locking_ui_element(loading_screen)
+
+func kil_loading_screen():
+	_kil_locking_ui_element(loading_screen)
 
 """MINIGAME UIs"""
 

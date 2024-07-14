@@ -24,18 +24,8 @@ var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4 #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
 }
 
-#####var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
+const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
 
-#####var json = JSON.new()
-#####var json_path = "res://addons/supabase/SaveFile/salvataggio.json"
-
-#####func save_current_state_into_json():
-#####	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
-#####	var current_minigame = StateManager.current_minigame as int
-#####	
-#####	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	
-#####=======
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
 var json = JSON.new()
@@ -109,59 +99,55 @@ func is_online() -> bool:
 	return false
 
 
+#Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
+#Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
+	
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
+		#Se questo va a buon fine, il caricamento è al 25%
+	
 	if FileAccess.file_exists(json_path):
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = json.parse_string(json_file.get_as_text())
+		#Barra di caricamento a 0
+		UIManager.loading_screen.set_value(30)
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
-
 		StateManager.current_minigame = content.get("current_minigame")
-
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		#Barra di caricamento a 0
+		UIManager.loading_screen.set_value(35)
 		var root_node = self.get_tree().root
 		var all_nodes = self.get_all_children(root_node)
+		#Barra di caricamento a 0
+		UIManager.loading_screen.set_value(45)
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
 		var inventory_owned_items_names = content.get("inventory_owned_items_names")
 		#Carica nell'inventario questi nodi
 		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
+		#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
+		UIManager.loading_screen.set_value(90)
 
-"""SI LASCIA NEL DUBBIO, QUESTA ERA LA FUNZIONE VECCHIA E SOPRA C'E' QUELLA MERGIATA CHE DOVREBBE WORKARE
-=======
-	
-func load_game_save_from_json():
-	if await is_online() and player_id != null:
-		await retrieve_save_file_from_database_and_write_it_to_filesystem()
-	if FileAccess.file_exists(json_path):
-		var json_file = FileAccess.open(json_path, FileAccess.READ)
-		var content = json.parse_string(json_file.get_as_text())
-	####
-		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
-			print_debug("Save file not well made, missing parts.")
-			return
-		
-		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-		var root_node = self.get_tree().root
-		var all_nodes = self.get_all_children(root_node)
-		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
-		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
-		var inventory_owned_items_names = content.get("inventory_owned_items_names")
-		#Carica nell'inventario questi nodi
-		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
-		
-		StateManager.current_minigame = content.get("current_minigame")
-"""
 
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
+	#Barra di caricamento a 0
+	UIManager.loading_screen.set_value(5)
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
+	#Barra di caricamento a 0
+	UIManager.loading_screen.set_value(10)
 	Supabase.database.query(query)
 	var data = await Supabase.database.selected
+	#Barra di caricamento a 0
+	UIManager.loading_screen.set_value(15)
 	data = data[0]["save_file"]
+	#Barra di caricamento a 0
+	UIManager.loading_screen.set_value(20)
 	save_current_state_into_json(data)
+	#Barra di caricamento a 0
+	UIManager.loading_screen.set_value(25)
 	
 	
 
@@ -216,7 +202,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		
 		#è un if molto lungo
 		if node is Interaction:
-			
+			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 			if node is ContainerInteraction:
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
@@ -250,6 +236,7 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 		var current_item_name = item.item_in_interaction.item_name
 		if current_item_name in items_names:
 			item.just_insert_in_inventory()
+			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 		
    
 func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
@@ -259,7 +246,14 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 		var destroy_requirement = minigame_to_current_minigame_requirement["minigame_1"] #Prendo il requirement dal dict delle var di classe
 		if destroy_requirement <= curr_minigame: #Va rotto
 			for minigame_node in all_minigame_dict[minigame_number]:
+				self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 				minigame_node.queue_free()
 
-
-
+func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
+	print("Adding ", val)
+	var curr_value = UIManager.loading_screen.progress_bar.value
+	curr_value += val
+	if (curr_value >= 80): #Ho sforato o sono ad 80
+		UIManager.loading_screen.set_value(80)
+	else:
+		UIManager.loading_screen.add_to_value(val)
