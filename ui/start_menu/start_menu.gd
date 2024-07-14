@@ -6,6 +6,7 @@ signal exit
 
 
 func _on_play_button_pressed():
+	#SaveManager.load_game_save_from_json()
 	self.exit.emit()
 
 

@@ -30,7 +30,7 @@ func activate_closest_interaction():
 func _on_area_entered(area: Area2D):
 	#Se l'interazione ha un requisito di minigame più alto di quello a cui sto, non posso interagirci
 	if area is Interaction:
-		if area.minigame_requirement > MinigameManager.current_minigame:
+		if area.minigame_requirement > StateManager.current_minigame:
 			return
 	#Se ho un'interazione che si attiva appena ci entro dentro, di tipo OnCollisionAnyInteraction, la eseguo subito e non la enqueuo (terminologie)
 	if area is OnCollisionAnyInteraction: 

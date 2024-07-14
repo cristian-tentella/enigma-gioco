@@ -38,4 +38,4 @@ func handle_interaction():
 	else:
 		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 
-
+	_remove_if_proc_only_once()

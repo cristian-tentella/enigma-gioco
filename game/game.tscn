@@ -1,13 +1,17 @@
+
 [gd_scene load_steps=9 format=3 uid="uid://v3qc4mr67rsd"]
+
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
+
 [ext_resource type="PackedScene" uid="uid://crbudpuk5xyqu" path="res://components/audio_player/audio_player.tscn" id="4_4h6kr"]
 [ext_resource type="Texture2D" uid="uid://do61iumer8aus" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.png" id="4_6dgs2"]
 [ext_resource type="PackedScene" uid="uid://ce071icrk0n4j" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.tscn" id="4_j2h6h"]
 [ext_resource type="Texture2D" uid="uid://chjqr4jqgg8m3" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_pressed.png" id="6_mwtq2"]
 [ext_resource type="Texture2D" uid="uid://c414e0ew1i1hw" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_hover.png" id="7_jfbt4"]
+
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oaeyu")
@@ -32,3 +36,4 @@ texture_hover = ExtResource("7_jfbt4")
 texture_focused = ExtResource("7_jfbt4")
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
+

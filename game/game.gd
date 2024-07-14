@@ -19,8 +19,12 @@ func _ready():
 	#Associare allo StateManager i riferimenti agli oggetti principali che creiamo, importantissimo per il comportamento generale!
 	StateManager.player = player
 	StateManager.house = house
-	StateManager.inventory_UI = inventory_UI
-	StateManager.inventory = inventory_UI.inv
+
+	SaveManager.load_game_save_from_json()
+	
+	#StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
+	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager
+
 	StateManager.audio_player = audio_player
 
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)

@@ -13,8 +13,7 @@ signal message(message: String)
 const is_enabled = false
 
 var sleep_after_action = 0.7
-var access_token_path = "user://user.auth"
-
+const access_token_path = "user://user.auth"
 
 @onready var authentication_menu: AuthenticationMenu = preload(
 	"res://ui/authentication_menu/authentication_menu.tscn"
@@ -93,8 +92,13 @@ func save_auth_token_to_encrypted_file(auth: SupabaseUser):
 	if encrypted_file.get_error() != OK:
 		await display_report_message("An error occured while trying to securely store the access token")
 	else:
-		encrypted_file.store_line(JSON.stringify(auth.refresh_token))
-		encrypted_file.store_line(JSON.stringify(auth.expires_in))
+		var user_data: Dictionary = {
+			"refresh_token" = auth.refresh_token,
+			"expires_in" = auth.expires_in,
+			"player_id" = auth.id
+		}
+		print(user_data)
+		encrypted_file.store_line(JSON.stringify(user_data))
 		encrypted_file.close()
 
 
@@ -114,9 +118,8 @@ func retrieve_access_token_from_file():
 		
 #
 func construct_body_request(encrypted_file_with_access_token: FileAccess):
-		var refresh_token: String = encrypted_file_with_access_token.get_line().strip_edges()
-		if refresh_token.begins_with('"') and refresh_token.ends_with('"'):
-			refresh_token = refresh_token.substr(1, refresh_token.length() - 2)
+		var user_data = JSON.parse_string(encrypted_file_with_access_token.get_as_text()) 
+		var refresh_token = user_data["refresh_token"]
 		var url = Supabase.config.supabaseUrl + SupabaseAuth._refresh_token_endpoint
 		var headers = Supabase.auth._header
 		var body = {

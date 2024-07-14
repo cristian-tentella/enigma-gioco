@@ -3220,19 +3220,18 @@ collision_circle_radius = 24
 position = Vector2(264, 192)
 item_name = "set_of_keys"
 
-[node name="OnClickAnyInteraction" parent="." instance=ExtResource("14_7aw2o")]
+[node name="OnClickAnyInteraction-1" parent="." instance=ExtResource("14_7aw2o")]
 script_path = "res://components/interaction/on_click_any_interaction/scripts_dump/test_interaction.gd"
 method_name = "pure_testing"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="OnClickAnyInteraction"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="OnClickAnyInteraction-1"]
 position = Vector2(159, 114)
 shape = SubResource("RectangleShape2D_b5kjj")
 
 [node name="OnCollisionAnyInteraction" parent="." instance=ExtResource("14_0u62w")]
 script_path = "res://components/interaction/on_collision_any_interaction/scripts_dump/test_interaction.gd"
 method_name = "pure_testing"
-minigame_requirement = 1
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
-position = Vector2(305, 118)
+position = Vector2(305, 100)
 shape = SubResource("RectangleShape2D_b5kjj")
