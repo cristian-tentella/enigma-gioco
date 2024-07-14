@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=21 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
 [ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door_front/door_front_animations.tres" id="5_fuh1f"]
-[ext_resource type="PackedScene" uid="uid://v70wes3cb76c" path="res://components/room_switcher/room_switcher.tscn" id="6_666e0"]
 [ext_resource type="Texture2D" uid="uid://bryxwghae3k7c" path="res://game/house/assets/floors.png" id="7_dmabe"]
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
@@ -3073,9 +3072,6 @@ shape = SubResource("RectangleShape2D_cvj58")
 position = Vector2(0.171535, -14.2381)
 rotation = 0.0026857
 shape = SubResource("RectangleShape2D_xqr3h")
-
-[node name="RoomSwitcher" parent="Rooms" instance=ExtResource("6_666e0")]
-position = Vector2(155, 191)
 
 [node name="Porta_camera_da_letto" parent="Rooms" instance=ExtResource("7_qq4fd")]
 position = Vector2(176, 288)
