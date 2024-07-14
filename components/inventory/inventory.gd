@@ -11,8 +11,13 @@ func insert(item: PickableItem):
 	slots.append(item)
 	update.emit()
 	item_pickup_dialogue.handle_interaction()
-	AudioManager.play_item_pickup_sound_effect()
-	
+  AudioManager.play_item_pickup_sound_effect()
+  
+
+func insert_no_dialogue(item: PickableItem):
+	slots.append(item)
+	update.emit()
+
 
 func has_item(needed_item_name: String):
 	for i in slots:
@@ -20,6 +25,9 @@ func has_item(needed_item_name: String):
 			return true
 	return false
 
+
+#Se quando salvi lancia qui un errore, probabilmente hai fatto la queue free di un minigioco.tscn ma li dentro ci stava l'oggetto
+#Metti l'oggetto nella mappa!
 func return_item_names():
 	var item_names = []
 	for slot in slots:

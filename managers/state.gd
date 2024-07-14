@@ -13,7 +13,9 @@ Qui ci sono le variabili degli OGGETTI che possono cambiare stato durante la par
 #Generalmente, vengono messe dentro una delle scene e caricate qui dentro dalla radice della scena
 var player: Player #Caricato da game/game.gd, lanciato in game/game.tscn
 var house: House #Caricato da game/game.gd, lanciato in game/game.tscn
-var current_minigame = 0 #This gets updated when a new minigame is started
+
+var current_minigame = 0 #Cattiva nomenclatura! Questo è un simbolo di "avanzamento" nel gioco, non è un numero per ogni minigioco!
+
 
 #Inventory variables
 var inventory_UI: InventoryUI

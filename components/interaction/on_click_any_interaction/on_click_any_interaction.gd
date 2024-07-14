@@ -23,19 +23,29 @@ TUTORIAL COME USARE:
 	  usa magari una lista.
 """
 var class_resource
+@export var is_method_in_direct_parent: bool = false
 
 func _ready():
+	if is_method_in_direct_parent:
+		class_resource = null
+		return
+		
 	class_resource = ResourceLoader.load(script_path)
 	
 	if class_resource == null:
-		print_debug("\n\tERROR: OnCollisionAnyInteraction node named ["+get_name()+"] is using a wrong script_path! Interacting WILL crash everything\n")
+		print_debug("\n\tERROR: OnClickAnyInteraction node named ["+get_name()+"] is using a wrong script_path! Interacting WILL crash everything\n")
 		return
 
 
 func handle_interaction():
-	if class_resource.has_method(method_name):
-		class_resource.call(method_name)
+	if is_method_in_direct_parent: #Modo per non usare metodi statici, chiamare funzioni definite nel padre diretto!
+		self.get_parent().call(method_name)
 	else:
-		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
+		if class_resource.has_method(method_name):
+			class_resource.call(method_name)
+		else:
+			print_debug("\n\tERROR: OnClickAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 
 	_remove_if_proc_only_once()
+	_increment_current_minigame_if_told_so()
+
