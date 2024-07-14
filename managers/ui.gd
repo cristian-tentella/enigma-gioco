@@ -10,6 +10,7 @@ extends Node
 PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 ################################################################################"""
 @onready var ui = get_node("/root/Game/UI")
+@onready var mobile_only_ui = get_node("/root/Game/UI/MobileOnlyUI")
 
 @onready var dialogue_box: DialogueBox = preload(
 	"res://ui/dialogue_box/dialogue_box.tscn"
@@ -27,7 +28,6 @@ PRELOAD DI TUTTE LE SCENE RIGUARDANTI OGNI SINGOLO POSSIBILE CAMBIAMENTO DI UI
 @onready var authentication_reset_menu: AuthenticationResetMenu = preload(
 	"res://ui/authentication_menu/authentication_reset_menu.tscn"
 ).instantiate()
-
 
 @onready var inventory_menu: InventoryUI = preload(
 	"res://ui/inventory/inventory_ui.tscn"
@@ -75,8 +75,8 @@ func _ready():
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
-	
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
+	AudioManager.setup_sound_triggers()
 	spawn.emit(ui_element)
 	return ui_element
 
@@ -109,11 +109,14 @@ func show_start_menu():
 
 func show_pause_menu():
 	_spawn_locking_ui_element(pause_menu)
+	AudioManager.play_menu_sound_effect()
+	UIManager.mobile_only_ui.hide()
 	await pause_menu.exit
 	_kil_locking_ui_element(pause_menu)
 	
 func show_inventory():
 	_spawn_locking_ui_element(inventory_menu)
+	AudioManager.play_menu_sound_effect()
 	await inventory_menu.exit
 	_kil_locking_ui_element(inventory_menu)
 

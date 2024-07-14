@@ -1,45 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://v3qc4mr67rsd"]
+
+[gd_scene load_steps=9 format=3 uid="uid://v3qc4mr67rsd"]
+
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
-[ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="4_lh3cq"]
-[ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door_front/door_front_animations.tres" id="5_hwqvk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvyok"]
-size = Vector2(32, 32.25)
+[ext_resource type="PackedScene" uid="uid://crbudpuk5xyqu" path="res://components/audio_player/audio_player.tscn" id="4_4h6kr"]
+[ext_resource type="Texture2D" uid="uid://do61iumer8aus" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.png" id="4_6dgs2"]
+[ext_resource type="PackedScene" uid="uid://ce071icrk0n4j" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.tscn" id="4_j2h6h"]
+[ext_resource type="Texture2D" uid="uid://chjqr4jqgg8m3" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_pressed.png" id="6_mwtq2"]
+[ext_resource type="Texture2D" uid="uid://c414e0ew1i1hw" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_hover.png" id="7_jfbt4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8abjt"]
-size = Vector2(20, 20.4998)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oaeyu")
 
 [node name="House" parent="." instance=ExtResource("2_535vp")]
 
-[node name="UI" type="CanvasLayer" parent="."]
-
 [node name="Player" parent="." instance=ExtResource("3_8jufx")]
 position = Vector2(111, 127)
 
-[node name="door3" parent="." instance=ExtResource("4_lh3cq")]
-position = Vector2(-48, 576)
-rotation = -0.0026857
-sprite_frames = ExtResource("5_hwqvk")
-flip_h = true
-container_name = "door_front"
-use_editor_collision_shape = true
-same_shape_for_both = false
-use_these_names_for_nodes = "area_di_interazione"
-container_collision_rect_x = 32
-container_collision_rect_y = 64
-is_locked = true
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="area_dove_sbatto" type="CollisionShape2D" parent="door3"]
-position = Vector2(0, -15.875)
-shape = SubResource("RectangleShape2D_uvyok")
+[node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
 
-[node name="area_di_interazione" type="CollisionShape2D" parent="door3"]
-position = Vector2(0.171535, -14.2381)
-rotation = 0.0026857
-shape = SubResource("RectangleShape2D_8abjt")
+[node name="OpenPauseMenuButton" parent="UI/MobileOnlyUI" instance=ExtResource("4_j2h6h")]
+offset_left = 594.0
+offset_top = 12.0
+offset_right = 628.0
+offset_bottom = 46.0
+texture_normal = ExtResource("4_6dgs2")
+texture_pressed = ExtResource("6_mwtq2")
+texture_hover = ExtResource("7_jfbt4")
+texture_focused = ExtResource("7_jfbt4")
+
+[node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
+
