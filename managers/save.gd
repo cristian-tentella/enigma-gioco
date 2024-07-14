@@ -74,7 +74,7 @@ func save_current_state_to_online_database(save_file: Dictionary):
 func is_online() -> bool:
 	var ping_internet_check = HTTPRequest.new()
 	add_child(ping_internet_check)
-	ping_internet_check.request("http://www.google.com")
+	ping_internet_check.request("https://www.google.com")
 	var completed = await ping_internet_check.request_completed
 	if completed[1] == 200:
 		return true
@@ -118,13 +118,13 @@ func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	#E fai in modo che prende i nodi degli oggetti e fa l'aggiunta all'inventario in base a quello che ho nel json
 	#Magari fai tipo un confronto della path verso il nodo, e per l'inventario chiama manualmente l'aggiunta all'inv
 
-#Funzione di supporto per ottenere tutti i nodi del gioco
+
 func get_player_id() -> String: 
 		var encrypted_file_with_user_data = FileAccess.open_encrypted_with_pass(user_file, FileAccess.READ, Supabase.config.supabaseKey)
 		var user_data = JSON.parse_string(encrypted_file_with_user_data.get_as_text()) 
 		return user_data.get("player_id")
 	
-	
+#Funzione di supporto per ottenere tutti i nodi del gioco
 func get_all_children(node: Node) -> Array:
 	var children = []
 	_get_all_children_recursive(node, children)
