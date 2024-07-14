@@ -14,6 +14,7 @@ func start():
 	StateManager.house.hide()
 
 	var is_running_inside_the_editor = OS.has_feature("editor")
+
 	if AuthenticationManager.is_enabled or not is_running_inside_the_editor:
 		UIManager.show_authentication_menu()
 		await AuthenticationManager.exit

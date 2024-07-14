@@ -45,6 +45,8 @@ var user_file = "user://user.auth"
 var player_id
 
 func _ready():
+	if not AuthenticationManager.is_enabled:
+		return
 	Supabase.database.error.connect(on_database_query_error)
 	Supabase.database.updated.connect(on_database_query_updated)
 	if FileAccess.file_exists(user_file):
@@ -58,7 +60,7 @@ func on_database_query_updated(query_result):
 
 
 func prepare_data_to_be_saved_and_save():
-	player_id = get_player_id()
+	#player_id = get_player_id() #TODO: Questo mi sembra inutile?
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
 	var current_minigame = StateManager.current_minigame as int
 
@@ -77,7 +79,10 @@ func save_current_state_into_json(data_for_json_file):
 	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
 	var into_json = json.stringify(data_for_json_file)
 	json_file.store_string(into_json)
-	save_current_state_to_online_database(data_for_json_file)
+	
+	if AuthenticationManager.is_enabled:
+		save_current_state_to_online_database(data_for_json_file)
+	
 	json_file.close()
 	json_file = null
 	
