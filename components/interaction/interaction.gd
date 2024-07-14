@@ -15,6 +15,7 @@ Se la tua interazione è stata gestita con una funzione con un nome diverso, cer
 METTI ASSOLUTAMENTE _remove_if_proc_only_once() ALLA FINE!!!
 METTI ASSOLUTAMENTE _increment_current_minigame_if_told_so() ALLA FINE!!!
 
+
 ###################################################################################
 
 TUTORIAL ->
@@ -35,6 +36,7 @@ class_name Interaction
 extends Area2D
 
 @export var minigame_requirement : int = 0 # L'interazione sarà disponibile quando ti trovi su quel minigame O SUPERIORE
+
 @export var destroy_after_minigame_requirement_number: int = -1 #Se provo a interagire con questa interazione una volta superato questo requirement, fa queue_free()
 @export var just_proc_once : bool = true #Se voglio che l'interazione ci sia una volta sola in tutto il gioco
 @export var increments_current_minigame: bool = false
@@ -42,6 +44,7 @@ extends Area2D
 func _ready():
 	if destroy_after_minigame_requirement_number > minigame_requirement: #Se è intended che si rompe dopo tot step
 		just_proc_once = false
+
 
 #Abstract method for handing interactions.
 #The fact that this has to be overwritten is enforced by throwing an error otherwise
@@ -55,7 +58,7 @@ func _exit_tree():
 	pass
 
 func _remove_if_proc_only_once():
-	
+
 	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
 		self.queue_free()
 		
@@ -84,3 +87,4 @@ func forcefully_remove_as_if_proc_only_once():
 	#Per il salvataggio ----------
 	#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
 	self._insert_into_minigameManager_dictionary()
+

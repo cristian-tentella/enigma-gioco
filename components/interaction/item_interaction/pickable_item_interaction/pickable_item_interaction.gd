@@ -12,6 +12,7 @@ Per impostarlo, non serve usare una DialogueInteraction, questa è già presente
 
 var item_in_interaction: PickableItem
 
+
 var dialogue_id: String = "Nessun dialogo"
 
 @onready var dialogue_interaction: DialogueInteraction = $DialogueInteraction

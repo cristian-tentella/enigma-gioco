@@ -16,6 +16,7 @@ NOTES:
 	prenderà sempre tutti insieme, ma da specifiche di gioco questo è rispettato.
 """
 
+
 """
 DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico...) PER DEFINIRE QUANDO UN MINIGAME E' CONSIDERATO COMPLETATO
 """
@@ -23,17 +24,44 @@ var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4 #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
 }
 
+#####var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
+
+#####var json = JSON.new()
+#####var json_path = "res://addons/supabase/SaveFile/salvataggio.json"
+
+#####func save_current_state_into_json():
+#####	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
+#####	var current_minigame = StateManager.current_minigame as int
+#####	
+#####	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
+	
+#####=======
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
 var json = JSON.new()
-var json_path = "res://addons/supabase/SaveFile/salvataggio.json"
+var json_path = "user://save.json"
+var is_connected_to_internet: bool
+var user_file = "user://user.auth"
+var player_id
 
-func save_current_state_into_json():
+func _ready():
+	Supabase.database.error.connect(on_database_query_error)
+	Supabase.database.updated.connect(on_database_query_updated)
+	if FileAccess.file_exists(user_file):
+		player_id = get_player_id()
+	
+func on_database_query_error(query_result):
+	print_debug("I dati non sono stati correttamente inseriti nel database" + str(query_result))
+
+func on_database_query_updated(query_result):
+	print("I dati sono stati correttamente updatati nel database" + str(query_result))
+
+
+func prepare_data_to_be_saved_and_save():
+	player_id = get_player_id()
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
 	var current_minigame = StateManager.current_minigame as int
-	
-	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	
+
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
@@ -46,6 +74,22 @@ func save_current_state_into_json():
 	json_file.close()
 	json_file = null
 	
+	save_current_state_into_json(data_for_json_file)
+	
+	
+func save_current_state_into_json(data_for_json_file):
+	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
+	var into_json = json.stringify(data_for_json_file)
+	json_file.store_string(into_json)
+	save_current_state_to_online_database(data_for_json_file)
+	json_file.close()
+	json_file = null
+	
+	
+func save_current_state_to_online_database(save_file: Dictionary):
+	var query = SupabaseQuery.new().from("Users").eq("id", player_id).update({save_file = save_file})
+	Supabase.database.query(query)
+
 
 
 #StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
@@ -53,30 +97,87 @@ func save_current_state_into_json():
 #StateManager.current_minigame = ?
 #self.all_exited_interactions = ?
 #StateManager.inventory_UI.inv = ?
+
+func is_online() -> bool:
+	var ping_internet_check = HTTPRequest.new()
+	add_child(ping_internet_check)
+	ping_internet_check.request("https://www.google.com")
+	var completed = await ping_internet_check.request_completed
+	if completed[1] == 200:
+		return true
+	return false
+
+
 func load_game_save_from_json():
+	if await is_online() and player_id != null:
+		await retrieve_save_file_from_database_and_write_it_to_filesystem()
+	if FileAccess.file_exists(json_path):
+		var json_file = FileAccess.open(json_path, FileAccess.READ)
+		var content = json.parse_string(json_file.get_as_text())
+    if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
+      print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
+      return
+
+    StateManager.current_minigame = content.get("current_minigame")
+
+    all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+    var root_node = self.get_tree().root
+    var all_nodes = self.get_all_children(root_node)
+    #Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
+    var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
+    var inventory_owned_items_names = content.get("inventory_owned_items_names")
+    #Carica nell'inventario questi nodi
+    self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
+
+"""SI LASCIA NEL DUBBIO, QUESTA ERA LA FUNZIONE VECCHIA E SOPRA C'E' QUELLA MERGIATA CHE DOVREBBE WORKARE
+=======
 	
-	var json_file = FileAccess.open(json_path, FileAccess.READ)
-	var content = json.parse_string(json_file.get_as_text())
+func load_game_save_from_json():
+	if await is_online() and player_id != null:
+		await retrieve_save_file_from_database_and_write_it_to_filesystem()
+	if FileAccess.file_exists(json_path):
+		var json_file = FileAccess.open(json_path, FileAccess.READ)
+		var content = json.parse_string(json_file.get_as_text())
+    ####
+		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
+			print_debug("Save file not well made, missing parts.")
+			return
+		
+		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		var root_node = self.get_tree().root
+		var all_nodes = self.get_all_children(root_node)
+		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
+		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
+		var inventory_owned_items_names = content.get("inventory_owned_items_names")
+		#Carica nell'inventario questi nodi
+		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
+		
+		StateManager.current_minigame = content.get("current_minigame")
+"""
+
+func retrieve_save_file_from_database_and_write_it_to_filesystem():
+	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
+	Supabase.database.query(query)
+	var data = await Supabase.database.selected
+	data = data[0]["save_file"]
+	save_current_state_into_json(data)
 	
-	if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
-		print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
-		return
 	
-	StateManager.current_minigame = content.get("current_minigame")
-	
-	all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-	var root_node = self.get_tree().root
-	var all_nodes = self.get_all_children(root_node)
-	#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
-	var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
-	var inventory_owned_items_names = content.get("inventory_owned_items_names")
-	#Carica nell'inventario questi nodi
-	self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
+
+	#var into_json = json.stringify(data_for_json_file)
+	#json_file.store_string(into_json)
 
 
 	#Adesso fai che rompe i nodi con stesso nome di all_exited_interactions
 	#E fai in modo che prende i nodi degli oggetti e fa l'aggiunta all'inventario in base a quello che ho nel json
 	#Magari fai tipo un confronto della path verso il nodo, e per l'inventario chiama manualmente l'aggiunta all'inv
+
+
+func get_player_id() -> String: 
+		var encrypted_file_with_user_data = FileAccess.open_encrypted_with_pass(user_file, FileAccess.READ, Supabase.config.supabaseKey)
+		var user_data = JSON.parse_string(encrypted_file_with_user_data.get_as_text()) 
+		return user_data.get("player_id")
+	
 
 #Funzione di supporto per ottenere tutti i nodi del gioco
 func get_all_children(node: Node) -> Array:
@@ -149,7 +250,7 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 		if current_item_name in items_names:
 			item.just_insert_in_inventory()
 		
-
+   
 func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 	#Struttura dizionario: {"minigame_1": Minigame1KeyCombination:<Node2D#65380813108> , ...}
 	var curr_minigame = StateManager.current_minigame
@@ -158,6 +259,6 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 		if destroy_requirement <= curr_minigame: #Va rotto
 			for minigame_node in all_minigame_dict[minigame_number]:
 				minigame_node.queue_free()
-				
+
 
 

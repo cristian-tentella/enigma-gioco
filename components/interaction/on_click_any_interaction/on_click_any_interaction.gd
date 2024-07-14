@@ -40,7 +40,6 @@ func _ready():
 func handle_interaction():
 	if is_method_in_direct_parent: #Modo per non usare metodi statici, chiamare funzioni definite nel padre diretto!
 		self.get_parent().call(method_name)
-
 	else:
 		if class_resource.has_method(method_name):
 			class_resource.call(method_name)
@@ -49,3 +48,4 @@ func handle_interaction():
 
 	_remove_if_proc_only_once()
 	_increment_current_minigame_if_told_so()
+

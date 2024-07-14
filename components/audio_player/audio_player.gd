@@ -5,7 +5,6 @@ var audio_stream_player_for_sound_track: AudioStreamPlayer
 var current_audio_stream_player_for_sound_track: AudioStreamPlayer
 
 
-
 func _ready():
 	AudioManager.play_sound_effect.connect(_on_audio_manager_play_sound_effect)
 	AudioManager.play_sound_track.connect(_on_audio_manager_play_sound_track)
@@ -58,6 +57,28 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 	match sound_effect_name:
 		"click":
 			audio_stream_player_for_sound_effects = $SoundEffects/Click
+		"step":
+			var footsteps = [
+				$SoundEffects/Footstep1,
+				$SoundEffects/Footstep2,
+				$SoundEffects/Footstep3,
+				$SoundEffects/Footstep4
+			]
+			audio_stream_player_for_sound_effects = footsteps[randi() % footsteps.size()]
+		"item_pickup":
+			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
+		"menu":
+			audio_stream_player_for_sound_effects = $SoundEffects/Menu
+		"door_open":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorOpen
+		"door_close":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorClose
+		"door_unlock":
+			audio_stream_player_for_sound_effects = $SoundEffects/DoorUnlock
+		"success":
+			audio_stream_player_for_sound_effects = $SoundEffects/Success
+		"failure":
+			audio_stream_player_for_sound_effects = $SoundEffects/Failure
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null

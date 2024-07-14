@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce071icrk0n4j"]
+
+[ext_resource type="Script" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.gd" id="1_r1u6x"]
+
+[node name="OpenPauseMenuButton" type="TextureButton"]
+script = ExtResource("1_r1u6x")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

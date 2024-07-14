@@ -15,3 +15,4 @@ func handle_interaction():
 	
 	_remove_if_proc_only_once()
 	_increment_current_minigame_if_told_so()
+
