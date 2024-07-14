@@ -31,7 +31,6 @@ AudioManager="*res://managers/audio.gd"
 PlatformHelper="*res://managers/platform.gd"
 RoomSwitcher="*res://managers/room_switcher.gd"
 
-
 [dialogue_manager]
 
 general/balloon_path="res://ui/dialogue_balloon/dialogue_balloon.tscn"

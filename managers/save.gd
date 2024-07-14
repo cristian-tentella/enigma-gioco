@@ -69,10 +69,6 @@ func prepare_data_to_be_saved_and_save():
 	}
 	
 	var into_json = json.stringify(data_for_json_file)
-	json_file.store_string(into_json)
-	
-	json_file.close()
-	json_file = null
 	
 	save_current_state_into_json(data_for_json_file)
 	
@@ -114,20 +110,20 @@ func load_game_save_from_json():
 	if FileAccess.file_exists(json_path):
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = json.parse_string(json_file.get_as_text())
-    if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
-      print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
-      return
+		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
+			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
+			return
 
-    StateManager.current_minigame = content.get("current_minigame")
+		StateManager.current_minigame = content.get("current_minigame")
 
-    all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-    var root_node = self.get_tree().root
-    var all_nodes = self.get_all_children(root_node)
-    #Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
-    var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
-    var inventory_owned_items_names = content.get("inventory_owned_items_names")
-    #Carica nell'inventario questi nodi
-    self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
+		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		var root_node = self.get_tree().root
+		var all_nodes = self.get_all_children(root_node)
+		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
+		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
+		var inventory_owned_items_names = content.get("inventory_owned_items_names")
+		#Carica nell'inventario questi nodi
+		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
 
 """SI LASCIA NEL DUBBIO, QUESTA ERA LA FUNZIONE VECCHIA E SOPRA C'E' QUELLA MERGIATA CHE DOVREBBE WORKARE
 =======
@@ -138,7 +134,7 @@ func load_game_save_from_json():
 	if FileAccess.file_exists(json_path):
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = json.parse_string(json_file.get_as_text())
-    ####
+	####
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
 			print_debug("Save file not well made, missing parts.")
 			return

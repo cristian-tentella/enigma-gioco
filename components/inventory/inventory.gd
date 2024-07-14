@@ -11,7 +11,7 @@ func insert(item: PickableItem):
 	slots.append(item)
 	update.emit()
 	item_pickup_dialogue.handle_interaction()
-  AudioManager.play_item_pickup_sound_effect()
+	AudioManager.play_item_pickup_sound_effect()
   
 
 func insert_no_dialogue(item: PickableItem):
