@@ -102,16 +102,18 @@ func is_online() -> bool:
 #Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
-	
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 		#Se questo va a buon fine, il caricamento è al 25%
 	
 	if FileAccess.file_exists(json_path):
+		
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = json.parse_string(json_file.get_as_text())
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
+		await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
@@ -119,10 +121,12 @@ func load_game_save_from_json():
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(35)
+		await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		var root_node = self.get_tree().root
 		var all_nodes = self.get_all_children(root_node)
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(45)
+		await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
 		var inventory_owned_items_names = content.get("inventory_owned_items_names")
@@ -130,24 +134,30 @@ func load_game_save_from_json():
 		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
 		#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
 		UIManager.loading_screen.set_value(90)
+		await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 
 
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(5)
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(10)
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	Supabase.database.query(query)
 	var data = await Supabase.database.selected
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(15)
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	data = data[0]["save_file"]
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(20)
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	save_current_state_into_json(data)
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(25)
+	await get_tree().create_timer(0.001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	
 	
 
@@ -181,6 +191,7 @@ func _get_all_children_recursive(node: Node, children: Array):
 #Funzione che data una lista di nodi e un array di stringhe, elimina i nodi la cui path è presente tra quelle
 #stringhe.
 func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(node_list: Array, name_list: Array):
+	
 	var pickableItemInteraction_nodes = []
 	var all_minigame_nodes = {}
 	var root_node = self.get_tree().root
@@ -249,6 +260,8 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 				self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 				minigame_node.queue_free()
 
+#Questo qua purtroppo si vede solo se il caricamento è lento, credo...
+#Non riesco a inserire un delay artificiale ngl
 func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 	print("Adding ", val)
 	var curr_value = UIManager.loading_screen.progress_bar.value
