@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://df5wqp6kp84ap"]
+
+[ext_resource type="Script" path="res://game/house/rooms/corridoio_floor_1/corridoio_floor_1.gd" id="1_1bnpy"]
+
+[node name="CorridoioFloor1" type="Area2D"]
+script = ExtResource("1_1bnpy")

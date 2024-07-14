@@ -9,7 +9,8 @@ signal exit
 
 func _ready():
 	_instantiate_inventory()
-	
+
+	self.inv.item_pickup_dialogue = $ItemPickupDialogue
 	inv.update.connect(update_slots)
 	update_slots()
 	
@@ -24,4 +25,4 @@ func update_slots():
 		slots_UI[i].update(inv.slots[i])
 
 func _on_exit_pause_menu_button_pressed():
-	self.exit.emit() # Replace with function body.
+	self.exit.emit()
