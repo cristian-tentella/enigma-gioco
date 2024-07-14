@@ -7,7 +7,6 @@ signal exit
 
 #Inizializza con value a 0
 func _ready():
-	return
 	self.progress_bar.value = 0
 
 
@@ -25,5 +24,5 @@ func check_if_full():
 
 func exit_from_loading_screen_evenly():
 	await self.set_value(100) #Prima faccio vedere 100 cosi è figo
-	await get_tree().create_timer(0.2).timeout #Facciamo vedere per bene che si è caricato del tutto
+	await get_tree().create_timer(0.1).timeout #Facciamo vedere per bene che si è caricato del tutto
 	self.exit.emit()

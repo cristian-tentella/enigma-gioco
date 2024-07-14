@@ -22,12 +22,10 @@ func start():
 		UIManager.show_authentication_reset_menu()
 		await AuthenticationManager.exit
 	
-	#Mostra il menu iniziale
-	UIManager.show_start_menu() 
-	
-	#Resta nella schermata di selezione finché non viene cliccato il tasto play
+	#Mostra il menu iniziale 
+	UIManager.show_start_menu()
+
 	await UIManager.start_menu.exit
-	
 	
 	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
