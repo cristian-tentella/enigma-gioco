@@ -1098,13 +1098,13 @@ size = Vector2(31.9353, 31.9581)
 size = Vector2(32, 31.0003)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58wwt"]
-size = Vector2(357.055, 235.416)
+size = Vector2(357.055, 289.454)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ar7l"]
-size = Vector2(332.001, 223.468)
+size = Vector2(332.001, 262.469)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61lg6"]
-size = Vector2(227.553, 199.956)
+size = Vector2(227.553, 256.98)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5t20"]
 texture = ExtResource("8_51wt1")
@@ -3095,8 +3095,9 @@ position = Vector2(0.0649719, -15.5419)
 shape = SubResource("RectangleShape2D_xqr3h")
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/Cameretta"]
+editor_description = "Collisione nascosta per evitare che dia fastidio a livello visivo nell'editor"
 visible = false
-position = Vector2(175.528, 114.208)
+position = Vector2(175.528, 141.227)
 shape = SubResource("RectangleShape2D_58wwt")
 
 [node name="Color" type="ColorRect" parent="Rooms/Cameretta"]
@@ -3110,8 +3111,9 @@ color = Color(1, 1, 1, 0)
 [node name="GenericRoom" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/GenericRoom"]
+editor_description = "Collisione nascosta per evitare che dia fastidio a livello visivo nell'editor"
 visible = false
-position = Vector2(416.125, 424.166)
+position = Vector2(416.125, 443.666)
 shape = SubResource("RectangleShape2D_3ar7l")
 
 [node name="Color" type="ColorRect" parent="Rooms/GenericRoom"]
@@ -3144,9 +3146,10 @@ position = Vector2(-0.00380072, -16)
 shape = SubResource("RectangleShape2D_xqr3h")
 
 [node name="Collision" type="CollisionShape2D" parent="Rooms/Bagno"]
+editor_description = "Collisione nascosta per evitare che dia fastidio a livello visivo nell'editor"
 visible = false
 z_index = 4
-position = Vector2(-16.6535, 415.999)
+position = Vector2(-16.6535, 444.511)
 shape = SubResource("RectangleShape2D_61lg6")
 
 [node name="Color" type="ColorRect" parent="Rooms/Bagno"]
