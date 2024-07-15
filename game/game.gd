@@ -20,7 +20,7 @@ func _ready():
 	StateManager.player = player
 	StateManager.house = house
 
-	SaveManager.load_game_save_from_json()
+	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
 	
 	#StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
 	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager

@@ -37,6 +37,11 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "PLAY"
 
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+text = "RESUME"
+
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
@@ -53,5 +58,6 @@ theme = ExtResource("2_vdu52")
 text = "LOG OUT"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/LogOutButton" to="." method="_on_log_out_button_pressed"]

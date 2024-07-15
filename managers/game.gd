@@ -18,21 +18,20 @@ func start():
 	if AuthenticationManager.is_enabled or not is_running_inside_the_editor:
 		UIManager.show_authentication_menu()
 		await AuthenticationManager.exit
-
+	
 		UIManager.show_authentication_reset_menu()
 		await AuthenticationManager.exit
+	
+	#Mostra il menu iniziale 
+	UIManager.show_start_menu()
 
-	#Mostra il menu iniziale
-	UIManager.show_start_menu() 
-
-	#Resta nella schermata di selezione finché non viene cliccato un tasto
 	await UIManager.start_menu.exit
 	
 	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
 	else:
 		UIManager.mobile_only_ui.hide()
-
+	
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()
