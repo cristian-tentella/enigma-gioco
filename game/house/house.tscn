@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=19 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cxe8scmsur06x" path="res://game/entities/containers/container.tscn" id="7_qq4fd"]
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
-[ext_resource type="SpriteFrames" uid="uid://clvhip3cjj2eg" path="res://game/entities/containers/door_side_right_handle/door_side_right_handle_animations.tres" id="9_gny80"]
-[ext_resource type="SpriteFrames" uid="uid://dmswpryknqh1g" path="res://game/entities/containers/door_side_left_handle/door_side_left_handle_animations.tres" id="11_3pwkj"]
 [ext_resource type="PackedScene" uid="uid://dn7glxbd1b4dw" path="res://game/items/pickable_item.tscn" id="12_q0cm0"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="14_2b3p5"]
 
@@ -3112,28 +3110,6 @@ layer_3/tile_data = PackedInt32Array(786440, 131074, 14, 786441, 196610, 14, 786
 layer_4/name = "black"
 layer_4/z_index = 5
 layer_4/tile_data = PackedInt32Array(786440, 589825, 16, 786441, 655361, 16, 851976, 589825, 16, 851977, 655361, 16, 786442, 589825, 16, 786443, 655361, 16, 851978, 589825, 16, 851979, 655361, 16, 851980, 589825, 16, 851981, 655361, 16, 786444, 589825, 16, 786445, 655361, 16, 2031610, 589825, 15, 2097146, 589825, 16, 2031611, 655361, 15, 2097147, 655361, 16, 2031612, 589825, 15, 2097148, 589825, 16, 2031613, 589825, 15, 2097149, 589825, 16, 2031614, 655361, 15, 2097150, 655361, 16, 2031615, 589825, 15, 2097151, 589825, 16, 1966080, 589825, 15, 2031616, 589825, 16, 1966081, 589825, 15, 2031617, 589825, 16, 1966082, 655361, 15, 2031618, 655361, 16, 1966083, 589825, 15, 2031619, 589825, 16, 1966084, 589825, 15, 2031620, 589825, 16, 1966085, 589825, 15, 2031621, 589825, 16, 1966086, 589825, 15, 2031622, 589825, 16, 1966087, 655361, 15, 2031623, 655361, 16)
-
-[node name="TextEdit" type="TextEdit" parent="Rooms"]
-offset_left = -320.0
-offset_top = 367.0
-offset_right = -251.0
-offset_bottom = 407.0
-text = "Bagno"
-metadata/_edit_use_anchors_ = true
-
-[node name="door" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(376, 318)
-sprite_frames = ExtResource("9_gny80")
-container_name = "door_side_right_handle"
-container_collision_rect_x = -748
-container_collision_rect_y = -721
-
-[node name="door2" parent="." instance=ExtResource("7_qq4fd")]
-position = Vector2(-370, 439)
-sprite_frames = ExtResource("11_3pwkj")
-container_name = "door_side_left_handle"
-container_collision_rect_x = -748
-container_collision_rect_y = -721
 
 [node name="Minigame1KeyCombination" parent="." instance=ExtResource("14_2b3p5")]
 position = Vector2(-29, 73)
