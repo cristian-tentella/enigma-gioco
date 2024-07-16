@@ -20,8 +20,10 @@ var current_minigame = 0 #Cattiva nomenclatura! Questo è un simbolo di "avanzam
 #Inventory variables
 var inventory_UI: InventoryUI
 var inventory: Inventory
-
+var player_phantom_camera: PhantomCamera2D
+var ui_phantom_camera: PhantomCamera2D
 var audio_player: AudioPlayer
+
 
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
