@@ -6,12 +6,16 @@ const ITALIAN = "it_IT"
 
 
 func _ready():
-	StateManager.current_language = TranslationServer.get_locale()
+	StateManager.current_language = get_language()
+
+
+func get_language() -> String:
+	return TranslationServer.get_locale()
 
 
 func _set_language(language: String):
 	TranslationServer.set_locale(language)
-	StateManager.current_language = TranslationServer.get_locale()
+	StateManager.current_language = get_language()
 
 
 func change_language():
