@@ -66,7 +66,7 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
-	var query_result = await add_entry_to_supabase_public_database(auth.id)
+	await add_entry_to_supabase_public_database(auth.id)
 	await Supabase.database.inserted
 	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
