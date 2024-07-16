@@ -28,14 +28,37 @@ func activate_closest_interaction():
 
 
 func _on_area_entered(area: Area2D):
+	
 	if area is Interaction:
-		interactions.append(area)
 		
+		var curr_minigame = StateManager.current_minigame
+		
+		#Controllo se va rotta l'interazione in base alla sua variabile
+		#Il check > iniziale serve perché è impossibile avere requirement più alto di quando va distrutto, quindi sicuramente non va fatto!
+		#Se chiedo minigame 2 per poterci interagire e lo faccio rompere al minigame 1, non va bene...
+		if area.destroy_after_minigame_requirement_number > area.minigame_requirement and area.destroy_after_minigame_requirement_number <= curr_minigame: #Va rotto
+			area.queue_free()
+			area = null
+			return
+		
+		#Se l'interazione ha un requisito di minigame più alto di quello a cui sto, non posso interagirci
+		#Controllo che il requisito di minigame sia rispettato, altrimenti non interagisco
+		if area.minigame_requirement > curr_minigame:
+			return
+		
+		#Se ho un'interazione che si attiva appena ci entro dentro, di tipo OnCollisionAnyInteraction, la eseguo subito e non la enqueuo (terminologie)
+		if area is OnCollisionAnyInteraction: 
+			area.handle_interaction()
+			return
+		
+		interactions.append(area)
+
+
 
 
 func _on_area_exited(area: Area2D):
 	if area is Interaction:
-		interactions.erase(area)
+		interactions.erase(area) 
 
 
 func find_closest_interaction():

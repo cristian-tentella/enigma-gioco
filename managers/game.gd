@@ -17,16 +17,31 @@ func start():
 	StateManager.house.hide()
 	StateManager.player_phantom_camera.set_priority(0)
 	StateManager.ui_phantom_camera.set_priority(10)
-	#UIManager.show_authentication_menu()
-	#await AuthenticationManager.exit
-  
-	#Mostra il menu iniziale
-	UIManager.show_start_menu() 
+
+	AudioManager.play_start_menu_sound_track()
+
+	var is_running_inside_the_editor = OS.has_feature("editor")
+
+	if AuthenticationManager.is_enabled or not is_running_inside_the_editor:
+		UIManager.show_authentication_menu()
+		await AuthenticationManager.exit
 	
-	#Resta nella schermata di selezione finché non viene cliccato un tasto
-	await UIManager.start_menu.exit 
+		UIManager.show_authentication_reset_menu()
+		await AuthenticationManager.exit
+	
+	#Mostra il menu iniziale 
+	UIManager.show_start_menu()
+
+	await UIManager.start_menu.exit
+  
 	StateManager.player_phantom_camera.set_priority(10)
 	StateManager.ui_phantom_camera.set_priority(0)
+  
+	if PlatformHelper.is_mobile():
+		UIManager.mobile_only_ui.show()
+	else:
+		UIManager.mobile_only_ui.hide()
+
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()

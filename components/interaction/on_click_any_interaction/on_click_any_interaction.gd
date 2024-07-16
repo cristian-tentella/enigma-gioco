@@ -13,7 +13,7 @@ TUTORIAL COME USARE:
 	] Mettere on_collision_any_interaction.tscn dentro house
 	] Mettere figlio un CollisionShape2D che rappresenta il punto dove, se il player entra, l'interazione parte
 	] Crea uno script con la funzione che vuoi associare.
-	  Lo script mettilo in un posto sensato, se hai dubbi, mettilo dentro res://components/interaction/on_collision_any_interaction/scripts_dump/
+	  Lo script mettilo in un posto sensato, se hai dubbi, mettilo dentro res://components/interaction/on_click_any_interaction/scripts_dump/
 	  Una volta fatto, copia il path verso lo script e mettilo dentro la variabile esportata script_path
 	  La funzione che chiami deve essere definita come static, e il suo nome deve essere messo nella variabile esportata
 	
@@ -23,19 +23,29 @@ TUTORIAL COME USARE:
 	  usa magari una lista.
 """
 var class_resource
+@export var is_method_in_direct_parent: bool = false
 
 func _ready():
+	if is_method_in_direct_parent:
+		class_resource = null
+		return
+		
 	class_resource = ResourceLoader.load(script_path)
 	
 	if class_resource == null:
-		print_debug("\n\tERROR: OnCollisionAnyInteraction node named ["+get_name()+"] is using a wrong script_path! Interacting WILL crash everything\n")
+		print_debug("\n\tERROR: OnClickAnyInteraction node named ["+get_name()+"] is using a wrong script_path! Interacting WILL crash everything\n")
 		return
 
 
 func handle_interaction():
-	if class_resource.has_method(method_name):
-		class_resource.call(method_name)
+	if is_method_in_direct_parent: #Modo per non usare metodi statici, chiamare funzioni definite nel padre diretto!
+		self.get_parent().call(method_name)
 	else:
-		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
+		if class_resource.has_method(method_name):
+			class_resource.call(method_name)
+		else:
+			print_debug("\n\tERROR: OnClickAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 
+	_remove_if_proc_only_once()
+	_increment_current_minigame_if_told_so()
 

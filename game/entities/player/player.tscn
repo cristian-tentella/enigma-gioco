@@ -314,10 +314,16 @@ sprite_frames = SubResource("SpriteFrames_f1it1")
 animation = &"idle_down"
 autoplay = "idle_down"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="real_body" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_krkt7")
 
 [node name="InteractionDetector" parent="." instance=ExtResource("3_paehh")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
 shape = SubResource("CircleShape2D_yd28a")
+
+[node name="StepSoundEffectTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="StepSoundEffectTimer" to="." method="_on_step_sound_effect_timer_timeout"]
+

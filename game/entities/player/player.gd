@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 #Lo sprite del giocatore
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var step_sound_effect_timer: Timer = $StepSoundEffectTimer
+
 #Ha sottonodo CollisionShape2D che definisce l'area di interazione del giocatore. interaction/interaction_detector/interaction_detector.gd per info extra
 #Al momento è un giga cerchio stabile intorno al giocatore
 @onready var interaction_detector = $InteractionDetector 
@@ -42,14 +44,17 @@ func _ready():
 func _physics_process(delta: float):
 	update_input_vector()
 	update_animated_sprite()
+	update_step_sound_effect_timer()
 	update_interaction_detector_position()
 	update_velocity(delta)
 	move_and_slide()
 
 
 func update_velocity(delta: float):
-	if self.input == Vector2.ZERO:
+	if is_idle():
 		self.velocity = self.velocity.lerp(Vector2.ZERO, self.FRICTION * delta)
+
+		#	AudioManager.play_step_sound_effect()
 	else:
 		self.velocity = self.velocity.lerp(
 			self.MAX_SPEED * self.input.normalized(),
@@ -78,9 +83,28 @@ func update_animated_sprite():
 	self.animated_sprite.play(next_animation_name)
 
 
+func update_step_sound_effect_timer():
+	if is_idle():
+		if not self.step_sound_effect_timer.is_stopped():
+			self.step_sound_effect_timer.stop()
+	else:
+		if self.step_sound_effect_timer.is_stopped():
+			self.step_sound_effect_timer.start()
+			# Quando il giocatore inizia a camminare il primo suono di passi viene
+			# riprodotto al primo timeout di StepSoundEffectTimer (dopo 0.5 secondi).
+			# Ciò non è ideale in quanto rallenta eccessivamente il feedback sonoro
+			# inviato al giocatore.
+			#
+			# Questa chiamata a play_step_sound_effect permette di far partire
+			# il primo suono di passi nel momento esatto in cui il giocatore
+			# inizia a muoversi.
+			AudioManager.play_step_sound_effect()
+
+
 func update_interaction_detector_position():
-	if(input == Vector2.ZERO):
+	if is_idle():
 		return
+
 	const offset_multiplier = 24
 	self.interaction_detector.position = input * offset_multiplier
 
@@ -99,3 +123,11 @@ func get_vector_from_movement_action(movement_action: String):
 
 func latest_movement_action() -> String:
 	return self.movement_actions_queue.back()
+
+
+func is_idle() -> bool:
+	return self.input == Vector2.ZERO
+
+
+func _on_step_sound_effect_timer_timeout():
+	AudioManager.play_step_sound_effect()

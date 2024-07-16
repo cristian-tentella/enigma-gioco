@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvwhdq3el2vtu"]
+[gd_scene load_steps=3 format=3 uid="uid://cvwhdq3el2vtu"]
 
 [ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_wuoss"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_mci5b"]
 
 [node name="PauseMenu" type="Control"]
 z_index = 100
@@ -11,6 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wuoss")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.117647, 0.113725, 0.901961)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -23,18 +33,21 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="ExitPauseMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="ExitPauseMenuButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
-text = "Exit pause menu"
+theme = ExtResource("2_mci5b")
+text = "Return to game"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
+theme = ExtResource("2_mci5b")
 text = "Settings"
 script = ExtResource("1_wuoss")
 
-[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
-text = "Main Menu"
+theme = ExtResource("2_mci5b")
+text = "Quit to main menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="CenterContainer/VBoxContainer/SettingsButton" method="_on_settings_button_pressed"]

@@ -11,6 +11,7 @@ extends Node
 @onready var inventory_UI = UIManager.inventory_menu
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var ui_phantom_camera = %PhantomCamera2D
+@onready var audio_player = $AudioPlayer
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
@@ -20,10 +21,16 @@ func _ready():
 	#Associare allo StateManager i riferimenti agli oggetti principali che creiamo, importantissimo per il comportamento generale!
 	StateManager.player = player
 	StateManager.house = house
-	StateManager.inventory_UI = inventory_UI
-	StateManager.inventory = inventory_UI.inv
 	StateManager.player_phantom_camera = player_phantom_camera
 	StateManager.ui_phantom_camera = ui_phantom_camera
+
+	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
+
 	
+	#StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
+	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager
+
+	StateManager.audio_player = audio_player
+
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjes2bhwnoy6a"]
+[gd_scene load_steps=3 format=3 uid="uid://cjes2bhwnoy6a"]
 
 [ext_resource type="Script" path="res://ui/authentication_menu/authentication_menu.gd" id="1_e57bp"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_qckts"]
 
 [node name="AuthenticationMenu" type="Control"]
 layout_mode = 3
@@ -28,29 +29,40 @@ offset_bottom = 174.0
 placeholder_text = "password"
 secret = true
 
-[node name="SignIn" type="Button" parent="."]
+[node name="SignIn" type="Button" parent="." groups=["Buttons"]]
 layout_mode = 0
 offset_left = 161.0
 offset_top = 214.0
 offset_right = 269.0
 offset_bottom = 239.0
+theme = ExtResource("2_qckts")
 text = "sign in"
 
-[node name="SignUp" type="Button" parent="."]
+[node name="SignUp" type="Button" parent="." groups=["Buttons"]]
 layout_mode = 0
 offset_left = 360.0
 offset_top = 214.0
 offset_right = 468.0
 offset_bottom = 239.0
-text = "sign out"
+theme = ExtResource("2_qckts")
+text = "sign up"
 
 [node name="ReportMessage" type="Label" parent="."]
 layout_mode = 0
 offset_left = 161.0
-offset_top = 276.0
-offset_right = 468.0
-offset_bottom = 299.0
+offset_top = 63.0
+offset_right = 467.0
+offset_bottom = 86.0
 horizontal_alignment = 1
+
+[node name="ResetPassword" type="Button" parent="." groups=["Buttons"]]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 276.0
+offset_right = 385.0
+offset_bottom = 307.0
+text = "Reset password"
 
 [connection signal="pressed" from="SignIn" to="." method="_on_sign_in_button_pressed"]
 [connection signal="pressed" from="SignUp" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="ResetPassword" to="." method="_on_reset_password_button_pressed"]

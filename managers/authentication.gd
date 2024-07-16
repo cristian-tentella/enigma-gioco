@@ -3,18 +3,33 @@ extends Node
 signal exit
 signal message(message: String)
 
+
+# Controlla se i menu di autenticazione sono mostrati all'avvio del gioco.
+# Il valore default è false per facilitare il testing delle funzionalità di
+# gioco.
+#
+# Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
+# versione esportata, cioè quando NON si sta eseguendo via editor.
+const is_enabled = false
+
 var sleep_after_action = 0.7
-var access_token_path = "user://user.auth"
+const access_token_path = "user://user.auth"
 
 @onready var authentication_menu: AuthenticationMenu = preload(
 	"res://ui/authentication_menu/authentication_menu.tscn"
 ).instantiate()
 
 func _ready():
+	#Se non lo voglio, via di qui
+	if not is_enabled:
+		self.queue_free()
+		return
 	Supabase.auth.signed_up.connect(on_sign_up_succeeded)
 	Supabase.auth.signed_in.connect(on_sign_in_succeeded)
 	Supabase.auth.error.connect(on_sign_error)
 	Supabase.auth.signed_out.connect(on_sign_out)
+	Supabase.auth.reset_email_sent.connect(on_reset_succeded)
+	Supabase.database.error.connect(on_database_query_error)
 	check_if_access_token_exists()
 
 	
@@ -23,7 +38,21 @@ func sign_out():
 
 
 func sign_up(email: String, password: String):
-	Supabase.auth.sign_up(email, password)
+		Supabase.auth.sign_up(email, password)
+			
+
+
+func add_entry_to_supabase_public_database(id: String):
+	var query = SupabaseQuery.new().from("Users").insert([{"id" : id}])
+	Supabase.database.query(query)
+
+
+func recover_password(email : String):
+	Supabase.auth.reset_password_for_email(email)
+
+
+func on_database_query_error(body):
+	await display_report_message(str(body))	
 	
 	
 func sign_in(email: String, password: String):
@@ -37,9 +66,16 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
+	var query_result = await add_entry_to_supabase_public_database(auth.id)
+	await Supabase.database.inserted
 	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))
 	self.exit.emit()
+	
+	
+func on_reset_succeded():
+	await display_report_message("An email has been sent to the speciefied email")
+	await display_report_message("Go back and try to log in again")
 	
 	
 func on_sign_out():
@@ -60,8 +96,13 @@ func save_auth_token_to_encrypted_file(auth: SupabaseUser):
 	if encrypted_file.get_error() != OK:
 		await display_report_message("An error occured while trying to securely store the access token")
 	else:
-		encrypted_file.store_line(JSON.stringify(auth.refresh_token))
-		encrypted_file.store_line(JSON.stringify(auth.expires_in))
+		var user_data: Dictionary = {
+			"refresh_token" = auth.refresh_token,
+			"expires_in" = auth.expires_in,
+			"player_id" = auth.id
+		}
+		print(user_data)
+		encrypted_file.store_line(JSON.stringify(user_data))
 		encrypted_file.close()
 
 
@@ -81,9 +122,8 @@ func retrieve_access_token_from_file():
 		
 #
 func construct_body_request(encrypted_file_with_access_token: FileAccess):
-		var refresh_token: String = encrypted_file_with_access_token.get_line().strip_edges()
-		if refresh_token.begins_with('"') and refresh_token.ends_with('"'):
-			refresh_token = refresh_token.substr(1, refresh_token.length() - 2)
+		var user_data = JSON.parse_string(encrypted_file_with_access_token.get_as_text()) 
+		var refresh_token = user_data["refresh_token"]
 		var url = Supabase.config.supabaseUrl + SupabaseAuth._refresh_token_endpoint
 		var headers = Supabase.auth._header
 		var body = {

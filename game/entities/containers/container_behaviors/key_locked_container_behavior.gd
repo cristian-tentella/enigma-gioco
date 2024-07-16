@@ -14,5 +14,5 @@ class_name KeyLockedContainerBehavior
 """
 
 #Non avendo l'inventario, per ora returna true sempre, cioè appena ci clicco la sblocco e basta
-#func try_to_unlock(key_number) -> bool:
-#	return true
+func try_to_unlock(key_number) -> bool:
+	return true

@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://crbudpuk5xyqu"]
+
+[ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
+[ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
+[ext_resource type="AudioStream" uid="uid://b7fadkqwv7pu7" path="res://audio/sound_effects/footstep1.ogg" id="4_0wwlk"]
+[ext_resource type="AudioStream" uid="uid://cjn36xwmy8won" path="res://audio/sound_effects/item_pickup.ogg" id="4_iwe6a"]
+[ext_resource type="AudioStream" uid="uid://cy2b26ujkt8q1" path="res://audio/sound_effects/footstep2.ogg" id="5_kug4d"]
+[ext_resource type="AudioStream" uid="uid://c16hput8wsaf7" path="res://audio/sound_effects/footstep3.ogg" id="6_gpbjn"]
+[ext_resource type="AudioStream" uid="uid://csbil23yr2jbq" path="res://audio/sound_effects/footstep4.ogg" id="7_hmvts"]
+[ext_resource type="AudioStream" uid="uid://bykfp5iwshi6j" path="res://audio/sound_effects/menu.ogg" id="8_u1b0f"]
+[ext_resource type="AudioStream" uid="uid://blkgsnnd2h8g0" path="res://audio/sound_effects/door_open.ogg" id="9_qg0wr"]
+[ext_resource type="AudioStream" uid="uid://c3c6fnk0wb5j3" path="res://audio/sound_effects/door_close.ogg" id="10_lqy5h"]
+[ext_resource type="AudioStream" uid="uid://b23ah1sk8vqkn" path="res://audio/sound_effects/door_unlock.ogg" id="11_7p3ra"]
+[ext_resource type="AudioStream" uid="uid://pgfa4grbnhrf" path="res://audio/sound_effects/success.ogg" id="12_v17nx"]
+[ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
+[ext_resource type="AudioStream" uid="uid://bs8338c5lxkqb" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
+
+[node name="AudioPlayer" type="Node"]
+script = ExtResource("1_oq8ox")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="Click" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("1_rlg06")
+
+[node name="ItemPickup" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("4_iwe6a")
+volume_db = -10.0
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("4_0wwlk")
+volume_db = -9.0
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("5_kug4d")
+volume_db = -9.0
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("6_gpbjn")
+volume_db = -9.0
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("7_hmvts")
+volume_db = -9.0
+
+[node name="Menu" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("8_u1b0f")
+volume_db = -6.0
+
+[node name="DoorOpen" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("9_qg0wr")
+
+[node name="DoorClose" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("10_lqy5h")
+
+[node name="DoorUnlock" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("11_7p3ra")
+
+[node name="Success" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("12_v17nx")
+volume_db = -6.0
+
+[node name="Failure" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("13_a80vk")
+volume_db = -6.0
+
+[node name="SoundTracks" type="Node" parent="."]
+
+[node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
+stream = ExtResource("15_yyu6b")
+volume_db = -6.0

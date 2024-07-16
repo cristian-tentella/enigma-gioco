@@ -22,20 +22,33 @@ TUTORIAL COME USARE:
 	] Dentro this_is_the_interaction, fai quello che vuoi. La variabile "variable" può essere di qualsiasi tipo, se hai bisogno di tante info per l'interazione,
 	  usa magari una lista.
 """
+
+#TODO: Se necessario, implementare che una volta che si procca una certa interazione, la stessa area può proccare altro
+#Magari un contatore che dice a che interazione sei, e nella funzione statica associata tipo:
+# if interaction_counter == 1:
+#	 interazione_1()
+# if interaction_counter == 2:
+#	interazione_2()
+# if interaction_counter == 3:
+#	self.queue_free() -> questo controllo meglio farlo dentro handle_interaction() qui dentro, magari con una var esportata!
+
 var class_resource
 
 func _ready():
 	class_resource = ResourceLoader.load(script_path)
 	
-	if class_resource == null:
+	if class_resource == null: #Print per capire cosa si ha sbagliato
 		print_debug("\n\tERROR: OnCollisionAnyInteraction node named ["+get_name()+"] is using a wrong script_path!\n")
 		return
 
-
+#Quando entro in collisione, attivo questa funzione
 func handle_interaction():
-	if class_resource.has_method(method_name):
-		class_resource.call(method_name)
-	else:
+	if class_resource.has_method(method_name): #Controllo se il metodo è giusto
+		class_resource.call(method_name) #Chiamo il metodo che mi serve
+		
+	else: #Print per capire cosa si ha sbagliato
 		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
-
+	
+	_remove_if_proc_only_once()
+	_increment_current_minigame_if_told_so()
 
