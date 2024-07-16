@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=15 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
-[ext_resource type="AudioStream" uid="uid://llus6ab1mltb" path="res://audio/sound_tracks/lullaby.ogg" id="3_mc1xh"]
 [ext_resource type="AudioStream" uid="uid://b7fadkqwv7pu7" path="res://audio/sound_effects/footstep1.ogg" id="4_0wwlk"]
 [ext_resource type="AudioStream" uid="uid://cjn36xwmy8won" path="res://audio/sound_effects/item_pickup.ogg" id="4_iwe6a"]
 [ext_resource type="AudioStream" uid="uid://cy2b26ujkt8q1" path="res://audio/sound_effects/footstep2.ogg" id="5_kug4d"]
@@ -66,9 +65,6 @@ stream = ExtResource("13_a80vk")
 volume_db = -6.0
 
 [node name="SoundTracks" type="Node" parent="."]
-
-[node name="Lullaby" type="AudioStreamPlayer" parent="SoundTracks"]
-stream = ExtResource("3_mc1xh")
 
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
