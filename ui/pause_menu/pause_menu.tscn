@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvwhdq3el2vtu"]
+[gd_scene load_steps=5 format=3 uid="uid://cvwhdq3el2vtu"]
 
 [ext_resource type="Script" path="res://ui/pause_menu/pause_menu.gd" id="1_wuoss"]
 [ext_resource type="PackedScene" uid="uid://bipo5gfiuf2jl" path="res://components/language_switcher/language_switcher.tscn" id="2_5bxsv"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_mci5b"]
+[ext_resource type="PackedScene" uid="uid://clx44ncalqpaq" path="res://components/mute_button/mute_button.tscn" id="3_ybiym"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -23,6 +24,9 @@ grow_vertical = 2
 color = Color(0.12549, 0.117647, 0.113725, 0.901961)
 
 [node name="LanguageSwitcher" parent="." instance=ExtResource("2_5bxsv")]
+layout_mode = 1
+
+[node name="MuteButton" parent="." instance=ExtResource("3_ybiym")]
 layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
