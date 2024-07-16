@@ -24,6 +24,9 @@ var player_phantom_camera: PhantomCamera2D
 var ui_phantom_camera: PhantomCamera2D
 var audio_player: AudioPlayer
 
+var current_language: String
+var muted: bool
+
 
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
