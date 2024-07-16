@@ -18,6 +18,10 @@ func _set_language(language: String):
 	StateManager.current_language = get_language()
 
 
+func load_language_from_state_manager():
+	TranslationServer.set_locale(StateManager.current_language)
+
+
 func change_language():
 	_set_language(_get_next_language())
 
