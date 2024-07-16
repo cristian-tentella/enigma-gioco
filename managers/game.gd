@@ -7,11 +7,16 @@ In base al tasto selezionato, mostra il relativo comportamento.
 """
 extends Node
 
+
+
+
 #Chiamata da game/game.gd, a sua volta invocato in game.tscn con _ready()
 func start():
 	#Nascondi tutti i componenti di game.tscn tranne la UI; Inizialmente ci deve essere solo la UI coi tasti di scelta
 	StateManager.player.hide()
 	StateManager.house.hide()
+	StateManager.player_phantom_camera.set_priority(0)
+	StateManager.ui_phantom_camera.set_priority(10)
 
 	AudioManager.play_start_menu_sound_track()
 
@@ -28,16 +33,18 @@ func start():
 	UIManager.show_start_menu()
 
 	await UIManager.start_menu.exit
-	
+  
+	StateManager.player_phantom_camera.set_priority(10)
+	StateManager.ui_phantom_camera.set_priority(0)
+  
 	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
 	else:
 		UIManager.mobile_only_ui.hide()
-	
+
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()
-
 
 #Se clicca il tasto di EXIT, distruggi tutto e addio.
 func exit():
