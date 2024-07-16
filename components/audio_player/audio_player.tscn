@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=16 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b23ah1sk8vqkn" path="res://audio/sound_effects/door_unlock.ogg" id="11_7p3ra"]
 [ext_resource type="AudioStream" uid="uid://pgfa4grbnhrf" path="res://audio/sound_effects/success.ogg" id="12_v17nx"]
 [ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
+[ext_resource type="AudioStream" uid="uid://bs8338c5lxkqb" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -68,3 +69,6 @@ volume_db = -6.0
 
 [node name="Lullaby" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("3_mc1xh")
+
+[node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
+stream = ExtResource("15_yyu6b")

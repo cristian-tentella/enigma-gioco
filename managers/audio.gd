@@ -50,3 +50,6 @@ func play_failure_sound_effect():
 
 func play_lullaby_sound_track():
 	self.play_sound_track.emit("Lullaby")
+
+func play_start_menu_sound_track():
+	self.play_sound_track.emit("StartMenu")
