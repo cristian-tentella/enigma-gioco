@@ -6,7 +6,7 @@ const ITALIAN = "it_IT"
 
 
 func _ready():
-	StateManager.current_language = get_language()
+	save_language_to_state_manager()
 
 
 func get_language() -> String:
@@ -15,6 +15,10 @@ func get_language() -> String:
 
 func _set_language(language: String):
 	TranslationServer.set_locale(language)
+	save_language_to_state_manager()
+
+
+func save_language_to_state_manager():
 	StateManager.current_language = get_language()
 
 
