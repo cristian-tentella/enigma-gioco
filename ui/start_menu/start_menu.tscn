@@ -42,11 +42,6 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "RESUME"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
-layout_mode = 2
-theme = ExtResource("2_vdu52")
-text = "SETTINGS"
-
 [node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
