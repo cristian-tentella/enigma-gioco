@@ -211,12 +211,14 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		
 		#è un if molto lungo
 		if node is Interaction:
+			var path_to_node
+			
 			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 			if node is ContainerInteraction:
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
 				if is_it_locked:
-					var path_to_node = root_node.get_path_to(container) as String
+					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
 					
@@ -230,7 +232,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				pickableItemInteraction_nodes.append(node)
 				continue
 			
-			var path_to_node = root_node.get_path_to(node) as String
+			path_to_node = root_node.get_path_to(node) as String
 			if(path_to_node in name_list):
 				node.queue_free()
 				node = null
