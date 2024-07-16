@@ -88,12 +88,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 
 func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) -> AudioStreamPlayer:
 	match sound_track_name:
-		"Lullaby":
-			audio_stream_player_for_sound_track = $SoundTracks/Lullaby
-		"Dragonball":
-			audio_stream_player_for_sound_track = $SoundTracks/Dragonball
-		"Arale":
-			audio_stream_player_for_sound_track = $SoundTracks/Arale
+		"StartMenu":
+			audio_stream_player_for_sound_track = $SoundTracks/StartMenu
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_track_name]))
 			return null
