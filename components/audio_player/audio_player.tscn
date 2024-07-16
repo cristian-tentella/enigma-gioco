@@ -68,3 +68,4 @@ volume_db = -6.0
 
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
+volume_db = -6.0
