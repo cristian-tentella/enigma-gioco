@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6bx6cdanhqcn"
-path="res://.godot/imported/italy_flag.png-149ffa916141bf922a0da08a72b7c7d8.ctex"
+path="res://.godot/imported/italy_flag.png-edb3ede521f69870d139845ec8017828.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/italy_flag.png"
-dest_files=["res://.godot/imported/italy_flag.png-149ffa916141bf922a0da08a72b7c7d8.ctex"]
+source_file="res://components/language_switcher/italy_flag.png"
+dest_files=["res://.godot/imported/italy_flag.png-edb3ede521f69870d139845ec8017828.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmxgpx05dw2x6"
-path="res://.godot/imported/italy_flag_to_uk_flag.png-d87401fd312cbefeab500d480189d4a3.ctex"
+uid="uid://ywmhqshn6rq8"
+path="res://.godot/imported/uk_flag_to_italy_flag_pressed.png-62169f3a6d99429f83186e42774750ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/italy_flag_to_uk_flag.png"
-dest_files=["res://.godot/imported/italy_flag_to_uk_flag.png-d87401fd312cbefeab500d480189d4a3.ctex"]
+source_file="res://components/language_switcher/uk_flag_to_italy_flag_pressed.png"
+dest_files=["res://.godot/imported/uk_flag_to_italy_flag_pressed.png-62169f3a6d99429f83186e42774750ae.ctex"]
 
 [params]
 

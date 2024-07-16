@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bulj4q56x81lj"
-path="res://.godot/imported/uk_flag_to_italy_flag.png-bec37d09ce22e861cec96e2ccf1ea7ce.ctex"
+path="res://.godot/imported/uk_flag_to_italy_flag.png-cbaf1445d144137b6093650c10e50c1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/pause_menu/uk_flag_to_italy_flag.png"
-dest_files=["res://.godot/imported/uk_flag_to_italy_flag.png-bec37d09ce22e861cec96e2ccf1ea7ce.ctex"]
+source_file="res://components/language_switcher/uk_flag_to_italy_flag.png"
+dest_files=["res://.godot/imported/uk_flag_to_italy_flag.png-cbaf1445d144137b6093650c10e50c1e.ctex"]
 
 [params]
 
