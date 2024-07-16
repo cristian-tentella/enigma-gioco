@@ -121,7 +121,12 @@ func load_game_save_from_json():
 			return
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-		StateManager.current_language = content.get("current_language")
+
+		if content.has("current_language"):
+			StateManager.current_language = content.get("current_language")
+		else:
+			StateManager.current_language = LanguageManager.get_language()
+
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(35)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
