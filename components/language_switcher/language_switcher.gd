@@ -10,9 +10,9 @@ func _ready():
 
 func _update_flag():
 	if StateManager.current_language == LanguageManager.ENGLISH:
-		_show_italian_flag()
-	else:
 		_show_united_kingdom_flag()
+	else:
+		_show_italian_flag()
 
 
 func _on_flag_pressed():
