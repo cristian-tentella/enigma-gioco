@@ -34,6 +34,7 @@ var is_connected_to_internet: bool
 var user_file = "user://user.auth"
 var player_id
 
+
 func _ready():
 	if not AuthenticationManager.is_enabled:
 		return
@@ -51,15 +52,17 @@ func on_database_query_updated(query_result):
 
 func prepare_data_to_be_saved_and_save():
 	#player_id = get_player_id() #TODO: Questo mi sembra inutile?
-	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
-	var current_minigame = StateManager.current_minigame as int
-	var current_language = StateManager.current_language as String
+	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
+	var current_minigame: int = StateManager.current_minigame 
+	var current_language: String = StateManager.current_language 
+	var mute_button_state: bool = StateManager.muted
 	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
 		"current_minigame": current_minigame,
-		"current_language": current_language
+		"current_language": current_language,
+		"mute_button_state": mute_button_state
 	}
 
 	var into_json = json.stringify(data_for_json_file)
@@ -115,19 +118,22 @@ func load_game_save_from_json():
 		var content = json.parse_string(json_file.get_as_text())
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
+		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
+			
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-
-		if content.has("current_language"):
-			StateManager.current_language = content.get("current_language")
-			LanguageManager.load_language_from_state_manager()
-			UIManager.update_language_flag()
-		else:
-			StateManager.current_language = LanguageManager.get_language()
+		StateManager.current_language = content.get("current_language")
+		LanguageManager.load_language_from_state_manager()
+		UIManager.update_language_flag()
+		StateManager.muted = content.get("mute_button_state")	
+		UIManager.pause_menu.get_node("MuteButton")._load_muted_from_state_manager()
+		UIManager.update_muted_button()
+		
+		#else:
+			#StateManager.current_language = LanguageManager.get_language()
 
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(35)

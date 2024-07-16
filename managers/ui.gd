@@ -95,8 +95,6 @@ func _ready():
 		ui.add_child(ui_element)
 		
 	
-	
-
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
@@ -196,4 +194,7 @@ func show_combination_key_minigame():
 func update_language_flag():
 	var language_switcher = pause_menu.get_node("LanguageSwitcher")
 	language_switcher._update_flag()
-	
+
+func update_muted_button():
+	var muted_button = pause_menu.get_node("MuteButton")
+	muted_button._update_icon()
