@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://clx44ncalqpaq"]
+
+[ext_resource type="Script" path="res://components/mute_button/mute_button.gd" id="1_xq0h7"]
+[ext_resource type="Texture2D" uid="uid://b3qivec2c64jl" path="res://components/mute_button/muted.png" id="1_ydu7r"]
+[ext_resource type="Texture2D" uid="uid://bisttvli6fu2y" path="res://components/mute_button/unmuted.png" id="2_m1p2w"]
+
+[node name="MuteButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xq0h7")
+
+[node name="Muted" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 568.0
+offset_top = 330.0
+offset_right = 586.0
+offset_bottom = 348.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("1_ydu7r")
+
+[node name="Unmuted" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 568.0
+offset_top = 330.0
+offset_right = 586.0
+offset_bottom = 348.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("2_m1p2w")
+
+[connection signal="pressed" from="Muted" to="." method="_on_pressed"]
+[connection signal="pressed" from="Unmuted" to="." method="_on_pressed"]
