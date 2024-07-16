@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwxmqs7dpwp5y"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
-[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_30054"]
 [ext_resource type="PackedScene" uid="uid://ddkavijkl5ek0" path="res://ui/inventory/inventory_ui_slot.tscn" id="2_fky7l"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="4_6oj7c"]
 
 [node name="Control" type="Control"]
 z_index = 100
@@ -14,13 +14,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cw135")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.117647, 0.113725, 0.901961)
+
 [node name="SlotsGridBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 216.0
 offset_top = 76.0
 offset_right = 424.0
 offset_bottom = 284.0
-texture = ExtResource("2_30054")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -95,14 +103,13 @@ offset_left = 400.0
 offset_top = 48.0
 offset_right = 424.0
 offset_bottom = 72.0
-texture = ExtResource("2_30054")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
+[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground" groups=["Buttons"]]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -110,5 +117,10 @@ scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
+
+[node name="ItemPickupDialogue" parent="." instance=ExtResource("4_6oj7c")]
+position = Vector2(209, 100)
+dialogue_id = "pickup_item_generic"
+just_proc_once = false
 
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

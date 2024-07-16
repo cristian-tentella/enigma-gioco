@@ -13,6 +13,7 @@ config_version=5
 config/name="enigma-gioco"
 run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+run/max_fps=60
 
 [autoload]
 
@@ -25,7 +26,12 @@ GameManager="*res://managers/game.gd"
 InventorySingleton="*res://components/inventory/inventory.gd"
 Supabase="*res://addons/supabase/Supabase/supabase.gd"
 AuthenticationManager="*res://managers/authentication.gd"
-MinigameManager="*res://managers/minigames.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+SaveManager="*res://managers/save.gd"
+MinigameManager="*res://managers/minigame.gd"
+AudioManager="*res://managers/audio.gd"
+PlatformHelper="*res://managers/platform.gd"
+RoomSwitcher="*res://managers/room_switcher.gd"
 MemeoryManager="*res://components/memeory/memeory.gd"
 
 [dialogue_manager]
@@ -43,7 +49,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/supabase/plugin.cfg")
 
 [importer_defaults]
 
@@ -103,6 +109,10 @@ mem={
 
 locale/translations=PackedStringArray("res://localization/dialogue/dialogues.en.translation", "res://localization/dialogue/dialogues.it.translation")
 locale/translations_pot_files=PackedStringArray("res://localization/dialogue/test.dialogue")
+
+[phantom_camera]
+
+tips/show_jitter_tips=false
 
 [rendering]
 

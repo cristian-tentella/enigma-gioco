@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dltqyn54206f0"]
+
+[ext_resource type="Script" path="res://game/house/rooms/cameretta/cameretta.gd" id="1_tij0k"]
+
+[node name="Cameretta" type="Area2D"]
+script = ExtResource("1_tij0k")
