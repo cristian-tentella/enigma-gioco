@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqj6624ni3cyj"]
+[gd_scene load_steps=5 format=3 uid="uid://dqj6624ni3cyj"]
 
 [ext_resource type="Script" path="res://ui/start_menu/start_menu.gd" id="1_6640u"]
+[ext_resource type="PackedScene" uid="uid://bipo5gfiuf2jl" path="res://components/language_switcher/language_switcher.tscn" id="2_o24pm"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_vdu52"]
+[ext_resource type="PackedScene" uid="uid://clx44ncalqpaq" path="res://components/mute_button/mute_button.tscn" id="3_8jmae"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -21,38 +23,40 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.831373, 0.815686, 0.811765, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="LanguageSwitcher" parent="." instance=ExtResource("2_o24pm")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MuteButton" parent="." instance=ExtResource("3_8jmae")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 287.0
+offset_top = 112.0
+offset_right = 352.0
+offset_bottom = 248.0
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+[node name="PlayButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "Play"
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+[node name="ResumeButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "Resume"
 
-[node name="LogOutButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+[node name="LogOutButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "Log out"
 
-[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+[node name="ExitButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "Exit"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/LogOutButton" to="." method="_on_log_out_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LogOutButton" to="." method="_on_log_out_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

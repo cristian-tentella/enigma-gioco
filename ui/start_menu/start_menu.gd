@@ -1,9 +1,9 @@
 class_name StartMenu
 extends Control
 
-@onready var play_button = $CenterContainer/VBoxContainer/PlayButton
-@onready var resume_button = $CenterContainer/VBoxContainer/ResumeButton
-@onready var logout_button = $CenterContainer/VBoxContainer/LogOutButton
+@onready var play_button = $VBoxContainer/PlayButton
+@onready var resume_button = $VBoxContainer/ResumeButton
+@onready var logout_button = $VBoxContainer/LogOutButton
 signal exit
 
 func _ready():
