@@ -53,13 +53,15 @@ func prepare_data_to_be_saved_and_save():
 	#player_id = get_player_id() #TODO: Questo mi sembra inutile?
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
 	var current_minigame = StateManager.current_minigame as int
-
+	var current_language = StateManager.current_language as String
+	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
-		"current_minigame": current_minigame
+		"current_minigame": current_minigame,
+		"current_language": current_language
 	}
-	
+
 	var into_json = json.stringify(data_for_json_file)
 	
 	save_current_state_into_json(data_for_json_file)
@@ -119,6 +121,7 @@ func load_game_save_from_json():
 			return
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		StateManager.current_language = content.get("current_language")
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(35)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
@@ -154,7 +157,8 @@ func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(20)
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	save_current_state_into_json(data)
+	if data != null:
+		save_current_state_into_json(data)
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(25)
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
