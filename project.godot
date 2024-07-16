@@ -30,6 +30,7 @@ MinigameManager="*res://managers/minigame.gd"
 AudioManager="*res://managers/audio.gd"
 PlatformHelper="*res://managers/platform.gd"
 RoomSwitcher="*res://managers/room_switcher.gd"
+LanguageManager="*res://managers/language.gd"
 
 [dialogue_manager]
 

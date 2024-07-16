@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://bipo5gfiuf2jl"]
+
+[ext_resource type="Texture2D" uid="uid://b6bx6cdanhqcn" path="res://ui/pause_menu/italy_flag.png" id="1_l23m8"]
+[ext_resource type="Script" path="res://components/language_switcher/language_switcher.gd" id="1_rukbf"]
+[ext_resource type="Texture2D" uid="uid://b8ad5kyc1qt7u" path="res://ui/pause_menu/uk_flag.png" id="3_narvi"]
+
+[node name="LanguageSwitcher" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -30.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_rukbf")
+
+[node name="UnitedKingdomFlag" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 26.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("3_narvi")
+texture_pressed = ExtResource("3_narvi")
+
+[node name="ItalianFlag" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 26.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_l23m8")
+
+[connection signal="pressed" from="UnitedKingdomFlag" to="." method="_on_flag_pressed"]
+[connection signal="pressed" from="ItalianFlag" to="." method="_on_flag_pressed"]
