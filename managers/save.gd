@@ -28,7 +28,7 @@ const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni no
 
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
-var json = JSON.new()
+
 var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
@@ -65,14 +65,13 @@ func prepare_data_to_be_saved_and_save():
 		"mute_button_state": mute_button_state
 	}
 
-	var into_json = json.stringify(data_for_json_file)
-	
+
 	save_current_state_into_json(data_for_json_file)
 	
 	
 func save_current_state_into_json(data_for_json_file):
 	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	var into_json = json.stringify(data_for_json_file)
+	var into_json = JSON.stringify(data_for_json_file)
 	json_file.store_string(into_json)
 	
 	if AuthenticationManager.is_enabled:
@@ -115,7 +114,7 @@ func load_game_save_from_json():
 	if FileAccess.file_exists(json_path):
 		
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
-		var content = json.parse_string(json_file.get_as_text())
+		var content = JSON.parse_string(json_file.get_as_text())
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
@@ -230,12 +229,14 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		
 		#è un if molto lungo
 		if node is Interaction:
+			var path_to_node
+			
 			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 			if node is ContainerInteraction:
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
 				if is_it_locked:
-					var path_to_node = root_node.get_path_to(container) as String
+					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
 					
@@ -249,7 +250,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				pickableItemInteraction_nodes.append(node)
 				continue
 			
-			var path_to_node = root_node.get_path_to(node) as String
+			path_to_node = root_node.get_path_to(node) as String
 			if(path_to_node in name_list):
 				node.queue_free()
 				node = null

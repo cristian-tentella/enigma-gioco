@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=14 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
@@ -6,16 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://crbudpuk5xyqu" path="res://components/audio_player/audio_player.tscn" id="4_4h6kr"]
 [ext_resource type="Texture2D" uid="uid://do61iumer8aus" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.png" id="4_6dgs2"]
 [ext_resource type="PackedScene" uid="uid://ce071icrk0n4j" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.tscn" id="4_j2h6h"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_oecrg"]
 [ext_resource type="Texture2D" uid="uid://chjqr4jqgg8m3" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_pressed.png" id="6_mwtq2"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_7nffp"]
 [ext_resource type="Texture2D" uid="uid://c414e0ew1i1hw" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_hover.png" id="7_jfbt4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_1jbf8"]
+
+[sub_resource type="Resource" id="Resource_tneua"]
+script = ExtResource("5_oecrg")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_4rndt"]
+script = ExtResource("5_oecrg")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_oaeyu")
 
 [node name="House" parent="." instance=ExtResource("2_535vp")]
-
-[node name="Player" parent="." instance=ExtResource("3_8jufx")]
-position = Vector2(111, 127)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -32,3 +44,28 @@ texture_hover = ExtResource("7_jfbt4")
 texture_focused = ExtResource("7_jfbt4")
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("3_8jufx")]
+position = Vector2(111, 127)
+
+[node name="PlayerPhantomCamera2D" type="Node2D" parent="Player" node_paths=PackedStringArray("follow_target")]
+unique_name_in_owner = true
+position = Vector2(111, 127)
+script = ExtResource("7_7nffp")
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_tneua")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(111, 127)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("11_1jbf8")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_7nffp")
+follow_mode = 2
+tween_resource = SubResource("Resource_4rndt")
