@@ -124,6 +124,8 @@ func load_game_save_from_json():
 
 		if content.has("current_language"):
 			StateManager.current_language = content.get("current_language")
+			LanguageManager.load_language_from_state_manager()
+			UIManager.update_language_flag()
 		else:
 			StateManager.current_language = LanguageManager.get_language()
 
