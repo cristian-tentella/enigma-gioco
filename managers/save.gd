@@ -28,7 +28,7 @@ const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni no
 
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
-var json = JSON.new()
+
 var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
@@ -59,15 +59,13 @@ func prepare_data_to_be_saved_and_save():
 		"inventory_owned_items_names": inventory_owned_items_names,
 		"current_minigame": current_minigame
 	}
-	
-	var into_json = json.stringify(data_for_json_file)
-	
+
 	save_current_state_into_json(data_for_json_file)
 	
 	
 func save_current_state_into_json(data_for_json_file):
 	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	var into_json = json.stringify(data_for_json_file)
+	var into_json = JSON.stringify(data_for_json_file)
 	json_file.store_string(into_json)
 	
 	if AuthenticationManager.is_enabled:
@@ -110,7 +108,7 @@ func load_game_save_from_json():
 	if FileAccess.file_exists(json_path):
 		
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
-		var content = json.parse_string(json_file.get_as_text())
+		var content = JSON.parse_string(json_file.get_as_text())
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
