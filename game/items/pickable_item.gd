@@ -12,7 +12,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 	"nome_obj.png" - La texture dell'oggetto
 """
 
-@onready var item_interaction = $ItemInteraction
+@onready var item_interaction = $PickableItemInteraction
 @onready var static_body_2D = $StaticBody2D
 @onready var sprite2D = $Sprite2D
 
@@ -20,6 +20,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 @export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
 var description: String #La descrizione che faremo vedere nell'inventario. Viene pescata dal file di traduzioni nel _ready()
 @export var is_corporeo: bool = false
+@export var dialogue_id: String = "Nessun dialogo" #Dialogo che parte quando lo raccogli
 #NOTE: La descrizione, cosi come il nome degli item va adattato in funzione della lingua. InventoryManager con un file csv?
 @export_group("Extra values")
 @export var collision_circle_radius : int = 16 #Negativo se vuoi usare il default
@@ -47,7 +48,7 @@ func _ready():
 	generate_both_collision_circles()
 	update_sprite2D_texture()
 	_associate_description_from_traslation_file()
-
+	self.item_interaction.dialogue_id = self.dialogue_id
 
 """
 NOTE TO SELF AND OTHERS
@@ -61,6 +62,10 @@ e per tutti il radius restava uguale, perché per il primo generic_item1 modific
 e poi generic_item2 ricambiava il raggio dello stesso CollisionShape2D, quindi tutti avevano lo stesso identico raggio.
 Non so bene come funzioni, ma se avete problemi di questo tipo, create dinamicamente l'albero dei nodi come ho
 fatto qui sotto.
+
+Il dialogue ID serve per mostrare un certo dialogo quando si raccoglie un oggetto.
+Don't mind come è stato implementato, ti basta sapere che se in quella variabile esportata ci scrivi "pippo", ti parte il dialogo "pippo",
+e infine ti dice "oggetto aggiunto all'inventario".
 
 """
 func generate_both_collision_circles():

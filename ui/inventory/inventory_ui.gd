@@ -22,7 +22,7 @@ func _ready():
 	
 # Doing it dynamically is the only way to make it work.
 # Original implementation with .tres was overkill considering I just create 8 empty slots with no properties
-func _instantiate_inventory():
+func _instantiate_inventory(): #Questo lo fa il SaveManager, ma qui lo si lascia per sport TODO: remove?
 	inv = Inventory.new()
 	StateManager.inventory = inv
 
