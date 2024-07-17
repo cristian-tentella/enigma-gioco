@@ -49,6 +49,10 @@ MINIGAMES UI ELEMENTS
 	"res://game/minigames/minigame_1/combination_lock.tscn"
 ).instantiate()
 
+@onready var memeory_menu: MemeoryUI = preload(
+	"res://ui/memeory_game/memeory_ui.tscn"
+).instantiate()
+
 
 
 """################################################################################
@@ -63,7 +67,8 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	pause_menu,
 	inventory_menu,
 	combination_key_minigame,
-	loading_screen
+	loading_screen,
+	memeory_menu
 ]
 
 
@@ -194,6 +199,11 @@ func show_combination_key_minigame():
 func update_language_flag():
 	var language_switcher = pause_menu.get_node("LanguageSwitcher")
 	language_switcher._update_flag()
+
+func show_memeory():
+	_spawn_locking_ui_element(memeory_menu)
+	await memeory_menu.exit
+	_kil_locking_ui_element(memeory_menu)
 
 func update_muted_button():
 	var muted_button = pause_menu.get_node("MuteButton")

@@ -28,6 +28,10 @@ var current_language: String
 var muted: bool
 
 
+#Memeory variables
+var memeory_UI : MemeoryUI
+var memeory : Memeory
+
 """######################################################################################
 Qui ci sono le VARIABILI che riguardano la GESTIONE DEI COMPORTAMENTI in base a specifiche circostanze della partita.
 ######################################################################################"""

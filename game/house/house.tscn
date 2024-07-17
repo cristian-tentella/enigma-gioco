@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=30 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
+[ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://cwdsrqkvev8w7" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.tscn" id="14_0u62w"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="14_7aw2o"]
 
@@ -4311,3 +4312,6 @@ minigame_requirement = 1
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
 position = Vector2(305, 118)
 shape = SubResource("RectangleShape2D_b5kjj")
+
+[node name="Minigame2Memeory" parent="." instance=ExtResource("11_qgyjf")]
+position = Vector2(63, 380)

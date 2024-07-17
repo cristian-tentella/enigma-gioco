@@ -9,6 +9,7 @@ extends Node
 @onready var player = $Player/Player
 @onready var house = $House
 @onready var inventory_UI = UIManager.inventory_menu
+@onready var memeory_UI = UIManager.memeory_menu
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var ui_phantom_camera = %PhantomCamera2D
 @onready var audio_player = $AudioPlayer
@@ -31,6 +32,8 @@ func _ready():
 	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager
 
 	StateManager.audio_player = audio_player
+	StateManager.memeory_UI = memeory_UI
+	StateManager.memeory = memeory_UI.mem
 
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

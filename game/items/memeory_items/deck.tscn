@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr28jfcj25jap"]
+
+[ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/items/memeory_items/card.tscn" id="1_cfiem"]
+
+[node name="Deck" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_cfiem")]
+card_name = "Regular1"
+card_type = "regular"
+
+[node name="Card2" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(32, 22)
+card_name = "Regular2"
+card_type = "regular"
+
+[node name="Card3" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(7, 49)
+card_name = "Bet1"
+card_type = "bet"
+
+[node name="Card4" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(92, 18)
+card_name = "Bet2"
+card_type = "bet"
+
+[node name="Card5" parent="." instance=ExtResource("1_cfiem")]
+card_name = "Extra1"
+card_type = "extralife"
+
+[node name="Card6" parent="." instance=ExtResource("1_cfiem")]
+card_name = "Extra2"
+card_type = "extralife"

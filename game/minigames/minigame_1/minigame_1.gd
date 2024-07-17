@@ -87,7 +87,7 @@ func _ready():
 	combination_lock_minigame = UIManager.combination_key_minigame
 
 
-func open_combination_lock_first_time():
+func open_combination_lock_first_time(): 
 	#Nascondi pulsante per quittare, why would they?
 	self.combination_lock_minigame.exit_button.hide()
 	
