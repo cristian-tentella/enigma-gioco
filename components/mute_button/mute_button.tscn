@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://clx44ncalqpaq"]
+
+[ext_resource type="Script" path="res://components/mute_button/mute_button.gd" id="1_xq0h7"]
+[ext_resource type="Texture2D" uid="uid://b3qivec2c64jl" path="res://components/mute_button/muted.png" id="1_ydu7r"]
+[ext_resource type="Texture2D" uid="uid://bisttvli6fu2y" path="res://components/mute_button/unmuted.png" id="2_m1p2w"]
+[ext_resource type="Texture2D" uid="uid://cxg1xboi82c42" path="res://components/mute_button/muted_to_unmuted_pressed.png" id="3_028be"]
+[ext_resource type="Texture2D" uid="uid://jfl140xrkpda" path="res://components/mute_button/muted_to_unmuted.png" id="3_crjs4"]
+[ext_resource type="Texture2D" uid="uid://bnh6b333qe07i" path="res://components/mute_button/unmuted_to_muted.png" id="4_boe3i"]
+[ext_resource type="Texture2D" uid="uid://cbc601s8g024y" path="res://components/mute_button/unmuted_to_muted_pressed.png" id="6_ygtc1"]
+
+[node name="MuteButton" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -78.0
+offset_right = -76.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_xq0h7")
+
+[node name="Muted" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 52.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("1_ydu7r")
+texture_pressed = ExtResource("3_028be")
+texture_hover = ExtResource("3_crjs4")
+
+[node name="Unmuted" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 52.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("2_m1p2w")
+texture_pressed = ExtResource("6_ygtc1")
+texture_hover = ExtResource("4_boe3i")
+
+[connection signal="pressed" from="Muted" to="." method="_on_pressed"]
+[connection signal="pressed" from="Unmuted" to="." method="_on_pressed"]

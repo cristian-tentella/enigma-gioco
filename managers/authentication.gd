@@ -10,7 +10,7 @@ signal message(message: String)
 #
 # Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
 # versione esportata, cioè quando NON si sta eseguendo via editor.
-const is_enabled = false
+const is_enabled = true
 
 var sleep_after_action = 0.7
 const access_token_path = "user://user.auth"
@@ -66,7 +66,7 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 	
 	
 func on_sign_up_succeeded(auth: SupabaseUser):
-	var query_result = await add_entry_to_supabase_public_database(auth.id)
+	await add_entry_to_supabase_public_database(auth.id)
 	await Supabase.database.inserted
 	save_auth_token_to_encrypted_file(auth)
 	await display_report_message(str(auth.role))

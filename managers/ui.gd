@@ -71,6 +71,7 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	memeory_menu
 ]
 
+
 #Segnali
 signal spawn(ui_element: Control) #Segnale per mettere in sovrimpressione un elemento UI
 signal kill(ui_element: Control) #Segnale per nascondere un elemento UI
@@ -97,7 +98,8 @@ func _ready():
 	for ui_element in ui_elements:
 		ui_element.hide()
 		ui.add_child(ui_element)
-
+		
+	
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
@@ -194,9 +196,15 @@ func show_combination_key_minigame():
 
 	_kil_locking_ui_element(combination_key_minigame)
 	
+func update_language_flag():
+	var language_switcher = pause_menu.get_node("LanguageSwitcher")
+	language_switcher._update_flag()
+
 func show_memeory():
 	_spawn_locking_ui_element(memeory_menu)
 	await memeory_menu.exit
 	_kil_locking_ui_element(memeory_menu)
 
-	
+func update_muted_button():
+	var muted_button = pause_menu.get_node("MuteButton")
+	muted_button._update_icon()

@@ -12,57 +12,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e57bp")
 
-[node name="Email" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 161.0
-offset_top = 91.0
-offset_right = 467.0
-offset_bottom = 122.0
-placeholder_text = "email"
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.831373, 0.815686, 0.811765, 1)
 
-[node name="Password" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 161.0
-offset_top = 143.0
-offset_right = 467.0
-offset_bottom = 174.0
-placeholder_text = "password"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Email" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qckts")
+placeholder_text = "Email"
+
+[node name="Password" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qckts")
+placeholder_text = "Password"
 secret = true
 
-[node name="SignIn" type="Button" parent="." groups=["Buttons"]]
-layout_mode = 0
-offset_left = 161.0
-offset_top = 214.0
-offset_right = 269.0
-offset_bottom = 239.0
-theme = ExtResource("2_qckts")
-text = "sign in"
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="SignUp" type="Button" parent="." groups=["Buttons"]]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 214.0
-offset_right = 468.0
-offset_bottom = 239.0
+[node name="SignIn" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
 theme = ExtResource("2_qckts")
-text = "sign up"
+text = "Sign in"
 
-[node name="ReportMessage" type="Label" parent="."]
-layout_mode = 0
-offset_left = 161.0
-offset_top = 63.0
-offset_right = 467.0
-offset_bottom = 86.0
+[node name="SignUp" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme = ExtResource("2_qckts")
+text = "Sign up"
+
+[node name="ReportMessage" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_qckts")
 horizontal_alignment = 1
 
-[node name="ResetPassword" type="Button" parent="." groups=["Buttons"]]
-layout_mode = 0
-offset_left = 241.0
-offset_top = 276.0
-offset_right = 385.0
-offset_bottom = 307.0
+[node name="ResetPassword" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+theme = ExtResource("2_qckts")
 text = "Reset password"
 
-[connection signal="pressed" from="SignIn" to="." method="_on_sign_in_button_pressed"]
-[connection signal="pressed" from="SignUp" to="." method="_on_sign_up_button_pressed"]
-[connection signal="pressed" from="ResetPassword" to="." method="_on_reset_password_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SignIn" to="." method="_on_sign_in_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SignUp" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ResetPassword" to="." method="_on_reset_password_button_pressed"]

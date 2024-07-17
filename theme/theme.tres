@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cb6ct0icqeuwi"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cb6ct0icqeuwi"]
 
 [ext_resource type="FontFile" uid="uid://dmf2onuk3mmhs" path="res://theme/fonts/Shantell_Sans-Informal_SemiBold.otf" id="1_3x0ns"]
 
@@ -78,6 +78,40 @@ content_margin_bottom = 0.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 anti_aliasing_size = 0.1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksom0"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.439216, 0.403922, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.333333, 0.309804, 0.305882, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+anti_aliasing_size = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycyfw"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.439216, 0.403922, 0.4, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.545098, 0.505882, 0.498039, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+anti_aliasing_size = 0.1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1qbk"]
 bg_color = Color(0.439216, 0.403922, 0.4, 1)
 border_width_left = 2
@@ -104,4 +138,6 @@ Button/styles/normal = SubResource("StyleBoxFlat_mb642")
 Button/styles/pressed = SubResource("StyleBoxFlat_k5ehj")
 Label/colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
 Label/styles/normal = SubResource("StyleBoxFlat_fcrg7")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ksom0")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_ycyfw")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_y1qbk")

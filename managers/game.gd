@@ -20,9 +20,7 @@ func start():
 
 	AudioManager.play_start_menu_sound_track()
 
-	var is_running_inside_the_editor = OS.has_feature("editor")
-
-	if AuthenticationManager.is_enabled or not is_running_inside_the_editor:
+	if AuthenticationManager.is_enabled:
 		UIManager.show_authentication_menu()
 		await AuthenticationManager.exit
 	

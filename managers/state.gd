@@ -24,6 +24,9 @@ var player_phantom_camera: PhantomCamera2D
 var ui_phantom_camera: PhantomCamera2D
 var audio_player: AudioPlayer
 
+var current_language: String
+var muted: bool
+
 
 #Memeory variables
 var memeory_UI : MemeoryUI
