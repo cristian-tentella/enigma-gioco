@@ -27,6 +27,7 @@ func handle_dialogue_interaction(dialogue_interaction: DialogueInteraction):
 
 	UIManager.show_dialogue_box(dialogue_lines)
 
+#Mi sa che questa non la usiamo mai...
 #handle_dialogue_interaction_with_dynamic_replace(dialogue_interaction, "Item", item_name)
 func handle_dialogue_interaction_with_dynamic_replace(dialogue_interaction: DialogueInteraction, word_to_be_replaced: String, replace_word: String):
 	var dialogue_lines_ids = _get_dialogue_lines_ids(dialogue_interaction.dialogue_id)
@@ -48,3 +49,8 @@ func _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids: Array) -> Array:
 	)
 	
 	return dialogue_lines
+
+#Utilizzo improprio ma funzionale del sistema dei dialoghi anche per le traduzioni degli item
+#Non vale la pena implementarlo in modo diverso
+func _item_description_id_to_item_description(item_description_id: String):
+	return _dialogue_lines_ids_to_dialogue_lines([item_description_id])[0]
