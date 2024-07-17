@@ -10,12 +10,15 @@ signal exit
 
 func _ready():
 	$Deck.hide()
-	start_new_game()
+	_instantiate_memeory()
+	mem.start.connect(start_new_game)
 	mem.update.connect(update_slots)
 	update_slots()
+
 	
-	
-func _draw_random_card():
+func _draw_random_card():  
+	mem.slots.clear()
+	i = 0
 	var card_container = $Deck
 	var cards = card_container.get_children()
 	if cards.size() == 0:
@@ -28,8 +31,8 @@ func _draw_random_card():
 	print_debug(MemeoryManager.slots)
 	
 func start_new_game(): 
-	_instantiate_memeory()
 	_draw_random_card()
+	mem.cover_all_cards()
 
 func _instantiate_memeory():
 	mem = MemeoryManager
@@ -39,4 +42,6 @@ func update_slots():
 		slots_UI[i].update(mem.slots[i])
 
 func _on_exit_pause_menu_button_pressed():
+	mem.clear_slots()
 	self.exit.emit() # Replace with function body.
+
