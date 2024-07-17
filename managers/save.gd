@@ -51,7 +51,7 @@ func on_database_query_updated(query_result):
 
 
 func prepare_data_to_be_saved_and_save():
-	#player_id = get_player_id() #TODO: Questo mi sembra inutile?
+	player_id = get_player_id() #TODO: Questo mi sembra inutile?
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
 	var current_minigame: int = StateManager.current_minigame 
 	var current_language: String = StateManager.current_language 
