@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwxmqs7dpwp5y"]
+[gd_scene load_steps=7 format=3 uid="uid://cwxmqs7dpwp5y"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_2yfj2"]
 [ext_resource type="PackedScene" uid="uid://ddkavijkl5ek0" path="res://ui/inventory/inventory_ui_slot.tscn" id="2_fky7l"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="4_6oj7c"]
+[ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="5_ofa7i"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="6_jo3hw"]
 
 [node name="Control" type="Control"]
 z_index = 100
@@ -25,89 +28,184 @@ color = Color(0.12549, 0.117647, 0.113725, 0.901961)
 
 [node name="SlotsGridBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 216.0
+offset_left = 104.0
 offset_top = 76.0
-offset_right = 424.0
-offset_bottom = 284.0
+offset_right = 535.0
+offset_bottom = 288.0
+texture = ExtResource("2_2yfj2")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="SlotsGridBackground"]
+[node name="GridContainer" type="GridContainer" parent="SlotsGridBackground"]
 layout_mode = 2
-offset_left = 16.0
+offset_left = 20.0
 offset_top = 16.0
-offset_right = 192.0
+offset_right = 196.0
 offset_bottom = 192.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="SlotsGridBackground/CenterContainer"]
-layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 4
+metadata/_edit_group_ = true
 
-[node name="Inventory_UI_slot_1" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_1" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_2" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_1_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_1"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_2" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_3" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_2_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_2"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_3" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_4" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_3_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_3"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_4" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_5" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_4_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_4"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_5" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_6" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_5_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_5"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_6" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_6_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_6"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_7" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_8" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_7_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_7"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_8" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_9" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_8_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_8"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_9" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_10" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_9_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_9"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_10" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_11" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_10_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_10"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_11" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_12" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_11_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_11"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_12" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_13" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_12_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_12"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_13" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_14" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_13_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_13"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_14" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_15" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_14_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_14"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_15" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
 
-[node name="Inventory_UI_slot_16" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_fky7l")]
+[node name="Inventory_UI_slot_15_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_15"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Inventory_UI_slot_16" parent="SlotsGridBackground/GridContainer" instance=ExtResource("2_fky7l")]
 layout_mode = 2
+
+[node name="Inventory_UI_slot_16_button" type="Button" parent="SlotsGridBackground/GridContainer/Inventory_UI_slot_16"]
+z_index = -1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
 
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 400.0
-offset_top = 48.0
-offset_right = 424.0
-offset_bottom = 72.0
+offset_left = 608.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 32.0
+texture = ExtResource("2_2yfj2")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+metadata/_edit_group_ = true
 
 [node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground" groups=["Buttons"]]
 layout_mode = 0
@@ -123,4 +221,53 @@ position = Vector2(209, 100)
 dialogue_id = "pickup_item_generic"
 just_proc_once = false
 
+[node name="ItemDescriptionBackground" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 92.0
+offset_right = 515.0
+offset_bottom = 268.0
+texture = ExtResource("5_ofa7i")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ItemDescriptionBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ItemDescription" type="Label" parent="ItemDescriptionBackground/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("6_jo3hw")
+text = "Seleziona un oggetto per visualizzarne la descrizione"
+autowrap_mode = 2
+
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_1/Inventory_UI_slot_1_button" to="." method="_on_inventory_ui_slot_1_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_2/Inventory_UI_slot_2_button" to="." method="_on_inventory_ui_slot_2_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_3/Inventory_UI_slot_3_button" to="." method="_on_inventory_ui_slot_3_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_4/Inventory_UI_slot_4_button" to="." method="_on_inventory_ui_slot_4_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_5/Inventory_UI_slot_5_button" to="." method="_on_inventory_ui_slot_5_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_6/Inventory_UI_slot_6_button" to="." method="_on_inventory_ui_slot_6_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_7/Inventory_UI_slot_7_button" to="." method="_on_inventory_ui_slot_7_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_8/Inventory_UI_slot_8_button" to="." method="_on_inventory_ui_slot_8_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_9/Inventory_UI_slot_9_button" to="." method="_on_inventory_ui_slot_9_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_10/Inventory_UI_slot_10_button" to="." method="_on_inventory_ui_slot_10_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_11/Inventory_UI_slot_11_button" to="." method="_on_inventory_ui_slot_11_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_12/Inventory_UI_slot_12_button" to="." method="_on_inventory_ui_slot_12_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_13/Inventory_UI_slot_13_button" to="." method="_on_inventory_ui_slot_13_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_14/Inventory_UI_slot_14_button" to="." method="_on_inventory_ui_slot_14_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_15/Inventory_UI_slot_15_button" to="." method="_on_inventory_ui_slot_15_button_pressed"]
+[connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_16/Inventory_UI_slot_16_button" to="." method="_on_inventory_ui_slot_16_button_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

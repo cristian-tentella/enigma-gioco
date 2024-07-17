@@ -5,6 +5,10 @@ test_2;Carlo: Goodnight;Carlo: Buonanotte
 test_3;Paolino: Goodbye;Paolino: Arrivederci
 
 pickup_item_generic;Item added to inventory!;Oggetto aggiunto all'inventario!
+
+NO_ITEM_SELECTED_DESC_STRING;Please select an item to view its description;Seleziona un oggetto per visualizzarne la descrizione
+set_of_keys_description;A very amusing set of keys.\nThey range from 1 to 8, and each have a different color assigned;Un bellissimo mazzo di chiavi.\nVanno dal numero 1 al numero 8, ed ognuna ha un colore diverso.
+
 pickup_set_of_keys_1;Daniel: Wow, a set of keys! Why was it even there...;Daniel: Wow, un mazzo di chiavi! Ma che ci faceva lì....
 pickup_set_of_keys_2;Daniel: Well, I guess I can unlock some doors now...;Daniel: Bhe, immagino che ci potrò aprire qualche porta...
 
