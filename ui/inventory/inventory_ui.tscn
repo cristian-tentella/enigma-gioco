@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cwxmqs7dpwp5y"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_2yfj2"]
 [ext_resource type="PackedScene" uid="uid://ddkavijkl5ek0" path="res://ui/inventory/inventory_ui_slot.tscn" id="2_fky7l"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="4_6oj7c"]
 [ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="5_ofa7i"]
@@ -31,7 +32,7 @@ offset_left = 104.0
 offset_top = 76.0
 offset_right = 535.0
 offset_bottom = 288.0
-texture = ExtResource("2_30054")
+texture = ExtResource("2_2yfj2")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -198,7 +199,7 @@ offset_left = 608.0
 offset_top = 8.0
 offset_right = 632.0
 offset_bottom = 32.0
-texture = ExtResource("2_30054")
+texture = ExtResource("2_2yfj2")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
 patch_margin_top = 6
