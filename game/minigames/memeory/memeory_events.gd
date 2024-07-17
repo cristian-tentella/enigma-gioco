@@ -8,10 +8,10 @@ var memeory
 
 func _ready():
 	memeory = UIManager.memeory_menu
-	print_debug("guga")
 	
 func memeory_start_dialogues():
 	memeory_first_dialogue.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	print_debug("ciaoooo")
 	UIManager.show_memeory()
+	await UIManager.unlock

@@ -4258,10 +4258,6 @@ offset_right = 101.0
 offset_bottom = 518.0
 color = Color(1, 1, 1, 0)
 
-[node name="Minigame2Memeory" parent="Rooms/Bagno" instance=ExtResource("11_qgyjf")]
-position = Vector2(64.0909, 381.985)
-rotation = -0.000238021
-
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)
 tile_set = SubResource("TileSet_d2kam")
@@ -4316,3 +4312,6 @@ minigame_requirement = 1
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
 position = Vector2(305, 118)
 shape = SubResource("RectangleShape2D_b5kjj")
+
+[node name="Minigame2Memeory" parent="." instance=ExtResource("11_qgyjf")]
+position = Vector2(63, 380)
