@@ -5,10 +5,10 @@ var NO_ITEM_SELECTED_DESC_STRING #è quello che esce quando non hai selezionato 
 
 
 var inv: Inventory
-@onready var slots_UI: Array = $SlotsGridBackground/CenterContainer/GridContainer.get_children() #Array di Inventory_UI_Slot
+@onready var slots_UI: Array = $SlotsGridBackground/GridContainer.get_children() #Array di Inventory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
 
-@onready var description_label = $"Change Reference IntoInventory_UI Script"
+@onready var description_label = $ItemDescriptionBackground/MarginContainer/ItemDescription
 
 signal exit
 
