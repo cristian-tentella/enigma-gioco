@@ -1,8 +1,8 @@
 class_name AuthenticationResetMenu
 extends Control
 
-@onready var email = $Email
-@onready var report_message = $ReportMessage
+@onready var email = $CenterContainer/VBoxContainer/Email
+@onready var report_message = $CenterContainer/VBoxContainer/ReportMessage
 
 
 func _ready():

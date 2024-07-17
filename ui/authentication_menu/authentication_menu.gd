@@ -1,9 +1,9 @@
 class_name AuthenticationMenu
 extends Control
 
-@onready var email = $Email
-@onready var password = $Password
-@onready var report_message = $ReportMessage
+@onready var email = $CenterContainer/VBoxContainer/Email
+@onready var password = $CenterContainer/VBoxContainer/Password
+@onready var report_message = $CenterContainer/VBoxContainer/ReportMessage
 
 
 func _ready():

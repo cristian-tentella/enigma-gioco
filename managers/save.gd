@@ -28,11 +28,12 @@ const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni no
 
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
-var json = JSON.new()
+
 var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
 var player_id
+
 
 func _ready():
 	if not AuthenticationManager.is_enabled:
@@ -51,23 +52,26 @@ func on_database_query_updated(query_result):
 
 func prepare_data_to_be_saved_and_save():
 	#player_id = get_player_id() #TODO: Questo mi sembra inutile?
-	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String]
-	var current_minigame = StateManager.current_minigame as int
-
+	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
+	var current_minigame: int = StateManager.current_minigame 
+	var current_language: String = StateManager.current_language 
+	var mute_button_state: bool = StateManager.muted
+	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
-		"current_minigame": current_minigame
+		"current_minigame": current_minigame,
+		"current_language": current_language,
+		"mute_button_state": mute_button_state
 	}
-	
-	var into_json = json.stringify(data_for_json_file)
-	
+
+
 	save_current_state_into_json(data_for_json_file)
 	
 	
 func save_current_state_into_json(data_for_json_file):
 	var json_file = FileAccess.open(json_path, FileAccess.WRITE)
-	var into_json = json.stringify(data_for_json_file)
+	var into_json = JSON.stringify(data_for_json_file)
 	json_file.store_string(into_json)
 	
 	if AuthenticationManager.is_enabled:
@@ -110,15 +114,26 @@ func load_game_save_from_json():
 	if FileAccess.file_exists(json_path):
 		
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
-		var content = json.parse_string(json_file.get_as_text())
+		var content = JSON.parse_string(json_file.get_as_text())
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame"):
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
+		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
+			
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		StateManager.current_language = content.get("current_language")
+		LanguageManager.load_language_from_state_manager()
+		UIManager.update_language_flag()
+		StateManager.muted = content.get("mute_button_state")	
+		UIManager.pause_menu.get_node("MuteButton")._load_muted_from_state_manager()
+		UIManager.update_muted_button()
+		
+		#else:
+			#StateManager.current_language = LanguageManager.get_language()
+
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(35)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
@@ -154,7 +169,8 @@ func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(20)
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	save_current_state_into_json(data)
+	if data != null:
+		save_current_state_into_json(data)
 	#Barra di caricamento a 0
 	UIManager.loading_screen.set_value(25)
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
@@ -213,12 +229,14 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		
 		#è un if molto lungo
 		if node is Interaction:
+			var path_to_node
+			
 			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 			if node is ContainerInteraction:
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
 				if is_it_locked:
-					var path_to_node = root_node.get_path_to(container) as String
+					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
 					
@@ -232,7 +250,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				pickableItemInteraction_nodes.append(node)
 				continue
 			
-			var path_to_node = root_node.get_path_to(node) as String
+			path_to_node = root_node.get_path_to(node) as String
 			if(path_to_node in name_list):
 				node.queue_free()
 				node = null
