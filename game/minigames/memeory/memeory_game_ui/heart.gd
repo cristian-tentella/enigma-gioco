@@ -15,6 +15,7 @@ func updateheart(heart: Heart):
 		MemeoryManager.remove_heart()
 		if(MemeoryManager.hearts_array.size() == 0):
 			MemeoryManager.clicks = -1
+			StateManager.current_minigame = 7
 			MemeoryManager.gamelost.emit()
 
 

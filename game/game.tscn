@@ -59,7 +59,6 @@ follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_tneua")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(111, 127)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("11_1jbf8")

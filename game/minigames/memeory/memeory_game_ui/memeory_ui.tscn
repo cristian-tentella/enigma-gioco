@@ -156,7 +156,6 @@ offset_left = 238.0
 offset_top = 110.0
 offset_right = 412.0
 offset_bottom = 194.0
-text = "HAI PERSO"
 alignment = 1
 
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
