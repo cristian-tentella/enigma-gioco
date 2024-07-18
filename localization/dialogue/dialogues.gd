@@ -15,3 +15,5 @@ const dialogues: Dictionary = {
 	"memeory_retry":["memeory_retry"],
 	"memeory_win":["memeory_win"]
 }
+
+

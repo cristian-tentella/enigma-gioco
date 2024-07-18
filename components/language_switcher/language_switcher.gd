@@ -14,7 +14,6 @@ func _update_flag():
 	else:
 		_show_italian_flag()
 
-
 func _on_flag_pressed():
 	LanguageManager.change_language()
 	_update_flag()

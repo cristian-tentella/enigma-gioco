@@ -1,6 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cb6ct0icqeuwi"]
-
-[ext_resource type="FontFile" uid="uid://dmf2onuk3mmhs" path="res://theme/fonts/Shantell_Sans-Informal_SemiBold.otf" id="1_3x0ns"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cb6ct0icqeuwi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5xxb"]
 content_margin_left = 12.0
@@ -126,7 +124,6 @@ corner_radius_bottom_left = 16
 anti_aliasing_size = 0.1
 
 [resource]
-default_font = ExtResource("1_3x0ns")
 default_font_size = 10
 Button/colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
 Button/colors/font_focus_color = Color(0.831373, 0.815686, 0.811765, 1)

@@ -103,6 +103,7 @@ func _ready():
 
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
+	UiTranslationManager.handle_ui_translation(ui_element)
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
 	AudioManager.setup_sound_triggers()
 	spawn.emit(ui_element)
@@ -135,6 +136,7 @@ func show_dialogue_box(dialogue_lines: Array):
 var use_start_menu_with_resume_button = false
 
 func show_start_menu():
+	
 	
 	if use_start_menu_with_resume_button:
 		show_start_menu_with_resume_button()

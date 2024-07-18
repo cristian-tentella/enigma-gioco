@@ -1,12 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bipo5gfiuf2jl"]
+[gd_scene load_steps=2 format=3 uid="uid://bipo5gfiuf2jl"]
 
 [ext_resource type="Script" path="res://components/language_switcher/language_switcher.gd" id="1_rukbf"]
-[ext_resource type="Texture2D" uid="uid://b8ad5kyc1qt7u" path="res://components/language_switcher/uk_flag.png" id="2_35mms"]
-[ext_resource type="Texture2D" uid="uid://bulj4q56x81lj" path="res://components/language_switcher/uk_flag_to_italy_flag.png" id="3_6h12g"]
-[ext_resource type="Texture2D" uid="uid://ywmhqshn6rq8" path="res://components/language_switcher/uk_flag_to_italy_flag_pressed.png" id="4_ab571"]
-[ext_resource type="Texture2D" uid="uid://b6bx6cdanhqcn" path="res://components/language_switcher/italy_flag.png" id="5_7ovx5"]
-[ext_resource type="Texture2D" uid="uid://dmxgpx05dw2x6" path="res://components/language_switcher/italy_flag_to_uk_flag.png" id="6_0cw3v"]
-[ext_resource type="Texture2D" uid="uid://ourno3lg6db2" path="res://components/language_switcher/italy_flag_to_uk_flag_pressed.png" id="7_fxsro"]
 
 [node name="LanguageSwitcher" type="Control"]
 layout_mode = 3
@@ -35,9 +29,6 @@ offset_right = 26.0
 offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("2_35mms")
-texture_pressed = ExtResource("3_6h12g")
-texture_hover = ExtResource("4_ab571")
 
 [node name="ItalianFlag" type="TextureButton" parent="."]
 layout_mode = 1
@@ -50,9 +41,6 @@ offset_right = 26.0
 offset_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("5_7ovx5")
-texture_pressed = ExtResource("6_0cw3v")
-texture_hover = ExtResource("7_fxsro")
 
 [connection signal="pressed" from="UnitedKingdomFlag" to="." method="_on_flag_pressed"]
 [connection signal="pressed" from="ItalianFlag" to="." method="_on_flag_pressed"]
