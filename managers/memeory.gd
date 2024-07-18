@@ -33,8 +33,8 @@ func insert_heart(heart: Heart):
 	hearts_array.append(heart)
 
 func has_item(needed_card_name: String):
-	for i in slots:
-		if i.card_name == needed_card_name:
+	for slot in slots:
+		if slot.card_name == needed_card_name:
 			return true
 	return false
 
