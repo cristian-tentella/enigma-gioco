@@ -21,6 +21,8 @@ func update(slot: Card):
 		card_in_slot.index = slot.index
 		pickablearea.shape = slot.area.shape
 		button.icon = slot.button.icon
+		if(MemeoryManager.clicks == -1):
+			button.hide()
 		if(MemeoryManager.clicks == 0):
 			button.show()
 

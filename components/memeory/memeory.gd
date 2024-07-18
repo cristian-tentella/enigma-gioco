@@ -30,7 +30,6 @@ func insert(card: Card):
 func insert_heart(heart: Heart):
 	hearts_array.append(heart)
 	print_debug(hearts_array[hearts_array.size()-1])
-	#updatehearts.emit()
 
 func has_item(needed_card_name: String):
 	for i in slots:
@@ -63,8 +62,6 @@ func check():
 		await get_tree().create_timer(1).timeout
 		if(hearts_array.size() > 0):
 			hearts_array[hearts_array.size()-1] = null
-		#update_hearts()
-		#print_debug(hearts)
 		cover_picked_cards()
 	else:
 		await get_tree().create_timer(0.7).timeout

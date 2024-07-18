@@ -11,13 +11,11 @@ func lost_heart_animation():
 
 func updateheart(heart: Heart):
 	if (!heart):
-		#$AnimationPlayer.play("lost_heart")
 		self.lost_heart_animation()
 		MemeoryManager.remove_heart()
 		if(MemeoryManager.hearts_array.size() == 0):
-			await 2
-			MemeoryManager.clicks = 3
+			MemeoryManager.clicks = -1
 			MemeoryManager.gamelost.emit()
 			print("HAI PERSO")
-		#await 2
+
 
