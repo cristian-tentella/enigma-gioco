@@ -33,7 +33,7 @@ func _ready():
 
 	StateManager.audio_player = audio_player
 	StateManager.memeory_UI = memeory_UI
-	StateManager.memeory = memeory_UI.mem
+	#StateManager.memeory = memeory_UI.MemeoryManager
 
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

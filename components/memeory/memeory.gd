@@ -4,18 +4,33 @@ class_name Memeory
 
 signal start
 signal update
+signal updatehearts
+signal gamelost
+
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
 var clicks = 0
+var hearts_array: Array[Heart]
+var hearts = hearts_array.size()
 var i = 0
 
 func start_game():
 	start.emit()
 	
-	
+func update_hearts():
+	updatehearts.emit()
+
+func remove_heart():
+	hearts_array.remove_at(hearts_array.size()-1)
+
 func insert(card: Card):
 	slots.append(card)
 	update.emit()
+	
+func insert_heart(heart: Heart):
+	hearts_array.append(heart)
+	print_debug(hearts_array[hearts_array.size()-1])
+	#updatehearts.emit()
 
 func has_item(needed_card_name: String):
 	for i in slots:
@@ -30,6 +45,7 @@ func insert_pick(card: Card):
 func reset_pick():
 	picked.clear()
 	clicks = 0
+	updatehearts.emit()
 	update.emit()
 
 func remove_picks():
@@ -45,6 +61,10 @@ func check():
 	var check = has_couple()
 	if(!check):
 		await get_tree().create_timer(1).timeout
+		if(hearts_array.size() > 0):
+			hearts_array[hearts_array.size()-1] = null
+		#update_hearts()
+		#print_debug(hearts)
 		cover_picked_cards()
 	else:
 		await get_tree().create_timer(0.7).timeout
