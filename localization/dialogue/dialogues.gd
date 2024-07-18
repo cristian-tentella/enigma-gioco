@@ -11,5 +11,7 @@ const dialogues: Dictionary = {
 	"dialogue_with_pi_poster": ["dialogue_with_pi_poster_1", "dialogue_with_pi_poster_2", "dialogue_with_pi_poster_3", "dialogue_with_pi_poster_4"],
 	"actual_minigame_combination_first_dialogue": ["actual_minigame_combination_first_dialogue_1"],
 	"combination_minigame_won": ["combination_minigame_won_1", "combination_minigame_won_2"],
-	"memeory_first_dialogue":["memeory_first_dialogue"]
+	"memeory_first_dialogue":["memeory_first_dialogue"],
+	"memeory_retry":["memeory_retry"],
+	"memeory_win":["memeory_win"]
 }

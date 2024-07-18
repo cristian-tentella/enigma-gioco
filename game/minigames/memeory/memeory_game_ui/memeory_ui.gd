@@ -65,6 +65,7 @@ func game_won_ui():
 	$LineEdit.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
+	
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()

@@ -26,3 +26,5 @@ actual_minigame_combination_first_dialogue_1;Daniel: Alright, let's try it again
 combination_minigame_won_1;Daniel: Wow, that was it?!;Daniel: Wow, era davvero questa?!
 combination_minigame_won_2;Daniel: I guess that pi poster was there for a reason, after all...;Daniel: Alla fine, quel poster del pi greco era effettivamente utile...
 memeory_first_dialogue;Watermelon: Hello;Anguria: Ciao
+memeory_retry;Watermelon: Rematch?;Anguria: Rivincita?
+memeory_win;Watermelon: GG;Anguria: GG
