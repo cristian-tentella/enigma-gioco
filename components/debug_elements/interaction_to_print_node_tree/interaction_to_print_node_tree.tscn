@@ -7,6 +7,7 @@
 size = Vector2(82, 33)
 
 [sub_resource type="SystemFont" id="SystemFont_8jydd"]
+subpixel_positioning = 0
 
 [node name="InteractionToPrintNodeTree" type="Node2D"]
 script = ExtResource("1_guelm")

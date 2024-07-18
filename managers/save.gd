@@ -24,7 +24,7 @@ DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico..
 const debug_creating_save = false #Se vuoi debuggare creazione salvataggi, questo attiva una serie di print
 const debug_loading_save = false #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
-const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente quando prendi le info dal file le sostituisce con {}
+const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
 
 var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
@@ -34,8 +34,6 @@ var minigame_to_current_minigame_requirement = {
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
 
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
-
-
 
 
 var json_path = "user://save.json"
@@ -62,6 +60,7 @@ func on_database_query_updated(query_result):
 
 
 func prepare_data_to_be_saved_and_save():
+
 	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
 		player_id = get_player_id()
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
@@ -125,6 +124,11 @@ func is_online() -> bool:
 #Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
+	if start_without_any_save:
+		print_debug("\nStarting without saves as specified in save.gd constants")
+		return
+	
+	
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	
 	if await is_online() and player_id != null:
