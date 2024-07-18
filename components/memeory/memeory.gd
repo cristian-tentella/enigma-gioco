@@ -60,11 +60,13 @@ func check():
 	var check = has_couple()
 	if(!check):
 		await get_tree().create_timer(1).timeout
+		AudioManager.play_failure_sound_effect()
 		if(hearts_array.size() > 0):
 			hearts_array[hearts_array.size()-1] = null
 		cover_picked_cards()
 	else:
 		await get_tree().create_timer(0.7).timeout
+		AudioManager.play_success_sound_effect()
 		remove_picks()
 	reset_pick()
 
@@ -80,4 +82,5 @@ func cover_all_cards():
 
 func clear_slots():
 	slots.clear()
+	picked.clear()
 	update.emit()
