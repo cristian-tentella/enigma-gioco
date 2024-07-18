@@ -21,12 +21,15 @@ func update(slot: Card):
 		card_in_slot.index = slot.index
 		pickablearea.shape = slot.area.shape
 		button.icon = slot.button.icon
+		if(MemeoryManager.clicks == -1):
+			button.hide()
 		if(MemeoryManager.clicks == 0):
 			button.show()
 
 
 func _on_button_pressed():
 	if(MemeoryManager.clicks < 2):
+		AudioManager.play_click_sound_effect()
 		MemeoryManager.clicks += 1
 		button.hide()
 		card_in_slot.update_card_sprite2D_front_texture()

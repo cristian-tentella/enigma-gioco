@@ -14,7 +14,6 @@ const MOVE_LEFT = "move_left"
 const INTERACT = "interact"
 const PAUSE = "pause"
 const INVENTORY = "inv"
-const MEMEORY = "mem"
 
 #Lista di tutti i possibili movimenti che il Player può effettuare. 
 #NOTE: Ognuno di questi è stato prima mappato alla sua stringa, il cui nome è LO STESSO della Mappa Input di Godot
@@ -68,8 +67,6 @@ func _process_player_input_event(input_event: InputEvent):
 	if input_event.is_action_pressed(INVENTORY):
 		UIManager.show_inventory()
 		
-	if input_event.is_action_pressed(MEMEORY):
-		UIManager.show_memeory()
 	
 
 
