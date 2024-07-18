@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct8sph62appvd"]
+
+[ext_resource type="Script" path="res://components/debug_elements/interaction_to_print_node_tree/interaction_to_print_node_tree.gd" id="1_guelm"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="2_non5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0gfj"]
+size = Vector2(82, 33)
+
+[sub_resource type="SystemFont" id="SystemFont_8jydd"]
+
+[node name="InteractionToPrintNodeTree" type="Node2D"]
+script = ExtResource("1_guelm")
+
+[node name="Sfondo" type="ColorRect" parent="."]
+offset_right = 83.0
+offset_bottom = 34.0
+color = Color(1, 0, 1, 1)
+
+[node name="OnClickAnyInteraction" parent="." instance=ExtResource("2_non5x")]
+script_path = ""
+method_name = "print_node_tree"
+is_method_in_direct_parent = true
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OnClickAnyInteraction"]
+position = Vector2(42, 17.5)
+shape = SubResource("RectangleShape2D_a0gfj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 81.0
+offset_bottom = 35.0
+
+[node name="Testo" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_8jydd")
+theme_override_font_sizes/font_size = 0
+text = "Print_Tree"

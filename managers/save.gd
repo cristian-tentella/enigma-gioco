@@ -28,7 +28,7 @@ const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. N
 
 var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
-	"memeory" : 10 #Si elimina di sicuro quando si ha completato il minigame che richiede sia lui che quello dopo, non credo lo faremo mai tho
+	"memeory" : 7 #Si elimina di sicuro quando si ha completato il minigame che richiede sia lui che quello dopo, non credo lo faremo mai tho
 }
 
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
@@ -62,7 +62,7 @@ func on_database_query_updated(query_result):
 
 
 func prepare_data_to_be_saved_and_save():
-	if FileAccess.file_exists(user_file):
+	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
 		player_id = get_player_id()
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
 	var current_minigame: int = StateManager.current_minigame 
@@ -156,7 +156,7 @@ func load_game_save_from_json():
 		StateManager.current_language = content.get("current_language")
 		LanguageManager.load_language_from_state_manager()
 		UIManager.update_language_flag()
-		StateManager.muted = content.get("mute_button_state")	
+		StateManager.muted = content.get("mute_button_state")
 		UIManager.pause_menu.get_node("MuteButton")._load_muted_from_state_manager()
 		UIManager.update_muted_button()
 		
