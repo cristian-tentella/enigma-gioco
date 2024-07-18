@@ -15,6 +15,7 @@ script = ExtResource("1_tgm0t")
 [node name="memeory_first_dialogue" type="Area2D" parent="."]
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_first_dialogue"
+minigame_requirement = 5
 just_proc_once = false
 
 [node name="memeory_launcher" parent="." instance=ExtResource("2_no6u7")]
@@ -25,3 +26,12 @@ just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="memeory_launcher"]
 shape = SubResource("CapsuleShape2D_msowm")
+
+[node name="memeory_second_chance" type="Area2D" parent="."]
+script = ExtResource("1_ik88x")
+dialogue_id = "memeory_second_chance"
+minigame_requirement = 6
+
+[node name="memeory_win" type="Area2D" parent="."]
+script = ExtResource("1_ik88x")
+dialogue_id = "memeory_win"
