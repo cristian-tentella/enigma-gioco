@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=26 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
-[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="3_0llho"]
 [ext_resource type="SpriteFrames" uid="uid://dd0twhi7cibmf" path="res://game/entities/containers/door_front/door_front_animations.tres" id="5_fuh1f"]
 [ext_resource type="PackedScene" uid="uid://rqb8t5u7c2vy" path="res://game/house/rooms/bagno/bagno.tscn" id="7_2sykb"]
 [ext_resource type="Texture2D" uid="uid://bryxwghae3k7c" path="res://game/house/assets/floors.png" id="7_dmabe"]
@@ -13,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
-[ext_resource type="PackedScene" uid="uid://cwdsrqkvev8w7" path="res://components/interaction/on_collision_any_interaction/on_collision_any_interaction.tscn" id="14_0u62w"]
-[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="14_7aw2o"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
@@ -4121,12 +4118,6 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_p7am3")
 sources/1 = SubResource("TileSetAtlasSource_h5t20")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8spsj"]
-radius = 20.2237
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5kjj"]
-size = Vector2(20, 162)
-
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -4185,6 +4176,11 @@ shape = SubResource("RectangleShape2D_58wwt")
 [node name="Color" type="Polygon2D" parent="Rooms/Cameretta + Terrazzo"]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-17.0036, -14.996, -16.9438, 236.004, 346.056, 235.918, 346.065, 270.918, 576.065, 270.863, 575.988, -50.1371, -19.0119, -49.9955)
+
+[node name="set_of_keys" parent="Rooms/Cameretta + Terrazzo" instance=ExtResource("8_0lq6k")]
+position = Vector2(382.022, 91.909)
+item_name = "set_of_keys"
+dialogue_id = "pickup_set_of_keys"
 
 [node name="Studio" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
@@ -4282,46 +4278,8 @@ layer_5/name = "Back_Furniture"
 layer_5/z_index = 5
 layer_5/tile_data = PackedInt32Array(655374, 1048577, 6, 720910, 1048577, 7, 655375, 1114113, 6, 720911, 1114113, 7, 655376, 1179649, 6, 720912, 1179649, 7, 655377, 1245185, 6, 720913, 1245185, 7, 589826, 917505, 18, 655362, 917505, 19, 720898, 917505, 20, 589827, 983041, 18, 655363, 983041, 19, 720899, 983041, 20, 589828, 1048577, 18, 655364, 1048577, 19, 720900, 1048577, 20, 589829, 1114113, 18, 655365, 1114113, 19, 720901, 1114113, 20, 589830, 1179649, 18, 655366, 1179649, 19, 720902, 1179649, 20, 589831, 1245185, 18, 655367, 1245185, 19, 720903, 1245185, 20, 786454, 917506, 1, 851990, 917506, 2, 786455, 983042, 1, 851991, 983042, 2, 786456, 917506, 1, 851992, 917506, 2, 786457, 983042, 1, 851993, 983042, 2, 786458, 917506, 1, 851994, 917506, 2, 786459, 983042, 1, 851995, 983042, 2, 786460, 917506, 1, 851996, 917506, 2, 786461, 983042, 1, 851997, 983042, 2, 786462, 917506, 1, 851998, 917506, 2, 786463, 983042, 1, 851999, 983042, 2, 1900536, 262145, 20, 1966072, 262145, 21, 1900537, 327681, 20, 1966073, 327681, 21, 1900538, 393217, 20, 1966074, 393217, 21, 1900539, 458753, 20, 1966075, 458753, 21)
 
-[node name="DialogueInteraction" parent="." instance=ExtResource("3_0llho")]
-position = Vector2(209, 100)
-dialogue_id = "test"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteraction"]
-shape = SubResource("CircleShape2D_8spsj")
-
-[node name="GenericItem" parent="." instance=ExtResource("8_0lq6k")]
-position = Vector2(24, 152)
-item_name = "set_of_keys"
-collision_circle_radius = 24
-
-[node name="GenericItem2" parent="." instance=ExtResource("8_0lq6k")]
-position = Vector2(245, 161)
-item_name = "set_of_keys"
-
-[node name="OnClickAnyInteraction" parent="." instance=ExtResource("14_7aw2o")]
-script_path = "res://components/interaction/on_click_any_interaction/scripts_dump/test_interaction.gd"
-method_name = "pure_testing"
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="OnClickAnyInteraction"]
-position = Vector2(159, 114)
-shape = SubResource("RectangleShape2D_b5kjj")
-
-[node name="OnCollisionAnyInteraction" parent="." instance=ExtResource("14_0u62w")]
-script_path = "res://components/interaction/on_collision_any_interaction/scripts_dump/test_interaction.gd"
-method_name = "pure_testing"
-minigame_requirement = 1
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="OnCollisionAnyInteraction"]
-position = Vector2(305, 118)
-shape = SubResource("RectangleShape2D_b5kjj")
-
-[node name="Minigame2Memeory" parent="." instance=ExtResource("11_qgyjf")]
-position = Vector2(63, 380)
-
 [node name="Minigame1KeyCombination" parent="." instance=ExtResource("15_w3m7q")]
 position = Vector2(-28, 73)
 
-[node name="set_of_keys" parent="Minigame1KeyCombination" instance=ExtResource("8_0lq6k")]
-position = Vector2(379, 94)
-item_name = "set_of_keys"
-dialogue_id = "pickup_set_of_keys"
+[node name="Minigame2Memeory" parent="." instance=ExtResource("11_qgyjf")]
+position = Vector2(63, 380)

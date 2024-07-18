@@ -25,9 +25,6 @@ func handle_interaction():
 	
 	#Le Dialogue Boxes si sovrastano... Ora non più
 	await DialogueManager.has_finished_displaying
-	#Finito il display, non servirà più questo dialogo
-	self.dialogue_interaction.queue_free()
-	self.dialogue_id = ""
 	
 	StateManager.inventory.insert(item_in_interaction)
 	StateManager.current_minigame += 1 #Incremento il contatore dei progressi
