@@ -37,6 +37,10 @@ func _draw_random_card():
 	
 func start_new_game(): 
 	MemeoryManager.hearts_array.clear()
+	MemeoryManager.clicks = 0
+	heart_UI = $Hearts.get_children()
+	print_debug(heart_UI)
+	$LineEdit.hide()
 	for i in heart_UI:
 		MemeoryManager.insert_heart(i)
 		i.beating_animation()
@@ -55,7 +59,7 @@ func update_slots():
 		
 func update_hearts():
 	#print_debug(heart_UI.size())
-	print_debug(MemeoryManager.hearts_array)
+	#print_debug(MemeoryManager.hearts_array)
 	for k in range(min(MemeoryManager.hearts_array.size(),heart_UI.size())):
 		#print_debug(heart_UI[k])
 		heart_UI[k].updateheart(MemeoryManager.hearts_array[k])
