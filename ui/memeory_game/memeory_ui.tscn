@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=7 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://ui/memeory_game/memeory_ui.gd" id="1_hlp5k"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://ui/memeory_game/memeory_ui_slot.tscn" id="2_cnvj3"]
 [ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://components/memeory/ui_background.png" id="2_d7sur"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/items/memeory_items/deck.tscn" id="5_407sr"]
+[ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://ui/memeory_game/Heart.tscn" id="6_h517r"]
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -105,10 +106,10 @@ layout_mode = 2
 
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 451.0
-offset_top = 21.0
-offset_right = 475.0
-offset_bottom = 45.0
+offset_left = 541.0
+offset_top = 17.0
+offset_right = 565.0
+offset_bottom = 41.0
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -126,5 +127,26 @@ text = "X"
 flat = true
 
 [node name="Deck" parent="." instance=ExtResource("5_407sr")]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 35.0
+offset_right = 439.0
+offset_bottom = 48.0
+theme_override_constants/h_separation = 28
+columns = 4
+
+[node name="Heart" parent="GridContainer" instance=ExtResource("6_h517r")]
+layout_mode = 2
+
+[node name="Heart2" parent="GridContainer" instance=ExtResource("6_h517r")]
+layout_mode = 2
+
+[node name="Heart3" parent="GridContainer" instance=ExtResource("6_h517r")]
+layout_mode = 2
+
+[node name="Heart4" parent="GridContainer" instance=ExtResource("6_h517r")]
+layout_mode = 2
 
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

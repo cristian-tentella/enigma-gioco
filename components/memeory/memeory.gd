@@ -34,10 +34,7 @@ func reset_pick():
 
 func remove_picks():
 	for card in picked:
-		#print_debug(card.index)
-		#print_debug(slots[card.index])
 		slots[card.index] = null
-		#print_debug(slots)
 		update.emit()
 		
 func has_couple():
