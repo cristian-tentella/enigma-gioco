@@ -20,6 +20,7 @@ NOTES:
 """
 DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico...) PER DEFINIRE QUANDO UN MINIGAME E' CONSIDERATO COMPLETATO
 """
+
 const debug_creating_save = false #Se vuoi debuggare creazione salvataggi, questo attiva una serie di print
 const debug_loading_save = false #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
@@ -35,11 +36,12 @@ const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni no
 var all_exited_interactions: Array #Array che contiene tutte le interazioni uscite, quindi quelle che non devono essere ricliccate
 
 
+
+
 var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
 var player_id
-
 
 func _ready():
 	if not AuthenticationManager.is_enabled:
@@ -48,6 +50,9 @@ func _ready():
 	Supabase.database.updated.connect(on_database_query_updated)
 	if FileAccess.file_exists(user_file):
 		player_id = get_player_id()
+		
+
+	
 	
 func on_database_query_error(query_result):
 	print_debug("I dati non sono stati correttamente inseriti nel database" + str(query_result))
@@ -63,13 +68,16 @@ func prepare_data_to_be_saved_and_save():
 	var current_minigame: int = StateManager.current_minigame 
 	var current_language: String = StateManager.current_language 
 	var mute_button_state: bool = StateManager.muted
+	var player_position: Vector2 = StateManager.player.position
+	
 	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
 		"inventory_owned_items_names": inventory_owned_items_names,
 		"current_minigame": current_minigame,
 		"current_language": current_language,
-		"mute_button_state": mute_button_state
+		"mute_button_state": mute_button_state,
+		"player_position": player_position
 	}
 	
 	if debug_creating_save:
@@ -137,13 +145,14 @@ func load_game_save_from_json():
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
-		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state"):
+		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state") or not content.has("player_position"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
 			
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
-		
+		var player_position_string = "Vector2%s" % content.get("player_position")
+		StateManager.player.position =  Vector2(str_to_var(player_position_string))
 		StateManager.current_language = content.get("current_language")
 		LanguageManager.load_language_from_state_manager()
 		UIManager.update_language_flag()
