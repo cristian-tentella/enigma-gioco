@@ -243,7 +243,8 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 	
 	var pickableItemInteraction_nodes = []
 	var all_minigame_nodes = {}
-	var root_node = self.get_tree().root
+	var root_node = self.get_parent()
+	assert(root_node.get_name() == "root") #Se non è cosi, allora metti save.gd negli autoload!
 	
 	
 	for node in node_list:
@@ -275,11 +276,13 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
+				continue
 			
 			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
 			if not node is PickableItemInteraction and node.destroy_after_minigame_requirement_number > node.minigame_requirement and node.destroy_after_minigame_requirement_number <= StateManager.current_minigame: #Va rotto
 				node.queue_free()
 				node = null
+				continue
 			
 			#Se ho un pickableItemInteraction lo returno alla fine in lista, per efficienza di popolazione inventario
 			if node is PickableItemInteraction:
