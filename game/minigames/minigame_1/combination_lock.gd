@@ -41,7 +41,7 @@ func _insert_into_next_slot(key_number: String):
 		if current_combination == real_combination:
 			print_debug("Heya! Nice, you got it!")
 			StateManager.current_minigame += 1
-			MinigameManager.porta_camera_da_letto.unlock()
+			MinigameManager.porta_camera_da_letto.try_to_unlock()
 			MinigameManager.porta_camera_da_letto = null
 			self.exit.emit()
 			return

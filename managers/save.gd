@@ -57,7 +57,7 @@ func on_database_query_updated(query_result):
 
 
 func prepare_data_to_be_saved_and_save():
-	if FileAccess.file_exists(user_file):
+	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
 		player_id = get_player_id()
 	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
 	var current_minigame: int = StateManager.current_minigame 
