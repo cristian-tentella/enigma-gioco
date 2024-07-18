@@ -16,6 +16,7 @@ script = ExtResource("1_tgm0t")
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_first_dialogue"
 minigame_requirement = 5
+destroy_after_minigame_requirement_number = 5
 just_proc_once = false
 
 [node name="memeory_launcher" parent="." instance=ExtResource("2_no6u7")]
@@ -36,3 +37,5 @@ just_proc_once = false
 [node name="memeory_win" type="Area2D" parent="."]
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_win"
+minigame_requirement = 7
+just_proc_once = false
