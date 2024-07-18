@@ -6,6 +6,7 @@ signal start
 signal update
 signal updatehearts
 signal gamelost
+signal gamewon
 
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
@@ -13,6 +14,7 @@ var clicks = 0
 var hearts_array: Array[Heart]
 var hearts = hearts_array.size()
 var i = 0
+var game_won
 
 func start_game():
 	start.emit()
@@ -29,7 +31,6 @@ func insert(card: Card):
 	
 func insert_heart(heart: Heart):
 	hearts_array.append(heart)
-	print_debug(hearts_array[hearts_array.size()-1])
 
 func has_item(needed_card_name: String):
 	for i in slots:
@@ -65,9 +66,19 @@ func check():
 			hearts_array[hearts_array.size()-1] = null
 		cover_picked_cards()
 	else:
+		game_won = true
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
 		remove_picks()
+		print_debug(MemeoryManager.slots)
+		for card in slots:
+			if (card != null):
+				print_debug("not yet")
+				game_won = false
+				break
+		if (game_won):
+			StateManager.current_minigame = 7
+			gamewon.emit()
 	reset_pick()
 
 func cover_picked_cards():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhpt0u3ex43gx"
-path="res://.godot/imported/slot.png-52cd3cce66076481d8e3080d12e84334.ctex"
+uid="uid://c55ybohax1vqs"
+path="res://.godot/imported/bet_back.png-0f48ddc85bc5571c925dfe278bdf758a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/memeory/slot.png"
-dest_files=["res://.godot/imported/slot.png-52cd3cce66076481d8e3080d12e84334.ctex"]
+source_file="res://game/minigames/memeory/memeory_items/bet/bet_back.png"
+dest_files=["res://.godot/imported/bet_back.png-0f48ddc85bc5571c925dfe278bdf758a.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cclj6c6cwa88m"]
 
-[ext_resource type="Script" path="res://ui/memeory_game/heart.gd" id="1_dyxx2"]
-[ext_resource type="Texture2D" uid="uid://l16rwgcd2pjd" path="res://ui/memeory_game/heart pixel art 254x254.png" id="1_l2d56"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/heart.gd" id="1_dyxx2"]
+[ext_resource type="Texture2D" uid="uid://l16rwgcd2pjd" path="res://game/minigames/memeory/memeory_game_ui/heart pixel art 254x254.png" id="1_l2d56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_reibg"]
 atlas = ExtResource("1_l2d56")

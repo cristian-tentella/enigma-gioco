@@ -20,12 +20,12 @@ func _ready():
 	
 func update_card_sprite2D_front_texture():
 #Carica l'immagine frontale della carta
-	sprite_path = "res://game/items/memeory_items/"+card_type+"/"+card_type+"_front.png"
+	sprite_path = "res://game/minigames/memeory/memeory_items/"+card_type+"/"+card_type+"_front.png"
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
 	
 func update_card_sprite2D_back_texture():
-	sprite_path = "res://game/items/memeory_items/card_back.png"
+	sprite_path = "res://game/minigames/memeory/memeory_items/card_back.png"
 	var image_texture = load(sprite_path)
 	sprite2D.texture = image_texture
 	

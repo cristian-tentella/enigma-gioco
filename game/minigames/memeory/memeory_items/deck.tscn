@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cr28jfcj25jap"]
 
-[ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/items/memeory_items/card.tscn" id="1_cfiem"]
+[ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/minigames/memeory/memeory_items/card.tscn" id="1_cfiem"]
 
 [node name="Deck" type="Node2D"]
 

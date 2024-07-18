@@ -50,7 +50,7 @@ MINIGAMES UI ELEMENTS
 ).instantiate()
 
 @onready var memeory_menu: MemeoryUI = preload(
-	"res://ui/memeory_game/memeory_ui.tscn"
+	"res://game/minigames/memeory/memeory_game_ui/memeory_ui.tscn"
 ).instantiate()
 
 

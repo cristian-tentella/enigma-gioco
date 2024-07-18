@@ -12,7 +12,8 @@ signal exit
 
 func _ready():
 	$Deck.hide()
-	MemeoryManager.gamelost.connect(game_lost)
+	MemeoryManager.gamelost.connect(game_lost_ui)
+	MemeoryManager.gamewon.connect(game_won_ui)
 	MemeoryManager.start.connect(start_new_game)
 	MemeoryManager.updatehearts.connect(update_hearts)
 	MemeoryManager.update.connect(update_slots)
@@ -36,7 +37,7 @@ func start_new_game():
 	MemeoryManager.hearts_array.clear()
 	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()
-	print_debug(heart_UI)
+	#print_debug(heart_UI)
 	$LineEdit.hide()
 	for i in heart_UI:
 		MemeoryManager.insert_heart(i)
@@ -53,9 +54,18 @@ func update_hearts():
 	for k in range(min(MemeoryManager.hearts_array.size(),heart_UI.size())):
 		heart_UI[k].updateheart(MemeoryManager.hearts_array[k])
 		
-func game_lost():
+func game_lost_ui():
 	await get_tree().create_timer(0.5).timeout
+	$LineEdit.text = "HAI PERSO"
 	$LineEdit.show()
+	
+func game_won_ui():
+	await get_tree().create_timer(0.2).timeout
+	$LineEdit.text = "HAI VINTO"
+	$LineEdit.show()
+	await get_tree().create_timer(1).timeout
+	self.exit.emit()
+	
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
