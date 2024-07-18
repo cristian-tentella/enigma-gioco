@@ -31,6 +31,7 @@ shape = SubResource("CapsuleShape2D_msowm")
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_retry"
 minigame_requirement = 6
+just_proc_once = false
 
 [node name="memeory_win" type="Area2D" parent="."]
 script = ExtResource("1_ik88x")
