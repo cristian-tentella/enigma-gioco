@@ -12,7 +12,6 @@ Per impostarlo, non serve usare una DialogueInteraction, questa è già presente
 
 var item_in_interaction: PickableItem
 
-
 var dialogue_id: String = "Nessun dialogo"
 
 @onready var dialogue_interaction: DialogueInteraction = $DialogueInteraction
@@ -21,11 +20,14 @@ func handle_interaction():
 	item_in_interaction.remove_from_map() #Rimuovi dalla mappa visualmente
 	
 	self.setup_dialogue_interaction_id()
-	if self.dialogue_interaction != null: #Se voglio un certo dialogo di pick-up dell'item
+	if self.dialogue_interaction != null and self.dialogue_id != "Nessun dialogo": #Se voglio un certo dialogo di pick-up dell'item
 		self.dialogue_interaction.handle_interaction()
 	
 	#Le Dialogue Boxes si sovrastano... Ora non più
 	await DialogueManager.has_finished_displaying
+	#Finito il display, non servirà più questo dialogo
+	self.dialogue_interaction.queue_free()
+	self.dialogue_id = ""
 	
 	StateManager.inventory.insert(item_in_interaction)
 	StateManager.current_minigame += 1 #Incremento il contatore dei progressi
