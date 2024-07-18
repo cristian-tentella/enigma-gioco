@@ -16,6 +16,5 @@ func updateheart(heart: Heart):
 		if(MemeoryManager.hearts_array.size() == 0):
 			MemeoryManager.clicks = -1
 			MemeoryManager.gamelost.emit()
-			print("HAI PERSO")
 
 

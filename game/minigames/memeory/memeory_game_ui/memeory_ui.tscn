@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
-[ext_resource type="Script" path="res://ui/memeory_game/memeory_ui.gd" id="1_hlp5k"]
-[ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://ui/memeory_game/memeory_ui_slot.tscn" id="2_cnvj3"]
-[ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://components/memeory/ui_background.png" id="2_d7sur"]
-[ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/items/memeory_items/deck.tscn" id="5_407sr"]
-[ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://ui/memeory_game/heart.tscn" id="6_jyv30"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
+[ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://game/minigames/memeory/memeory_game_ui/ui_background.png" id="2_3wgbt"]
+[ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
+[ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/minigames/memeory/memeory_items/deck.tscn" id="5_407sr"]
+[ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -30,7 +30,7 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_d7sur")
+texture = ExtResource("2_3wgbt")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6

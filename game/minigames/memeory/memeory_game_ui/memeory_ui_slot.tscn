@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c72ia170pdba4"]
 
 [ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="1_6cew7"]
-[ext_resource type="Script" path="res://ui/memeory_game/memeory_ui_slot.gd" id="1_oxlxo"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.gd" id="1_oxlxo"]
 
 [node name="MemeoryUiSlot" type="Control"]
 custom_minimum_size = Vector2(32, 48)

@@ -29,7 +29,6 @@ func insert(card: Card):
 	
 func insert_heart(heart: Heart):
 	hearts_array.append(heart)
-	print_debug(hearts_array[hearts_array.size()-1])
 
 func has_item(needed_card_name: String):
 	for i in slots:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l16rwgcd2pjd"
-path="res://.godot/imported/heart pixel art 254x254.png-d93c9da30d4a0e08efa739e038123bc7.ctex"
+uid="uid://c244nxcwnjwnn"
+path="res://.godot/imported/placeholder_yellow1.png-1096e4d6fde8810e568a30ee0fe70fe6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/memeory_game/heart pixel art 254x254.png"
-dest_files=["res://.godot/imported/heart pixel art 254x254.png-d93c9da30d4a0e08efa739e038123bc7.ctex"]
+source_file="res://game/minigames/memeory/memeory_game_ui/placeholder_yellow1.png"
+dest_files=["res://.godot/imported/placeholder_yellow1.png-1096e4d6fde8810e568a30ee0fe70fe6.ctex"]
 
 [params]
 

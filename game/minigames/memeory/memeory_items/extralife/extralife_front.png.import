@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hr3i3m7onlgt"
-path="res://.godot/imported/regular_front.png-017052964871c5d83dd5f63f74f4e340.ctex"
+uid="uid://clnhmrayb4pv1"
+path="res://.godot/imported/extralife_front.png-8cf5500ac42050b3fa93d7ee5ab11a2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/items/memeory_items/regular/regular_front.png"
-dest_files=["res://.godot/imported/regular_front.png-017052964871c5d83dd5f63f74f4e340.ctex"]
+source_file="res://game/minigames/memeory/memeory_items/extralife/extralife_front.png"
+dest_files=["res://.godot/imported/extralife_front.png-8cf5500ac42050b3fa93d7ee5ab11a2a.ctex"]
 
 [params]
 

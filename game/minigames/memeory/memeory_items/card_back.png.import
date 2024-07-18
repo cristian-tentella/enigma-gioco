@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://usk7h5iyt7sl"
-path="res://.godot/imported/ui_background.png-3cd2db8e6aefe368d6c9c98c79c848e2.ctex"
+uid="uid://ccw4mu1sud44"
+path="res://.godot/imported/card_back.png-cdb505a20681735f173bbc41c1c315c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/memeory/ui_background.png"
-dest_files=["res://.godot/imported/ui_background.png-3cd2db8e6aefe368d6c9c98c79c848e2.ctex"]
+source_file="res://game/minigames/memeory/memeory_items/card_back.png"
+dest_files=["res://.godot/imported/card_back.png-cdb505a20681735f173bbc41c1c315c0.ctex"]
 
 [params]
 

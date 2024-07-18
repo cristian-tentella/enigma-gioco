@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqxsjuyty2eeh"]
 
-[ext_resource type="Script" path="res://game/items/memeory_items/card.gd" id="1_babj3"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_items/card.gd" id="1_babj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic55s"]
 size = Vector2(20.5, 21)
