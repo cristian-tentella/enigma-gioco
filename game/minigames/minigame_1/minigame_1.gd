@@ -63,6 +63,15 @@ FLOW:
 
 """
 
+"""
+NODI NECESSARI PER FUNZIONAMENTO:
+	
+	Porta camera da letto dentro house.tscn (va cambiato house.gd e assegnazione di quella porta al minigame manager).
+		Quella porta ha minigame requirement 4
+	set_of_keys dentro house.tscn
+	
+"""
+
 #Il gioco vero e proprio
 var combination_lock_minigame
 

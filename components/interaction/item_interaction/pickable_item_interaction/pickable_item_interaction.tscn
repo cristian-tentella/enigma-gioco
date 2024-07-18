@@ -7,3 +7,4 @@
 script = ExtResource("1_lwqwt")
 
 [node name="DialogueInteraction" parent="." instance=ExtResource("2_gu0lf")]
+dialogue_id = "pickup_item_generic"

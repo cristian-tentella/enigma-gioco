@@ -11,10 +11,6 @@ var current_slot = 1
 var real_combination = "314"
 var current_combination = ""
 
-var is_it_first_time = true
-
-
-
 signal exit
 
 func _insert_into_next_slot(key_number: String):
@@ -36,8 +32,7 @@ func _insert_into_next_slot(key_number: String):
 		
 		#Qua pure se ha azzeccato, se è la prima volta, perde a prescindere
 		#Bruh se cheattano o sculano non è colpa mia... Non mi va di gestirlo :D
-		if is_it_first_time:
-			is_it_first_time = false
+		if StateManager.current_minigame == 1: #Sinonimo di "è la prima volta che provo"
 			StateManager.current_minigame += 1
 			self.exit.emit()
 			_on_reset_minigame_button_pressed()
