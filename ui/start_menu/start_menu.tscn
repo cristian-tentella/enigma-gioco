@@ -39,22 +39,23 @@ offset_bottom = 248.0
 [node name="PlayButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
-text = "Play"
+text = "PlayButton"
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
-text = "Resume"
+text = "ResumeButton"
 
 [node name="LogOutButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
-text = "Log out"
+text = "LogOutButton
+"
 
 [node name="ExitButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
-text = "Exit"
+text = "ExitButton"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

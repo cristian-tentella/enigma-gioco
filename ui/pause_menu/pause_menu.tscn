@@ -39,12 +39,12 @@ offset_bottom = 230.0
 [node name="ExitPauseMenuButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_mci5b")
-text = "Return to game"
+text = "ExitPauseMenuButton"
 
 [node name="MainMenuButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_mci5b")
-text = "Quit to main menu"
+text = "MainMenuButton"
 
 [connection signal="pressed" from="VBoxContainer/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
