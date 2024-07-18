@@ -20,8 +20,14 @@ NOTES:
 """
 DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico...) PER DEFINIRE QUANDO UN MINIGAME E' CONSIDERATO COMPLETATO
 """
+const debug_creating_save = false #Se vuoi debuggare creazione salvataggi, questo attiva una serie di print
+const debug_loading_save = false #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
+const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
+const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente quando prendi le info dal file le sostituisce con {}
+
 var minigame_to_current_minigame_requirement = {
-	"minigame_1" : 4 #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
+	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
+	"memeory" : 10 #Si elimina di sicuro quando si ha completato il minigame che richiede sia lui che quello dopo, non credo lo faremo mai tho
 }
 
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
@@ -65,8 +71,10 @@ func prepare_data_to_be_saved_and_save():
 		"current_language": current_language,
 		"mute_button_state": mute_button_state
 	}
-
-
+	
+	if debug_creating_save:
+		print_debug("\nInserting this into the JSON file:\n", data_for_json_file)
+	
 	save_current_state_into_json(data_for_json_file)
 	
 	
@@ -83,6 +91,8 @@ func save_current_state_into_json(data_for_json_file):
 	
 	
 func save_current_state_to_online_database(save_file: Dictionary):
+	if debug_creating_save:
+		print_debug("\nInserting the same into the Supabase file\n")
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).update({save_file = save_file})
 	Supabase.database.query(query)
 
@@ -108,6 +118,7 @@ func is_online() -> bool:
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
 	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 		#Se questo va a buon fine, il caricamento è al 25%
@@ -116,6 +127,13 @@ func load_game_save_from_json():
 		
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = JSON.parse_string(json_file.get_as_text())
+		
+		if start_without_any_save:
+			content = {}
+		
+		if debug_loading_save:
+			print_debug("\nSave content file is:\n", content)
+		
 		#Barra di caricamento a 0
 		UIManager.loading_screen.set_value(30)
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
@@ -125,6 +143,7 @@ func load_game_save_from_json():
 			
 		StateManager.current_minigame = content.get("current_minigame")
 		all_exited_interactions = content.get("all_exited_interactions") as Array #Setup per il successivo salvataggio
+		
 		StateManager.current_language = content.get("current_language")
 		LanguageManager.load_language_from_state_manager()
 		UIManager.update_language_flag()
@@ -213,20 +232,23 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 	var all_minigame_nodes = {}
 	var root_node = self.get_tree().root
 	
+	
 	for node in node_list:
 		
 		#Controllo se il nodo è un minigame, se si, poi controllo se va rimosso totalmente chiamando la funzione a fine metodo
 		var node_script = node.get_script()
 		if node_script != null:
 			var node_script_path = node_script.get_path()
+			
 			if node_script_path.begins_with("res://game/minigames/"):
-				var key = node_script_path.substr(21, 10) #minigame_1 ad esempio. Il parsing funziona
+				var key = node_script_path.substr(21, node_script_path.substr(21).find("/")) #minigame_1 ad esempio. Il parsing funziona
 				if all_minigame_nodes.has(key):
 					all_minigame_nodes[key].append(node) #Aggiungo alla lista se c'è già
 				else:
 					all_minigame_nodes[key] = [node] #Se non c'è la chiave, creo la lista
 				continue
 		node_script = null
+		
 		
 		#è un if molto lungo
 		if node is Interaction:
@@ -240,7 +262,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
-					
+			
 			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
 			if not node is PickableItemInteraction and node.destroy_after_minigame_requirement_number > node.minigame_requirement and node.destroy_after_minigame_requirement_number <= StateManager.current_minigame: #Va rotto
 				node.queue_free()
@@ -256,7 +278,12 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				node.queue_free()
 				node = null
 	
+	if debug_loading_save:
+		print_debug("\nall_minigame_nodes:\n", all_minigame_nodes)
 	self.delete_minigames_that_have_been_completed(all_minigame_nodes)
+	
+	if debug_loading_save:
+		print_debug("\npickableItemInteraction_nodes:\n", pickableItemInteraction_nodes)
 	return pickableItemInteraction_nodes
 
 #Funzione che dato un elenco di nodi PickableItemInteraction, esegue l'inserimento nell'inventario di quelli il cui nome
@@ -270,14 +297,28 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
 		
    
 func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
-	#Struttura dizionario: {"minigame_1": Minigame1KeyCombination:<Node2D#65380813108> , ...}
-	var curr_minigame = StateManager.current_minigame
-	for minigame_number in all_minigame_dict:
-		var destroy_requirement = minigame_to_current_minigame_requirement["minigame_1"] #Prendo il requirement dal dict delle var di classe
-		if destroy_requirement <= curr_minigame: #Va rotto
-			for minigame_node in all_minigame_dict[minigame_number]:
-				self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
-				minigame_node.queue_free()
+	#Struttura dizionario: { "minigame_1": { Minigame1KeyCombination:<Node2D#88063609573>: "minigame_1/minigame_1.gd", CombinationLock:<Control#94287957038>: "minigame_1/combination_lock.gd" }
+	var curr_minigame: int = StateManager.current_minigame
+	var minigame_keys: Array = minigame_to_current_minigame_requirement.keys()
+	var iteraction_index: int = 0
+
+	for minigame_key_from_input in all_minigame_dict: #Sto su minigame_1 dell'input
+		
+			var minigame_key = minigame_keys[iteraction_index]
+			iteraction_index += 1
+			
+			"""
+			Metti dentro house.tscn LE SCENE DEI MINIGIOCHI IN ORDINE
+			- Dall'alto verso il basso i minigiochi nello STESSO ordine in cui si trovano dentro 
+			  self.minigame_to_current_minigame_requirement
+			"""
+			assert(minigame_key_from_input == minigame_key)
+			
+			var destroy_requirement = minigame_to_current_minigame_requirement[minigame_key] #Prendo il requirement dal dict delle var di classe
+			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
+				for minigame_node in all_minigame_dict[minigame_key_from_input]: #Iterazione su lista input per rompere i nodi
+					self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
+					minigame_node.queue_free()
 
 #Questo qua purtroppo si vede solo se il caricamento è lento, credo...
 #Non riesco a inserire un delay artificiale ngl
