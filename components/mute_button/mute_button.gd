@@ -24,6 +24,7 @@ func _is_muted():
 
 func _on_pressed():
 	_toggle_mute()
+	AudioManager.play_click_sound_effect()
 
 
 func _update_icon():

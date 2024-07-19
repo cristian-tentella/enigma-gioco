@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=19 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -13,7 +13,11 @@
 [ext_resource type="AudioStream" uid="uid://b23ah1sk8vqkn" path="res://audio/sound_effects/door_unlock.ogg" id="11_7p3ra"]
 [ext_resource type="AudioStream" uid="uid://pgfa4grbnhrf" path="res://audio/sound_effects/success.ogg" id="12_v17nx"]
 [ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
+[ext_resource type="AudioStream" uid="uid://drdgs6ld5fxdg" path="res://audio/sound_effects/dialogue_ploop_1.ogg" id="14_r716t"]
+[ext_resource type="AudioStream" uid="uid://bqvhb6krrrilu" path="res://audio/sound_effects/dialogue_ploop_2.ogg" id="15_bqwgo"]
 [ext_resource type="AudioStream" uid="uid://bs8338c5lxkqb" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
+[ext_resource type="AudioStream" uid="uid://mysdudsswals" path="res://audio/sound_effects/dialogue_ploop_3.ogg" id="16_eedfu"]
+[ext_resource type="AudioStream" uid="uid://cy3774uiv5a6c" path="res://audio/sound_effects/dialogue_ploop_4.ogg" id="17_8r5h1"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -63,6 +67,22 @@ volume_db = -6.0
 [node name="Failure" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("13_a80vk")
 volume_db = -6.0
+
+[node name="DialoguePloop1" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("14_r716t")
+volume_db = -3.0
+
+[node name="DialoguePloop2" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("15_bqwgo")
+volume_db = -3.0
+
+[node name="DialoguePloop3" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("16_eedfu")
+volume_db = -3.0
+
+[node name="DialoguePloop4" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("17_8r5h1")
+volume_db = -3.0
 
 [node name="SoundTracks" type="Node" parent="."]
 
