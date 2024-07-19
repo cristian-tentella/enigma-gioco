@@ -35,7 +35,7 @@ script = ExtResource("1_oaeyu")
 [node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
 
 [node name="VirtualJoystick" type="Node2D" parent="UI/MobileOnlyUI"]
-position = Vector2(69, 304)
+position = Vector2(81, 290)
 scale = Vector2(0.65, 0.65)
 script = ExtResource("7_ghpve")
 
