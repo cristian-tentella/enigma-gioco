@@ -38,7 +38,7 @@ func start_new_game():
 	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
-	$LineEdit.hide()
+	$ColorRect.hide()
 	for heart in heart_UI:
 		MemeoryManager.insert_heart(heart)
 		heart.beating_animation()
@@ -56,18 +56,21 @@ func update_hearts():
 		
 func game_lost_ui():
 	await get_tree().create_timer(0.5).timeout
-	$LineEdit.text = "HAI PERSO"
-	$LineEdit.show()
-	
-func game_won_ui():
-	await get_tree().create_timer(0.2).timeout
-	$LineEdit.text = "HAI VINTO"
-	$LineEdit.show()
+	$ColorRect/Label.text = "memeory_lost_ui"
+	$ColorRect.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
+func game_won_ui():
+	await get_tree().create_timer(0.2).timeout
+	$ColorRect/Label.text = "memeory_win_ui"
+	$ColorRect.show()
+	await get_tree().create_timer(1).timeout
+	self.exit.emit()
+
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
+	StateManager.current_minigame = 6
 	self.exit.emit() # Replace with function body.
 

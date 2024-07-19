@@ -326,4 +326,3 @@ shape = SubResource("CircleShape2D_yd28a")
 wait_time = 0.5
 
 [connection signal="timeout" from="StepSoundEffectTimer" to="." method="_on_step_sound_effect_timer_timeout"]
-
