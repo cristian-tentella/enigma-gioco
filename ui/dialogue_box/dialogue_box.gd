@@ -31,4 +31,5 @@ func _process_dialogue_line(dialogue_line: String):
 
 	for i in body.text.length():
 		body.visible_characters += 1
+		AudioManager.play_dialogue_ploop_sound_effect()
 		await get_tree().create_timer(0.015).timeout

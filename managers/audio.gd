@@ -42,6 +42,9 @@ func play_door_close_sound_effect():
 func play_door_unlock_sound_effect():
 	self.play_sound_effect.emit("door_unlock")
 
+func play_dialogue_ploop_sound_effect():
+	self.play_sound_effect.emit("dialogue_ploop")
+
 func play_success_sound_effect():
 	self.play_sound_effect.emit("success")
 
