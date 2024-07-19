@@ -7,15 +7,27 @@ const dialogues: Dictionary = {
 	"door_locked_basic_dialogue": ["door_locked_basic_dialogue_1"],
 	"pickup_set_of_keys": ["pickup_set_of_keys_1", "pickup_set_of_keys_2"],
 	#"add_polipetto_to_inventory":["add_polipetto_1", "add_polipetto_2"],
+	
+	#FIRST MINIGAME =======================================
 	"first_open_minigame_combination": ["first_open_minigame_combination_1", "first_open_minigame_combination_2"],
 	"first_minigame_combination_door_fail": ["first_minigame_combination_door_fail_1", "first_minigame_combination_door_fail_2"],
 	"first_minigame_combination_short_win":["first_minigame_combination_short_win_1"],
 	"dialogue_with_pi_poster": ["dialogue_with_pi_poster_1", "dialogue_with_pi_poster_2", "dialogue_with_pi_poster_3", "dialogue_with_pi_poster_4"],
 	"actual_minigame_combination_first_dialogue": ["actual_minigame_combination_first_dialogue_1"],
 	"combination_minigame_won": ["combination_minigame_won_1", "combination_minigame_won_2"],
+	#=======================================
+	
+	#SECOND MINIGAME =======================================
 	"memeory_first_dialogue":["memeory_first_dialogue"],
 	"memeory_retry":["memeory_retry"],
 	"memeory_win":["memeory_win"],
-	"memeory_lost":["memeory_lost"]
+	"memeory_lost":["memeory_lost"],
+	#=======================================
 	
+	#THIRD MINIGAME =======================================
+	"minigame_3_colors_mobile_bloccato":["minigame_3_colors_mobile_bloccato"],
+	"minigame_3_won" : ["minigame_3_won_1", "minigame_3_won_2"],
+	"minigame_3_lost": ["minigame_3_lost"],
+	"minigame_3_after_plutonio": ["minigame_3_after_plutonio"]
+	#=======================================
 }

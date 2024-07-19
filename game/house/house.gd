@@ -7,3 +7,6 @@ func _ready():
 	
 	"""SETUP PER SECONDO MINIGIOCO, ATTENZIONE A COME SONO MESSI I NODI NELLA SCENA!"""
 	MinigameManager.polipetto = $Rooms/Bagno/polipetto
+	
+	"""SETUP PER TERZO MINIGIOCO, ATTENZIONE A COME SONO MESSI I NODI NELLA SCENA!"""
+	MinigameManager.plutonio_radioattivo = $Rooms/Studio/plutonio_radioattivo

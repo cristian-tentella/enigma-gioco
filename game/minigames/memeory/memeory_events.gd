@@ -5,39 +5,40 @@ extends Node
 @onready var memeory_retry = $memeory_retry
 @onready var memeory_win = $memeory_win
 @onready var memeory_lost = $memeory_lost
-var memeory
 
 func _ready():
 	pass
 	
 func memeory_start_dialogues():
 	
-	if StateManager.current_minigame==4:
-		StateManager.current_minigame += 1
+	#Dialogo iniziale
+	if memeory_first_dialogue != null:
+		#StateManager.current_minigame += 1
 		memeory_first_dialogue.handle_interaction()
 		await DialogueManager.has_finished_displaying
 		memeory_first_dialogue.queue_free()
 	
-	if StateManager.current_minigame==6:
+	else:
 		memeory_retry.handle_interaction()
 		await DialogueManager.has_finished_displaying
 	
+	#Mostra e gioca al minigame
 	MemeoryManager.start_game()
 	UIManager.show_memeory()
 	await UIManager.unlock
 	
-	if StateManager.current_minigame==6:
-		memeory_lost.handle_interaction()
-		await DialogueManager.has_finished_displaying
-		return
-		
-	if StateManager.current_minigame==7:
+	#Mostra il dopo se vinto o perso
+	if MemeoryManager.game_won:
 		memeory_win.handle_interaction()
 		await DialogueManager.has_finished_displaying
 		#================================ Goodbye minigame!
 		self._free_every_node_related_to_the_minigame()
 		#================================
 		StateManager.inventory.insert(MinigameManager.polipetto)
+	else:
+		memeory_lost.handle_interaction()
+		await DialogueManager.has_finished_displaying
+		return
 
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
