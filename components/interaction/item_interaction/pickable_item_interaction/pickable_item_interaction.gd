@@ -22,7 +22,6 @@ func handle_interaction():
 	self.setup_dialogue_interaction_id()
 	if self.dialogue_interaction != null and self.dialogue_id != "Nessun dialogo": #Se voglio un certo dialogo di pick-up dell'item
 		self.dialogue_interaction.handle_interaction()
-	
 	#Le Dialogue Boxes si sovrastano... Ora non più
 	await DialogueManager.has_finished_displaying
 	

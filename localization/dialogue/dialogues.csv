@@ -28,4 +28,7 @@ combination_minigame_won_1;Daniel: Wow, that was it?!;Daniel: Wow, era davvero q
 combination_minigame_won_2;Daniel: I guess that pi poster was there for a reason, after all...;Daniel: Alla fine, quel poster del pi greco era effettivamente utile...
 memeory_first_dialogue;Watermelon: Hello, first time!;Anguria: Ciao, prima volta!
 memeory_retry;Watermelon: Rematch?;Anguria: Rivincita?
-memeory_win;Watermelon: GG;Anguria: GG
+memeory_win;Watermelon: GG, you won. Here's a reward for you!;Anguria: GG, hai vinto. Ecco a te una ricompensa!
+memeory_lost;Watermelon: gg,but try again;Anguria: gg, ma prova ancora
+memeory_win_ui;YOU WON!;HAI VINTO!
+memeory_lost_ui; YOU LOST!; HAI PERSO!
