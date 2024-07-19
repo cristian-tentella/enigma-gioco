@@ -3,7 +3,8 @@ extends Interaction
 
 @export var script_path: String = "res://components/interaction/on_collision_any_interaction/scripts_dump/anything.gd"
 @export var method_name: String = "method_of_interaction"
- 
+@export var is_method_in_direct_parent: bool = false
+
 """
 Classe che gestisce interazioni forzate appena il giocatore ci entra dentro.
 
@@ -32,9 +33,14 @@ TUTORIAL COME USARE:
 # if interaction_counter == 3:
 #	self.queue_free() -> questo controllo meglio farlo dentro handle_interaction() qui dentro, magari con una var esportata!
 
+
 var class_resource
 
 func _ready():
+	if is_method_in_direct_parent:
+		class_resource = null
+		return
+	
 	class_resource = ResourceLoader.load(script_path)
 	
 	if class_resource == null: #Print per capire cosa si ha sbagliato
@@ -43,11 +49,13 @@ func _ready():
 
 #Quando entro in collisione, attivo questa funzione
 func handle_interaction():
-	if class_resource.has_method(method_name): #Controllo se il metodo è giusto
-		class_resource.call(method_name) #Chiamo il metodo che mi serve
-		
-	else: #Print per capire cosa si ha sbagliato
-		print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
+	if is_method_in_direct_parent: #Modo per non usare metodi statici, chiamare funzioni definite nel padre diretto!
+		self.get_parent().call(method_name)
+	else:
+		if class_resource.has_method(method_name): #Controllo se il metodo è giusto
+			class_resource.call(method_name) #Chiamo il metodo che mi serve
+		else: #Print per capire cosa si ha sbagliato
+			print_debug("\n\tERROR: OnCollisionAnyInteraction node named [" + get_name() + "] is using a wrong method_name OR THE METHOD IS NOT STATIC, not executing anything!\n")
 	
 	_remove_if_proc_only_once()
 	_increment_current_minigame_if_told_so()

@@ -43,6 +43,7 @@ var last_y = 0
 #For better understanding, _input(e : InputEvent) cattura TUTTI i segnali di input, e chiama OGNI metodo _input() di OGNI classe con quel parametro.
 #Noi useremo esclusivamente questa classe per questa metodo, sarebbe meglio, per disaccoppiamento, evitare altre chiamate a _input() in giro per il codice.
 func _input(input_event: InputEvent):
+	#NOTE: In partenza non abbiamo fatto si che durante un dialogo si possa premere pausa od uscire, quindi ho proseguito con quell'idea (rick)
 	if StateManager.should_player_be_able_to_move: 
 		_process_player_input_event(input_event) #Banalmente, se posso muovermi, chiama il metodo per muovermi
 	else:
@@ -85,24 +86,28 @@ func _process_player_input_event(input_event: InputEvent):
 	#vede poi se è stato premuto (o rilasciato) il tasto relativo a quella determinata stringa.
 	#Per esempio, se premo W, movement_action sarà MOVE_UP (Guardando nella Input Map), quindi iterando sulla lista di possibili movimenti, quando sta su
 	#MOVE_UP, esegue il primo IF
+	
 	for movement_action in MOVEMENT_ACTIONS:
 		if input_event.is_action_pressed(movement_action):
 			movement_action_pressed.emit(movement_action)
+			return
 		if input_event.is_action_released(movement_action):
 			movement_action_released.emit(movement_action)
+			return
 	
 	#Gestione del tasto di interazione con oggetti
 	if input_event.is_action_pressed(INTERACT):
 		StateManager.player.interaction_detector.activate_closest_interaction()
+		return
 	
 	#Gestione del tasto di pausa del gioco
 	if input_event.is_action_pressed(PAUSE):
 		UIManager.show_pause_menu()
+		return
 	
 	if input_event.is_action_pressed(INVENTORY):
 		UIManager.show_inventory()
-		
-	
+		return
 
 
 #Se non posso muovermi, ho premuto il tasto per fare qualcos'altro. 
@@ -111,3 +116,39 @@ func _process_ui_input_event(input_event: InputEvent):
 	if StateManager.is_a_dialogue_in_progress:
 		if input_event.is_action_pressed(INTERACT):
 			self.advance_dialogue.emit()
+
+
+
+#Metodo chiamato per movimento gestito da SISTEMA e non utente
+func _process_system_input_event(input_const_string: String, is_pressed: bool):
+	#input_event.is_action_pressed(string) va nell'input map, prende il tasto relativo a "string" nei bind,
+	#vede poi se è stato premuto (o rilasciato) il tasto relativo a quella determinata stringa.
+	#Per esempio, se premo W, movement_action sarà MOVE_UP (Guardando nella Input Map), quindi iterando sulla lista di possibili movimenti, quando sta su
+	#MOVE_UP, esegue il primo IF
+	if StateManager.should_player_be_able_to_move: 
+		return
+	
+	assert(input_const_string!=null and is_pressed!=null)
+	
+	for movement_action in MOVEMENT_ACTIONS:
+		if input_const_string == movement_action:
+			if is_pressed:
+				movement_action_pressed.emit(movement_action)
+				return
+			else:
+				movement_action_released.emit(movement_action)
+				return
+	
+	#Gestione del tasto di interazione con oggetti
+	if input_const_string == INTERACT:
+		StateManager.player.interaction_detector.activate_closest_interaction()
+		return
+	
+	#Gestione del tasto di pausa del gioco
+	if input_const_string == PAUSE:
+		UIManager.show_pause_menu()
+		return
+	
+	if input_const_string == INVENTORY:
+		UIManager.show_inventory()
+		return

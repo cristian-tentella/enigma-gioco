@@ -28,7 +28,7 @@ func _ready():
 		func(movement_action: String):
 			self.movement_actions_queue.append(movement_action)
 	)
-
+	
 	InputManager.movement_action_released.connect(
 		func(movement_action: String):
 			self.movement_actions_queue.erase(movement_action)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=29 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
+[ext_resource type="PackedScene" uid="uid://ct8sph62appvd" path="res://components/debug_elements/interaction_to_print_node_tree/interaction_to_print_node_tree.tscn" id="14_fb0pq"]
+[ext_resource type="PackedScene" uid="uid://da1swthdhvyir" path="res://components/interaction/reach_destination_interaction/reach_destination_interaction.tscn" id="15_dq0io"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
@@ -4121,6 +4123,9 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_p7am3")
 sources/1 = SubResource("TileSetAtlasSource_h5t20")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqeks"]
+radius = 17.0294
+
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -4291,3 +4296,14 @@ position = Vector2(-28, 73)
 
 [node name="Minigame2Memeory" parent="." instance=ExtResource("11_qgyjf")]
 position = Vector2(63, 380)
+
+[node name="delete_test_node" type="Node2D" parent="."]
+
+[node name="InteractionToPrintNodeTree" parent="delete_test_node" instance=ExtResource("14_fb0pq")]
+position = Vector2(159, 95)
+
+[node name="ReachDestinationInteraction" parent="delete_test_node" instance=ExtResource("15_dq0io")]
+position = Vector2(168, 181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="delete_test_node/ReachDestinationInteraction"]
+shape = SubResource("CircleShape2D_oqeks")
