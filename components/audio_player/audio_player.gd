@@ -65,6 +65,14 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 				$SoundEffects/Footstep4
 			]
 			audio_stream_player_for_sound_effects = footsteps[randi() % footsteps.size()]
+		"dialogue_ploop":
+			var ploops = [
+				$SoundEffects/DialoguePloop1,
+				$SoundEffects/DialoguePloop2,
+				$SoundEffects/DialoguePloop3,
+				$SoundEffects/DialoguePloop4,
+			]
+			audio_stream_player_for_sound_effects = ploops[randi() % ploops.size()]
 		"item_pickup":
 			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
 		"menu":

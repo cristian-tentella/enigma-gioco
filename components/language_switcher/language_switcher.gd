@@ -18,6 +18,7 @@ func _update_flag():
 func _on_flag_pressed():
 	LanguageManager.change_language()
 	_update_flag()
+	AudioManager.play_click_sound_effect()
 
 
 func _show_italian_flag():
