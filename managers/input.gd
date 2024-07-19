@@ -49,32 +49,32 @@ func _input(input_event: InputEvent):
 		_process_ui_input_event(input_event)
 
 func _process(delta):
-	var x = joystick.get_value().x
-	var y = joystick.get_value().y
-	const JOYSTICK_TRESHOLD = 0.6
+	if PlatformHelper.get_current_platform() == PlatformHelper.Platform.MOBILE:
+		var x = joystick.get_value().x
+		var y = joystick.get_value().y
+		const JOYSTICK_TRESHOLD = 0.6
 
-	if y < -JOYSTICK_TRESHOLD and last_y >= -JOYSTICK_TRESHOLD:
-		movement_action_pressed.emit(MOVE_UP)
-	elif y >= -JOYSTICK_TRESHOLD and last_y < JOYSTICK_TRESHOLD:
-		movement_action_released.emit(MOVE_UP)
-	
-	if x > JOYSTICK_TRESHOLD and last_x <= JOYSTICK_TRESHOLD:
-		movement_action_pressed.emit(MOVE_RIGHT)
-	elif x <= JOYSTICK_TRESHOLD and last_x > JOYSTICK_TRESHOLD:
-		movement_action_released.emit(MOVE_RIGHT)
-	
-	if y > JOYSTICK_TRESHOLD and last_y <= JOYSTICK_TRESHOLD:
-		movement_action_pressed.emit(MOVE_DOWN)
-	elif y <= JOYSTICK_TRESHOLD and last_y > JOYSTICK_TRESHOLD:
-		movement_action_released.emit(MOVE_DOWN)
-	
-	if x < -JOYSTICK_TRESHOLD and last_x >= -JOYSTICK_TRESHOLD:
-		movement_action_pressed.emit(MOVE_LEFT)
-	elif x >= -JOYSTICK_TRESHOLD and last_x < -JOYSTICK_TRESHOLD:
-		movement_action_released.emit(MOVE_LEFT)
+		if y < -JOYSTICK_TRESHOLD and last_y >= -JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_UP)
+		elif y >= -JOYSTICK_TRESHOLD and last_y < JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_UP)
+		if x > JOYSTICK_TRESHOLD and last_x <= JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_RIGHT)
+		elif x <= JOYSTICK_TRESHOLD and last_x > JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_RIGHT)
+		
+		if y > JOYSTICK_TRESHOLD and last_y <= JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_DOWN)
+		elif y <= JOYSTICK_TRESHOLD and last_y > JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_DOWN)
+		
+		if x < -JOYSTICK_TRESHOLD and last_x >= -JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_LEFT)
+		elif x >= -JOYSTICK_TRESHOLD and last_x < -JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_LEFT)
 
-	last_x = x
-	last_y = y
+		last_x = x
+		last_y = y
 
 
 
