@@ -35,7 +35,7 @@ var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
 	"memeory" : 10,
 	"minigame_3_colors_combination": 10,
-	"minigame_4_ripara_spada_laser": 15
+	"minigame_4_ripara_spada_laser": 16
 }
 
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
