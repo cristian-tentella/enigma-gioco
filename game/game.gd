@@ -13,6 +13,7 @@ extends Node
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var ui_phantom_camera = %PhantomCamera2D
 @onready var audio_player = $AudioPlayer
+@onready var joystick = $UI/MobileOnlyUI/VirtualJoystick
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
@@ -24,7 +25,7 @@ func _ready():
 	StateManager.house = house
 	StateManager.player_phantom_camera = player_phantom_camera
 	StateManager.ui_phantom_camera = ui_phantom_camera
-
+	InputManager.joystick = joystick
 	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
 
 	
@@ -32,8 +33,6 @@ func _ready():
 	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager
 
 	StateManager.audio_player = audio_player
-	StateManager.memeory_UI = memeory_UI
-	#StateManager.memeory = memeory_UI.MemeoryManager
 
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

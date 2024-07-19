@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://uc8agtk4h134"]
+[gd_scene load_steps=8 format=3 uid="uid://uc8agtk4h134"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_1/minigame_1.gd" id="1_n1pno"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_4ba4r"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="4_4877t"]
+[ext_resource type="Script" path="res://components/interaction/dialogue_interaction/dialogue_interaction.gd" id="4_kuswm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvfik"]
 
@@ -91,3 +92,7 @@ just_proc_once = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="actual_minigame_launcher"]
 position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_c42ab")
+
+[node name="short_win_dialogue" type="Area2D" parent="."]
+script = ExtResource("4_kuswm")
+dialogue_id = "first_minigame_combination_short_win"

@@ -14,6 +14,7 @@ const MOVE_LEFT = "move_left"
 const INTERACT = "interact"
 const PAUSE = "pause"
 const INVENTORY = "inv"
+var joystick: VirtualJoystick
 
 #Lista di tutti i possibili movimenti che il Player può effettuare. 
 #NOTE: Ognuno di questi è stato prima mappato alla sua stringa, il cui nome è LO STESSO della Mappa Input di Godot
@@ -35,6 +36,9 @@ signal movement_action_released(movement_action: String) #Segnale associato al r
 signal advance_dialogue  #Segnale per avanzare nei dialoghi
 #################################################################################
 
+var last_x = 0
+var last_y = 0
+
 #Metodo di Godot. 
 #For better understanding, _input(e : InputEvent) cattura TUTTI i segnali di input, e chiama OGNI metodo _input() di OGNI classe con quel parametro.
 #Noi useremo esclusivamente questa classe per questa metodo, sarebbe meglio, per disaccoppiamento, evitare altre chiamate a _input() in giro per il codice.
@@ -45,8 +49,39 @@ func _input(input_event: InputEvent):
 	else:
 		_process_ui_input_event(input_event)
 
+func _process(delta):
+	if PlatformHelper.get_current_platform() == PlatformHelper.Platform.MOBILE:
+		var x = joystick.get_value().x
+		var y = joystick.get_value().y
+		const JOYSTICK_TRESHOLD = 0.6
+
+		if y < -JOYSTICK_TRESHOLD and last_y >= -JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_UP)
+		elif y >= -JOYSTICK_TRESHOLD and last_y < JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_UP)
+		if x > JOYSTICK_TRESHOLD and last_x <= JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_RIGHT)
+		elif x <= JOYSTICK_TRESHOLD and last_x > JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_RIGHT)
+		
+		if y > JOYSTICK_TRESHOLD and last_y <= JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_DOWN)
+		elif y <= JOYSTICK_TRESHOLD and last_y > JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_DOWN)
+		
+		if x < -JOYSTICK_TRESHOLD and last_x >= -JOYSTICK_TRESHOLD:
+			movement_action_pressed.emit(MOVE_LEFT)
+		elif x >= -JOYSTICK_TRESHOLD and last_x < -JOYSTICK_TRESHOLD:
+			movement_action_released.emit(MOVE_LEFT)
+
+		last_x = x
+		last_y = y
+
+
+
 #Metodo chiamato se il Player può muoversi, per gestire il movimento
 func _process_player_input_event(input_event: InputEvent):
+
 	#input_event.is_action_pressed(string) va nell'input map, prende il tasto relativo a "string" nei bind,
 	#vede poi se è stato premuto (o rilasciato) il tasto relativo a quella determinata stringa.
 	#Per esempio, se premo W, movement_action sarà MOVE_UP (Guardando nella Input Map), quindi iterando sulla lista di possibili movimenti, quando sta su
