@@ -34,6 +34,11 @@ script = ExtResource("1_oaeyu")
 
 [node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
 
+[node name="VirtualJoystick" type="Node2D" parent="UI/MobileOnlyUI"]
+position = Vector2(69, 304)
+scale = Vector2(0.65, 0.65)
+script = ExtResource("7_ghpve")
+
 [node name="OpenPauseMenuButton" parent="UI/MobileOnlyUI" instance=ExtResource("4_j2h6h")]
 offset_left = 594.0
 offset_top = 12.0
@@ -43,11 +48,6 @@ texture_normal = ExtResource("4_6dgs2")
 texture_pressed = ExtResource("6_mwtq2")
 texture_hover = ExtResource("7_jfbt4")
 texture_focused = ExtResource("7_jfbt4")
-
-[node name="VirtualJoystick" type="Node2D" parent="UI"]
-position = Vector2(69, 304)
-scale = Vector2(0.65, 0.65)
-script = ExtResource("7_ghpve")
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
 
