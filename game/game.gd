@@ -13,6 +13,7 @@ extends Node
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var ui_phantom_camera = %PhantomCamera2D
 @onready var audio_player = $AudioPlayer
+@onready var joystick = $UI/VirtualJoystick
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
@@ -24,7 +25,7 @@ func _ready():
 	StateManager.house = house
 	StateManager.player_phantom_camera = player_phantom_camera
 	StateManager.ui_phantom_camera = ui_phantom_camera
-
+	InputManager.joystick = joystick
 	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
 
 	
