@@ -211,7 +211,6 @@ func show_combination_key_minigame():
 
 	_kil_locking_ui_element(combination_key_minigame)
 
-
 func show_memeory():
 	_spawn_locking_ui_element(memeory_menu)
 	await memeory_menu.exit
@@ -223,3 +222,11 @@ func show_combination_color_key_minigame():
 	await combination_color_key_minigame.exit
 
 	_kil_locking_ui_element(combination_color_key_minigame)
+
+
+func show_inventory_for_minigame4():
+	self.inventory_menu._assign_NO_ITEM_SELECTED_DESC_STRING_MINIGAME4() #Va fatto qui perché cosi ogni volta che clicco si aggiorna la lingua
+	_spawn_locking_ui_element(inventory_menu)
+	AudioManager.play_menu_sound_effect()
+	await inventory_menu.exit
+	_kil_locking_ui_element(inventory_menu)

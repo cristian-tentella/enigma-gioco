@@ -18,3 +18,6 @@ var polipetto
 
 """MINIGAME_3 VARIABLES THAT ARE NEEDED TO BE GLOBALLY VISIBLE"""
 var plutonio_radioattivo
+
+"""MINIGAME_4 VARIABLES THAT ARE NEEDED TO BE GLOBALLY VISIBLE"""
+var spada_laser

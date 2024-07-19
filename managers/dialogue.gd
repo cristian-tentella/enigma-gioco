@@ -37,6 +37,9 @@ func handle_dialogue_interaction_with_dynamic_replace(dialogue_interaction: Dial
 
 
 func _get_dialogue_lines_ids(dialogue_id: String) -> Array:
+	#if not dialogues.has(dialogue_id)
+	#	print_debug(dialogue_id)
+	#	return []
 	assert(dialogues.has(dialogue_id))
 	return dialogues.get(dialogue_id)
 

@@ -26,10 +26,16 @@ const debug_loading_save = false #Se vuoi debuggare caricamento salvataggi, ques
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
 const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
 
+const start_with_minigame_1_finished = false #Starta con i nodi minigame 1 tolti
+const start_with_minigame_2_finished = false #Starta con i nodi minigame 2 tolti
+const start_with_minigame_3_finished = false #Starta con i nodi minigame 3 tolti
+const start_with_minigame_2_and_3_finished = true #Starta con i nodi minigame 2 e 3 tolti
+
 var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
 	"memeory" : 10,
-	"minigame_3_colors_combination": 10
+	"minigame_3_colors_combination": 10,
+	"minigame_4_ripara_spada_laser": 15
 }
 
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
@@ -129,6 +135,8 @@ func load_game_save_from_json():
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
 	
+	
+	
 	if loading_bar_enabled:
 		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	
@@ -141,8 +149,18 @@ func load_game_save_from_json():
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = JSON.parse_string(json_file.get_as_text())
 		
-		if start_without_any_save:
-			content = {}
+		if start_with_minigame_1_finished:
+			content = {"all_exited_interactions":["Game/House/Rooms/Cameretta + Terrazzo/set_of_keys/PickableItemInteraction/DialogueInteraction","Game/House/Minigame1KeyCombination/first_dialogue_on_first_open","Game/House/Minigame1KeyCombination/first_click_on_door_after_keys_taken","Game/House/Minigame1KeyCombination/second_dialogue_on_first_open","Game/House/Rooms/Cameretta + Terrazzo/porta_camera","Game/House/Minigame1KeyCombination/combination_minigame_won"],"current_language":"it_IT","current_minigame":4,"inventory_owned_items_names":["set_of_keys"],"mute_button_state":true,"player_position":"(176.8509, 199.9232)"}
+			
+		if start_with_minigame_2_finished:
+			content = {"all_exited_interactions":["Game/House/Rooms/Cameretta + Terrazzo/set_of_keys/PickableItemInteraction/DialogueInteraction","Game/House/Minigame1KeyCombination/first_dialogue_on_first_open","Game/House/Minigame1KeyCombination/first_click_on_door_after_keys_taken","Game/House/Minigame1KeyCombination/second_dialogue_on_first_open","Game/House/Rooms/Cameretta + Terrazzo/porta_camera","Game/House/Minigame1KeyCombination/combination_minigame_won","Game/House/Minigame2Memeory/memeory_win"],"current_language":"it_IT","current_minigame":7,"inventory_owned_items_names":["set_of_keys","polipetto"],"mute_button_state":true,"player_position":"(34.10979, 439.9523)"}
+		
+		if start_with_minigame_3_finished:
+			content = {"all_exited_interactions":["Game/House/Rooms/Cameretta + Terrazzo/set_of_keys/PickableItemInteraction/DialogueInteraction","Game/House/Minigame1KeyCombination/first_dialogue_on_first_open","Game/House/Minigame1KeyCombination/first_click_on_door_after_keys_taken","Game/House/Minigame1KeyCombination/second_dialogue_on_first_open","Game/House/Rooms/Cameretta + Terrazzo/porta_camera","Game/House/Minigame1KeyCombination/combination_minigame_won"],"current_language":"it_IT","current_minigame":7,"inventory_owned_items_names":["set_of_keys","plutonio_radioattivo"],"mute_button_state":true,"player_position":"(408.1308, 447.1521)"}
+		
+		if start_with_minigame_2_and_3_finished:
+			content = {"all_exited_interactions":["Game/House/Rooms/Cameretta + Terrazzo/set_of_keys/PickableItemInteraction/DialogueInteraction","Game/House/Minigame1KeyCombination/first_dialogue_on_first_open","Game/House/Minigame1KeyCombination/first_click_on_door_after_keys_taken","Game/House/Minigame1KeyCombination/second_dialogue_on_first_open","Game/House/Rooms/Cameretta + Terrazzo/porta_camera","Game/House/Minigame1KeyCombination/combination_minigame_won","Game/House/Minigame2Memeory/memeory_win"],"current_language":"it_IT","current_minigame":10,"inventory_owned_items_names":["set_of_keys","polipetto","plutonio_radioattivo"],"mute_button_state":true,"player_position":"(414.7313, 448.4962)"}
+		
 		
 		if debug_loading_save:
 			print_debug("\nSave content file is:\n", content)

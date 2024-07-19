@@ -22,6 +22,8 @@ func _insert_into_next_slot(key_number: String):
 	if current_slot == 5 or key_number in current_combination:
 		return
 	
+	AudioManager.play_click_sound_effect()
+	
 	match current_slot:
 		1:
 			slot_digit1.text = key_number
@@ -50,7 +52,7 @@ func check_combination():
 			self.is_won = true
 			self.exit.emit()
 			return
-			
+	
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_failure_sound_effect()
 		

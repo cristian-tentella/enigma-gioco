@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://beq1b34jf1bpq"]
+
+[ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_ekgtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
+size = Vector2(60.5, 12)
+
+[node name="Minigame4RiparaSpadaLaser" type="Node2D"]
+script = ExtResource("1_g1yqu")
+
+[node name="click_spada_laser_dialogo_minigame4" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "click_spada_laser_dialogo_minigame4"
+minigame_requirement = 10
+just_proc_once = false
+
+[node name="click_spada_laser_dialogo_finale" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "click_spada_laser_dialogo_minigame4_after"
+minigame_requirement = 10
+just_proc_once = false
+
+[node name="game_won_dialogue" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "minigame_4_won"
+minigame_requirement = 10
+just_proc_once = false
+
+[node name="game_lost_dialogue" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "minigame_4_lost"
+minigame_requirement = 10
+just_proc_once = false
+
+[node name="game_starter" parent="." instance=ExtResource("3_ekgtv")]
+position = Vector2(182.145, 290.188)
+script_path = ""
+method_name = "launch_minigame"
+is_method_in_direct_parent = true
+minigame_requirement = 10
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
+position = Vector2(-182.145, -289.188)
+shape = SubResource("RectangleShape2D_22paf")
