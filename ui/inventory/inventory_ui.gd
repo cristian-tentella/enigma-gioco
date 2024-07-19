@@ -54,9 +54,10 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	slot_number -= 1
 	var item_to_show = self.inv.slots[slot_number]
 	item_to_show._associate_description_from_traslation_file()
-	#Nome -> item_to_show.item_name
+	item_to_show._associate_name_from_traslation_file()
+	#Nome -> item_to_show.localized_item_name
 	#Descrizione -> item_to_show.description
-	self.description_label.text = item_to_show.item_name+"\n\n"+item_to_show.description
+	self.description_label.text = item_to_show.localized_item_name+"\n\n"+item_to_show.description
 
 
 func _on_inventory_ui_slot_1_button_pressed():

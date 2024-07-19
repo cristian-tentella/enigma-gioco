@@ -6,9 +6,7 @@ extends Node
 @onready var memeory_win = $memeory_win
 @onready var memeory_lost = $memeory_lost
 
-func _ready():
-	pass
-	
+
 func memeory_start_dialogues():
 	
 	#Dialogo iniziale
@@ -17,7 +15,6 @@ func memeory_start_dialogues():
 		memeory_first_dialogue.handle_interaction()
 		await DialogueManager.has_finished_displaying
 		memeory_first_dialogue.queue_free()
-	
 	else:
 		memeory_retry.handle_interaction()
 		await DialogueManager.has_finished_displaying
