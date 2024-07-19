@@ -13,7 +13,7 @@ extends Node
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var ui_phantom_camera = %PhantomCamera2D
 @onready var audio_player = $AudioPlayer
-@onready var joystick = $UI/VirtualJoystick
+@onready var joystick = $UI/MobileOnlyUI/VirtualJoystick
 
 """####################################################################################
 WHOLE GAME ENTRY POINT (First scene called is game.tscn)
