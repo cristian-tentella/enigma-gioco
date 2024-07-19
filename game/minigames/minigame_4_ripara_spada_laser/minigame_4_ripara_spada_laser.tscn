@@ -13,7 +13,6 @@ script = ExtResource("1_g1yqu")
 [node name="click_spada_laser_dialogo_minigame4" parent="." instance=ExtResource("2_haxex")]
 dialogue_id = "click_spada_laser_dialogo_minigame4"
 minigame_requirement = 10
-just_proc_once = false
 
 [node name="click_spada_laser_dialogo_finale" parent="." instance=ExtResource("2_haxex")]
 dialogue_id = "click_spada_laser_dialogo_minigame4_after"

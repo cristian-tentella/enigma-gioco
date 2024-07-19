@@ -56,7 +56,7 @@ func handle_interaction():
 
 #Pure debugging
 func _exit_tree():
-	#print(get_name()+" exiting!\n")
+	#print_debug(get_name()+" exiting!\n")
 	pass
 
 func _remove_if_proc_only_once():

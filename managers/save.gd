@@ -29,7 +29,7 @@ const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. N
 const start_with_minigame_1_finished = false #Starta con i nodi minigame 1 tolti
 const start_with_minigame_2_finished = false #Starta con i nodi minigame 2 tolti
 const start_with_minigame_3_finished = false #Starta con i nodi minigame 3 tolti
-const start_with_minigame_2_and_3_finished = true #Starta con i nodi minigame 2 e 3 tolti
+const start_with_minigame_2_and_3_finished = false #Starta con i nodi minigame 2 e 3 tolti
 
 var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi

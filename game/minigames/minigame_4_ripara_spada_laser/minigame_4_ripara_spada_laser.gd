@@ -57,10 +57,9 @@ var is_won: bool = false
 func launch_minigame():
 	UIManager.inventory_menu.inventory_slot_pressed.connect(_on_inventory_slot_pressed)
 	#Dialogo in cui vede la spada per la prima volta
-	if primo_dialogo_appena_clicco_su_spada != null: #TODO in realtà non fa mai la free quando  ricarco il save
+	if primo_dialogo_appena_clicco_su_spada != null:
 		self.primo_dialogo_appena_clicco_su_spada.handle_interaction()
 		await DialogueManager.has_finished_displaying
-		self.primo_dialogo_appena_clicco_su_spada.queue_free()
 	
 	#Dialogo in cui dice che la spada ha spazio per ficcarci qualcosa, è quello che parte quando ci riclicca
 	self.dialogo_al_reclick.handle_interaction()
@@ -76,7 +75,8 @@ func launch_minigame():
 		await DialogueManager.has_finished_displaying
 		self._free_every_node_related_to_the_minigame()
 		StateManager.inventory.insert(MinigameManager.spada_laser)
-		#TODO: Funzione per rimuovere gli oggetti dall'inv, plutonio e polipetto
+		StateManager.inventory.remove("polipetto")
+		StateManager.inventory.remove("plutonio_radioattivo")
 		await DialogueManager.has_finished_displaying
 	else:
 		AudioManager.play_failure_sound_effect()
