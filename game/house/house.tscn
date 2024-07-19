@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=29 format=3 uid="uid://cgi6252xdiyy1"]
-
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -15,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://wbu7xnwvf2u2" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.tscn" id="14_5ijjr"]
-[ext_resource type="PackedScene" uid="uid://bby0msqin8uj6" path="res://game/house/teleport_down.tscn" id="14_mveet"]
-[ext_resource type="PackedScene" uid="uid://db00xsajxhqj5" path="res://game/house/teleport_up.tscn" id="15_btu08"]
+[ext_resource type="PackedScene" path="res://game/house/teleport_down.tscn" id="14_mveet"]
+[ext_resource type="PackedScene" path="res://game/house/teleport_up.tscn" id="15_btu08"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
@@ -4229,7 +4227,7 @@ offset_bottom = 519.0
 color = Color(1, 1, 1, 0)
 
 [node name="plutonio_radioattivo" parent="Rooms/Studio" instance=ExtResource("8_0lq6k")]
-position = Vector2(328.091, 382.922)
+position = Vector2(-1930.44, -1864.54)
 item_name = "plutonio_radioattivo"
 
 [node name="Bagno" parent="Rooms" groups=["Rooms"] instance=ExtResource("7_2sykb")]
@@ -4311,4 +4309,3 @@ position = Vector2(1204, 704)
 
 [node name="TeleportDown" parent="." instance=ExtResource("14_mveet")]
 position = Vector2(214, 741)
-
