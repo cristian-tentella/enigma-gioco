@@ -71,6 +71,5 @@ func game_won_ui():
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
-	StateManager.current_minigame = 6
 	self.exit.emit() # Replace with function body.
 

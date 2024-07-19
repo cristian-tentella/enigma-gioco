@@ -1,0 +1,198 @@
+[gd_scene load_steps=3 format=3 uid="uid://blofdpaeipo4h"]
+
+[ext_resource type="Script" path="res://game/minigames/minigame_3_colors_combination/combination_color_lock.gd" id="1_vxlju"]
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_mkovr"]
+
+[node name="CombinationColorLock" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vxlju")
+
+[node name="backgroud_placeholder" type="ColorRect" parent="."]
+z_index = 100
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 361.0
+color = Color(0.303739, 0.106699, 0.0250893, 1)
+
+[node name="digits_container" type="HBoxContainer" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 181.0
+offset_top = 140.0
+offset_right = 251.0
+offset_bottom = 207.0
+alignment = 1
+
+[node name="digit1" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit2" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit3" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit4" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 258.0
+offset_top = 161.0
+offset_right = 282.0
+offset_bottom = 185.0
+texture = ExtResource("2_mkovr")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ResetMinigameButton" type="Button" parent="ResetMinigameButtonBackground"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="serratura_placeholder" type="ColorRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 150.0
+offset_top = 168.0
+offset_right = 161.0
+offset_bottom = 197.0
+color = Color(0.596078, 1, 1, 1)
+
+[node name="serratura_placeholder2" type="ColorRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 145.0
+offset_top = 163.0
+offset_right = 165.0
+offset_bottom = 171.0
+color = Color(0.596078, 1, 1, 1)
+
+[node name="key1" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 173.0
+offset_top = 263.0
+offset_right = 195.0
+offset_bottom = 339.0
+scale = Vector2(1.05353, 1)
+theme_override_colors/font_color = Color(0.65098, 0.266667, 0.247059, 1)
+text = "r"
+
+[node name="key2" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 210.0
+offset_top = 262.0
+offset_right = 232.0
+offset_bottom = 338.0
+theme_override_colors/font_color = Color(0.568627, 0.290196, 0.607843, 1)
+text = "p"
+
+[node name="key3" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 247.0
+offset_top = 263.0
+offset_right = 269.0
+offset_bottom = 339.0
+
+[node name="key4" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 283.0
+offset_top = 264.0
+offset_right = 305.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(0.176471, 0.470588, 0.521569, 1)
+text = "cy"
+
+[node name="key5" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 318.0
+offset_top = 266.0
+offset_right = 340.0
+offset_bottom = 342.0
+
+[node name="key6" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 358.0
+offset_top = 263.0
+offset_right = 380.0
+offset_bottom = 339.0
+theme_override_colors/font_color = Color(0.392157, 0.670588, 0.227451, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 1, 0, 1)
+text = "g"
+
+[node name="key7" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 395.0
+offset_top = 260.0
+offset_right = 417.0
+offset_bottom = 336.0
+
+[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
+z_index = 110
+layout_mode = 0
+offset_left = 601.0
+offset_top = 12.0
+offset_right = 625.0
+offset_bottom = 36.0
+texture = ExtResource("2_mkovr")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
+[connection signal="pressed" from="key1" to="." method="_on_key_1_pressed"]
+[connection signal="pressed" from="key2" to="." method="_on_key_2_pressed"]
+[connection signal="pressed" from="key3" to="." method="_on_key_3_pressed"]
+[connection signal="pressed" from="key4" to="." method="_on_key_4_pressed"]
+[connection signal="pressed" from="key5" to="." method="_on_key_5_pressed"]
+[connection signal="pressed" from="key6" to="." method="_on_key_6_pressed"]
+[connection signal="pressed" from="key7" to="." method="_on_key_7_pressed"]
+[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

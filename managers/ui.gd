@@ -53,6 +53,9 @@ MINIGAMES UI ELEMENTS
 	"res://game/minigames/memeory/memeory_game_ui/memeory_ui.tscn"
 ).instantiate()
 
+@onready var combination_color_key_minigame: CombinationColorLock = preload(
+	"res://game/minigames/minigame_3_colors_combination/combination_color_lock.tscn"
+).instantiate()
 
 
 """################################################################################
@@ -68,7 +71,8 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	inventory_menu,
 	combination_key_minigame,
 	loading_screen,
-	memeory_menu
+	memeory_menu,
+	combination_color_key_minigame
 ]
 
 
@@ -164,6 +168,7 @@ func show_pause_menu():
 	_kil_locking_ui_element(pause_menu)
 	
 func show_inventory():
+	self.inventory_menu._assign_NO_ITEM_SELECTED_DESC_STRING() #Va fatto qui perché cosi ogni volta che clicco si aggiorna la lingua
 	_spawn_locking_ui_element(inventory_menu)
 	AudioManager.play_menu_sound_effect()
 	await inventory_menu.exit
@@ -211,3 +216,10 @@ func show_memeory():
 	_spawn_locking_ui_element(memeory_menu)
 	await memeory_menu.exit
 	_kil_locking_ui_element(memeory_menu)
+
+func show_combination_color_key_minigame():
+	_spawn_locking_ui_element(combination_color_key_minigame)
+
+	await combination_color_key_minigame.exit
+
+	_kil_locking_ui_element(combination_color_key_minigame)

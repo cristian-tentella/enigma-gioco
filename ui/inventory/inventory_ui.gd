@@ -18,7 +18,7 @@ func _ready():
 	self.inv.item_pickup_dialogue = $ItemPickupDialogue
 	inv.update.connect(update_slots)
 	update_slots()
-	_assign_NO_ITEM_SELECTED_DESC_STRING()
+	#_assign_NO_ITEM_SELECTED_DESC_STRING()
 	
 # Doing it dynamically is the only way to make it work.
 # Original implementation with .tres was overkill considering I just create 8 empty slots with no properties
@@ -32,7 +32,8 @@ func update_slots():
 
 func _assign_NO_ITEM_SELECTED_DESC_STRING():
 	self.NO_ITEM_SELECTED_DESC_STRING = DialogueManager._item_description_id_to_item_description("NO_ITEM_SELECTED_DESC_STRING")
-
+	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
+	
 func _on_exit_pause_menu_button_pressed():
 	#Rimetti il testo di quando non hai selezionato nessun item
 	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
@@ -52,10 +53,11 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	#Uso slot number -1 perché non voglio disallineare il nome dei nodi e il fatto che l'array inizia da 0
 	slot_number -= 1
 	var item_to_show = self.inv.slots[slot_number]
-	
-	#Nome -> item_to_show.item_name
+	item_to_show._associate_description_from_traslation_file()
+	item_to_show._associate_name_from_traslation_file()
+	#Nome -> item_to_show.localized_item_name
 	#Descrizione -> item_to_show.description
-	self.description_label.text = item_to_show.item_name+"\n\n"+item_to_show.description
+	self.description_label.text = item_to_show.localized_item_name+"\n\n"+item_to_show.description
 
 
 func _on_inventory_ui_slot_1_button_pressed():

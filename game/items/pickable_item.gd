@@ -17,7 +17,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 @onready var sprite2D = $Sprite2D
 
 @export_category("Item Base Values")
-@export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
+@export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio_radioattivo", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
 var description: String #La descrizione che faremo vedere nell'inventario. Viene pescata dal file di traduzioni nel _ready()
 @export var is_corporeo: bool = false
 @export var dialogue_id: String = "Nessun dialogo" #Dialogo che parte quando lo raccogli
@@ -28,6 +28,8 @@ var description: String #La descrizione che faremo vedere nell'inventario. Viene
 
 var sprite_path: String  # Path to the sprite for this item
 var collision_shapes: Array[CollisionShape2D]
+
+var localized_item_name: String
 """
 UPDATE QUESTO OGNI VOLTA CHE SI INSERISCE UN ITEM SPECIFICO
 """
@@ -47,7 +49,7 @@ func _ready():
 	
 	generate_both_collision_circles()
 	update_sprite2D_texture()
-	_associate_description_from_traslation_file()
+	#_associate_description_from_traslation_file()
 	self.item_interaction.dialogue_id = self.dialogue_id
 
 """
@@ -101,3 +103,7 @@ func destroy_collision_shapes_forever():
 func _associate_description_from_traslation_file():
 	var item_description_id = item_name+"_description" #Chiamare il dialogo set_of_keys_description
 	self.description = DialogueManager._item_description_id_to_item_description(item_description_id)
+
+func _associate_name_from_traslation_file():
+	var item_name_id = item_name #Chiamare la entry set_of_keys come item_:name
+	self.localized_item_name = DialogueManager._item_description_id_to_item_description(item_name_id)

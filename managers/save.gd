@@ -28,7 +28,8 @@ const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. N
 
 var minigame_to_current_minigame_requirement = {
 	"minigame_1" : 4, #Il minigame_1 è completato con current_minigame == 4, che è quando becchi la combinazione di chiavi
-	"memeory" : 7 #Si elimina di sicuro quando si ha completato il minigame che richiede sia lui che quello dopo, non credo lo faremo mai tho
+	"memeory" : 10,
+	"minigame_3_colors_combination": 10
 }
 
 const loading_screen_step = 1 #Il loading screen va avanti di n in n per ogni nodo del save
@@ -128,8 +129,8 @@ func load_game_save_from_json():
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
 	
-	
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
@@ -147,8 +148,9 @@ func load_game_save_from_json():
 			print_debug("\nSave content file is:\n", content)
 		
 		#Barra di caricamento a 0
-		UIManager.loading_screen.set_value(30)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
+		if loading_bar_enabled:
+			UIManager.loading_screen.set_value(30)
+			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state") or not content.has("player_position"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
@@ -167,46 +169,47 @@ func load_game_save_from_json():
 		#else:
 			#StateManager.current_language = LanguageManager.get_language()
 
-		#Barra di caricamento a 0
-		UIManager.loading_screen.set_value(35)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+		if loading_bar_enabled:
+			UIManager.loading_screen.set_value(35)
+			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		var root_node = self.get_tree().root
 		var all_nodes = self.get_all_children(root_node)
-		#Barra di caricamento a 0
-		UIManager.loading_screen.set_value(45)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+		if loading_bar_enabled:
+			UIManager.loading_screen.set_value(45)
+			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
 		var inventory_owned_items_names = content.get("inventory_owned_items_names")
 		#Carica nell'inventario questi nodi
 		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
-		#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
-		UIManager.loading_screen.set_value(90)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+		if loading_bar_enabled:
+			#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
+			UIManager.loading_screen.set_value(90)
+			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 
 
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
-	#Barra di caricamento a 0
-	UIManager.loading_screen.set_value(5)
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		UIManager.loading_screen.set_value(5)
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
-	#Barra di caricamento a 0
-	UIManager.loading_screen.set_value(10)
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		UIManager.loading_screen.set_value(10)
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	Supabase.database.query(query)
 	var data = await Supabase.database.selected
-	#Barra di caricamento a 0
-	UIManager.loading_screen.set_value(15)
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		UIManager.loading_screen.set_value(15)
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	data = data[0]["save_file"]
-	#Barra di caricamento a 0
-	UIManager.loading_screen.set_value(20)
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		UIManager.loading_screen.set_value(20)
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	if data != null:
 		save_current_state_into_json(data)
-	#Barra di caricamento a 0
-	UIManager.loading_screen.set_value(25)
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
+	if loading_bar_enabled:
+		UIManager.loading_screen.set_value(25)
+		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	
 	
 
@@ -339,6 +342,8 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 #Questo qua purtroppo si vede solo se il caricamento è lento, credo...
 #Non riesco a inserire un delay artificiale ngl
 func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
+	if not loading_bar_enabled:
+		return
 	var curr_value = UIManager.loading_screen.progress_bar.value
 	curr_value += val
 	if (curr_value >= 80): #Ho sforato o sono ad 80

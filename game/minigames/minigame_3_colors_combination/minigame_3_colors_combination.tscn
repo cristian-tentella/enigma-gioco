@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://wbu7xnwvf2u2"]
+
+[ext_resource type="Script" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.gd" id="1_dlgg2"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_yqpw7"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_6jylu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
+size = Vector2(51, 46)
+
+[node name="Minigame3ColorsCombination" type="Node2D"]
+script = ExtResource("1_dlgg2")
+
+[node name="mobile_bloccato_dialogo" parent="." instance=ExtResource("2_yqpw7")]
+dialogue_id = "minigame_3_colors_mobile_bloccato"
+minigame_requirement = 4
+just_proc_once = false
+
+[node name="game_won_dialogue" parent="." instance=ExtResource("2_yqpw7")]
+dialogue_id = "minigame_3_won"
+minigame_requirement = 4
+just_proc_once = false
+
+[node name="game_lost_dialogue" parent="." instance=ExtResource("2_yqpw7")]
+dialogue_id = "minigame_3_lost"
+minigame_requirement = 4
+just_proc_once = false
+
+[node name="after_plutonio_dialogue" parent="." instance=ExtResource("2_yqpw7")]
+dialogue_id = "minigame_3_after_plutonio"
+minigame_requirement = 4
+just_proc_once = false
+
+[node name="Computer_color_switcher" parent="." instance=ExtResource("3_6jylu")]
+position = Vector2(25, 146)
+script_path = ""
+method_name = "rotate_computer_color"
+is_method_in_direct_parent = true
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer_color_switcher"]
+position = Vector2(375, 54)
+shape = SubResource("RectangleShape2D_22paf")
+
+[node name="Computer_color" type="ColorRect" parent="."]
+offset_left = 373.0
+offset_top = 176.0
+offset_right = 427.0
+offset_bottom = 225.0
+color = Color(0, 0, 0, 1)
+
+[node name="game_starter" parent="." instance=ExtResource("3_6jylu")]
+position = Vector2(182.145, 290.188)
+script_path = ""
+method_name = "open_combination_color_lock_real"
+is_method_in_direct_parent = true
+minigame_requirement = 4
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
+position = Vector2(128.855, -11.1876)
+shape = SubResource("RectangleShape2D_22paf")

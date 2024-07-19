@@ -119,7 +119,7 @@ func open_combination_lock_first_time():
 	await DialogueManager.has_finished_displaying
 	
 func open_combination_lock_real():
-
+	
 	#Fai vedere il dialogo prima che si apra il menu in cui si incita
 	actual_minigame_combination_first_dialogue.handle_interaction()
 	await DialogueManager.has_finished_displaying
@@ -135,6 +135,7 @@ func open_combination_lock_real():
 		combination_minigame_won.handle_interaction()
 		self._free_every_node_related_to_the_minigame()
 		await DialogueManager.has_finished_displaying
+
 
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():

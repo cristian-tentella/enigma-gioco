@@ -77,7 +77,7 @@ func check():
 				game_won = false
 				break
 		if (game_won):
-			StateManager.current_minigame = 7
+			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
 	reset_pick()
 
