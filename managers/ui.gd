@@ -186,16 +186,6 @@ func show_loading_screen():
 func kil_loading_screen():
 	_kil_locking_ui_element(loading_screen)
 
-"""Update settings icons"""
-
-func update_language_flag():
-	var language_switcher = pause_menu.get_node("LanguageSwitcher")
-	language_switcher._update_flag()
-
-func update_muted_button():
-	var muted_button = pause_menu.get_node("MuteButton")
-	muted_button._update_icon()
-
 """MINIGAME UIs"""
 
 #Minigame_1
@@ -205,9 +195,16 @@ func show_combination_key_minigame():
 	await combination_key_minigame.exit
 
 	_kil_locking_ui_element(combination_key_minigame)
-
+	
+func update_language_flag():
+	var language_switcher = pause_menu.get_node("LanguageSwitcher")
+	language_switcher._update_flag()
 
 func show_memeory():
 	_spawn_locking_ui_element(memeory_menu)
 	await memeory_menu.exit
 	_kil_locking_ui_element(memeory_menu)
+
+func update_muted_button():
+	var muted_button = pause_menu.get_node("MuteButton")
+	muted_button._update_icon()

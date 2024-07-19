@@ -22,8 +22,9 @@ func handle_interaction():
 	self.setup_dialogue_interaction_id()
 	if self.dialogue_interaction != null and self.dialogue_id != "Nessun dialogo": #Se voglio un certo dialogo di pick-up dell'item
 		self.dialogue_interaction.handle_interaction()
-		#Le Dialogue Boxes si sovrastano... Ora non più
-		await DialogueManager.has_finished_displaying
+	
+	#Le Dialogue Boxes si sovrastano... Ora non più
+	await DialogueManager.has_finished_displaying
 	
 	StateManager.inventory.insert(item_in_interaction)
 	StateManager.current_minigame += 1 #Incremento il contatore dei progressi
@@ -41,7 +42,7 @@ func just_insert_in_inventory():
 
 func _ready():
 	item_in_interaction = get_parent() #Questo è l'oggetto ItemResource con cui avviene l'interazione.
-
+	
 
 #Non si può fare nel ready perché godot inizializza i nodi dall'ultimo al primo quindi se lo mettiamo li, ancora non ho nessun dialogue_id...
 #Non c'è rischio che lo si faccia più di una volta con conseguente perdita di memoria visto che il nodo si autodistrugge dopo la prima chiamata.

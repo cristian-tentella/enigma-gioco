@@ -8,7 +8,6 @@ var slots: Array[PickableItem] #Gli slot dell'inventario
 var item_pickup_dialogue: DialogueInteraction #Assegnata dall'inventory_UI all'inizializzazione
 
 func insert(item: PickableItem):
-	print_debug("COME BUTTA")
 	slots.append(item)
 	update.emit()
 	item_pickup_dialogue.handle_interaction()

@@ -18,7 +18,6 @@ first_open_minigame_combination_1;Daniel: What is this...?;Daniel: Ma che roba �
 first_open_minigame_combination_2;Daniel: Am i supposed to put a specific sequence of three keys to open this door?!;Daniel: Ma non dovrò mica inserire tre chiavi in un ordine specifico per aprirla, no?!
 first_minigame_combination_door_fail_1;Daniel: Who even uses a combination of three keys to open a door?!;Daniel: Ma a chi è venuto in mente di usare una combinazione di tre chiavi per aprire una porta?!
 first_minigame_combination_door_fail_2;Daniel: Well, I'll take a look around, surely there will be some hints around my room to help me remember...;Daniel: Bah, darò un'occhiata in giro per la stanza, immagino ci sia qualcosa che possa aiutarmi a ricordare...
-first_minigame_combination_short_win_1;Dominik: Wow, I nailed it on the first try! Now I understand why I have a Pi poster in my room...;Dominik:Wow, ci sono riuscito al primo tentativo, ora capisco perchè ho un poster del pi greco in camera... 
 dialogue_with_pi_poster_1;Daniel: Why do I even have a pi poster? I hate math...;Daniel: Ma perché ho un poster del pi greco? Io odio la matematica...
 dialogue_with_pi_poster_2;Daniel: Is this meant to be useful for something? Let's recall... How was pi made, again?;Daniel: Dovrebbe essermi utile per qualcosa? Vediamo... Com'è che era fatto il pi greco?
 dialogue_with_pi_poster_3;Daniel: Wasn't it something like 3,1415926535897 an others?...;Daniel: Non era una cosa tipo 3,1415926535897 e altro?...
@@ -28,7 +27,4 @@ combination_minigame_won_1;Daniel: Wow, that was it?!;Daniel: Wow, era davvero q
 combination_minigame_won_2;Daniel: I guess that pi poster was there for a reason, after all...;Daniel: Alla fine, quel poster del pi greco era effettivamente utile...
 memeory_first_dialogue;Watermelon: Hello, first time!;Anguria: Ciao, prima volta!
 memeory_retry;Watermelon: Rematch?;Anguria: Rivincita?
-memeory_win;Watermelon: GG, you won. Here's a reward for you!;Anguria: GG, hai vinto. Ecco a te una ricompensa!
-memeory_lost;Watermelon: gg,but try again;Anguria: gg, ma prova ancora
-memeory_win_ui;YOU WON!;HAI VINTO!
-memeory_lost_ui; YOU LOST!; HAI PERSO!
+memeory_win;Watermelon: GG;Anguria: GG

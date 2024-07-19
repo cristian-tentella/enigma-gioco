@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=14 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_oecrg"]
 [ext_resource type="Texture2D" uid="uid://chjqr4jqgg8m3" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_pressed.png" id="6_mwtq2"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_7nffp"]
-[ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="7_ghpve"]
 [ext_resource type="Texture2D" uid="uid://c414e0ew1i1hw" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_hover.png" id="7_jfbt4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_1jbf8"]
 
@@ -33,11 +32,6 @@ script = ExtResource("1_oaeyu")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
-
-[node name="VirtualJoystick" type="Node2D" parent="UI/MobileOnlyUI"]
-position = Vector2(81, 290)
-scale = Vector2(0.65, 0.65)
-script = ExtResource("7_ghpve")
 
 [node name="OpenPauseMenuButton" parent="UI/MobileOnlyUI" instance=ExtResource("4_j2h6h")]
 offset_left = 594.0

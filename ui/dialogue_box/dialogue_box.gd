@@ -15,20 +15,17 @@ func start_dialogue(dialogue_lines: Array):
 func _process_dialogue_line(dialogue_line: String):
 	const title_delimiter = ":"
 	
-	var title: Label = $PanelContainer/MarginContainer/VBoxContainer/Title
-	var body: Label = $PanelContainer/MarginContainer/VBoxContainer/Body
-
-	body.visible_characters = 0
+	var title_label = $PanelContainer/MarginContainer/VBoxContainer/Title
+	var body_label = $PanelContainer/MarginContainer/VBoxContainer/Body
 
 	if dialogue_line.contains(title_delimiter):
-		title.show()
 		var title_delimiter_index = dialogue_line.find(title_delimiter)
-		title.text = dialogue_line.substr(0, title_delimiter_index).rstrip(" ")
-		body.text = dialogue_line.substr(title_delimiter_index + 1).lstrip(" ")
-	else:
-		title.hide()
-		body.text = dialogue_line
+		var title_text: String = dialogue_line.substr(0, title_delimiter_index).rstrip(" ")
+		var body_text: String = dialogue_line.substr(title_delimiter_index + 1).lstrip(" ")
 
-	for i in body.text.length():
-		body.visible_characters += 1
-		await get_tree().create_timer(0.015).timeout
+		title_label.show()
+		title_label.text = title_text
+		body_label.text = body_text
+	else:
+		title_label.hide()
+		body_label.text = dialogue_line

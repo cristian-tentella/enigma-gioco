@@ -38,9 +38,4 @@ just_proc_once = false
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_win"
 minigame_requirement = 7
-
-[node name="memeory_lost" type="Area2D" parent="."]
-script = ExtResource("1_ik88x")
-dialogue_id = "memeory_lost"
-minigame_requirement = 6
 just_proc_once = false
