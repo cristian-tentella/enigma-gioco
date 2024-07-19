@@ -83,7 +83,8 @@ VARIABILI PER PRIMO AVVIO DEL GIOCO
 #Il gioco vero e proprio ora parte per un solo tentativo
 #Dialogo dopo che ha fallito quell'unico tentativo, in cui dice che deve guardarsi in giro
 @onready var second_dialogue_on_first_open: DialogueInteraction = $second_dialogue_on_first_open
-
+#Caso di vittoria al primo tentativo
+@onready var short_win_dialogue: DialogueInteraction = $short_win_dialogue
 """
 VARIABILI PER IL GIOCO VERO E PROPRIO
 """
@@ -107,6 +108,11 @@ func open_combination_lock_first_time():
 	#Ora mostra il minigame scriptato per fallire al primo tentativo, anche se è giusto (tired, non lo azzeccano subito dai...)
 	UIManager.show_combination_key_minigame()
 	await UIManager.unlock
+	
+	#Se vinci al primo tentativo (o hai barato o sei decisamente fortunato)
+	if StateManager.current_minigame == 4: 
+		short_win_dialogue.handle_interaction()
+		return
 	
 	#Fai vedere la frustrazione di Daniel dopo aver fallito e dice che deve guardarsi in giro
 	second_dialogue_on_first_open.handle_interaction()

@@ -28,29 +28,34 @@ func _insert_into_next_slot(key_number: String):
 	
 	current_combination += key_number
 	
+	#Fai controllo sulla combinazione
+	check_combination()
+	
+	current_slot += 1
+
+func check_combination():
 	if len(current_combination) == 3:
 		
-		#Qua pure se ha azzeccato, se è la prima volta, perde a prescindere
-		#Bruh se cheattano o sculano non è colpa mia... Non mi va di gestirlo :D
-		if StateManager.current_minigame == 1: #Sinonimo di "è la prima volta che provo"
-			StateManager.current_minigame += 1
-			self.exit.emit()
-			_on_reset_minigame_button_pressed()
-			return
-		
 		if current_combination == real_combination:
+			await get_tree().create_timer(0.7).timeout
+			AudioManager.play_success_sound_effect()
 			print_debug("Heya! Nice, you got it!")
-			StateManager.current_minigame += 1
+			StateManager.current_minigame = 4
 			MinigameManager.porta_camera_da_letto.try_to_unlock()
 			MinigameManager.porta_camera_da_letto = null
 			self.exit.emit()
 			return
+			
+		await get_tree().create_timer(0.7).timeout
+		AudioManager.play_failure_sound_effect()
 		
-		_on_reset_minigame_button_pressed() #Non ci ho azzeccato e non è la prima volta
+		#Ti trovi nel primo tentativo ma fallisci miseramente
+		if StateManager.current_minigame == 1:
+			StateManager.current_minigame += 1
+			self.exit.emit()
+		
+		_on_reset_minigame_button_pressed() #Non ci ho azzeccato :(
 		return
-	
-	current_slot += 1
-
 
 # Called when the node enters the scene tree for the first time.
 func _on_reset_minigame_button_pressed():
