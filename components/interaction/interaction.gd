@@ -30,6 +30,8 @@ extends Interaction
 func handle_interaction():
 	# Interaction logic
 	_remove_if_proc_only_once()
+	_increment_current_minigame_if_told_so()
+
 """
 
 class_name Interaction
@@ -54,7 +56,7 @@ func handle_interaction():
 
 #Pure debugging
 func _exit_tree():
-	print(get_name()+" exiting!\n")
+	#print(get_name()+" exiting!\n")
 	pass
 
 func _remove_if_proc_only_once():

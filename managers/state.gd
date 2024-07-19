@@ -53,6 +53,7 @@ func _ready():
 	)
 	UIManager.unlock.connect(
 		func():
+			print_debug("Player can move now")
 			player_can_move.emit(true)
 			self.should_player_be_able_to_move = true
 	)

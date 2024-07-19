@@ -47,7 +47,6 @@ func _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids: Array) -> Array:
 	var dialogue_lines = dialogue_lines_ids.map(
 		func(dialogue_line_id: String): return tr(dialogue_line_id)
 	)
-	
 	return dialogue_lines
 
 #Utilizzo improprio ma funzionale del sistema dei dialoghi anche per le traduzioni degli item

@@ -26,9 +26,10 @@ var movement_actions_queue: Array[String]
 func _ready():
 	InputManager.movement_action_pressed.connect(
 		func(movement_action: String):
+			print(movement_actions_queue)
 			self.movement_actions_queue.append(movement_action)
 	)
-
+	
 	InputManager.movement_action_released.connect(
 		func(movement_action: String):
 			self.movement_actions_queue.erase(movement_action)
