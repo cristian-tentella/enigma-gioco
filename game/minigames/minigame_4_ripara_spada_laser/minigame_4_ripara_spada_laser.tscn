@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://beq1b34jf1bpq"]
+
+[ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_ekgtv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6xq6"]
+radius = 17.1172
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
+size = Vector2(60.5, 12)
+
+[node name="Minigame4RiparaSpadaLaser" type="Node2D"]
+script = ExtResource("1_g1yqu")
+
+[node name="click_spada_laser_dialogo_minigame4" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "click_spada_laser_dialogo_minigame4"
+minigame_requirement = 11
+
+[node name="dialogo_monnezza" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "dialogo_monnezza"
+minigame_requirement = 10
+increments_current_minigame = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogo_monnezza"]
+position = Vector2(108, 660)
+shape = SubResource("CircleShape2D_r6xq6")
+
+[node name="dialogo_monnezza_uguale" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "dialogo_monnezza"
+minigame_requirement = 11
+destroy_after_minigame_requirement_number = 15
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogo_monnezza_uguale"]
+position = Vector2(108, 660)
+shape = SubResource("CircleShape2D_r6xq6")
+
+[node name="click_spada_laser_dialogo_finale" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "click_spada_laser_dialogo_minigame4_after"
+minigame_requirement = 11
+destroy_after_minigame_requirement_number = 15
+just_proc_once = false
+
+[node name="game_won_dialogue" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "minigame_4_won"
+minigame_requirement = 11
+destroy_after_minigame_requirement_number = 15
+just_proc_once = false
+
+[node name="game_lost_dialogue" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "minigame_4_lost"
+minigame_requirement = 11
+destroy_after_minigame_requirement_number = 15
+just_proc_once = false
+
+[node name="game_starter" parent="." instance=ExtResource("3_ekgtv")]
+position = Vector2(182.145, 290.188)
+script_path = ""
+method_name = "launch_minigame"
+is_method_in_direct_parent = true
+minigame_requirement = 11
+destroy_after_minigame_requirement_number = 15
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
+position = Vector2(-182.145, -289.188)
+shape = SubResource("RectangleShape2D_22paf")
+
+[node name="interazione_con_immondizia" parent="." instance=ExtResource("3_ekgtv")]
+script_path = ""
+method_name = "launch_brucia_cumulo_immondizia_interazione"
+is_method_in_direct_parent = true
+minigame_requirement = 15
+destroy_after_minigame_requirement_number = 16
+just_proc_once = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="interazione_con_immondizia"]
+position = Vector2(108, 660)
+shape = SubResource("CircleShape2D_r6xq6")
+
+[node name="brucia_immondizia_dialogo_inizio" parent="interazione_con_immondizia" instance=ExtResource("2_haxex")]
+dialogue_id = "brucia_immondizia_inizio"
+minigame_requirement = 15
+
+[node name="brucia_immondizia_dialogo_fine" parent="interazione_con_immondizia" instance=ExtResource("2_haxex")]
+dialogue_id = "brucia_immondizia_fine"
+minigame_requirement = 15
+increments_current_minigame = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="interazione_con_immondizia"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interazione_con_immondizia/StaticBody2D"]
+position = Vector2(108, 660)
+shape = SubResource("CircleShape2D_r6xq6")

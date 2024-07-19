@@ -39,6 +39,11 @@ script = ExtResource("1_ik88x")
 dialogue_id = "memeory_win"
 minigame_requirement = 7
 
+[node name="memeory_win_after_polipetto" type="Area2D" parent="."]
+script = ExtResource("1_ik88x")
+dialogue_id = "memeory_win_after_polipetto"
+minigame_requirement = 7
+
 [node name="memeory_lost" type="Area2D" parent="."]
 script = ExtResource("1_ik88x")
 dialogue_id = "memeory_lost"

@@ -1,0 +1,294 @@
+[gd_scene load_steps=3 format=3 uid="uid://dssq46gtcklic"]
+
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_uovrx"]
+
+[sub_resource type="GDScript" id="GDScript_6s84s"]
+script/source = "class_name InventoryUIToSelectItem
+extends Control
+
+\"\"\"
+Questo script sfrutta la UI dell'inventario e ne utilizza i segnali inviati alla pressione di un tasto
+\"\"\"
+
+var NO_ITEM_SELECTED_DESC_STRING_MINIGAME #è quello che esce quando non hai selezionato nessun item
+
+
+signal exit
+
+
+
+func _assign_NO_ITEM_SELECTED_DESC_STRING_MINIGAME():
+	self.NO_ITEM_SELECTED_DESC_STRING_MINIGAME = DialogueManager._item_description_id_to_item_description(\"NO_ITEM_SELECTED_DESC_STRING_MINIGAME\")
+	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
+	
+func _on_exit_pause_menu_button_pressed():
+	#Rimetti il testo di quando non hai selezionato nessun item
+	
+
+
+func _change_description_label_on_slot_button_pressed(slot_number: int):
+	
+	#Usiamo inv e non slots_UI perché hanno la stessa indicizzazione, e ci serve il PickableItem
+	var item_count_into_inventory = len(self.inv.slots)
+
+	if item_count_into_inventory < slot_number: #Ha cliccato su uno slot senza items, via di qui
+		self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
+		return
+	
+	#Uso slot number -1 perché non voglio disallineare il nome dei nodi e il fatto che l'array inizia da 0
+	slot_number -= 1
+	var item_to_show = self.inv.slots[slot_number]
+	item_to_show._associate_description_from_traslation_file()
+	item_to_show._associate_name_from_traslation_file()
+	#Nome -> item_to_show.localized_item_name
+	#Descrizione -> item_to_show.description
+	self.description_label.text = item_to_show.localized_item_name+\"\\n\\n\"+item_to_show.description
+
+
+func _on_inventory_ui_slot_1_button_pressed():
+	_change_description_label_on_slot_button_pressed(1)
+
+
+func _on_inventory_ui_slot_2_button_pressed():
+	_change_description_label_on_slot_button_pressed(2)
+
+func _on_inventory_ui_slot_3_button_pressed():
+	_change_description_label_on_slot_button_pressed(3)
+
+
+func _on_inventory_ui_slot_4_button_pressed():
+	_change_description_label_on_slot_button_pressed(4)
+
+
+func _on_inventory_ui_slot_5_button_pressed():
+	_change_description_label_on_slot_button_pressed(5)
+
+func _on_inventory_ui_slot_6_button_pressed():
+	_change_description_label_on_slot_button_pressed(6)
+
+func _on_inventory_ui_slot_7_button_pressed():
+	_change_description_label_on_slot_button_pressed(7)
+
+
+func _on_inventory_ui_slot_8_button_pressed():
+	_change_description_label_on_slot_button_pressed(8)
+
+
+func _on_inventory_ui_slot_9_button_pressed():
+	_change_description_label_on_slot_button_pressed(9)
+
+func _on_inventory_ui_slot_10_button_pressed():
+	_change_description_label_on_slot_button_pressed(10)
+
+func _on_inventory_ui_slot_11_button_pressed():
+	_change_description_label_on_slot_button_pressed(11)
+
+func _on_inventory_ui_slot_12_button_pressed():
+	_change_description_label_on_slot_button_pressed(12)
+
+func _on_inventory_ui_slot_13_button_pressed():
+	_change_description_label_on_slot_button_pressed(13)
+
+func _on_inventory_ui_slot_14_button_pressed():
+	_change_description_label_on_slot_button_pressed(14)
+
+func _on_inventory_ui_slot_15_button_pressed():
+	_change_description_label_on_slot_button_pressed(15)
+
+func _on_inventory_ui_slot_16_button_pressed():
+	_change_description_label_on_slot_button_pressed(16)
+"
+
+[node name="InventoryToSelectItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6s84s")
+
+[node name="backgroud_placeholder" type="ColorRect" parent="."]
+z_index = 100
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 361.0
+color = Color(0.303739, 0.106699, 0.0250893, 1)
+
+[node name="digits_container" type="HBoxContainer" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 181.0
+offset_top = 140.0
+offset_right = 251.0
+offset_bottom = 207.0
+alignment = 1
+
+[node name="digit1" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit2" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit3" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="digit4" type="Label" parent="digits_container"]
+z_index = 105
+layout_mode = 2
+text = "0"
+
+[node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 258.0
+offset_top = 161.0
+offset_right = 282.0
+offset_bottom = 185.0
+texture = ExtResource("2_uovrx")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ResetMinigameButton" type="Button" parent="ResetMinigameButtonBackground"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="serratura_placeholder" type="ColorRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 150.0
+offset_top = 168.0
+offset_right = 161.0
+offset_bottom = 197.0
+color = Color(0.596078, 1, 1, 1)
+
+[node name="serratura_placeholder2" type="ColorRect" parent="."]
+z_index = 105
+layout_mode = 0
+offset_left = 145.0
+offset_top = 163.0
+offset_right = 165.0
+offset_bottom = 171.0
+color = Color(0.596078, 1, 1, 1)
+
+[node name="key1" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 173.0
+offset_top = 263.0
+offset_right = 195.0
+offset_bottom = 339.0
+scale = Vector2(1.05353, 1)
+theme_override_colors/font_color = Color(0.65098, 0.266667, 0.247059, 1)
+text = "r"
+
+[node name="key2" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 210.0
+offset_top = 262.0
+offset_right = 232.0
+offset_bottom = 338.0
+theme_override_colors/font_color = Color(0.568627, 0.290196, 0.607843, 1)
+text = "p"
+
+[node name="key3" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 247.0
+offset_top = 263.0
+offset_right = 269.0
+offset_bottom = 339.0
+
+[node name="key4" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 283.0
+offset_top = 264.0
+offset_right = 305.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(0.176471, 0.470588, 0.521569, 1)
+text = "cy"
+
+[node name="key5" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 318.0
+offset_top = 266.0
+offset_right = 340.0
+offset_bottom = 342.0
+
+[node name="key6" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 358.0
+offset_top = 263.0
+offset_right = 380.0
+offset_bottom = 339.0
+theme_override_colors/font_color = Color(0.392157, 0.670588, 0.227451, 1)
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 1, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 1, 0, 1)
+text = "g"
+
+[node name="key7" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 395.0
+offset_top = 260.0
+offset_right = 417.0
+offset_bottom = 336.0
+
+[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
+z_index = 110
+layout_mode = 0
+offset_left = 601.0
+offset_top = 12.0
+offset_right = 625.0
+offset_bottom = 36.0
+texture = ExtResource("2_uovrx")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
+[connection signal="pressed" from="key1" to="." method="_on_key_1_pressed"]
+[connection signal="pressed" from="key2" to="." method="_on_key_2_pressed"]
+[connection signal="pressed" from="key3" to="." method="_on_key_3_pressed"]
+[connection signal="pressed" from="key4" to="." method="_on_key_4_pressed"]
+[connection signal="pressed" from="key5" to="." method="_on_key_5_pressed"]
+[connection signal="pressed" from="key6" to="." method="_on_key_6_pressed"]
+[connection signal="pressed" from="key7" to="." method="_on_key_7_pressed"]
+[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

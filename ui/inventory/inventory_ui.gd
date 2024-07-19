@@ -33,7 +33,15 @@ func update_slots():
 func _assign_NO_ITEM_SELECTED_DESC_STRING():
 	self.NO_ITEM_SELECTED_DESC_STRING = DialogueManager._item_description_id_to_item_description("NO_ITEM_SELECTED_DESC_STRING")
 	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
-	
+
+func _assign_NO_ITEM_SELECTED_DESC_STRING_MINIGAME4():
+	self.NO_ITEM_SELECTED_DESC_STRING = DialogueManager._item_description_id_to_item_description("NO_ITEM_SELECTED_DESC_STRING_MINIGAME4")
+	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
+
+func change_description(new_desc: String):
+	self.description_label.text = new_desc
+	await get_tree().create_timer(0.0001).timeout
+
 func _on_exit_pause_menu_button_pressed():
 	#Rimetti il testo di quando non hai selezionato nessun item
 	self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
@@ -53,12 +61,17 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	#Uso slot number -1 perché non voglio disallineare il nome dei nodi e il fatto che l'array inizia da 0
 	slot_number -= 1
 	var item_to_show = self.inv.slots[slot_number]
+	
 	item_to_show._associate_description_from_traslation_file()
 	item_to_show._associate_name_from_traslation_file()
 	#Nome -> item_to_show.localized_item_name
 	#Descrizione -> item_to_show.description
 	self.description_label.text = item_to_show.localized_item_name+"\n\n"+item_to_show.description
+	
+	self.inventory_slot_pressed.emit(slot_number, item_to_show)
 
+
+signal inventory_slot_pressed(slot_number: int, item: PickableItem)
 
 func _on_inventory_ui_slot_1_button_pressed():
 	_change_description_label_on_slot_button_pressed(1)
@@ -67,48 +80,63 @@ func _on_inventory_ui_slot_1_button_pressed():
 func _on_inventory_ui_slot_2_button_pressed():
 	_change_description_label_on_slot_button_pressed(2)
 
+
 func _on_inventory_ui_slot_3_button_pressed():
 	_change_description_label_on_slot_button_pressed(3)
+
 
 
 func _on_inventory_ui_slot_4_button_pressed():
 	_change_description_label_on_slot_button_pressed(4)
 
 
+
 func _on_inventory_ui_slot_5_button_pressed():
 	_change_description_label_on_slot_button_pressed(5)
+
 
 func _on_inventory_ui_slot_6_button_pressed():
 	_change_description_label_on_slot_button_pressed(6)
 
+
 func _on_inventory_ui_slot_7_button_pressed():
 	_change_description_label_on_slot_button_pressed(7)
+
 
 
 func _on_inventory_ui_slot_8_button_pressed():
 	_change_description_label_on_slot_button_pressed(8)
 
 
+
 func _on_inventory_ui_slot_9_button_pressed():
 	_change_description_label_on_slot_button_pressed(9)
+
 
 func _on_inventory_ui_slot_10_button_pressed():
 	_change_description_label_on_slot_button_pressed(10)
 
+
 func _on_inventory_ui_slot_11_button_pressed():
 	_change_description_label_on_slot_button_pressed(11)
+
 
 func _on_inventory_ui_slot_12_button_pressed():
 	_change_description_label_on_slot_button_pressed(12)
 
+
 func _on_inventory_ui_slot_13_button_pressed():
 	_change_description_label_on_slot_button_pressed(13)
+
 
 func _on_inventory_ui_slot_14_button_pressed():
 	_change_description_label_on_slot_button_pressed(14)
 
+
 func _on_inventory_ui_slot_15_button_pressed():
 	_change_description_label_on_slot_button_pressed(15)
 
+
 func _on_inventory_ui_slot_16_button_pressed():
 	_change_description_label_on_slot_button_pressed(16)
+
