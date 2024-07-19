@@ -4256,6 +4256,11 @@ offset_right = 101.0
 offset_bottom = 518.0
 color = Color(1, 1, 1, 0)
 
+[node name="polipetto" parent="Rooms/Bagno" instance=ExtResource("8_0lq6k")]
+visible = false
+position = Vector2(-220.927, 307.053)
+item_name = "polipetto"
+
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)
 tile_set = SubResource("TileSet_d2kam")
