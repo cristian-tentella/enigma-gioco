@@ -207,7 +207,7 @@ func load_game_save_from_json():
 			for item_node in pickableItemInteraction_nodes:
 				toPrint += "\t"+item_node.item_in_interaction.item_name+",\n"
 			print_debug("\npickableItemInteraction_nodes:\n", toPrint)
-		var inventory_owned_items_names = content.get("inventory_owned_items_names")
+		inventory_owned_items_names = content.get("inventory_owned_items_names")
 		#Carica nell'inventario questi nodi
 		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
 		if loading_bar_enabled:
