@@ -40,6 +40,8 @@ func start():
 	else:
 		UIManager.mobile_only_ui.hide()
 
+	AudioManager.stop_current_sound_track()
+
 	#Mostra i componenti della scena necessari a far partire il gioco
 	StateManager.player.show()
 	StateManager.house.show()

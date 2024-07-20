@@ -33,3 +33,7 @@ func _process_dialogue_line(dialogue_line: String):
 		body.visible_characters += 1
 		AudioManager.play_dialogue_ploop_sound_effect()
 		await get_tree().create_timer(0.015).timeout
+
+
+func _on_touch_screen_button_pressed():
+	InputManager.advance_dialogue.emit()

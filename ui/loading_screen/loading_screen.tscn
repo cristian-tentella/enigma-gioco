@@ -13,31 +13,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rpau8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.831373, 0.815686, 0.811765, 0.443137)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CenterContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 z_index = 150
 layout_mode = 2
+offset_left = 288.0
+offset_top = 138.0
+offset_right = 320.0
+offset_bottom = 170.0
+scale = Vector2(2, 2)
 value = 80.0
 fill_mode = 4
-texture_under = ExtResource("2_rijfe")
 texture_over = ExtResource("3_jyvf0")
 texture_progress = ExtResource("2_rijfe")
-tint_under = Color(1, 1, 1, 0.356863)
-tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(0.329412, 0.309804, 0.301961, 1)

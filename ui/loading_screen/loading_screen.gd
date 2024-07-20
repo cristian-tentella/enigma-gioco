@@ -1,7 +1,7 @@
 class_name LoadingScreen
 extends Control
 
-@onready var progress_bar: TextureProgressBar = $CenterContainer/TextureProgressBar
+@onready var progress_bar: TextureProgressBar = $TextureProgressBar
 
 signal exit
 
