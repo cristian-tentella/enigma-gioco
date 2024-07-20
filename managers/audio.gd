@@ -2,6 +2,7 @@ extends Node
 
 signal play_sound_effect(sound_effect_name: String)
 signal play_sound_track(sound_track_name: String)
+signal stop_sound_track
 
 # Questa funzione viene chiamata nella funzione _spawn_ui_element di
 # UIManager (managers/ui.gd) in modo da associare ad ogni nuovo elemento di UI
@@ -62,6 +63,9 @@ func play_success_sound_effect():
 
 func play_failure_sound_effect():
 	self.play_sound_effect.emit("failure")
+
+func stop_current_sound_track():
+	self.stop_sound_track.emit()
 
 func play_start_menu_sound_track():
 	self.play_sound_track.emit("StartMenu")

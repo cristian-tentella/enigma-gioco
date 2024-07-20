@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
 [ext_resource type="AudioStream" uid="uid://drdgs6ld5fxdg" path="res://audio/sound_effects/dialogue_ploop_1.ogg" id="14_r716t"]
 [ext_resource type="AudioStream" uid="uid://bqvhb6krrrilu" path="res://audio/sound_effects/dialogue_ploop_2.ogg" id="15_bqwgo"]
-[ext_resource type="AudioStream" uid="uid://bs8338c5lxkqb" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
+[ext_resource type="AudioStream" uid="uid://csv0jgish2pd1" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
 [ext_resource type="AudioStream" uid="uid://mysdudsswals" path="res://audio/sound_effects/dialogue_ploop_3.ogg" id="16_eedfu"]
 [ext_resource type="AudioStream" uid="uid://cy3774uiv5a6c" path="res://audio/sound_effects/dialogue_ploop_4.ogg" id="17_8r5h1"]
 [ext_resource type="AudioStream" uid="uid://bupgqbcduyclp" path="res://audio/sound_effects/keyboard.ogg" id="18_6n1ki"]
@@ -105,7 +105,6 @@ stream = ExtResource("21_xvsxj")
 
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
-volume_db = -12.0
 
 [node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("23_bct1s")
