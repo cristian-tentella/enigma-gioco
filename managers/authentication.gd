@@ -138,8 +138,8 @@ func make_request_to_load_auth(url: String, headers: PackedStringArray, json_bod
 		add_child(http_request)
 		http_request.request_completed.connect(_on_refresh_completed)
 		http_request.request(url, headers, HTTPClient.METHOD_POST, json_body)
-		
-		
+
+
 func _on_refresh_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray):
 	if response_code == 200:
 		var json_result = JSON.parse_string(body.get_string_from_utf8())

@@ -60,7 +60,7 @@ func _ready():
 	Supabase.database.error.connect(on_database_query_error)
 	Supabase.database.updated.connect(on_database_query_updated)
 	
-		
+	
 
 	
 	
@@ -363,9 +363,13 @@ func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 
 
 func reset_save():
+	StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	var unchanged_house = load("res://game/house/house.tscn").instantiate()
+	StateManager.game.add_child(unchanged_house) #Metti la nuova house
+	StateManager.house = unchanged_house #Refresha quello che StateManager vede
+	
 	all_exited_interactions = []
 	StateManager.current_minigame = 0
 	StateManager.player.position =  Vector2(111, 127)
 	StateManager.inventory.slots = []
-
 
