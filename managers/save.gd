@@ -47,14 +47,19 @@ var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
 var player_id
+var inventory_owned_items_names 
+var current_minigame: int 
+var current_language: String  
+var mute_button_state: bool 
+var player_position: Vector2 
+
 
 func _ready():
 	if not AuthenticationManager.is_enabled:
 		return
 	Supabase.database.error.connect(on_database_query_error)
 	Supabase.database.updated.connect(on_database_query_updated)
-	if FileAccess.file_exists(user_file):
-		player_id = get_player_id()
+	
 		
 
 	
@@ -70,12 +75,12 @@ func prepare_data_to_be_saved_and_save():
 
 	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
 		player_id = get_player_id()
-	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
-	var current_minigame: int = StateManager.current_minigame 
-	var current_language: String = StateManager.current_language 
-	var mute_button_state: bool = StateManager.muted
-	var player_position: Vector2 = StateManager.player.position
-	
+	inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
+	current_minigame = StateManager.current_minigame 
+	current_language = StateManager.current_language 
+	mute_button_state = StateManager.muted
+	player_position = StateManager.player.position
+
 	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
@@ -131,6 +136,8 @@ func is_online() -> bool:
 #Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
+	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
+		player_id = get_player_id()
 	if start_without_any_save:
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
@@ -333,7 +340,7 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 			- Dall'alto verso il basso i minigiochi nello STESSO ordine in cui si trovano dentro 
 			  self.minigame_to_current_minigame_requirement
 			"""
-			assert(minigame_key_from_input == minigame_key)
+			#assert(minigame_key_from_input == minigame_key)
 			
 			var destroy_requirement = minigame_to_current_minigame_requirement[minigame_key] #Prendo il requirement dal dict delle var di classe
 			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
@@ -352,3 +359,13 @@ func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 		UIManager.loading_screen.set_value(80)
 	else:
 		UIManager.loading_screen.add_to_value(val)
+
+
+
+func reset_save():
+	all_exited_interactions = []
+	StateManager.current_minigame = 0
+	StateManager.player.position =  Vector2(111, 127)
+	StateManager.inventory.slots = []
+
+

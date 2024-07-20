@@ -8,11 +8,11 @@ In base al tasto selezionato, mostra il relativo comportamento.
 extends Node
 
 
-
-
 #Chiamata da game/game.gd, a sua volta invocato in game.tscn con _ready()
 func start():
 	#Nascondi tutti i componenti di game.tscn tranne la UI; Inizialmente ci deve essere solo la UI coi tasti di scelta
+	
+	
 	StateManager.player.hide()
 	StateManager.house.hide()
 	StateManager.player_phantom_camera.set_priority(0)
@@ -21,6 +21,7 @@ func start():
 	AudioManager.play_start_menu_sound_track()
 
 	if AuthenticationManager.is_enabled:
+		AuthenticationManager.display_report_message("")
 		UIManager.show_authentication_menu()
 		await AuthenticationManager.exit
 	
