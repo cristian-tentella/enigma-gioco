@@ -72,7 +72,7 @@ func _on_log_out_button_pressed():
 	self.exit.emit()
 	UIManager.use_start_menu_with_resume_button = false
 	print_debug("\n--------------------------------------------------\n\tRESET CALLED\n--------------------------------------------------\n")
-	await UIManager.respawn_minigame_UI_nodes()
+	UIManager.respawn_minigame_UI_nodes()
 	SaveManager.reset_save()
 	GameManager.start()
 	

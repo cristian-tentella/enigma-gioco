@@ -371,7 +371,8 @@ func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 
 
 func reset_save():
-	StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	#StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	StateManager.house.queue_free()
 	var unchanged_house = load("res://game/house/house.tscn").instantiate()
 	StateManager.game.add_child(unchanged_house) #Metti la nuova house
 	StateManager.house = unchanged_house #Refresha quello che StateManager vede

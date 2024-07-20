@@ -106,10 +106,6 @@ func init_ui_elements():
 	use_start_menu_with_resume_button = false
 	
 	for ui_element in ui_elements:
-		#DEBUG -------------
-		if ui_element.get_name() == "CombinationLock":
-			print_debug("COMBINATION LOCK ADDED AS CHILD IN UI")
-		#--------------
 		ui_element.hide()
 		ui.add_child(ui_element)
 	
@@ -246,38 +242,33 @@ func show_inventory_for_minigame4():
 
 #====================================
 #SAVE METHODS TO RESPAWN MINIGAMES
-signal has_finished_respawning_minigames_UI_nodes
 func respawn_minigame_UI_nodes():
-	
-	await load_all_minigame_UIs();
-	await get_tree().create_timer(0.000000001).timeout
+	load_all_minigame_UIs();
 	
 	var minigame_ui_elements: Array[Control] = [
-		combination_key_minigame,
-		memeory_menu,
-		combination_color_key_minigame
-	]
+			combination_key_minigame,
+			memeory_menu,
+			combination_color_key_minigame
+		]
+		
+	add_all_minigame_ui_children(minigame_ui_elements) 
 	
-	self.add_all_minigame_ui_children(minigame_ui_elements) #Voglio la loro funzione _ready()
-	
-	has_finished_respawning_minigames_UI_nodes.emit()
 
-#TODO occhio a non far aggiungere children di troppo poi, qui vanno effettivamente rimossi i restanti
-func remove_all_minigame_ui_children(minigame_ui_elements: Array):
-	for minigame_ui_element in minigame_ui_elements:
-		self.remove_child(minigame_ui_element)
 
 func add_all_minigame_ui_children(minigame_ui_elements: Array):
-	print_debug(self.get_parent().get_tree_string_pretty())
 	for minigame_ui_element in minigame_ui_elements:
 		minigame_ui_element.hide()
-		self.add_child(minigame_ui_element)
-	print_debug(self.get_parent().get_tree_string_pretty())
+		ui.add_child(minigame_ui_element)
+
 
 func load_all_minigame_UIs():
-	self.combination_key_minigame = null
-	self.memeory_menu = null
-	self.combination_color_key_minigame = null
+	
+	if is_instance_valid(self.combination_key_minigame):
+		self.memeory_menu.queue_free()
+	if is_instance_valid(self.combination_color_key_minigame):
+		self.combination_color_key_minigame.queue_free()
+	if is_instance_valid(self.memeory_menu):
+		self.memeory_menu.queue_free()
 	
 	self.combination_key_minigame = load(
 		"res://game/minigames/minigame_1/combination_lock.tscn"
@@ -291,4 +282,4 @@ func load_all_minigame_UIs():
 		"res://game/minigames/minigame_3_colors_combination/combination_color_lock.tscn"
 	).instantiate()
 	
-	has_finished_respawning_minigames_UI_nodes.emit()
+
