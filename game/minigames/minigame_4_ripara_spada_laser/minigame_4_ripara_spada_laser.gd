@@ -105,16 +105,20 @@ func _on_inventory_slot_pressed(slot_number: int, item: PickableItem):
 		UIManager.inventory_menu.exit.emit()
 		finished.emit() #Riutilizzo il segnale per dire che ha azzeccato
 
+
+
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
 	self.queue_free()
-
+	
+	
+@onready var monnezza = $monnezza
 func launch_brucia_cumulo_immondizia_interazione():
 	self.brucia_immondizia_dialogo_inizio.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	
 	AudioManager.play_light_saber_sound_effect()
-	#TODO: Fai scomparire SOLO SPRITE immondizia -> MinigameManager.immondizia
+	self.monnezza.queue_free()
 	
 	self.brucia_immondizia_dialogo_fine.handle_interaction()
 	await DialogueManager.has_finished_displaying
