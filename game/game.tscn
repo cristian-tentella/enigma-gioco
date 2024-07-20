@@ -1,11 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=18 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
 [ext_resource type="PackedScene" uid="uid://xe1mhd3eqhkh" path="res://game/entities/player/player.tscn" id="3_8jufx"]
+[ext_resource type="PackedScene" uid="uid://rnuxuto00ks2" path="res://ui/mobile_ui/interaction_button/interaction_button.tscn" id="3_plbiu"]
 [ext_resource type="PackedScene" uid="uid://crbudpuk5xyqu" path="res://components/audio_player/audio_player.tscn" id="4_4h6kr"]
+[ext_resource type="Texture2D" uid="uid://d1kpl1ws5ywfr" path="res://addons/virtual_joystick/sprites/joystick.png" id="4_5ifke"]
 [ext_resource type="Texture2D" uid="uid://do61iumer8aus" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.png" id="4_6dgs2"]
 [ext_resource type="PackedScene" uid="uid://ce071icrk0n4j" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button.tscn" id="4_j2h6h"]
+[ext_resource type="Texture2D" uid="uid://b43x5d10e5s44" path="res://addons/virtual_joystick/sprites/stick.png" id="5_2o2bp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_oecrg"]
 [ext_resource type="Texture2D" uid="uid://chjqr4jqgg8m3" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_pressed.png" id="6_mwtq2"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_7nffp"]
@@ -34,10 +37,18 @@ script = ExtResource("1_oaeyu")
 
 [node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
 
+[node name="InteractionButton" parent="UI/MobileOnlyUI" instance=ExtResource("3_plbiu")]
+offset_left = 493.0
+offset_top = 244.0
+offset_right = 609.0
+offset_bottom = 349.0
+
 [node name="VirtualJoystick" type="Node2D" parent="UI/MobileOnlyUI"]
 position = Vector2(81, 290)
 scale = Vector2(0.65, 0.65)
 script = ExtResource("7_ghpve")
+border = ExtResource("4_5ifke")
+stick = ExtResource("5_2o2bp")
 
 [node name="OpenPauseMenuButton" parent="UI/MobileOnlyUI" instance=ExtResource("4_j2h6h")]
 offset_left = 594.0
