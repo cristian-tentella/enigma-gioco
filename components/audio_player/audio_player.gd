@@ -50,11 +50,9 @@ func fade_out_audio_track(audio_track):
 	
 	
 func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String) -> AudioStreamPlayer:
-	var audio_stream_player_for_sound_effects: AudioStreamPlayer
-
 	match sound_effect_name:
 		"click":
-			audio_stream_player_for_sound_effects = $SoundEffects/Click
+			return $SoundEffects/Click
 		"step":
 			var footsteps = [
 				$SoundEffects/Footstep1,
@@ -62,7 +60,7 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 				$SoundEffects/Footstep3,
 				$SoundEffects/Footstep4
 			]
-			audio_stream_player_for_sound_effects = footsteps[randi() % footsteps.size()]
+			return footsteps[randi() % footsteps.size()]
 		"dialogue_ploop":
 			var ploops = [
 				$SoundEffects/DialoguePloop1,
@@ -70,45 +68,40 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 				$SoundEffects/DialoguePloop3,
 				$SoundEffects/DialoguePloop4,
 			]
-			audio_stream_player_for_sound_effects = ploops[randi() % ploops.size()]
+			return ploops[randi() % ploops.size()]
 		"item_pickup":
-			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
+			return $SoundEffects/ItemPickup
 		"menu":
-			audio_stream_player_for_sound_effects = $SoundEffects/Menu
+			return $SoundEffects/Menu
 		"door_open":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorOpen
+			return $SoundEffects/DoorOpen
 		"door_close":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorClose
+			return $SoundEffects/DoorClose
 		"door_unlock":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorUnlock
+			return $SoundEffects/DoorUnlock
 		"success":
-			audio_stream_player_for_sound_effects = $SoundEffects/Success
+			return $SoundEffects/Success
 		"failure":
-			audio_stream_player_for_sound_effects = $SoundEffects/Failure
+			return $SoundEffects/Failure
 		"keyboard":
-			audio_stream_player_for_sound_effects = $SoundEffects/Keyboard
+			return $SoundEffects/Keyboard
 		"pew":
-			audio_stream_player_for_sound_effects = $SoundEffects/Pew
+			return $SoundEffects/Pew
 		"key_turning":
-			audio_stream_player_for_sound_effects = $SoundEffects/KeyTurning
+			return $SoundEffects/KeyTurning
 		"staircase":
-			audio_stream_player_for_sound_effects = $SoundEffects/Staircase
+			return $SoundEffects/Staircase
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null
-
-	return audio_stream_player_for_sound_effects
 
 
 func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) -> AudioStreamPlayer:
 	match sound_track_name:
 		"StartMenu":
-			audio_stream_player_for_sound_track = $SoundTracks/StartMenu
+			return $SoundTracks/StartMenu
 		"memeory":
-			audio_stream_player_for_sound_track = $SoundTracks/Memeory
+			return $SoundTracks/Memeory
 		_:
-			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_track_name]))
+			push_error("Non esiste alcuna colonna sonora chiamata '{0}'".format([sound_track_name]))
 			return null
-
-	return audio_stream_player_for_sound_track
-	
