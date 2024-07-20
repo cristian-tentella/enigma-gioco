@@ -50,7 +50,7 @@ func _input(input_event: InputEvent):
 		_process_ui_input_event(input_event)
 
 func _process(_delta):
-	if PlatformHelper.get_current_platform() == PlatformHelper.Platform.MOBILE:
+	if PlatformHelper.get_current_platform() == PlatformHelper.Platform.MOBILE and StateManager.should_player_be_able_to_move:
 		var x = joystick.get_value().x
 		var y = joystick.get_value().y
 		const JOYSTICK_TRESHOLD = 0.6
