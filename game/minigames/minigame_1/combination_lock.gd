@@ -18,7 +18,7 @@ func _insert_into_next_slot(key_number: String):
 	if current_slot == 4 or key_number in current_combination:
 		return
 	
-	AudioManager.play_click_sound_effect()
+	AudioManager.play_key_turning_sound_effect()
 	
 	match current_slot:
 		1:
