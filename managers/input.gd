@@ -49,7 +49,7 @@ func _input(input_event: InputEvent):
 	else:
 		_process_ui_input_event(input_event)
 
-func _process(delta):
+func _process(_delta):
 	if PlatformHelper.get_current_platform() == PlatformHelper.Platform.MOBILE:
 		var x = joystick.get_value().x
 		var y = joystick.get_value().y
