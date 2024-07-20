@@ -20,7 +20,6 @@ func show_resume_button():
 	play_button.queue_free()
 	play_button = null
 	resume_button.show()
-	
 
 #Quando si clicca su play, viene caricato il salvataggio
 func _on_play_button_pressed():
@@ -41,6 +40,7 @@ func _fade_in():
 
 func _fade_out():
 	fade.fade_out()
+	fade.hide()
 
 
 func _hide_all_buttons():
