@@ -100,3 +100,7 @@ func _on_key_7_pressed():
 func _on_exit_pause_menu_button_pressed():
 	_on_reset_minigame_button_pressed()
 	self.exit.emit()
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME UI exiting!\n")
+	pass

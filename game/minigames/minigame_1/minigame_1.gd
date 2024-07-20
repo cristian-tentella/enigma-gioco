@@ -95,9 +95,11 @@ VARIABILI PER IL GIOCO VERO E PROPRIO
 
 func _ready():
 	combination_lock_minigame = UIManager.combination_key_minigame
+	print_debug(get_name()+" MINIGAME 1 spawning! -> UI element ->\t", combination_lock_minigame, "\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
 
 
 func open_combination_lock_first_time(): 
+	print_debug(get_name()+" MINIGAME 1\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
 	#Nascondi pulsante per quittare, why would they?
 	self.combination_lock_minigame.exit_button.hide()
 	
@@ -119,7 +121,7 @@ func open_combination_lock_first_time():
 	await DialogueManager.has_finished_displaying
 	
 func open_combination_lock_real():
-	
+	print_debug(get_name()+" MINIGAME 1\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
 	#Fai vedere il dialogo prima che si apra il menu in cui si incita
 	actual_minigame_combination_first_dialogue.handle_interaction()
 	await DialogueManager.has_finished_displaying
@@ -142,3 +144,7 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.combination_key_minigame.queue_free()
 	UIManager.combination_key_minigame = null
 	self.queue_free()
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME exiting!\n")
+	pass

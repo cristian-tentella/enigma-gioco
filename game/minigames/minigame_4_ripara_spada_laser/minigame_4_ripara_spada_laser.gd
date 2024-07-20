@@ -120,3 +120,12 @@ func launch_brucia_cumulo_immondizia_interazione():
 	await DialogueManager.has_finished_displaying
 	
 	self._free_every_node_related_to_the_minigame()
+
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME exiting!\n")
+	pass
+
+func _ready():
+	print_debug(get_name()+" MINIGAME spawning!\n")
+	pass

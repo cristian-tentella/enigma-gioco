@@ -150,10 +150,10 @@ offset_bottom = 336.0
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 z_index = 110
 layout_mode = 0
-offset_left = 601.0
-offset_top = 12.0
-offset_right = 625.0
-offset_bottom = 36.0
+offset_left = 359.0
+offset_top = 172.0
+offset_right = 383.0
+offset_bottom = 196.0
 texture = ExtResource("2_3pcwa")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
