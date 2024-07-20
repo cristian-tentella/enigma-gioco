@@ -58,8 +58,8 @@ func has_couple():
 	return couple
 	
 func check():
-	var check = has_couple()
-	if(!check):
+	var check_var = has_couple()
+	if(!check_var):
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
 		if(hearts_array.size() > 0):
