@@ -20,6 +20,9 @@ func show_resume_button():
 	play_button.queue_free()
 	play_button = null
 	resume_button.show()
+	exit_button.show()
+	if AuthenticationManager.is_enabled:
+		logout_button.show()
 
 #Quando si clicca su play, viene caricato il salvataggio
 func _on_play_button_pressed():
