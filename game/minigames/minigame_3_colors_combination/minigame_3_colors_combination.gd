@@ -83,7 +83,7 @@ func open_combination_color_lock_real():
 		self.after_plutonio_dialogue.handle_interaction()
 		await DialogueManager.has_finished_displaying
 		self._free_every_node_related_to_the_minigame()
-		StateManager.inventory.insert(MinigameManager.polipetto)
+		StateManager.inventory.insert(MinigameManager.plutonio_radioattivo)
 		await DialogueManager.has_finished_displaying
 	else:
 		self.game_lost_dialogue.handle_interaction()
@@ -92,8 +92,11 @@ func open_combination_color_lock_real():
 
 #Questo è solo per dare hint
 func rotate_computer_color():
+	AudioManager.play_keyboard_sound_effect()
+	await get_tree().create_timer(1).timeout
 	current_color_index = (current_color_index+1) % 5
 	computer_color_rect.color = Color(color2hex[current_color_index])
+	AudioManager.play_pew_sound_effect()
 
 
 #Gioco vinto, adios!

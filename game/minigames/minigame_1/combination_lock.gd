@@ -18,6 +18,8 @@ func _insert_into_next_slot(key_number: String):
 	if current_slot == 4 or key_number in current_combination:
 		return
 	
+	AudioManager.play_key_turning_sound_effect()
+	
 	match current_slot:
 		1:
 			slot_digit1.text = key_number
@@ -39,13 +41,13 @@ func check_combination():
 		if current_combination == real_combination:
 			await get_tree().create_timer(0.7).timeout
 			AudioManager.play_success_sound_effect()
-			print_debug("Heya! Nice, you got it!")
+			#print_debug("Heya! Nice, you got it!")
 			StateManager.current_minigame = 4
 			MinigameManager.porta_camera_da_letto.try_to_unlock()
 			MinigameManager.porta_camera_da_letto = null
 			self.exit.emit()
 			return
-			
+		
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_failure_sound_effect()
 		

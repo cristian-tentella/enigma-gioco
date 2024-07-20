@@ -10,3 +10,6 @@ func _ready():
 	
 	"""SETUP PER TERZO MINIGIOCO, ATTENZIONE A COME SONO MESSI I NODI NELLA SCENA!"""
 	MinigameManager.plutonio_radioattivo = $Rooms/Studio/plutonio_radioattivo
+	
+	"""SETUP PER QUARTO MINIGIOCO, ATTENZIONE A COME SONO MESSI I NODI NELLA SCENA!"""
+	MinigameManager.spada_laser = $"Rooms/Cameretta + Terrazzo/spada_laser"

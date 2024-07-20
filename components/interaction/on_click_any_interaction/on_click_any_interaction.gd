@@ -38,6 +38,7 @@ func _ready():
 
 
 func handle_interaction():
+	print_debug(get_name())
 	if is_method_in_direct_parent: #Modo per non usare metodi statici, chiamare funzioni definite nel padre diretto!
 		self.get_parent().call(method_name)
 	else:

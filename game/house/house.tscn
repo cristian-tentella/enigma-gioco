@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=30 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://wbu7xnwvf2u2" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.tscn" id="14_5ijjr"]
+
 [ext_resource type="PackedScene" uid="uid://bby0msqin8uj6" path="res://game/house/teleport_down.tscn" id="14_mveet"]
 [ext_resource type="PackedScene" uid="uid://db00xsajxhqj5" path="res://game/house/teleport_up.tscn" id="15_btu08"]
+[ext_resource type="PackedScene" uid="uid://beq1b34jf1bpq" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.tscn" id="15_aqewa"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
@@ -4197,6 +4199,11 @@ position = Vector2(382.022, 91.909)
 item_name = "set_of_keys"
 dialogue_id = "pickup_set_of_keys"
 
+[node name="spada_laser" parent="Rooms/Cameretta + Terrazzo" instance=ExtResource("8_0lq6k")]
+position = Vector2(-1659.12, -504.605)
+item_name = "spada_laser"
+dialogue_id = ""
+
 [node name="Studio" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
 [node name="porta_studio" parent="Rooms/Studio" instance=ExtResource("7_qq4fd")]
@@ -4309,6 +4316,9 @@ position = Vector2(63, 380)
 
 [node name="Minigame3ColorsCombination" parent="." instance=ExtResource("14_5ijjr")]
 position = Vector2(112, 171)
+
+[node name="Minigame4RiparaSpadaLaser" parent="." instance=ExtResource("15_aqewa")]
+position = Vector2(99, 33)
 
 [node name="TeleportUp" parent="." instance=ExtResource("15_btu08")]
 position = Vector2(1364, 703)

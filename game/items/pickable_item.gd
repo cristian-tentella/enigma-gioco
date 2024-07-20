@@ -17,7 +17,7 @@ Ogni oggetto è dato dalla scena generic_item.tscn
 @onready var sprite2D = $Sprite2D
 
 @export_category("Item Base Values")
-@export_enum("set_of_keys", "polipetto", "spada_laser_rotta", "plutonio_radioattivo", "spada_laser_funzionante", "lista_degli_invitati") var item_name: String
+@export_enum("set_of_keys", "polipetto", "plutonio_radioattivo", "spada_laser", "lista_degli_invitati") var item_name: String
 var description: String #La descrizione che faremo vedere nell'inventario. Viene pescata dal file di traduzioni nel _ready()
 @export var is_corporeo: bool = false
 @export var dialogue_id: String = "Nessun dialogo" #Dialogo che parte quando lo raccogli
