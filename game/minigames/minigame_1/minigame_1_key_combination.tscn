@@ -96,4 +96,4 @@ shape = SubResource("CircleShape2D_c42ab")
 
 [node name="short_win_dialogue" type="Area2D" parent="."]
 script = ExtResource("4_kuswm")
-dialogue_id = "short_win"
+dialogue_id = "first_minigame_combination_short_win"
