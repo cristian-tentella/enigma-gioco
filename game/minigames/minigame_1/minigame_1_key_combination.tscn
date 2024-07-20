@@ -36,6 +36,7 @@ minigame_requirement = 4
 position = Vector2(-1, 5)
 dialogue_id = "first_minigame_combination_door_fail"
 minigame_requirement = 1
+just_proc_once = false
 
 [node name="second_dialogue_on_first_open_static_until_poster" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(207, 198)
@@ -95,4 +96,4 @@ shape = SubResource("CircleShape2D_c42ab")
 
 [node name="short_win_dialogue" type="Area2D" parent="."]
 script = ExtResource("4_kuswm")
-dialogue_id = "first_minigame_combination_short_win"
+dialogue_id = "short_win"
