@@ -7,14 +7,14 @@ signal exit
 
 #Inizializza con value a 0
 func _ready():
-	self.progress_bar.value = 0
+	self.progress_bar.value = 0.0
 
 
 func add_to_value(value_to_add: int):
 	self.set_value(self.progress_bar.value + value_to_add)
 	self.check_if_full()
 
-func set_value(new_value: int):
+func set_value(new_value: float):
 	self.progress_bar.value = new_value
 
 func check_if_full():
