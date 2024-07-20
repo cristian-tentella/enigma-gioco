@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://beq1b34jf1bpq"]
+[gd_scene load_steps=8 format=3 uid="uid://beq1b34jf1bpq"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
@@ -10,6 +10,9 @@ radius = 17.1172
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
 size = Vector2(60.5, 12)
+
+[sub_resource type="Gradient" id="Gradient_i8cjx"]
+colors = PackedColorArray(0.65098, 0.266667, 0.247059, 1, 0.847059, 0.654902, 0.14902, 1)
 
 [node name="Minigame4RiparaSpadaLaser" type="Node2D"]
 script = ExtResource("1_g1yqu")
@@ -98,3 +101,20 @@ shape = SubResource("CircleShape2D_r6xq6")
 [node name="monnezza" type="Sprite2D" parent="."]
 position = Vector2(109, 659)
 texture = ExtResource("4_c0pjp")
+
+[node name="FireParticles" type="CPUParticles2D" parent="."]
+z_index = 150
+position = Vector2(109, 659)
+emitting = false
+amount = 512
+lifetime = 3.5
+speed_scale = 13.28
+emission_shape = 1
+emission_sphere_radius = 22.0
+spread = 47.85
+gravity = Vector2(-0.115, -0.3)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 2.9
+color_ramp = SubResource("Gradient_i8cjx")

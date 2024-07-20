@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=33 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://beq1b34jf1bpq" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.tscn" id="15_aqewa"]
 [ext_resource type="PackedScene" uid="uid://db00xsajxhqj5" path="res://game/house/teleport_up.tscn" id="15_btu08"]
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
+[ext_resource type="Texture2D" uid="uid://cywiipp58pni0" path="res://game/minigames/minigame_4_ripara_spada_laser/ash.png" id="19_pd54m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
 texture = ExtResource("8_51wt1")
@@ -4456,3 +4457,9 @@ shape = SubResource("RectangleShape2D_cvj58")
 [node name="area_di_interazione" type="CollisionShape2D" parent="Container"]
 position = Vector2(-0.00378418, -16)
 shape = SubResource("RectangleShape2D_xqr3h")
+
+[node name="Ash" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(208, 691)
+texture = ExtResource("19_pd54m")
