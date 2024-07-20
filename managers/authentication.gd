@@ -115,7 +115,6 @@ func retrieve_access_token_from_file():
 	var encrypted_file_with_access_token = FileAccess.open_encrypted_with_pass(access_token_path, FileAccess.READ, Supabase.config.supabaseKey)
 	
 	if encrypted_file_with_access_token == null:
-		await get_tree().create_timer(0.01).timeout #Without this line the error message will not be shown
 		await display_report_message("An error occured while decrypting the access token")
 	else:
 		construct_body_request(encrypted_file_with_access_token)
