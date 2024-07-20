@@ -4355,7 +4355,7 @@ position = Vector2(99, 33)
 position = Vector2(1364, 703)
 
 [node name="TeleportDown" parent="." instance=ExtResource("14_mveet")]
-position = Vector2(252.681, 154.475)
+position = Vector2(214, 741)
 
 [node name="Container" parent="." instance=ExtResource("7_qq4fd")]
 position = Vector2(1327.98, 448.334)
