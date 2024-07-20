@@ -37,6 +37,12 @@ script = ExtResource("1_oaeyu")
 
 [node name="MobileOnlyUI" type="CanvasLayer" parent="UI"]
 
+[node name="InteractionButton" parent="UI/MobileOnlyUI" instance=ExtResource("3_plbiu")]
+offset_left = 493.0
+offset_top = 244.0
+offset_right = 609.0
+offset_bottom = 349.0
+
 [node name="VirtualJoystick" type="Node2D" parent="UI/MobileOnlyUI"]
 position = Vector2(81, 290)
 scale = Vector2(0.65, 0.65)
@@ -53,12 +59,6 @@ texture_normal = ExtResource("4_6dgs2")
 texture_pressed = ExtResource("6_mwtq2")
 texture_hover = ExtResource("7_jfbt4")
 texture_focused = ExtResource("7_jfbt4")
-
-[node name="InteractionButton" parent="UI/MobileOnlyUI" instance=ExtResource("3_plbiu")]
-offset_left = 538.0
-offset_top = 267.0
-offset_right = 602.0
-offset_bottom = 331.0
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
 

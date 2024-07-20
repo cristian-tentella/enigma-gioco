@@ -1,12 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://rnuxuto00ks2"]
 
 [ext_resource type="Script" path="res://ui/mobile_ui/interaction_button/interaction_button.gd" id="1_bbyv5"]
-[ext_resource type="Texture2D" uid="uid://b43x5d10e5s44" path="res://addons/virtual_joystick/sprites/stick.png" id="1_rv21a"]
-[ext_resource type="Texture2D" uid="uid://bc6paavcnnwf6" path="res://addons/virtual_joystick/sprites/stick_pressed.png" id="2_bm5n1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dxns"]
+load_path = "res://.godot/imported/interaction-button.png-9dddc7fc98daac1bc2e1226417477ee7.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cv3l4"]
+load_path = "res://.godot/imported/interaction-button-pressed.png-19e8a947d03a86a5dc5859dcc5402821.ctex"
 
 [node name="InteractionButton" type="TextureButton"]
-texture_normal = ExtResource("1_rv21a")
-texture_pressed = ExtResource("2_bm5n1")
+offset_left = -1.0
+offset_right = 149.0
+offset_bottom = 136.0
+texture_normal = SubResource("CompressedTexture2D_8dxns")
+texture_pressed = SubResource("CompressedTexture2D_cv3l4")
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource("1_bbyv5")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
