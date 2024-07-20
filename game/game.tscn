@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=19 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://addons/virtual_joystick/scripts/virtual_joystick.gd" id="7_ghpve"]
 [ext_resource type="Texture2D" uid="uid://c414e0ew1i1hw" path="res://ui/mobile_ui/open_pause_menu_button/open_pause_menu_button_hover.png" id="7_jfbt4"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_1jbf8"]
+[ext_resource type="PackedScene" uid="uid://kqmg0yvqgtuh" path="res://components/fade/fade.tscn" id="16_jehc0"]
 
 [sub_resource type="Resource" id="Resource_tneua"]
 script = ExtResource("5_oecrg")
@@ -59,6 +60,11 @@ texture_normal = ExtResource("4_6dgs2")
 texture_pressed = ExtResource("6_mwtq2")
 texture_hover = ExtResource("7_jfbt4")
 texture_focused = ExtResource("7_jfbt4")
+
+[node name="Fade" parent="UI" instance=ExtResource("16_jehc0")]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
 
 [node name="AudioPlayer" parent="." instance=ExtResource("4_4h6kr")]
 

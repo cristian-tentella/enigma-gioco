@@ -23,6 +23,7 @@ var inventory: Inventory
 var player_phantom_camera: PhantomCamera2D
 var ui_phantom_camera: PhantomCamera2D
 var audio_player: AudioPlayer
+var fade: Fade
 
 var current_language: String
 var muted: bool
