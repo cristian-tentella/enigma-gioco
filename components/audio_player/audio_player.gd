@@ -35,6 +35,7 @@ func _on_audio_manager_play_sound_track(sound_track_name: String):
 	if player == null:
 		return
 
+
 	var correct_volume_in_decibels = player.volume_db
 	self.current_sound_track_player = player
 	player.set_volume_db(LOWEST_VOLUME_IN_DECIBELS)

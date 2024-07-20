@@ -108,3 +108,4 @@ stream = ExtResource("15_yyu6b")
 
 [node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("23_bct1s")
+volume_db = -12.0
