@@ -17,10 +17,16 @@ func _ready():
 
 func show_resume_button():
 	play_button.hide()
-	play_button.queue_free()
-	play_button = null
 	resume_button.show()
 	exit_button.show()
+	show_logout_button()
+
+func show_play_button():
+	resume_button.hide()
+	play_button.show()
+	show_logout_button()
+
+func show_logout_button():
 	if AuthenticationManager.is_enabled:
 		logout_button.show()
 
@@ -61,7 +67,17 @@ func _on_exit_button_pressed():
 
 func _on_log_out_button_pressed():
 	AuthenticationManager.sign_out()
-
+	await Supabase.auth.signed_out
+	remove_auth_file()
+	self.exit.emit()
+	UIManager.use_start_menu_with_resume_button = false
+	SaveManager.reset_save()
+	GameManager.start()
+	
+	
+func remove_auth_file():
+	DirAccess.remove_absolute("user://user.auth")
+	DirAccess.remove_absolute("user://save.json")
 
 func _on_resume_button_pressed():
 	self.exit.emit()

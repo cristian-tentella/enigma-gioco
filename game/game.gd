@@ -3,7 +3,7 @@ Script associato a game/game.tscn
 
 Sul caricamento della scena, che è quella iniziale, il metodo _ready() viene chiamato e sono inizializzate le variabili essenziali, e fatto partire il gioco.
 """
-
+class_name Game
 extends Node
 
 @onready var player = $Player/Player
@@ -24,12 +24,12 @@ func _ready():
 	#Associare allo StateManager i riferimenti agli oggetti principali che creiamo, importantissimo per il comportamento generale!
 	StateManager.player = player
 	StateManager.house = house
+	StateManager.game = self
 	StateManager.player_phantom_camera = player_phantom_camera
 	StateManager.ui_phantom_camera = ui_phantom_camera
 	StateManager.fade = fade
 	InputManager.joystick = joystick
 	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
-
 	
 	#StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
 	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager

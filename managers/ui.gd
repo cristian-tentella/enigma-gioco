@@ -75,6 +75,7 @@ QUANDO AGGIUNGO UN ELEMENTO UI QUI SOPRA, TRA I @onready, VA MESSO ANCHE QUI DEN
 	combination_color_key_minigame
 ]
 
+var use_start_menu_with_resume_button = false
 
 #Segnali
 signal spawn(ui_element: Control) #Segnale per mettere in sovrimpressione un elemento UI
@@ -99,12 +100,18 @@ UNLOCK:
 
 #Inizializza come nodi figli di Control tutti gli elementi UI prima elencati, per una veloce selezione in runtime
 func _ready():
+	init_ui_elements()
+		
+func init_ui_elements():
+	use_start_menu_with_resume_button = false
+	
 	for ui_element in ui_elements:
 		ui_element.hide()
 		ui.add_child(ui_element)
 		
 	
-
+	
+	
 #Mostra un elemento di UI.
 func _spawn_ui_element(ui_element: Control):
 	ui_element.show() #Era già nello scene tree, e ora lo mostri
@@ -136,13 +143,13 @@ func show_dialogue_box(dialogue_lines: Array):
 
 
 """GESTIONE START MENU"""
-var use_start_menu_with_resume_button = false
 
 func show_start_menu():
 	
 	if use_start_menu_with_resume_button:
-		show_start_menu_with_resume_button()
-		return
+		self.start_menu.show_resume_button()
+	else:
+		self.start_menu.show_play_button()
 		
 	_spawn_locking_ui_element(start_menu)
 	await start_menu.exit
@@ -150,8 +157,8 @@ func show_start_menu():
 	
 	#Faccio mostrare il resume button al posto del play button
 	#Non voglio che il giocatore ricarichi ogni volta i salvataggi che stanno già in locale
-	self.start_menu.show_resume_button()
 	use_start_menu_with_resume_button = true
+	print(use_start_menu_with_resume_button)
 
 func show_start_menu_with_resume_button():
 	_spawn_locking_ui_element(start_menu)
