@@ -24,7 +24,7 @@ func fade_in(background_color: Color = BLACK):
 		"color",
 		background_color,
 		self.fade_duration_in_seconds,
-	).set_ease(Tween.EASE_IN_OUT)
+	).set_ease(Tween.EASE_IN)
 
 	self.has_faded_in = true
 
@@ -38,6 +38,6 @@ func fade_out():
 		"color",
 		self.TRANSPARENT,
 		self.fade_duration_in_seconds,
-	).set_ease(Tween.EASE_IN_OUT)
+	).set_ease(Tween.EASE_OUT)
 
 	self.has_faded_in = false
