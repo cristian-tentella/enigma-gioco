@@ -7,4 +7,4 @@ func teleport_down():
 	StateManager.player.set_position(Vector2(1200,800))
 
 func teleport_up():
-	StateManager.player.set_position(Vector2(210,710))
+	StateManager.player.set_position(Vector2(210,765))
