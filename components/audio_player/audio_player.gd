@@ -2,7 +2,6 @@ class_name AudioPlayer
 extends Node
 
 
-const CORRECT_VOLUME_IN_DECIBELS = 0
 const LOWEST_VOLUME_IN_DECIBELS = -36
 
 @export var sound_track_fade_in_duration_in_seconds = 2
@@ -36,10 +35,11 @@ func _on_audio_manager_play_sound_track(sound_track_name: String):
 	if player == null:
 		return
 
+	var correct_volume_in_decibels = player.volume_db
 	self.current_sound_track_player = player
 	player.set_volume_db(LOWEST_VOLUME_IN_DECIBELS)
 	player.play()
-	create_tween().tween_property(player, "volume_db", CORRECT_VOLUME_IN_DECIBELS, sound_track_fade_in_duration_in_seconds)
+	create_tween().tween_property(player, "volume_db", correct_volume_in_decibels, sound_track_fade_in_duration_in_seconds)
 
 
 func _on_stop_sound_track():
