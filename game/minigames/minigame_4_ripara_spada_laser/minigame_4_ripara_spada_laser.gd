@@ -73,8 +73,8 @@ func launch_minigame():
 	
 	#Ora mostra inventario e sfrutta il click dei pulsanti per modificare la UI
 	UIManager.show_inventory_for_minigame4()
-	#Unlock se quitta, finished se azzecca e vince
-	await UIManager.unlock or finished
+	
+	await UIManager.unlock #Si sblocca sia se azzecca sia se quitta
 	
 	if is_won:
 		self.game_starter.queue_free()
@@ -91,9 +91,7 @@ func launch_minigame():
 		await DialogueManager.has_finished_displaying
 
 
-signal finished
-
-func _on_inventory_slot_pressed(slot_number: int, item: PickableItem):
+func _on_inventory_slot_pressed(item: PickableItem):
 	if is_won:
 		return
 	if item.item_name != "plutonio_radioattivo":
@@ -102,8 +100,7 @@ func _on_inventory_slot_pressed(slot_number: int, item: PickableItem):
 	else:
 		self.is_won = true
 		AudioManager.play_success_sound_effect()
-		UIManager.inventory_menu.exit.emit()
-		finished.emit() #Riutilizzo il segnale per dire che ha azzeccato
+		UIManager.inventory_menu.exit.emit() #Questo emette UIManager.unlock
 
 
 
@@ -124,12 +121,3 @@ func launch_brucia_cumulo_immondizia_interazione():
 	await DialogueManager.has_finished_displaying
 	
 	self._free_every_node_related_to_the_minigame()
-
-
-func _exit_tree():
-	print_debug(get_name()+" MINIGAME exiting!\n")
-	pass
-
-func _ready():
-	print_debug(get_name()+" MINIGAME spawning!\n")
-	pass
