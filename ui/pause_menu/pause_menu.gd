@@ -9,7 +9,7 @@ signal exit
 func _on_main_menu_button_pressed():
 	SaveManager.prepare_data_to_be_saved_and_save()
 	self.exit.emit()
-	GameManager.start()
+	UIManager.show_start_menu()
 
 
 func _on_exit_pause_menu_button_pressed():
