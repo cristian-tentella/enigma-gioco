@@ -92,9 +92,11 @@ func open_combination_color_lock_real():
 
 #Questo è solo per dare hint
 func rotate_computer_color():
+	AudioManager.play_keyboard_sound_effect()
+	await get_tree().create_timer(1).timeout
 	current_color_index = (current_color_index+1) % 5
 	computer_color_rect.color = Color(color2hex[current_color_index])
-	AudioManager.play_click_sound_effect()
+	AudioManager.play_pew_sound_effect()
 
 
 #Gioco vinto, adios!

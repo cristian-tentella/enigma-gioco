@@ -45,6 +45,12 @@ func play_door_unlock_sound_effect():
 func play_dialogue_ploop_sound_effect():
 	self.play_sound_effect.emit("dialogue_ploop")
 
+func play_keyboard_sound_effect():
+	self.play_sound_effect.emit("keyboard")
+
+func play_pew_sound_effect():
+	self.play_sound_effect.emit("pew")
+
 func play_success_sound_effect():
 	self.play_sound_effect.emit("success")
 
