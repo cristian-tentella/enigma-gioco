@@ -21,13 +21,11 @@ func _on_audio_manager_play_sound_effect(sound_effect_name: String):
 	audio_stream_player.play()
 
 func _on_audio_manager_play_sound_track(sound_track_name: String):
-
 	if audio_stream_player_for_sound_track != null:	
 		if  audio_stream_player_for_sound_track.is_playing():
 			current_audio_stream_player_for_sound_track = audio_stream_player_for_sound_track
 			fade_out_audio_track(current_audio_stream_player_for_sound_track)
 			convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
-
 	else:
 		convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
 	
@@ -106,6 +104,8 @@ func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) 
 	match sound_track_name:
 		"StartMenu":
 			audio_stream_player_for_sound_track = $SoundTracks/StartMenu
+		"memeory":
+			audio_stream_player_for_sound_track = $SoundTracks/Memeory
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_track_name]))
 			return null

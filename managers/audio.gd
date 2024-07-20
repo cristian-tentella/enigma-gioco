@@ -65,3 +65,6 @@ func play_failure_sound_effect():
 
 func play_start_menu_sound_track():
 	self.play_sound_track.emit("StartMenu")
+
+func play_memeory_sound_track():
+	self.play_sound_track.emit("memeory")

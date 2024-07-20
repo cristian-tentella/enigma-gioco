@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=24 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://6ooey0hcybql" path="res://audio/sound_effects/pew.ogg" id="19_yum8m"]
 [ext_resource type="AudioStream" uid="uid://o2wgbb0sahyr" path="res://audio/sound_effects/key_turning.ogg" id="20_4lstj"]
 [ext_resource type="AudioStream" uid="uid://ul23po3uxtlo" path="res://audio/sound_effects/staircase.ogg" id="21_xvsxj"]
+[ext_resource type="AudioStream" uid="uid://btdiy5sygchwg" path="res://audio/sound_tracks/memeory.ogg" id="23_bct1s"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -105,3 +106,6 @@ stream = ExtResource("21_xvsxj")
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
 volume_db = -12.0
+
+[node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
+stream = ExtResource("23_bct1s")
