@@ -113,7 +113,7 @@ func launch_brucia_cumulo_immondizia_interazione():
 	self.brucia_immondizia_dialogo_inizio.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	
-	#TODO: AudioManager.play_laser_sword_sound()
+	AudioManager.play_light_saber_sound_effect()
 	#TODO: Fai scomparire SOLO SPRITE immondizia -> MinigameManager.immondizia
 	
 	self.brucia_immondizia_dialogo_fine.handle_interaction()
