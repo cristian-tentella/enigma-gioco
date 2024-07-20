@@ -47,15 +47,20 @@ var json_path = "user://save.json"
 var is_connected_to_internet: bool
 var user_file = "user://user.auth"
 var player_id
+var inventory_owned_items_names 
+var current_minigame: int 
+var current_language: String  
+var mute_button_state: bool 
+var player_position: Vector2 
+
 
 func _ready():
 	if not AuthenticationManager.is_enabled:
 		return
 	Supabase.database.error.connect(on_database_query_error)
 	Supabase.database.updated.connect(on_database_query_updated)
-	if FileAccess.file_exists(user_file):
-		player_id = get_player_id()
-		
+	
+	
 
 	
 	
@@ -70,12 +75,12 @@ func prepare_data_to_be_saved_and_save():
 
 	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
 		player_id = get_player_id()
-	var inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
-	var current_minigame: int = StateManager.current_minigame 
-	var current_language: String = StateManager.current_language 
-	var mute_button_state: bool = StateManager.muted
-	var player_position: Vector2 = StateManager.player.position
-	
+	inventory_owned_items_names = StateManager.inventory.return_item_names() as Array[String] 
+	current_minigame = StateManager.current_minigame 
+	current_language = StateManager.current_language 
+	mute_button_state = StateManager.muted
+	player_position = StateManager.player.position
+
 	
 	var data_for_json_file = {
 		"all_exited_interactions": all_exited_interactions,
@@ -131,15 +136,12 @@ func is_online() -> bool:
 #Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
+	if FileAccess.file_exists(user_file) and AuthenticationManager.is_enabled:
+		player_id = get_player_id()
 	if start_without_any_save:
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
-	
-	
-	
-	if loading_bar_enabled:
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	
+
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 		#Se questo va a buon fine, il caricamento è al 25%
@@ -168,7 +170,6 @@ func load_game_save_from_json():
 		#Barra di caricamento a 0
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(30)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state") or not content.has("player_position"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
@@ -189,12 +190,10 @@ func load_game_save_from_json():
 
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(35)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		var root_node = self.get_tree().root
 		var all_nodes = self.get_all_children(root_node)
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(45)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
 		var inventory_owned_items_names = content.get("inventory_owned_items_names")
@@ -203,33 +202,25 @@ func load_game_save_from_json():
 		if loading_bar_enabled:
 			#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
 			UIManager.loading_screen.set_value(90)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 
 
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(5)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(10)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	Supabase.database.query(query)
 	var data = await Supabase.database.selected
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(15)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	data = data[0]["save_file"]
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(20)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	if data != null:
 		save_current_state_into_json(data)
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(25)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	
-	
 
 	#var into_json = json.stringify(data_for_json_file)
 	#json_file.store_string(into_json)
@@ -349,7 +340,7 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 			- Dall'alto verso il basso i minigiochi nello STESSO ordine in cui si trovano dentro 
 			  self.minigame_to_current_minigame_requirement
 			"""
-			assert(minigame_key_from_input == minigame_key)
+			#assert(minigame_key_from_input == minigame_key)
 			
 			var destroy_requirement = minigame_to_current_minigame_requirement[minigame_key] #Prendo il requirement dal dict delle var di classe
 			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
@@ -368,3 +359,17 @@ func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 		UIManager.loading_screen.set_value(80)
 	else:
 		UIManager.loading_screen.add_to_value(val)
+
+
+
+func reset_save():
+	StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	var unchanged_house = load("res://game/house/house.tscn").instantiate()
+	StateManager.game.add_child(unchanged_house) #Metti la nuova house
+	StateManager.house = unchanged_house #Refresha quello che StateManager vede
+	
+	all_exited_interactions = []
+	StateManager.current_minigame = 0
+	StateManager.player.position =  Vector2(111, 127)
+	StateManager.inventory.slots = []
+

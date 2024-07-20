@@ -73,5 +73,6 @@ func game_won_ui():
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
-	self.exit.emit() # Replace with function body.
+	AudioManager.stop_current_sound_track()
+	self.exit.emit()
 

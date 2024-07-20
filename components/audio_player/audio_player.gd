@@ -1,62 +1,62 @@
 class_name AudioPlayer
 extends Node
 
-var audio_stream_player_for_sound_track: AudioStreamPlayer
-var current_audio_stream_player_for_sound_track: AudioStreamPlayer
+
+const LOWEST_VOLUME_IN_DECIBELS = -36
+
+@export var sound_track_fade_in_duration_in_seconds = 2
+var current_sound_track_player: AudioStreamPlayer
 
 
 func _ready():
 	AudioManager.play_sound_effect.connect(_on_audio_manager_play_sound_effect)
 	AudioManager.play_sound_track.connect(_on_audio_manager_play_sound_track)
+	AudioManager.stop_sound_track.connect(_on_stop_sound_track)
+
 
 func _on_audio_manager_play_sound_effect(sound_effect_name: String):
-	var audio_stream_player = _convert_sound_effect_name_to_audio_stream_player(sound_effect_name)
+	var player: AudioStreamPlayer = _convert_sound_effect_name_to_audio_stream_player(sound_effect_name)
 
 	# audio_stream_player è null quando _convert_sound_effect_name_to_audio_stream_player
 	# è stata chiamata con un sound_effect_name che non corrisponde a nessun
 	# effetto sonoro tra quelli a disposizione
-	if audio_stream_player == null:
+	if player == null:
 		return
 
-	audio_stream_player.play()
+	player.play()
+
 
 func _on_audio_manager_play_sound_track(sound_track_name: String):
+	var player: AudioStreamPlayer = _convert_sound_track_name_to_audio_stream_player(sound_track_name)
 
-	if audio_stream_player_for_sound_track != null:	
-		if  audio_stream_player_for_sound_track.is_playing():
-			current_audio_stream_player_for_sound_track = audio_stream_player_for_sound_track
-			fade_out_audio_track(current_audio_stream_player_for_sound_track)
-			convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
+	# audio_stream_player è null quando _convert_sound_track_name_to_audio_stream_player
+	# è stata chiamata con un sound_track_name che non corrisponde a nessuna
+	# colonna tra quelle a disposizione
+	if player == null:
+		return
 
-	else:
-		convert_and_play_track(audio_stream_player_for_sound_track, sound_track_name)
-	
-	print("Currently playing : " + str(audio_stream_player_for_sound_track))
-	
-func convert_and_play_track(audio_track: AudioStreamPlayer, sound_track_name: String):
-	audio_track = _convert_sound_track_name_to_audio_stream_player(sound_track_name)
-	audio_track.play()
-	fade_in_audio_track(audio_track)
 
-func fade_in_audio_track(audio_track):
-	audio_track.set_volume_db(-20)
-	for i in range(15):
-		audio_track.set_volume_db(audio_track.get_volume_db() + 1)
-		await get_tree().create_timer(0.2).timeout 
+	var correct_volume_in_decibels = player.volume_db
+	self.current_sound_track_player = player
+	player.set_volume_db(LOWEST_VOLUME_IN_DECIBELS)
+	player.play()
+	create_tween().tween_property(player, "volume_db", correct_volume_in_decibels, sound_track_fade_in_duration_in_seconds)
 
-func fade_out_audio_track(audio_track):
-	for i in range(15):
-		audio_track.set_volume_db(audio_track.get_volume_db() - 1)
-		await get_tree().create_timer(0.2).timeout 
-	audio_track.stop()
-	
-	
+
+func _on_stop_sound_track():
+	var player = self.current_sound_track_player
+
+	var tween = create_tween()
+	tween.tween_property(player, "volume_db", LOWEST_VOLUME_IN_DECIBELS, sound_track_fade_in_duration_in_seconds)
+	await tween.finished
+
+	player.stop()
+
+
 func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String) -> AudioStreamPlayer:
-	var audio_stream_player_for_sound_effects: AudioStreamPlayer
-
 	match sound_effect_name:
 		"click":
-			audio_stream_player_for_sound_effects = $SoundEffects/Click
+			return $SoundEffects/Click
 		"step":
 			var footsteps = [
 				$SoundEffects/Footstep1,
@@ -64,7 +64,7 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 				$SoundEffects/Footstep3,
 				$SoundEffects/Footstep4
 			]
-			audio_stream_player_for_sound_effects = footsteps[randi() % footsteps.size()]
+			return footsteps[randi() % footsteps.size()]
 		"dialogue_ploop":
 			var ploops = [
 				$SoundEffects/DialoguePloop1,
@@ -72,41 +72,40 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 				$SoundEffects/DialoguePloop3,
 				$SoundEffects/DialoguePloop4,
 			]
-			audio_stream_player_for_sound_effects = ploops[randi() % ploops.size()]
+			return ploops[randi() % ploops.size()]
 		"item_pickup":
-			audio_stream_player_for_sound_effects = $SoundEffects/ItemPickup
+			return $SoundEffects/ItemPickup
 		"menu":
-			audio_stream_player_for_sound_effects = $SoundEffects/Menu
+			return $SoundEffects/Menu
 		"door_open":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorOpen
+			return $SoundEffects/DoorOpen
 		"door_close":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorClose
+			return $SoundEffects/DoorClose
 		"door_unlock":
-			audio_stream_player_for_sound_effects = $SoundEffects/DoorUnlock
+			return $SoundEffects/DoorUnlock
 		"success":
-			audio_stream_player_for_sound_effects = $SoundEffects/Success
+			return $SoundEffects/Success
 		"failure":
-			audio_stream_player_for_sound_effects = $SoundEffects/Failure
+			return $SoundEffects/Failure
 		"keyboard":
-			audio_stream_player_for_sound_effects = $SoundEffects/Keyboard
+			return $SoundEffects/Keyboard
 		"pew":
-			audio_stream_player_for_sound_effects = $SoundEffects/Pew
+			return $SoundEffects/Pew
 		"key_turning":
-			audio_stream_player_for_sound_effects = $SoundEffects/KeyTurning
+			return $SoundEffects/KeyTurning
+		"staircase":
+			return $SoundEffects/Staircase
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null
-
-	return audio_stream_player_for_sound_effects
 
 
 func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) -> AudioStreamPlayer:
 	match sound_track_name:
 		"StartMenu":
-			audio_stream_player_for_sound_track = $SoundTracks/StartMenu
+			return $SoundTracks/StartMenu
+		"memeory":
+			return $SoundTracks/Memeory
 		_:
-			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_track_name]))
+			push_error("Non esiste alcuna colonna sonora chiamata '{0}'".format([sound_track_name]))
 			return null
-
-	return audio_stream_player_for_sound_track
-	

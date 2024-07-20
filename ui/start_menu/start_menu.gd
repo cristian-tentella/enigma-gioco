@@ -4,6 +4,9 @@ extends Control
 @onready var play_button = $VBoxContainer/PlayButton
 @onready var resume_button = $VBoxContainer/ResumeButton
 @onready var logout_button = $VBoxContainer/LogOutButton
+@onready var exit_button = $VBoxContainer/ExitButton
+@onready var fade: Fade = $Fade
+
 signal exit
 
 func _ready():
@@ -14,21 +17,48 @@ func _ready():
 
 func show_resume_button():
 	play_button.hide()
-	play_button.queue_free()
-	play_button = null
 	resume_button.show()
-	
+	exit_button.show()
+	show_logout_button()
+
+func show_play_button():
+	resume_button.hide()
+	play_button.show()
+	show_logout_button()
+
+func show_logout_button():
+	if AuthenticationManager.is_enabled:
+		logout_button.show()
 
 #Quando si clicca su play, viene caricato il salvataggio
 func _on_play_button_pressed():
-	play_button.hide()
-	resume_button.hide()
+	_hide_all_buttons()
+	_fade_in()
 	UIManager.show_loading_screen() #Fai vedere il loading screen
 	await SaveManager.load_game_save_from_json() #Fai il caricamento dei file di gioco
-	await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	await UIManager.loading_screen.exit_from_loading_screen_evenly() #Se ha finito di caricare, la barra va al 100%
 	UIManager.kil_loading_screen() #Sono uscito dal loading screen, quindi faccio killare l'elemento UI alla UIManager
+	_fade_out()
 	self.exit.emit()
+
+
+func _fade_in():
+	fade.show()
+	fade.fade_in()
+
+
+func _fade_out():
+	fade.fade_out()
+	fade.hide()
+
+
+func _hide_all_buttons():
+	if AuthenticationManager.is_enabled:
+		logout_button.hide()
+
+	play_button.hide()
+	resume_button.hide()
+	exit_button.hide()
 
 
 func _on_exit_button_pressed():
@@ -37,7 +67,17 @@ func _on_exit_button_pressed():
 
 func _on_log_out_button_pressed():
 	AuthenticationManager.sign_out()
-
+	await Supabase.auth.signed_out
+	remove_auth_file()
+	self.exit.emit()
+	UIManager.use_start_menu_with_resume_button = false
+	SaveManager.reset_save()
+	GameManager.start()
+	
+	
+func remove_auth_file():
+	DirAccess.remove_absolute("user://user.auth")
+	DirAccess.remove_absolute("user://save.json")
 
 func _on_resume_button_pressed():
 	self.exit.emit()

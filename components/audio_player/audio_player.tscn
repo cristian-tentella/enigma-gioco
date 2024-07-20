@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=24 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -15,12 +15,14 @@
 [ext_resource type="AudioStream" uid="uid://cbq2ng3r5r38q" path="res://audio/sound_effects/failure.ogg" id="13_a80vk"]
 [ext_resource type="AudioStream" uid="uid://drdgs6ld5fxdg" path="res://audio/sound_effects/dialogue_ploop_1.ogg" id="14_r716t"]
 [ext_resource type="AudioStream" uid="uid://bqvhb6krrrilu" path="res://audio/sound_effects/dialogue_ploop_2.ogg" id="15_bqwgo"]
-[ext_resource type="AudioStream" uid="uid://bs8338c5lxkqb" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
+[ext_resource type="AudioStream" uid="uid://csv0jgish2pd1" path="res://audio/sound_tracks/start_menu.ogg" id="15_yyu6b"]
 [ext_resource type="AudioStream" uid="uid://mysdudsswals" path="res://audio/sound_effects/dialogue_ploop_3.ogg" id="16_eedfu"]
 [ext_resource type="AudioStream" uid="uid://cy3774uiv5a6c" path="res://audio/sound_effects/dialogue_ploop_4.ogg" id="17_8r5h1"]
 [ext_resource type="AudioStream" uid="uid://bupgqbcduyclp" path="res://audio/sound_effects/keyboard.ogg" id="18_6n1ki"]
 [ext_resource type="AudioStream" uid="uid://6ooey0hcybql" path="res://audio/sound_effects/pew.ogg" id="19_yum8m"]
-[ext_resource type="AudioStream" uid="uid://o2wgbb0sahyr" path="res://audio/sound_tracks/key_turning.ogg" id="20_4lstj"]
+[ext_resource type="AudioStream" uid="uid://o2wgbb0sahyr" path="res://audio/sound_effects/key_turning.ogg" id="20_4lstj"]
+[ext_resource type="AudioStream" uid="uid://ul23po3uxtlo" path="res://audio/sound_effects/staircase.ogg" id="21_xvsxj"]
+[ext_resource type="AudioStream" uid="uid://btdiy5sygchwg" path="res://audio/sound_tracks/memeory.ogg" id="23_bct1s"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -96,8 +98,14 @@ stream = ExtResource("19_yum8m")
 [node name="KeyTurning" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("20_4lstj")
 
+[node name="Staircase" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("21_xvsxj")
+
 [node name="SoundTracks" type="Node" parent="."]
 
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
+
+[node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
+stream = ExtResource("23_bct1s")
 volume_db = -12.0

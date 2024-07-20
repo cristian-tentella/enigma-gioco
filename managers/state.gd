@@ -13,7 +13,7 @@ Qui ci sono le variabili degli OGGETTI che possono cambiare stato durante la par
 #Generalmente, vengono messe dentro una delle scene e caricate qui dentro dalla radice della scena
 var player: Player #Caricato da game/game.gd, lanciato in game/game.tscn
 var house: House #Caricato da game/game.gd, lanciato in game/game.tscn
-
+var game: Game #Reference al nodo root di "game.tscn"
 var current_minigame = 0 #Cattiva nomenclatura! Questo è un simbolo di "avanzamento" nel gioco, non è un numero per ogni minigioco!
 
 
@@ -23,6 +23,7 @@ var inventory: Inventory
 var player_phantom_camera: PhantomCamera2D
 var ui_phantom_camera: PhantomCamera2D
 var audio_player: AudioPlayer
+var fade: Fade
 
 var current_language: String
 var muted: bool

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjes2bhwnoy6a"]
+[gd_scene load_steps=5 format=3 uid="uid://cjes2bhwnoy6a"]
 
 [ext_resource type="Script" path="res://ui/authentication_menu/authentication_menu.gd" id="1_e57bp"]
+[ext_resource type="PackedScene" uid="uid://clx44ncalqpaq" path="res://components/mute_button/mute_button.tscn" id="2_d75q6"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_qckts"]
+[ext_resource type="PackedScene" uid="uid://bipo5gfiuf2jl" path="res://components/language_switcher/language_switcher.tscn" id="3_0gv05"]
 
 [node name="AuthenticationMenu" type="Control"]
 layout_mode = 3
@@ -21,56 +23,58 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.831373, 0.815686, 0.811765, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MuteButton" parent="." instance=ExtResource("2_d75q6")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="LanguageSwitcher" parent="." instance=ExtResource("3_0gv05")]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
+offset_left = 220.0
+offset_top = 94.0
+offset_right = 420.0
+offset_bottom = 265.0
 theme_override_constants/separation = 8
 
-[node name="Email" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="Email" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_qckts")
 placeholder_text = "Email"
 
-[node name="Password" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+[node name="Password" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_qckts")
 placeholder_text = "Password"
 secret = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SignIn" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" groups=["Buttons"]]
+[node name="SignIn" type="Button" parent="VBoxContainer/HBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme = ExtResource("2_qckts")
 text = "SignIn"
 
-[node name="SignUp" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" groups=["Buttons"]]
+[node name="SignUp" type="Button" parent="VBoxContainer/HBoxContainer" groups=["Buttons"]]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 theme = ExtResource("2_qckts")
 text = "SignUp"
 
-[node name="ReportMessage" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="ReportMessage" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_qckts")
 horizontal_alignment = 1
 
-[node name="ResetPassword" type="Button" parent="CenterContainer/VBoxContainer" groups=["Buttons"]]
+[node name="ResetPassword" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_qckts")
 text = "ResetPassword"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SignIn" to="." method="_on_sign_in_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/SignUp" to="." method="_on_sign_up_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ResetPassword" to="." method="_on_reset_password_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SignIn" to="." method="_on_sign_in_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SignUp" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetPassword" to="." method="_on_reset_password_button_pressed"]

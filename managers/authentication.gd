@@ -10,7 +10,7 @@ signal message(message: String)
 #
 # Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
 # versione esportata, cioè quando NON si sta eseguendo via editor.
-const is_enabled = false
+const is_enabled = true
 
 var sleep_after_action = 0.7
 const access_token_path = "user://user.auth"
@@ -21,7 +21,7 @@ const access_token_path = "user://user.auth"
 
 func _ready():
 	#Se non lo voglio, via di qui
-	if not is_enabled:
+	if not is_enabled: 
 		self.queue_free()
 		return
 	Supabase.auth.signed_up.connect(on_sign_up_succeeded)
@@ -138,8 +138,8 @@ func make_request_to_load_auth(url: String, headers: PackedStringArray, json_bod
 		add_child(http_request)
 		http_request.request_completed.connect(_on_refresh_completed)
 		http_request.request(url, headers, HTTPClient.METHOD_POST, json_body)
-		
-		
+
+
 func _on_refresh_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray):
 	if response_code == 200:
 		var json_result = JSON.parse_string(body.get_string_from_utf8())
