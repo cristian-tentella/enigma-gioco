@@ -54,6 +54,9 @@ func play_pew_sound_effect():
 func play_key_turning_sound_effect():
 	self.play_sound_effect.emit("key_turning")
 
+func play_staircase_sound_effect():
+	self.play_sound_effect.emit("staircase")
+
 func play_success_sound_effect():
 	self.play_sound_effect.emit("success")
 

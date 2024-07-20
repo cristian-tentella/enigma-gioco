@@ -93,6 +93,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			audio_stream_player_for_sound_effects = $SoundEffects/Pew
 		"key_turning":
 			audio_stream_player_for_sound_effects = $SoundEffects/KeyTurning
+		"staircase":
+			audio_stream_player_for_sound_effects = $SoundEffects/Staircase
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null

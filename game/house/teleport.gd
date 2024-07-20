@@ -16,6 +16,7 @@ func teleport_up():
 func _fade_in():
 	StateManager.fade.show()
 	StateManager.fade.fade_in()
+	AudioManager.play_staircase_sound_effect()
 
 
 func _fade_out():
