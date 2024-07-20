@@ -14,3 +14,7 @@ func _on_send_reset_button_pressed():
 
 func _show_report_message(message: String):
 	report_message.text = message
+
+
+func _on_back_pressed():
+	UIManager._kill_ui_element(self)

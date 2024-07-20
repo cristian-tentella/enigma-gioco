@@ -19,4 +19,6 @@ func _show_report_message(message: String):
 	report_message.text = message
 
 func _on_reset_password_button_pressed():
-	AuthenticationManager.exit.emit()
+	UIManager.show_authentication_reset_menu()
+	
+	
