@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqj6624ni3cyj"]
+[gd_scene load_steps=6 format=3 uid="uid://dqj6624ni3cyj"]
 
 [ext_resource type="Script" path="res://ui/start_menu/start_menu.gd" id="1_6640u"]
 [ext_resource type="PackedScene" uid="uid://bipo5gfiuf2jl" path="res://components/language_switcher/language_switcher.tscn" id="2_o24pm"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="2_vdu52"]
 [ext_resource type="PackedScene" uid="uid://clx44ncalqpaq" path="res://components/mute_button/mute_button.tscn" id="3_8jmae"]
+[ext_resource type="PackedScene" uid="uid://kqmg0yvqgtuh" path="res://components/fade/fade.tscn" id="5_4vpla"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -56,6 +57,10 @@ text = "LogOutButton
 layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "ExitButton"
+
+[node name="Fade" parent="." instance=ExtResource("5_4vpla")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

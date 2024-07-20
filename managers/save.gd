@@ -134,12 +134,7 @@ func load_game_save_from_json():
 	if start_without_any_save:
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
-	
-	
-	
-	if loading_bar_enabled:
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	
+
 	if await is_online() and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 		#Se questo va a buon fine, il caricamento è al 25%
@@ -168,7 +163,6 @@ func load_game_save_from_json():
 		#Barra di caricamento a 0
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(30)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango..
 		if content == null or not content.has("all_exited_interactions") or not content.has("inventory_owned_items_names") or not content.has("current_minigame") or not content.has("mute_button_state") or not content.has("player_position"):
 			print_debug("Save file not well made, missing parts. Proceeding with no save loaded, no errors.")
 			return
@@ -189,12 +183,10 @@ func load_game_save_from_json():
 
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(35)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		var root_node = self.get_tree().root
 		var all_nodes = self.get_all_children(root_node)
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(45)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
 		var inventory_owned_items_names = content.get("inventory_owned_items_names")
@@ -203,33 +195,25 @@ func load_game_save_from_json():
 		if loading_bar_enabled:
 			#Barra di caricamento ha incrementato li dentro piano piano fino a 80% o qualcosa di meno
 			UIManager.loading_screen.set_value(90)
-			await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 
 
 func retrieve_save_file_from_database_and_write_it_to_filesystem():
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(5)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	var query = SupabaseQuery.new().from("Users").eq("id", player_id).select(["save_file"])
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(10)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	Supabase.database.query(query)
 	var data = await Supabase.database.selected
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(15)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	data = data[0]["save_file"]
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(20)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
 	if data != null:
 		save_current_state_into_json(data)
 	if loading_bar_enabled:
 		UIManager.loading_screen.set_value(25)
-		await get_tree().create_timer(0.0001).timeout #Altrimenti rischiamo che non si vede il loading screen carino e piango...
-	
-	
 
 	#var into_json = json.stringify(data_for_json_file)
 	#json_file.store_string(into_json)
