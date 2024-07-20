@@ -164,10 +164,10 @@ text = "7"
 [node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
 z_index = 105
 layout_mode = 0
-offset_left = 567.0
-offset_top = 14.0
-offset_right = 591.0
-offset_bottom = 38.0
+offset_left = 145.0
+offset_top = 178.0
+offset_right = 169.0
+offset_bottom = 202.0
 texture = ExtResource("2_mkovr")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
