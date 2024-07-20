@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cy3774uiv5a6c" path="res://audio/sound_effects/dialogue_ploop_4.ogg" id="17_8r5h1"]
 [ext_resource type="AudioStream" uid="uid://bupgqbcduyclp" path="res://audio/sound_effects/keyboard.ogg" id="18_6n1ki"]
 [ext_resource type="AudioStream" uid="uid://6ooey0hcybql" path="res://audio/sound_effects/pew.ogg" id="19_yum8m"]
-[ext_resource type="AudioStream" uid="uid://o2wgbb0sahyr" path="res://audio/sound_tracks/key_turning.ogg" id="20_4lstj"]
+[ext_resource type="AudioStream" uid="uid://o2wgbb0sahyr" path="res://audio/sound_effects/key_turning.ogg" id="20_4lstj"]
 [ext_resource type="AudioStream" uid="uid://ul23po3uxtlo" path="res://audio/sound_effects/staircase.ogg" id="21_xvsxj"]
 
 [node name="AudioPlayer" type="Node"]
