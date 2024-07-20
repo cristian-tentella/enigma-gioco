@@ -1,9 +1,9 @@
 class_name AuthenticationMenu
 extends Control
 
-@onready var email = $CenterContainer/VBoxContainer/Email
-@onready var password = $CenterContainer/VBoxContainer/Password
-@onready var report_message = $CenterContainer/VBoxContainer/ReportMessage
+@onready var email = $VBoxContainer/Email
+@onready var password = $VBoxContainer/Password
+@onready var report_message = $VBoxContainer/ReportMessage
 
 
 func _ready():
@@ -20,5 +20,3 @@ func _show_report_message(message: String):
 
 func _on_reset_password_button_pressed():
 	AuthenticationManager.exit.emit()
-	
-	
