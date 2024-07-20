@@ -50,3 +50,11 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.memeory_menu.queue_free()
 	UIManager.memeory_menu = null
 	self.queue_free()
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME exiting!\n")
+	pass
+	
+func _ready():
+	print_debug(get_name()+" MINIGAME spawning!\n")
+	pass
