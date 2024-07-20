@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dryl7d3tx6ov3"]
+
+[ext_resource type="Script" path="res://game/house/rooms/salotto + cucina/salotto + cucina.gd" id="1_aw2ha"]
+
+[node name="Salotto+Cucina" type="Area2D"]
+script = ExtResource("1_aw2ha")

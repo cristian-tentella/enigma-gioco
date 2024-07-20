@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=32 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
+[ext_resource type="PackedScene" uid="uid://dryl7d3tx6ov3" path="res://game/house/rooms/salotto + cucina/salotto + cucina.tscn" id="12_yej84"]
 [ext_resource type="PackedScene" uid="uid://wbu7xnwvf2u2" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.tscn" id="14_5ijjr"]
 [ext_resource type="PackedScene" uid="uid://bby0msqin8uj6" path="res://game/house/teleport_down.tscn" id="14_mveet"]
 [ext_resource type="PackedScene" uid="uid://beq1b34jf1bpq" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.tscn" id="15_aqewa"]
@@ -4138,6 +4139,9 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_p7am3")
 sources/1 = SubResource("TileSetAtlasSource_h5t20")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uewc7"]
+size = Vector2(788, 419.5)
+
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -4306,6 +4310,20 @@ layer_4/tile_data = PackedInt32Array(786440, 589825, 16, 786441, 655361, 16, 851
 layer_5/name = "Back_Furniture"
 layer_5/z_index = 5
 layer_5/tile_data = PackedInt32Array(655374, 1048577, 6, 720910, 1048577, 7, 655375, 1114113, 6, 720911, 1114113, 7, 655376, 1179649, 6, 720912, 1179649, 7, 655377, 1245185, 6, 720913, 1245185, 7, 589826, 917505, 18, 655362, 917505, 19, 720898, 917505, 20, 589827, 983041, 18, 655363, 983041, 19, 720899, 983041, 20, 589828, 1048577, 18, 655364, 1048577, 19, 720900, 1048577, 20, 589829, 1114113, 18, 655365, 1114113, 19, 720901, 1114113, 20, 589830, 1179649, 18, 655366, 1179649, 19, 720902, 1179649, 20, 589831, 1245185, 18, 655367, 1245185, 19, 720903, 1245185, 20, 786454, 917506, 1, 851990, 917506, 2, 786455, 983042, 1, 851991, 983042, 2, 786456, 917506, 1, 851992, 917506, 2, 786457, 983042, 1, 851993, 983042, 2, 786458, 917506, 1, 851994, 917506, 2, 786459, 983042, 1, 851995, 983042, 2, 786460, 917506, 1, 851996, 917506, 2, 786461, 983042, 1, 851997, 983042, 2, 786462, 917506, 1, 851998, 917506, 2, 786463, 983042, 1, 851999, 983042, 2, 1900536, 262145, 20, 1966072, 262145, 21, 1900537, 327681, 20, 1966073, 327681, 21, 1900538, 393217, 20, 1966074, 393217, 21, 1900539, 458753, 20, 1966075, 458753, 21, 655457, 1310721, 2, 720993, 1310721, 3, 655458, 1376257, 2, 720994, 1376257, 3, 655459, 1310721, 2, 720995, 1310721, 3, 655460, 1376257, 2, 720996, 1376257, 3, 720962, 1310721, 20, 786498, 1310721, 21, 852034, 1310721, 22, 720963, 1376257, 20, 786499, 1376257, 21, 852035, 1376257, 22, 720964, 1441793, 20, 786500, 1441793, 21, 852036, 1441793, 22, 720965, 1507329, 20, 786501, 1507329, 21, 852037, 1507329, 22, 720966, 1572865, 20, 786502, 1572865, 21, 852038, 1572865, 22, 720967, 1638401, 20, 786503, 1638401, 21, 852039, 1638401, 22)
+
+[node name="Salotto+Cucina" parent="Rooms" groups=["Rooms"] instance=ExtResource("12_yej84")]
+rotation = -0.000238021
+
+[node name="Collision" type="CollisionShape2D" parent="Rooms/Salotto+Cucina"]
+visible = false
+z_index = 8
+position = Vector2(1346, 222.25)
+shape = SubResource("RectangleShape2D_uewc7")
+
+[node name="Color" type="Polygon2D" parent="Rooms/Salotto+Cucina"]
+z_index = 8
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(1002, 15, 1002, 266, 1274, 266, 1274, 392, 1383, 392, 1383, 264, 1421, 264, 1421, 203, 1434, 203, 1434, 267, 1711, 267, 1711, 23, 1018, 24, 1018, 12, 1001, 12)
 
 [node name="Minigame1KeyCombination" parent="." instance=ExtResource("15_w3m7q")]
 position = Vector2(-28, 73)
