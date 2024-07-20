@@ -152,13 +152,36 @@ theme_override_fonts/font = ExtResource("4_6bjb8")
 theme_override_font_sizes/font_size = 22
 text = "7"
 
+[node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
+z_index = 105
+offset_left = 149.0
+offset_top = 177.0
+offset_right = 173.0
+offset_bottom = 201.0
+texture = ExtResource("2_3pcwa")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+metadata/_edit_group_ = true
+
+[node name="ResetMinigameButton" type="Button" parent="ResetMinigameButtonBackground"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 z_index = 110
 layout_mode = 0
-offset_left = 359.0
-offset_top = 172.0
-offset_right = 383.0
-offset_bottom = 196.0
+offset_left = 602.0
+offset_top = 12.0
+offset_right = 626.0
+offset_bottom = 36.0
 texture = ExtResource("2_3pcwa")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -182,4 +205,5 @@ flat = true
 [connection signal="pressed" from="key5" to="." method="_on_key_5_pressed"]
 [connection signal="pressed" from="key6" to="." method="_on_key_6_pressed"]
 [connection signal="pressed" from="key7" to="." method="_on_key_7_pressed"]
+[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
