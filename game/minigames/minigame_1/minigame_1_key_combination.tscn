@@ -20,6 +20,12 @@ position = Vector2(-1, 5)
 dialogue_id = "first_open_minigame_combination"
 minigame_requirement = 1
 
+[node name="second_dialogue_on_first_open" parent="." instance=ExtResource("2_4ba4r")]
+position = Vector2(-1, 5)
+dialogue_id = "first_minigame_combination_door_fail"
+minigame_requirement = 1
+just_proc_once = false
+
 [node name="actual_minigame_combination_first_dialogue" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(-1, 5)
 dialogue_id = "actual_minigame_combination_first_dialogue"
@@ -31,12 +37,6 @@ just_proc_once = false
 position = Vector2(-1, 5)
 dialogue_id = "combination_minigame_won"
 minigame_requirement = 4
-
-[node name="second_dialogue_on_first_open" parent="." instance=ExtResource("2_4ba4r")]
-position = Vector2(-1, 5)
-dialogue_id = "first_minigame_combination_door_fail"
-minigame_requirement = 1
-just_proc_once = false
 
 [node name="second_dialogue_on_first_open_static_until_poster" parent="." instance=ExtResource("2_4ba4r")]
 position = Vector2(207, 198)

@@ -46,7 +46,7 @@ offset_left = 373.0
 offset_top = 176.0
 offset_right = 427.0
 offset_bottom = 225.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [node name="game_starter" parent="." instance=ExtResource("3_6jylu")]
 position = Vector2(182.145, 290.188)

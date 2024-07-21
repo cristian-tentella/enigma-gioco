@@ -27,8 +27,14 @@ func _instantiate_inventory(): #Questo lo fa il SaveManager, ma qui lo si lascia
 	StateManager.inventory = inv
 
 func update_slots():
-	for i in range(min(inv.slots.size(), slots_UI.size())):
+	#for i in range(min(inv.slots.size(), slots_UI.size())):
+	#	slots_UI[i].update(inv.slots[i])
+	var inv_len = inv.slots.size()
+	for i in range(inv_len):
 		slots_UI[i].update(inv.slots[i])
+	if inv_len < slots_UI.size():
+		for i in range(inv_len + 1, slots_UI.size()):
+			slots_UI[i].update(null)
 
 func _assign_NO_ITEM_SELECTED_DESC_STRING():
 	self.NO_ITEM_SELECTED_DESC_STRING = DialogueManager._item_description_id_to_item_description("NO_ITEM_SELECTED_DESC_STRING")

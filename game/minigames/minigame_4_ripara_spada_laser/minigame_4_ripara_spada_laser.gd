@@ -58,6 +58,22 @@ NODI NECESSARI PER FUNZIONAMENTO:
 
 @onready var brucia_immondizia_dialogo_inizio: DialogueInteraction = $interazione_con_immondizia/brucia_immondizia_dialogo_inizio
 @onready var brucia_immondizia_dialogo_fine: DialogueInteraction = $interazione_con_immondizia/brucia_immondizia_dialogo_fine
+
+@onready var all_interaction_nodes = [
+	primo_dialogo_appena_clicco_su_spada,
+	dialogo_monnezza,
+	dialogo_monnezza_persistente,
+	dialogo_al_reclick,
+	game_won_dialogue,
+	game_lost_dialogue,
+	game_starter,
+	brucia_immondizia_dialogo_inizio,
+	brucia_immondizia_dialogo_fine,
+	$interazione_con_immondizia,
+	$dialogo_monnezza_generico
+]
+
+
 var is_won: bool = false
 
 func launch_minigame():
@@ -79,13 +95,13 @@ func launch_minigame():
 	if is_won:
 		self.game_starter.queue_free()
 		self.game_won_dialogue.handle_interaction()
-		await DialogueManager.has_finished_displaying
 		$LightSaber.hide()
-		StateManager.inventory.insert(MinigameManager.spada_laser)
 		StateManager.inventory.remove("polipetto")
 		StateManager.inventory.remove("plutonio_radioattivo")
 		await DialogueManager.has_finished_displaying
+		StateManager.inventory.insert(MinigameManager.spada_laser)
 		StateManager.current_minigame = 15
+		
 	else:
 		AudioManager.play_failure_sound_effect()
 		self.game_lost_dialogue.handle_interaction()
@@ -104,15 +120,8 @@ func _on_inventory_slot_pressed(item: PickableItem):
 		UIManager.inventory_menu.exit.emit() #Questo emette UIManager.unlock
 
 
-
-#Gioco vinto, adios!
-func _free_every_node_related_to_the_minigame():
-	self.queue_free()
-	
-	
 @onready var monnezza: Sprite2D = $monnezza
 @onready var fire_particles: CPUParticles2D = $FireParticles
-
 func launch_brucia_cumulo_immondizia_interazione():
 	self.brucia_immondizia_dialogo_inizio.handle_interaction()
 	await DialogueManager.has_finished_displaying
@@ -138,3 +147,16 @@ func launch_brucia_cumulo_immondizia_interazione():
 	await DialogueManager.has_finished_displaying
 	
 	self._free_every_node_related_to_the_minigame()
+
+
+
+
+
+
+#Gioco vinto, adios!
+#Forse non serve per il current_minigame che gestisce tutto ma per sicurezza facciamo uscire tutto
+func _free_every_node_related_to_the_minigame():
+	for interaction_node in all_interaction_nodes:
+		if is_instance_valid(interaction_node):
+			interaction_node.forcefully_remove_as_if_proc_only_once()
+	self.queue_free()

@@ -283,22 +283,22 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 					all_minigame_nodes[key].append(node) #Aggiungo alla lista se c'è già
 				else:
 					all_minigame_nodes[key] = [node] #Se non c'è la chiave, creo la lista
-				continue
-		node_script = null
 		
-		
-		#è un if molto lungo
 		if node is Interaction:
 			var path_to_node
 			
-			self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
+			if loading_bar_enabled:
+				self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
+			
 			if node is ContainerInteraction:
+				print_debug("CONTAINER LOCKED FOUND")
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
 				if is_it_locked:
 					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
 						container.unlock_unchange_status()
+						print_debug("CONTAINER UNLOCKED")
 				continue
 			
 			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
@@ -313,12 +313,42 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				continue
 			
 			path_to_node = root_node.get_path_to(node) as String
+			path_to_node = insert_house_in_path(path_to_node)
+			
+			
 			if(path_to_node in name_list):
+				print_debug("NODE PATH IN LIST TO DELETE -> ", path_to_node)
 				node.queue_free()
 				node = null
+			else:
+				print_debug("NODE PATH NOT IN LIST -> ", path_to_node)
 	
 	self.delete_minigames_that_have_been_completed(all_minigame_nodes)
 	return pickableItemInteraction_nodes
+
+#Praticamente quando si ricreava la House per il Logout, la path non era più con "House" ma con "@Node2D..."
+#E questo rompeva tutto il save basato sulle path.
+#Workaround che dovrebbe funzionare, do not touch
+func insert_house_in_path(path: String) -> String:
+	var node2d_index = path.find("Node2D")
+	if node2d_index == -1:
+		# "Node2D" is not present in the string
+		return path
+	
+	var first_slash_index = path.find("/")
+	if first_slash_index == -1:
+		# No slashes found, cannot insert "House"
+		return path
+	
+	var second_slash_index = path.find("/", first_slash_index + 1)
+	if second_slash_index == -1:
+		# Only one slash found, cannot insert "House"
+		return path
+	
+	# Construct the new path with "House" inserted
+	var new_path = path.substr(0, first_slash_index + 1) + "House" + path.substr(first_slash_index)
+	return new_path
+
 
 #Funzione che dato un elenco di nodi PickableItemInteraction, esegue l'inserimento nell'inventario di quelli il cui nome
 #sta tra items_names
@@ -347,13 +377,16 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 			- Dall'alto verso il basso i minigiochi nello STESSO ordine in cui si trovano dentro 
 			  self.minigame_to_current_minigame_requirement
 			"""
-			#assert(minigame_key_from_input == minigame_key)
 			
+			assert(minigame_key_from_input == minigame_key)
+			print_debug("THINKING OF DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
 			var destroy_requirement = minigame_to_current_minigame_requirement[minigame_key] #Prendo il requirement dal dict delle var di classe
 			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
+				print_debug("DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
 				for minigame_node in all_minigame_dict[minigame_key_from_input]: #Iterazione su lista input per rompere i nodi
-					self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
-					print("FREEING A MINIGAME NODE! -> ", minigame_node.get_name())
+					if loading_bar_enabled:
+						self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
+					print_debug("FREEING A MINIGAME NODE! -> ", minigame_node.get_name())
 					minigame_node.queue_free()
 
 #Questo qua purtroppo si vede solo se il caricamento è lento, credo...
@@ -374,6 +407,7 @@ func reset_save():
 	#StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
 	StateManager.house.queue_free()
 	var unchanged_house = load("res://game/house/house.tscn").instantiate()
+	unchanged_house.set_name("House")
 	StateManager.game.add_child(unchanged_house) #Metti la nuova house
 	StateManager.house = unchanged_house #Refresha quello che StateManager vede
 	
