@@ -159,6 +159,8 @@ click_spada_laser_dialogo_minigame4_after;Octypus:Try to fit something inside of
 dialogo_monnezza_1;Dominik:I am starting to think this is not my house. Man, what's with all this trash?!;Dominik:Inizio a pensare che questa non sia casa mia. Ma che ci fa tutta questa immondizia qui?!
 dialogo_monnezza_2;Dominik:I can't step over it, and there's no way I'm going anywhere near it to try and move it by hand...;Dominik:Non ci penso proprio a passarci sopra, e tantomeno mi ci avvicinerò per spostarla a mani nude...
 dialogo_monnezza_3;Dominik:I wish I had something to straight up burn it all, for real...;Dominik:Vorrei avere qualcosa per incenerirlo direttamente, davvero...
+
+
 minigame_4_won_1;Dominik:Wow, so that's how you use radioactive plutonium? Well, as long as it works!;Dominik:Wow, quindi è cosi che si usa il plutonio radioattivo? Bhe, finché funziona!
 minigame_4_won_2;Octypus:Nice work, human! Now I shall leave, I have fulfilled my duty, goodbye!;Polipetto:Ben fatto, umano! Ora devo andare, ho compiuto il mio dovere, addio!
 minigame_4_won_3;Dominik:Bye, and thanks!;Dominik:Addio, e grazie!
@@ -229,4 +231,5 @@ christmas_tree_interaction_1;Dominik:At least this managed not to get destroyed 
 
 plant_in_study_interaction_1;Dominik:That’s a really nice plant, it’s kind of blurry but I think it’s part of its appeal!;Dominik:Veramente una bella pianta, è un po’ sfocata ma è bella per questo!
 
-sound_effect_engine_revving;;
+sound_effect_engine_revving;vroom vroom;brum brum
+sound_effect_laser_sword_power_on;whoom;whoom

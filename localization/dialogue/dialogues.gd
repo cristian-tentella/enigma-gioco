@@ -43,7 +43,7 @@ const dialogues: Dictionary = {
 	"dialogo_monnezza": ["dialogo_monnezza_1", "dialogo_monnezza_2", "dialogo_monnezza_3"],
 	"click_spada_laser_dialogo_minigame4": ["click_spada_laser_dialogo_minigame4_1", "click_spada_laser_dialogo_minigame4_2", "click_spada_laser_dialogo_minigame4_3", "click_spada_laser_dialogo_minigame4_4", "click_spada_laser_dialogo_minigame4_5","click_spada_laser_dialogo_minigame4_6", "click_spada_laser_dialogo_minigame4_7", "click_spada_laser_dialogo_minigame4_8", "click_spada_laser_dialogo_minigame4_9", "click_spada_laser_dialogo_minigame4_10"],
 	"click_spada_laser_dialogo_minigame4_after": ["click_spada_laser_dialogo_minigame4_after"],
-	"minigame_4_won": ["minigame_4_won_1", "minigame_4_won_2", "minigame_4_won_3", "minigame_4_won_4", "minigame_4_won_5"],
+	"minigame_4_won": ["sound_effect_laser_sword_power_on", "minigame_4_won_1", "minigame_4_won_2", "minigame_4_won_3", "minigame_4_won_4", "minigame_4_won_5"],
 	"minigame_4_lost": ["minigame_4_lost"],
 	"wrong_item_selected_minigame4": ["wrong_item_selected_minigame4"],
 	"brucia_immondizia_inizio": ["brucia_immondizia_inizio"],
