@@ -52,3 +52,9 @@ position = Vector2(774.965, 322.967)
 script = ExtResource("5_ehp5n")
 card_name = "Malus2"
 card_type = "malus"
+
+[node name="Shuffle1" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(1325.49, 270.92)
+
+[node name="Shuffle2" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(1325.49, 270.92)
