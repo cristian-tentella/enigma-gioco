@@ -67,9 +67,6 @@ NODI NECESSARI PER FUNZIONAMENTO:
 	game_won_dialogue,
 	game_lost_dialogue,
 	game_starter,
-	brucia_immondizia_dialogo_inizio,
-	brucia_immondizia_dialogo_fine,
-	$interazione_con_immondizia,
 	$dialogo_monnezza_generico
 ]
 
@@ -93,15 +90,14 @@ func launch_minigame():
 	await UIManager.unlock #Si sblocca sia se azzecca sia se quitta
 	
 	if is_won:
-		self.game_starter.queue_free()
 		self.game_won_dialogue.handle_interaction()
-		$LightSaber.hide()
+		$LightSaber.queue_free()
 		StateManager.inventory.remove("polipetto")
 		StateManager.inventory.remove("plutonio_radioattivo")
 		await DialogueManager.has_finished_displaying
 		StateManager.inventory.insert(MinigameManager.spada_laser)
 		StateManager.current_minigame = 15
-		
+		self._free_every_node_related_to_the_minigame_partial()
 	else:
 		AudioManager.play_failure_sound_effect()
 		self.game_lost_dialogue.handle_interaction()
@@ -130,23 +126,24 @@ func launch_brucia_cumulo_immondizia_interazione():
 
 	var ash: Sprite2D = StateManager.house.get_node("Ash")
 	ash.show()
-
+	
 	var monnezza_fade_out = create_tween()
 	monnezza_fade_out.tween_property(self.monnezza, "modulate", Color.hex(0x00000000), 1)
-
+	
 	self.fire_particles.emitting = true
 	await monnezza_fade_out.finished
-
+	
 	var ash_fade_in = create_tween()
 	ash_fade_in.tween_property(ash, "modulate", Color.hex(0xffffffff), 0.25)
 	await ash_fade_in.finished
 	self.fire_particles.emitting = false
 	self.monnezza.queue_free()
-
+	
 	self.brucia_immondizia_dialogo_fine.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	
-	self._free_every_node_related_to_the_minigame()
+	$interazione_con_immondizia.forcefully_remove_as_if_proc_only_once()
+	self.queue_free()
 
 
 
@@ -155,8 +152,7 @@ func launch_brucia_cumulo_immondizia_interazione():
 
 #Gioco vinto, adios!
 #Forse non serve per il current_minigame che gestisce tutto ma per sicurezza facciamo uscire tutto
-func _free_every_node_related_to_the_minigame():
+func _free_every_node_related_to_the_minigame_partial():
 	for interaction_node in all_interaction_nodes:
 		if is_instance_valid(interaction_node):
 			interaction_node.forcefully_remove_as_if_proc_only_once()
-	self.queue_free()

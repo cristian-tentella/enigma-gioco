@@ -346,7 +346,7 @@ func insert_house_in_path(path: String) -> String:
 		return path
 	
 	# Construct the new path with "House" inserted
-	var new_path = path.substr(0, first_slash_index + 1) + "House" + path.substr(first_slash_index)
+	var new_path = path.substr(0, first_slash_index + 1) + "House" + path.substr(second_slash_index)
 	return new_path
 
 

@@ -69,6 +69,7 @@ func _insert_into_minigameManager_dictionary():
 	var node_name = self.get_name()
 	if node_name != "ItemInteraction": #Per questo ci pensa l'Inventory
 		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
+		path_to_node = SaveManager.insert_house_in_path(path_to_node)
 		SaveManager.all_exited_interactions.append(path_to_node)
 
 
@@ -76,6 +77,7 @@ func _increment_current_minigame_if_told_so():
 	if increments_current_minigame:
 		StateManager.current_minigame += 1
 		increments_current_minigame = false
+		print(StateManager.current_minigame)
 
 #Funzione utile per quei casi in cui si dovrebbe rompere l'interazione guardandola ma se ci riclicchi sopra senza girarti si scassa tutto il gioco...
 #Quindi lo togliamo a mano
