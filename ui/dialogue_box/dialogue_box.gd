@@ -23,8 +23,18 @@ func _process_dialogue_line(dialogue_line: String):
 	if dialogue_line.contains(title_delimiter):
 		title.show()
 		var title_delimiter_index = dialogue_line.find(title_delimiter)
-		title.text = dialogue_line.substr(0, title_delimiter_index).rstrip(" ")
-		body.text = dialogue_line.substr(title_delimiter_index + 1).lstrip(" ")
+
+		var title_text = dialogue_line.substr(0, title_delimiter_index).rstrip(" ")
+		var body_text = dialogue_line.substr(title_delimiter_index + 1).lstrip(" ")
+
+		if title_text == "sound_effect":
+			var sound_effect_name = body_text
+			title.hide()
+			body_text = "*" + sound_effect_name.replace("_", " ") + "*"
+			AudioManager.play_sound_effect.emit(sound_effect_name)
+
+		title.text = title_text
+		body.text = body_text
 	else:
 		title.hide()
 		body.text = dialogue_line
