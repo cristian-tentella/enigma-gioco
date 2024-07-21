@@ -11,7 +11,6 @@ extends Node
 @onready var inventory_UI = UIManager.inventory_menu
 @onready var memeory_UI = UIManager.memeory_menu
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
-@onready var ui_phantom_camera = %PhantomCamera2D
 @onready var audio_player = $AudioPlayer
 @onready var joystick = $UI/MobileOnlyUI/VirtualJoystick
 @onready var fade = $UI/Fade
@@ -26,7 +25,6 @@ func _ready():
 	StateManager.house = house
 	StateManager.game = self
 	StateManager.player_phantom_camera = player_phantom_camera
-	StateManager.ui_phantom_camera = ui_phantom_camera
 	StateManager.fade = fade
 	InputManager.joystick = joystick
 	#SaveManager.load_game_save_from_json() #Lo fa dentro GameManager.start()
