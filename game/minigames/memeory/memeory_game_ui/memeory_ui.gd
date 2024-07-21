@@ -87,9 +87,7 @@ func game_won_ui():
 func show_description():
 	$CloseButtonBackground.hide()
 	var card_type = MemeoryManager.picked[1].card_type
-	#print_debug(card_type)
 	MemeoryManager.clicks = -1
-	#print_debug(MemeoryManager.clicks)
 	update_slots()
 	$Card_Description/Label.text = "memeory_"+String(card_type)+"_description"
 	$Card_Description.show()
