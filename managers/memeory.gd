@@ -67,11 +67,18 @@ func has_couple():
 func check():
 	var check_var = has_couple()
 	if(!check_var):
+		print_debug("coppie non uguali")
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
 		remove_heart_from_array()
+		for i in range(0,1):
+			print_debug(i)
+			if(picked[i].card_type == "shuffle"):
+				card_show_description()
+				picked[i].handle_interaction()
 		cover_picked_cards()
 	else:
+		var shuffle_check = picked[0].card_type
 		game_won = true
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
@@ -81,7 +88,10 @@ func check():
 		#print_debug("ciao")
 		#print_debug(MemeoryManager.clicks)
 		await get_tree().create_timer(3).timeout
-		picked[1].handle_interaction() 
+		print_debug(shuffle_check)
+		if(shuffle_check != "shuffle"):
+			print_debug("attiva effetto carta")
+			picked[1].handle_interaction() 
 		for card in slots:
 			if (card != null):
 				#print_debug("not yet")
@@ -90,8 +100,8 @@ func check():
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
-	print_debug(MemeoryManager.slots)
-	print_debug(MemeoryManager.hearts_array)
+	#print_debug(MemeoryManager.slots)
+	#print_debug(MemeoryManager.hearts_array)
 	reset_pick()
 
 func cover_picked_cards():

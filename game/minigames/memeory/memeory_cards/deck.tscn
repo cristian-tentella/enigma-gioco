@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr28jfcj25jap"]
+[gd_scene load_steps=7 format=3 uid="uid://cr28jfcj25jap"]
 
 [ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/minigames/memeory/memeory_cards/card.tscn" id="1_cfiem"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/regular/regular.gd" id="2_1fngq"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/bet/bet.gd" id="2_g7eaw"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/extralife/extralife.gd" id="4_4m565"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/malus/malus.gd" id="5_ehp5n"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.gd" id="6_7p1kv"]
 
 [node name="Deck" type="Node2D"]
 
@@ -55,6 +56,12 @@ card_type = "malus"
 
 [node name="Shuffle1" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(1325.49, 270.92)
+script = ExtResource("6_7p1kv")
+card_name = "Shuffle1"
+card_type = "shuffle"
 
 [node name="Shuffle2" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(1325.49, 270.92)
+script = ExtResource("6_7p1kv")
+card_name = "Shuffle2"
+card_type = "shuffle"

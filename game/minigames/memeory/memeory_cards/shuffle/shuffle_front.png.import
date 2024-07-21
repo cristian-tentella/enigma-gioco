@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjuaoytu5o1xv"
-path="res://.godot/imported/shuffle.png-09854ffea341f60408ff389e7aaf8d3d.ctex"
+path="res://.godot/imported/shuffle_front.png-a6270d8b323575467b3912805f0fbb76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.png"
-dest_files=["res://.godot/imported/shuffle.png-09854ffea341f60408ff389e7aaf8d3d.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/shuffle/shuffle_front.png"
+dest_files=["res://.godot/imported/shuffle_front.png-a6270d8b323575467b3912805f0fbb76.ctex"]
 
 [params]
 
