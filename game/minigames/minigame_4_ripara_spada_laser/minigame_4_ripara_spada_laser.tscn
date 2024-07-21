@@ -128,7 +128,7 @@ position = Vector2(0, -7)
 texture = ExtResource("5_0qiy5")
 
 [node name="dialogo_monnezza_generico" parent="." instance=ExtResource("2_haxex")]
-dialogue_id = "dialogo_monnezza_generico"
+dialogue_id = "dialogo_monnezza"
 destroy_after_minigame_requirement_number = 10
 just_proc_once = false
 
