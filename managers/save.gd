@@ -70,7 +70,8 @@ func on_database_query_error(query_result):
 	print_debug("I dati non sono stati correttamente inseriti nel database" + str(query_result))
 
 func on_database_query_updated(query_result):
-	print("I dati sono stati correttamente updatati nel database" + str(query_result))
+	if debug_loading_save:
+		print_debug("I dati sono stati correttamente updatati nel database" + str(query_result))
 
 
 func prepare_data_to_be_saved_and_save():
@@ -176,7 +177,7 @@ func load_game_save_from_json():
 						print("\t\t", entry, ",")
 				else:
 					print("\t\t", content[key])
-		
+			print_debug("")
 		#Barra di caricamento a 0
 		if loading_bar_enabled:
 			UIManager.loading_screen.set_value(30)
@@ -281,7 +282,8 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		if node_script != null:
 			var node_script_path = node_script.get_path()
 			if "scripted" in node_script_path:
-				print_debug("\n\nFOUND SCRIPT-> ", node_script_path)
+				if debug_loading_save:
+					print_debug("\n\nFOUND SCRIPT-> ", node_script_path)
 			if node_script_path.begins_with("res://game/minigames/"):
 				var key = node_script_path.substr(21, node_script_path.substr(21).find("/")) #minigame_1 ad esempio. Il parsing funziona
 				if all_minigame_nodes.has(key):
@@ -291,19 +293,27 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		
 		if node is Interaction:
 			var path_to_node
+			path_to_node = root_node.get_path_to(node) as String
+			path_to_node = insert_house_in_path(path_to_node)
 			
 			if loading_bar_enabled:
 				self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
 			
 			if node is ContainerInteraction:
-				print_debug("CONTAINER LOCKED FOUND")
+				if debug_loading_save:
+					print_debug("CONTAINER LOCKED FOUND -> ", path_to_node)
 				var container = node.get_parent()
 				var is_it_locked = container.is_locked
 				if is_it_locked:
 					path_to_node = root_node.get_path_to(container) as String
 					if(path_to_node in name_list):
+						print("\n\t->", path_to_node)
+						print("\n\t->", name_list)
 						container.unlock_unchange_status()
-						print_debug("CONTAINER UNLOCKED")
+						if debug_loading_save:
+							print_debug("CONTAINER UNLOCKED")
+					elif debug_loading_save:
+						print_debug("CONTAINER WAS NOT UNLOCKED")
 				continue
 			
 			#Rompi le interazioni che si devono rompere in base al current_minigame. Non gli oggetti, che non dovrebbero averlo neanche questo parametro
@@ -317,16 +327,16 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				pickableItemInteraction_nodes.append(node)
 				continue
 			
-			path_to_node = root_node.get_path_to(node) as String
-			path_to_node = insert_house_in_path(path_to_node)
 			
 			
 			if(path_to_node in name_list):
-				print_debug("NODE PATH IN LIST TO DELETE -> ", path_to_node)
+				if debug_loading_save:
+					print_debug("NODE PATH IN LIST TO DELETE -> ", path_to_node)
 				node.queue_free()
 				node = null
 			else:
-				print_debug("NODE PATH NOT IN LIST -> ", path_to_node)
+				if debug_loading_save:
+					print_debug("NODE PATH NOT IN LIST -> ", path_to_node)
 	
 	self.delete_minigames_that_have_been_completed(all_minigame_nodes)
 	return pickableItemInteraction_nodes
@@ -384,14 +394,17 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 			"""
 			
 			assert(minigame_key_from_input == minigame_key)
-			print_debug("THINKING OF DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
+			if debug_loading_save:
+				print_debug("THINKING OF DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
 			var destroy_requirement = minigame_to_current_minigame_requirement[minigame_key] #Prendo il requirement dal dict delle var di classe
 			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
-				print_debug("DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
+				if debug_loading_save:
+					print_debug("DELETING NODES OF MINIGAME -> ", minigame_key_from_input)
 				for minigame_node in all_minigame_dict[minigame_key_from_input]: #Iterazione su lista input per rompere i nodi
 					if loading_bar_enabled:
 						self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
-					print_debug("FREEING A MINIGAME NODE! -> ", minigame_node.get_name())
+					if debug_loading_save:
+						print_debug("FREEING A MINIGAME NODE! -> ", minigame_node.get_name())
 					minigame_node.queue_free()
 
 #Questo qua purtroppo si vede solo se il caricamento è lento, credo...
