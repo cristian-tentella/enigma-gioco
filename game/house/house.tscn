@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=40 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
+[ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="10_533ll"]
 [ext_resource type="PackedScene" uid="uid://dtjoht3iwtjl1" path="res://game/scripted_scenes/1_dominik_wakes_up_and_goes_to_balcony_until_daniel/1_dominik_wakes_up_and_goes_to_balcony_until_daniel.tscn" id="10_picgp"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://dryl7d3tx6ov3" path="res://game/house/rooms/salotto + cucina/salotto + cucina.tscn" id="12_yej84"]
@@ -1423,11 +1424,20 @@ size = Vector2(32, 31.0003)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_58wwt"]
 size = Vector2(551.031, 273.46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jk5rk"]
+size = Vector2(20.9971, 46.9995)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ar7l"]
 size = Vector2(332.001, 251.468)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2exr"]
+size = Vector2(20, 32.971)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61lg6"]
 size = Vector2(227.553, 241.982)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07v0t"]
+size = Vector2(32, 47.0005)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5t20"]
 texture = ExtResource("8_51wt1")
@@ -4347,6 +4357,9 @@ sources/1 = SubResource("TileSetAtlasSource_h5t20")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uewc7"]
 size = Vector2(788, 419.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaf42"]
+size = Vector2(26.9999, 59)
+
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -4412,6 +4425,17 @@ position = Vector2(-1659.12, -504.605)
 item_name = "spada_laser"
 dialogue_id = ""
 
+[node name="furniture_dialogues" type="Node2D" parent="Rooms/Cameretta + Terrazzo"]
+
+[node name="bed_interaction" parent="Rooms/Cameretta + Terrazzo/furniture_dialogues" instance=ExtResource("10_533ll")]
+position = Vector2(-2.9842, 66.3841)
+dialogue_id = "bed_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Cameretta + Terrazzo/furniture_dialogues/bed_interaction"]
+position = Vector2(80.5051, 14.0978)
+shape = SubResource("RectangleShape2D_jk5rk")
+
 [node name="Studio" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
 [node name="porta_studio" parent="Rooms/Studio" instance=ExtResource("7_qq4fd")]
@@ -4450,6 +4474,28 @@ color = Color(1, 1, 1, 0)
 [node name="plutonio_radioattivo" parent="Rooms/Studio" instance=ExtResource("8_0lq6k")]
 position = Vector2(-1930.44, -1864.54)
 item_name = "plutonio_radioattivo"
+
+[node name="furniture_dialogues" type="Node2D" parent="Rooms/Studio"]
+
+[node name="plant_in_study_interaction" parent="Rooms/Studio/furniture_dialogues" instance=ExtResource("10_533ll")]
+position = Vector2(368.091, 380.912)
+scale = Vector2(1.00043, 1.00126)
+dialogue_id = "plant_in_study_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Studio/furniture_dialogues/plant_in_study_interaction"]
+position = Vector2(6.10352e-05, -6.4855)
+shape = SubResource("RectangleShape2D_s2exr")
+
+[node name="plant_in_study_interaction2" parent="Rooms/Studio/furniture_dialogues" instance=ExtResource("10_533ll")]
+position = Vector2(560.091, 380.867)
+scale = Vector2(1.00043, 1.00126)
+dialogue_id = "plant_in_study_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Studio/furniture_dialogues/plant_in_study_interaction2"]
+position = Vector2(6.10352e-05, -6.4855)
+shape = SubResource("RectangleShape2D_s2exr")
 
 [node name="Bagno" parent="Rooms" groups=["Rooms"] instance=ExtResource("7_2sykb")]
 
@@ -4493,6 +4539,17 @@ color = Color(1, 1, 1, 0)
 visible = false
 position = Vector2(-220.927, 307.053)
 item_name = "polipetto"
+
+[node name="furniture_dialogues" type="Node2D" parent="Rooms/Bagno"]
+
+[node name="toilet_interaction" parent="Rooms/Bagno/furniture_dialogues" instance=ExtResource("10_533ll")]
+position = Vector2(-111.909, 384.027)
+dialogue_id = "toilet_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Bagno/furniture_dialogues/toilet_interaction"]
+position = Vector2(-1.52588e-05, -5.50024)
+shape = SubResource("RectangleShape2D_07v0t")
 
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)
@@ -4538,6 +4595,19 @@ position = Vector2(1566, 190)
 item_name = "lista_degli_invitati"
 dialogue_id = "pickup_guest_list"
 minigame_requirement = 17
+
+[node name="furniture_dialogues" type="Node2D" parent="Rooms/Salotto+Cucina"]
+rotation = 0.000238021
+
+[node name="fridge_interaction" parent="Rooms/Salotto+Cucina/furniture_dialogues" instance=ExtResource("10_533ll")]
+position = Vector2(1522.02, 82.6377)
+rotation = -0.000238021
+dialogue_id = "fridge_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Salotto+Cucina/furniture_dialogues/fridge_interaction"]
+position = Vector2(-2.50012, -3.49999)
+shape = SubResource("RectangleShape2D_uaf42")
 
 [node name="1DominikWakesUpAndGoesToBalconyUntilDaniel" parent="." instance=ExtResource("10_picgp")]
 position = Vector2(113, 87)
