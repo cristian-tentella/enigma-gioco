@@ -30,7 +30,6 @@ func activate_closest_interaction():
 func _on_area_entered(area: Area2D):
 	
 	if area is Interaction:
-		print_debug("CURR MG -> ", StateManager.current_minigame)
 		var curr_minigame = StateManager.current_minigame
 		
 		#Controllo se va rotta l'interazione in base alla sua variabile

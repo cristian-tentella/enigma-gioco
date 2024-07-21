@@ -56,7 +56,7 @@ func _on_exit_pause_menu_button_pressed():
 
 
 func _change_description_label_on_slot_button_pressed(slot_number: int):
-	
+	AudioManager.play_click_sound_effect()
 	#Usiamo inv e non slots_UI perché hanno la stessa indicizzazione, e ci serve il PickableItem
 	var item_count_into_inventory = len(self.inv.slots)
 

@@ -245,6 +245,7 @@ func try_to_unlock() -> bool:
 #Funzione utile per creazione salvataggio, per poter sbloccare le porte che il giocatore ha sbloccato cliccandoci sopra
 func insert_into_minigameManager_dictionary_but_i_am_not_an_interaction():
 		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
+		path_to_node = SaveManager.insert_house_in_path(path_to_node)
 		SaveManager.all_exited_interactions.append(path_to_node)
 
 #Funzione utile per caricamento salvataggio, per sbloccare le porte senza modificarne lo stato (open/closed)
