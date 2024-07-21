@@ -117,6 +117,7 @@ stream = ExtResource("24_mi876")
 
 [node name="EngineRevving" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("25_78w07")
+volume_db = -9.0
 
 [node name="SoundTracks" type="Node" parent="."]
 

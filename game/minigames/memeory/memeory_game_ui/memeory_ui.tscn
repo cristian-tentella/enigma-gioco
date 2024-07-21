@@ -9,7 +9,8 @@
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 [ext_resource type="Texture2D" uid="uid://chyg2v1oywjod" path="res://game/minigames/memeory/memeory_game_ui/watermelon.png" id="8_1q51g"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_w2yk5"]
+[sub_resource type="LabelSettings" id="LabelSettings_p2l06"]
+font_size = 3
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -294,13 +295,13 @@ scale = Vector2(5.45477, 3.38523)
 texture = ExtResource("2_3wgbt")
 
 [node name="Label" type="Label" parent="CenterContainer/Win_or_Lost"]
-z_index = 200
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 15.0
-offset_bottom = 15.0
-theme_override_font_sizes/font_size = 12
-text = "ciaoo"
+modulate = Color(0, 0, 0, 1)
+offset_left = 228.0
+offset_top = 121.0
+offset_right = 407.0
+offset_bottom = 227.0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="End_game" type="Button" parent="CenterContainer/Win_or_Lost"]
 offset_left = -59.0
@@ -323,6 +324,16 @@ position = Vector2(320.06, 178.868)
 scale = Vector2(5.27675, 3.26536)
 texture = ExtResource("2_3wgbt")
 
+[node name="Label3" type="Label" parent="Card_Description"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+label_settings = SubResource("LabelSettings_p2l06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="Card_Description"]
 offset_left = -61.0
 offset_top = -55.0
@@ -339,7 +350,6 @@ offset_bottom = 12.0
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
-label_settings = SubResource("LabelSettings_w2yk5")
 
 [node name="LifePointsBackground" type="ColorRect" parent="."]
 visible = false
@@ -357,6 +367,7 @@ offset_top = 5.87867
 offset_right = 86.1213
 offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
+
 
 [node name="Watermelons" type="Node2D" parent="."]
 visible = false
