@@ -11,6 +11,7 @@ var addlife = false
 signal exit
 signal close_popup
 signal close_description
+signal end_game
 
 func _ready():
 	$Deck.hide()
@@ -85,17 +86,17 @@ func game_lost_ui():
 	await get_tree().create_timer(1).timeout
 	$CenterContainer/Win_or_Lost/Label.text = "memeory_lost_ui"
 	print_debug($CenterContainer/Win_or_Lost/Label.text)
-	await get_tree().create_timer(0.0000001).timeout
 	$CenterContainer.show()
-	await get_tree().create_timer(1).timeout
+	await end_game
 	self.exit.emit()
 	
 func game_won_ui():
 	$CloseButtonBackground.hide()
 	await get_tree().create_timer(1).timeout
 	$CenterContainer/Win_or_Lost/Label.text = "memeory_win_ui"
-	await get_tree().create_timer(0.0000001).timeout
+	#await get_tree().create_timer(0.0000001).timeout
 	$CenterContainer.show()
+	await end_game
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
@@ -141,3 +142,7 @@ func _on_exit_popup_4_pressed():
 func _on_button_pressed():
 	$Card_Description.hide()
 	self.close_description.emit() 
+
+
+func _on_end_game_pressed():
+	self.end_game.emit() # Replace with function body.
