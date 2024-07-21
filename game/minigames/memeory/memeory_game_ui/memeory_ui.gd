@@ -4,7 +4,7 @@ extends Control
 #var MemeoryManager: Memeory
 @onready var slots_UI: Array = $SlotsGridBackground/CenterContainer/GridContainer.get_children() #Array di Memeory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
-var i = 0
+var index = 0
 @onready var heart_UI: Array = $Hearts.get_children()
 var addlife = false
 
@@ -24,16 +24,17 @@ func _ready():
 	
 func _draw_random_card():  
 	MemeoryManager.slots.clear()
-	i = 0
+	index = 0
 	var card_container = $Deck
 	var cards = card_container.get_children()
 	if cards.size() == 0:
 		return
 	cards.shuffle()
 	for random_card in cards:
-		random_card.index = i
+		random_card.index = index
+		print_debug(random_card.index)
 		MemeoryManager.insert(random_card)
-		i = i+1
+		index = index+1
 	
 func start_new_game(): 
 	#AudioManager.stop_current_sound_track()
@@ -81,9 +82,9 @@ func game_won_ui():
 func show_description():
 	$CloseButtonBackground.hide()
 	var card_type = MemeoryManager.picked[1].card_type
-	print_debug(card_type)
+	#print_debug(card_type)
 	MemeoryManager.clicks = -1
-	print_debug(MemeoryManager.clicks)
+	#print_debug(MemeoryManager.clicks)
 	update_slots()
 	$Card_Description/Label.text = "memeory_"+String(card_type)+"_description"
 	$Card_Description.show()

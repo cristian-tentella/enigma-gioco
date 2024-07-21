@@ -57,7 +57,9 @@ func reset_pick():
 
 func remove_picks():
 	for card in picked:
-		slots[card.index] = null
+		var index_remove = slots.find(card)
+		print_debug(index_remove)
+		slots[index_remove] = null
 		update.emit()
 		
 func has_couple():
@@ -67,14 +69,16 @@ func has_couple():
 func check():
 	var check_var = has_couple()
 	if(!check_var):
-		print_debug("coppie non uguali")
+		#print_debug("coppie non uguali")
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
 		remove_heart_from_array()
-		for i in range(0,1):
-			print_debug(i)
+		for i in range(0,2):
+			#print_debug(i)
 			if(picked[i].card_type == "shuffle"):
+				print_debug("rimescola")
 				card_show_description()
+				#update.emit()
 				picked[i].handle_interaction()
 		cover_picked_cards()
 	else:
@@ -89,8 +93,9 @@ func check():
 		#print_debug(MemeoryManager.clicks)
 		await get_tree().create_timer(3).timeout
 		print_debug(shuffle_check)
+		print_debug(picked[1])
 		if(shuffle_check != "shuffle"):
-			print_debug("attiva effetto carta")
+			print_debug("attiva effetto carta 2")
 			picked[1].handle_interaction() 
 		for card in slots:
 			if (card != null):
@@ -100,6 +105,9 @@ func check():
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
+	print_debug(MemeoryManager.slots)
+	#print_debug(MemeoryManager.hearts_array)
+	#update.emit()
 	reset_pick()
 
 func cover_picked_cards():
