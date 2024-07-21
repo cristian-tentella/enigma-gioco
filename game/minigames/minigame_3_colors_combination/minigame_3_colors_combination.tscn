@@ -57,5 +57,5 @@ minigame_requirement = 4
 just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
-position = Vector2(128.855, -11.1876)
+position = Vector2(152.855, -80.188)
 shape = SubResource("RectangleShape2D_22paf")
