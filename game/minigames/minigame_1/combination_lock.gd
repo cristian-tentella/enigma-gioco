@@ -1,7 +1,7 @@
 class_name CombinationLock
 extends Control
 
-@onready var exit_button = $CloseButtonBackground #Serve per nascondere il pulsante per quittare al primo start, quello scriptato che fallisce subito
+@onready var exit_button = $CloseUiButton #Serve per nascondere il pulsante per quittare al primo start, quello scriptato che fallisce subito
 
 @onready var slot_digit1 = $digits_container/digit1
 @onready var slot_digit2 = $digits_container/digit2
