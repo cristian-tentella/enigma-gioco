@@ -34,6 +34,7 @@ const dialogues: Dictionary = {
 	#=======================================
 	
 	#FOURTH MINIGAME =======================================
+	"dialogo_monnezza_generico": ["dialogo_monnezza_generico_1"],
 	"dialogo_monnezza": ["dialogo_monnezza_1", "dialogo_monnezza_2", "dialogo_monnezza_3"],
 	"click_spada_laser_dialogo_minigame4": ["click_spada_laser_dialogo_minigame4_1", "click_spada_laser_dialogo_minigame4_2", 
 			"click_spada_laser_dialogo_minigame4_3", "click_spada_laser_dialogo_minigame4_4", "click_spada_laser_dialogo_minigame4_5",
