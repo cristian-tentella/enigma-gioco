@@ -82,7 +82,7 @@ func on_sign_out():
 	
 	
 func on_sign_error(error: SupabaseAuthError): 
-	await display_report_message("Wrong email or password")
+	await display_report_message(str(error.hint))
 
 
 func display_report_message(report_message: String):
