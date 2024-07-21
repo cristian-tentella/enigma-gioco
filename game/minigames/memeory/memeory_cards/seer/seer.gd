@@ -7,24 +7,26 @@ var preview : Array[int]
 func handle_interaction():
 	MemeoryManager.check_game_won()
 	MemeoryManager.clicks = -1
-	#print_debug(MemeoryManager.clicks)
 	if(MemeoryManager.game_won == false):
 		while(preview.size() < 3):
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 			var num = rng.randi_range(0, MemeoryManager.slots.size()-1)
-			print_debug(preview)
-			print_debug(num)
 			print_debug(MemeoryManager.slots[num])
+			if(num in preview):
+				continue
 			if (MemeoryManager.slots[num] != null):
-				if(preview.size() == 1):
-					if(num != preview[0]):
-						preview.append(num)
-				else:
-					#print_debug("scelgo questo numero")
-					preview.append(num)
+				#if(preview.size() == 1):
+					#if(num != preview[0]):
+						#preview.append(num)
+				#if(preview.size() == 2):
+					#if(num != preview[1] and num != preview[0]):
+						#preview.append(num)
+				#
+				preview.append(num)
 			
 	#button.hide()
+		print_debug(preview)
 		print_debug(MemeoryManager.clicks)
 		MemeoryManager.update.emit()
 		for random_number in preview:

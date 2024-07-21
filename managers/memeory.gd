@@ -20,6 +20,7 @@ const max_hearts = 8
 var game_won
 var hearts_lost: Array[Heart]
 var last_heart_lost
+var memeory_ui
 
 func start_game():
 	start.emit()
@@ -89,7 +90,7 @@ func check():
 		AudioManager.play_success_sound_effect()
 		remove_picks()
 		card_show_description()
-		await get_tree().create_timer(3).timeout
+		await memeory_ui.close_description
 		print_debug(shuffle_check)
 		print_debug(picked[1])
 		if(picked[1].card_type == "extralife"):
