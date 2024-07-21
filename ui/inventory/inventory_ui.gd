@@ -8,7 +8,8 @@ var inv: Inventory
 @onready var slots_UI: Array = $SlotsGridBackground/GridContainer.get_children() #Array di Inventory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
 
-@onready var description_label = $ItemDescriptionBackground/MarginContainer/ItemDescription
+@onready var name_label = $ItemDescriptionBackground/MarginContainer/VBoxContainer/ItemName
+@onready var description_label = $ItemDescriptionBackground/MarginContainer/VBoxContainer/ItemDescription
 
 signal exit
 
@@ -72,7 +73,9 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	item_to_show._associate_name_from_traslation_file()
 	#Nome -> item_to_show.localized_item_name
 	#Descrizione -> item_to_show.description
-	self.description_label.text = item_to_show.localized_item_name+"\n\n"+item_to_show.description
+	self.name_label.show()
+	self.name_label.text = item_to_show.localized_item_name
+	self.description_label.text = item_to_show.description
 	
 	self.inventory_slot_pressed.emit(item_to_show)
 
