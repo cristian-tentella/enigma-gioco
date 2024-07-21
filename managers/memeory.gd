@@ -143,3 +143,6 @@ func meme_card_effect():
 	
 func virus_card_effect():
 	virus_ui.emit()
+	
+func watermelon_card_effect():
+	self.memeory_ui.show_watermelons()

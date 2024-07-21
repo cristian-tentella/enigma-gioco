@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c55ybohax1vqs"
-path="res://.godot/imported/bet_back.png-80634074061e767c6fa3a2d15b45f79c.ctex"
+uid="uid://dt314pqrb6ojt"
+path="res://.godot/imported/watermelon_front.png-e20971e87f00e1933e72aead4059af46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_cards/bet/bet_back.png"
-dest_files=["res://.godot/imported/bet_back.png-80634074061e767c6fa3a2d15b45f79c.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/watermelon/watermelon_front.png"
+dest_files=["res://.godot/imported/watermelon_front.png-e20971e87f00e1933e72aead4059af46.ctex"]
 
 [params]
 
