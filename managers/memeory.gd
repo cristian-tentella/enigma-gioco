@@ -69,7 +69,6 @@ func has_couple():
 func check():
 	var check_var = has_couple()
 	if(!check_var):
-		#print_debug("coppie non uguali")
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
 		remove_heart_from_array()
@@ -87,10 +86,7 @@ func check():
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
 		remove_picks()
-		#print_debug(MemeoryManager.clicks)
 		card_show_description()
-		#print_debug("ciao")
-		#print_debug(MemeoryManager.clicks)
 		await get_tree().create_timer(3).timeout
 		print_debug(shuffle_check)
 		print_debug(picked[1])
@@ -106,8 +102,6 @@ func check():
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
 	print_debug(MemeoryManager.slots)
-	#print_debug(MemeoryManager.hearts_array)
-	#update.emit()
 	reset_pick()
 
 func cover_picked_cards():
