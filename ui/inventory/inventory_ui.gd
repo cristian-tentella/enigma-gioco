@@ -62,6 +62,8 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	var item_count_into_inventory = len(self.inv.slots)
 
 	if item_count_into_inventory < slot_number: #Ha cliccato su uno slot senza items, via di qui
+		self.name_label.text = ""
+		self.name_label.hide()
 		self.description_label.text = self.NO_ITEM_SELECTED_DESC_STRING
 		return
 	
