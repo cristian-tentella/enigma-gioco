@@ -22,9 +22,19 @@ var description: String #La descrizione che faremo vedere nell'inventario. Viene
 @export var is_corporeo: bool = false
 @export var dialogue_id: String = "Nessun dialogo" #Dialogo che parte quando lo raccogli
 #NOTE: La descrizione, cosi come il nome degli item va adattato in funzione della lingua. InventoryManager con un file csv?
-@export_group("Extra values")
+@export_group("Extra Values")
 @export var collision_circle_radius : int = 16 #Negativo se vuoi usare il default
 @export var properties: Dictionary  # Proprietà varie, per ora inutilizzato. Potrebbe essere un posto per mettere proprietà custom di un oggetto, non in comune con gli altri
+
+#INTERACTION VARIABLES ===================
+@export_group("Interaction Values")
+@export var minigame_requirement : int = 0 # L'interazione sarà disponibile quando ti trovi su quel minigame O SUPERIORE
+
+@export var destroy_after_minigame_requirement_number: int = -1 #Se provo a interagire con questa interazione una volta superato questo requirement, fa queue_free()
+@export var just_proc_once : bool = true #Se voglio che l'interazione ci sia una volta sola in tutto il gioco
+@export var increments_current_minigame: bool = false
+
+
 
 var sprite_path: String  # Path to the sprite for this item
 var collision_shapes: Array[CollisionShape2D]
@@ -46,7 +56,7 @@ func _ready():
 	""" 
 	
 	assert(item_name!=null)
-	
+	assign_interaction_variables()
 	generate_both_collision_circles()
 	update_sprite2D_texture()
 	#_associate_description_from_traslation_file()
@@ -70,6 +80,13 @@ Don't mind come è stato implementato, ti basta sapere che se in quella variabil
 e infine ti dice "oggetto aggiunto all'inventario".
 
 """
+func assign_interaction_variables():
+	item_interaction.minigame_requirement = self.minigame_requirement
+	item_interaction.destroy_after_minigame_requirement_number = self.destroy_after_minigame_requirement_number
+	item_interaction.just_proc_once = self.just_proc_once
+	item_interaction.increments_current_minigame = self.increments_current_minigame
+	
+
 func generate_both_collision_circles():
 	var new_radius = collision_circle_radius
 	

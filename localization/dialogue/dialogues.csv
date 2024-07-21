@@ -14,12 +14,13 @@ set_of_keys;Set of keys;Mazzo di chiavi
 polipetto;Octypus;Polipetto
 plutonio_radioattivo;Radioactive Plutonium;Plutonio Radioattivo
 spada_laser;Laser Sword;Spada Laser
+lista_degli_invitati;Guest List;Lista degli Invitati
 
 set_of_keys_description;A very amusing set of keys.\nThey range from 1 to 8, and each have a different color assigned.;Un bellissimo mazzo di chiavi.\nVanno dal numero 1 al numero 8, ed ognuna ha un colore diverso.
 plutonio_radioattivo_description;A very radioactive chunk of plutonium.;Un pezzo di plutonio estremamente radioattivo.
 polipetto_description;A strange octopus that was given to you by the almight Watermelon.;Uno strano polipetto che ti è stato donato dall'unica e sola Anguria.
 spada_laser_description;An extremely powerful and destructive laser sword.;Una spada laser estremamente potente e distruttiva.
-
+lista_degli_invitati_description;Gesualdo: piselletto;Gesualdo: Pisellone
 
 pickup_set_of_keys_1;Dominik:There they are! Why did I even put them here...;Dominik:Ecco dov'erano! Ma perché le ho messe proprio lì....
 pickup_set_of_keys_2;Dominik:Well, I guess I can finally unlock the door now...;Dominik:Beh, almeno ora potrò aprire la porta...
@@ -168,6 +169,10 @@ NO_ITEM_SELECTED_DESC_STRING_MINIGAME4;Select an item to try to power on the las
 wrong_item_selected_minigame4;It does not seem to be working...;Non sembra funzionare...
 brucia_immondizia_inizio;Dominik:Alright, time to test this new laser sword out!;Dominik:Ok, è ora di provare questa spada laser!
 brucia_immondizia_fine;Dominik:Wow, that actually worked, and it doesn't even smell bad!;Dominik:Wow, ha funzionato, e neanche puzza!
+
+
+
+
 
 door_dialogue_with_daniel_1;Dominik: Hello! I’m here! Finally…;Dominik: Eccomi finalmente…
 door_dialogue_with_daniel_2;Daniel: …;Daniel: …
