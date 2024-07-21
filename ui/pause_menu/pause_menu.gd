@@ -7,6 +7,7 @@ signal exit
 
 #Quando preme il tasto per tornare al menu principale
 func _on_main_menu_button_pressed():
+	AudioManager.set_volume(0)
 	SaveManager.prepare_data_to_be_saved_and_save()
 	self.exit.emit()
 	UIManager.show_start_menu()
