@@ -12,7 +12,7 @@ signal message(message: String)
 # versione esportata, cioè quando NON si sta eseguendo via editor.
 const is_enabled = true
 
-var sleep_after_action = 0.7
+var sleep_after_action = 1
 const access_token_path = "user://user.auth"
 
 @onready var authentication_menu: AuthenticationMenu = preload(
