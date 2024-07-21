@@ -6,7 +6,7 @@ extends Node2D
 @onready var button = $Button
 @onready var card_name_label = $Label
 @export var card_name: String
-@export_enum("regular", "bet", "extralife", "malus") var card_type: String
+@export_enum("regular", "bet", "extralife", "malus", "shuffle") var card_type: String
 @export var description: String
 @onready var index = 0;
 @onready var clickable = true
