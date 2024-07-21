@@ -14,6 +14,7 @@ func _on_main_menu_button_pressed():
 
 
 func _on_exit_pause_menu_button_pressed():
+	AudioManager.stop_current_sound_track()
 	self.exit.emit()
 	
 	if PlatformHelper.is_mobile():
