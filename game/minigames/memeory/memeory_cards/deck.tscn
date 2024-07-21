@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr28jfcj25jap"]
+
+[ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/minigames/memeory/memeory_cards/card.tscn" id="1_cfiem"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/regular/regular.gd" id="2_1fngq"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/bet/bet.gd" id="2_g7eaw"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/extralife/extralife.gd" id="4_4m565"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/malus/malus.gd" id="5_ehp5n"]
+
+[node name="Deck" type="Node2D"]
+
+[node name="Regular1" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("2_1fngq")
+card_name = "Regular1"
+card_type = "regular"
+
+[node name="Regular2" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(32, 22)
+script = ExtResource("2_1fngq")
+card_name = "Regular2"
+card_type = "regular"
+
+[node name="Bet1" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(7, 49)
+script = ExtResource("2_g7eaw")
+card_name = "Bet1"
+card_type = "bet"
+
+[node name="Bet2" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(92, 18)
+script = ExtResource("2_g7eaw")
+card_name = "Bet2"
+card_type = "bet"
+
+[node name="Extra1" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("4_4m565")
+card_name = "Extra1"
+card_type = "extralife"
+
+[node name="Extra2" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("4_4m565")
+card_name = "Extra2"
+card_type = "extralife"
+
+[node name="Malus1" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(774.965, 322.967)
+script = ExtResource("5_ehp5n")
+card_name = "Malus1"
+card_type = "malus"
+
+[node name="Malus2" parent="." instance=ExtResource("1_cfiem")]
+position = Vector2(774.965, 322.967)
+script = ExtResource("5_ehp5n")
+card_name = "Malus2"
+card_type = "malus"

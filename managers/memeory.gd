@@ -7,14 +7,17 @@ signal update
 signal updatehearts
 signal gamelost
 signal gamewon
+signal description
+signal addlife
 
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
 var clicks = 0
 var hearts_array: Array[Heart]
-var hearts = hearts_array.size()
+const max_hearts = 5
 var i = 0
 var game_won
+var last_heart_lost
 
 func start_game():
 	start.emit()
@@ -23,6 +26,8 @@ func update_hearts():
 	updatehearts.emit()
 
 func remove_heart():
+	print_debug(hearts_array.size())
+	#if(hearts_array[0]!=null):
 	hearts_array.remove_at(hearts_array.size()-1)
 
 func insert(card: Card):
@@ -30,7 +35,9 @@ func insert(card: Card):
 	update.emit()
 	
 func insert_heart(heart: Heart):
+	heart.recover = true
 	hearts_array.append(heart)
+	updatehearts.emit()
 
 func has_item(needed_card_name: String):
 	for slot in slots:
@@ -45,7 +52,7 @@ func insert_pick(card: Card):
 func reset_pick():
 	picked.clear()
 	clicks = 0
-	updatehearts.emit()
+	#updatehearts.emit()
 	update.emit()
 
 func remove_picks():
@@ -62,23 +69,29 @@ func check():
 	if(!check_var):
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
-		if(hearts_array.size() > 0):
-			hearts_array[hearts_array.size()-1] = null
+		remove_heart_from_array()
 		cover_picked_cards()
 	else:
 		game_won = true
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
 		remove_picks()
-		print_debug(MemeoryManager.slots)
+		#print_debug(MemeoryManager.clicks)
+		card_show_description()
+		#print_debug("ciao")
+		#print_debug(MemeoryManager.clicks)
+		await get_tree().create_timer(3).timeout
+		picked[1].handle_interaction() 
 		for card in slots:
 			if (card != null):
-				print_debug("not yet")
+				#print_debug("not yet")
 				game_won = false
 				break
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
+	print_debug(MemeoryManager.slots)
+	print_debug(MemeoryManager.hearts_array)
 	reset_pick()
 
 func cover_picked_cards():
@@ -91,7 +104,18 @@ func cover_all_cards():
 		card.update_card_sprite2D_back_texture()
 		update.emit()
 
+func card_show_description():
+	description.emit()
+
+func remove_heart_from_array():
+	if(hearts_array.size() > 0):
+		print_debug("rimuovo cuore")
+		last_heart_lost = hearts_array[hearts_array.size()-1]
+		hearts_array[hearts_array.size()-1] = null
+		updatehearts.emit()
+	
 func clear_slots():
 	slots.clear()
 	picked.clear()
 	update.emit()
+
