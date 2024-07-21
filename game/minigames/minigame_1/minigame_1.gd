@@ -95,8 +95,6 @@ VARIABILI PER IL GIOCO VERO E PROPRIO
 
 func _ready():
 	combination_lock_minigame = UIManager.combination_key_minigame
-	print_debug(get_name()+" MINIGAME 1 spawning! -> UI element ->\t", combination_lock_minigame, "\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
-
 
 func open_combination_lock_first_time(): 
 	print_debug(get_name()+" MINIGAME 1\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
@@ -148,6 +146,3 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.combination_key_minigame = null
 	self.queue_free()
 
-func _exit_tree():
-	print_debug(get_name()+" MINIGAME exiting!\n")
-	pass

@@ -63,7 +63,6 @@ var current_color_index: int = 0
 
 func _ready():
 	self.combination_color_lock_minigame = UIManager.combination_color_key_minigame
-	print_debug(get_name()+" MINIGAME spawning!\n")
 
 
 func open_combination_color_lock_real():
@@ -113,6 +112,4 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.combination_color_key_minigame = null
 	self.queue_free()
 
-func _exit_tree():
-	print_debug(get_name()+" MINIGAME exiting!\n")
-	pass
+

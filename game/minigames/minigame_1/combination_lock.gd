@@ -11,9 +11,6 @@ var current_slot = 1
 var real_combination = "314"
 var current_combination = ""
 
-func _ready():
-	print_debug(get_name(), " MINIGAME UI READY FUNC CALLED")
-
 signal exit
 
 func _insert_into_next_slot(key_number: String):
@@ -103,6 +100,3 @@ func _on_exit_pause_menu_button_pressed():
 	_on_reset_minigame_button_pressed()
 	self.exit.emit()
 
-func _exit_tree():
-	print_debug(get_name()+" MINIGAME UI exiting!\n")
-	pass
