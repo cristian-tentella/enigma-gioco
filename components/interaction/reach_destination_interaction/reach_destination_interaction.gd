@@ -3,14 +3,14 @@ extends Interaction
 
 
 @onready var real_interaction: OnCollisionAnyInteraction = $OnCollisionAnyInteraction
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionShape2D
 @export_enum("Self") var go_to : String = "Self" #Reminder che va dove questo nodo è piazzato
 
 const new_player_movement_constants: Array = [70, 70, 128]
 
 func _ready():
-	#Metti la collision shape come figlia della vera interazione
-	if collision_shape != null:
+	if has_node("CollisionShape2D"):
+		collision_shape = $CollisionShape2D
 		self.move_collision_shape_from_self_to_onCollAnyInteraction()
 	
 	real_interaction.is_method_in_direct_parent = true

@@ -368,7 +368,6 @@ offset_right = 86.1213
 offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
 
-
 [node name="Watermelons" type="Node2D" parent="."]
 visible = false
 
