@@ -9,8 +9,8 @@ const dialogues: Dictionary = {
 	#"add_polipetto_to_inventory":["add_polipetto_1", "add_polipetto_2"],
 	
 	#FIRST SCRIPTED MOVEMENT =======================================
-	"first_dialogue_on_wake_up" : ["placeholder"],
-	"second_dialogue_on_wake_up" : ["placeholder"],
+	"first_dialogue_on_wake_up" : ["first_dialogue_on_wake_up_1", "first_dialogue_on_wake_up_2", "first_dialogue_on_wake_up_3", "first_dialogue_on_wake_up_4", "first_dialogue_on_wake_up_5", "first_dialogue_on_wake_up_6"],
+	"second_dialogue_on_wake_up" : ["second_dialogue_on_wake_up_1", "second_dialogue_on_wake_up_2", "second_dialogue_on_wake_up_3", "second_dialogue_on_wake_up_4", "second_dialogue_on_wake_up_5", "second_dialogue_on_wake_up_6", "second_dialogue_on_wake_up_7", "second_dialogue_on_wake_up_8", "second_dialogue_on_wake_up_9", "second_dialogue_on_wake_up_10", "second_dialogue_on_wake_up_11", "second_dialogue_on_wake_up_12"],
 	"third_dialogue_on_wake_up" : ["placeholder"],
 	"fourth_dialogue_on_wake_up" : ["placeholder"],
 	#=======================================

@@ -13,17 +13,23 @@ script = ExtResource("1_x82lv")
 
 [node name="first_dialogue_on_wake_up" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "first_dialogue_on_wake_up"
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="everything_launcher_collision_interaction" parent="." instance=ExtResource("3_qyhu3")]
 script_path = ""
 method_name = "launch_everything"
 is_method_in_direct_parent = true
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="everything_launcher_collision_interaction"]
 shape = SubResource("RectangleShape2D_d6k5o")
 
 [node name="AUTOPILOT_da_letto_a_fuori" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(0, 58)
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_letto_a_fuori"]
 offset_right = 40.0
@@ -33,6 +39,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AUTOPILOT_da_letto_a_fuori2" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(283, -38)
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 just_proc_once = false
 
 [node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_letto_a_fuori2"]
@@ -43,9 +51,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="second_dialogue_after_autopilot" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "second_dialogue_on_wake_up"
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="AUTOPILOT_da_fuori_a_dentro" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(283, 58)
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_fuori_a_dentro"]
 offset_right = 40.0
@@ -56,6 +68,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AUTOPILOT_da_fuori_a_dentro2" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(185, 58)
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_fuori_a_dentro2"]
 offset_right = 40.0
@@ -66,6 +80,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="third_dialogue_tra_poliziotti" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "third_dialogue_on_wake_up"
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2
 
 [node name="fourth_dialogue_con_daniel" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "fourth_dialogue_on_wake_up"
+minigame_requirement = -1
+destroy_after_minigame_requirement_number = -2

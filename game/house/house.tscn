@@ -4410,9 +4410,6 @@ position = Vector2(-1659.12, -504.605)
 item_name = "spada_laser"
 dialogue_id = ""
 
-[node name="1DominikWakesUpAndGoesToBalconyUntilDaniel" parent="Rooms/Cameretta + Terrazzo" instance=ExtResource("10_picgp")]
-position = Vector2(113.021, 86.9731)
-
 [node name="Studio" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 
 [node name="porta_studio" parent="Rooms/Studio" instance=ExtResource("7_qq4fd")]
@@ -4533,6 +4530,10 @@ shape = SubResource("RectangleShape2D_uewc7")
 z_index = 8
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1002, 15, 1002, 266, 1274, 266, 1274, 392, 1383, 392, 1383, 264, 1421, 264, 1421, 203, 1434, 203, 1434, 267, 1711, 267, 1711, 23, 1018, 24, 1018, 12, 1001, 12)
+
+[node name="1DominikWakesUpAndGoesToBalconyUntilDaniel" parent="." instance=ExtResource("10_picgp")]
+position = Vector2(113, 87)
+rotation = 0.000238021
 
 [node name="Minigame1KeyCombination" parent="." instance=ExtResource("15_w3m7q")]
 position = Vector2(-28, 73)

@@ -125,7 +125,7 @@ func _process_system_input_event(input_const_string: String, is_pressed: bool):
 	#vede poi se è stato premuto (o rilasciato) il tasto relativo a quella determinata stringa.
 	#Per esempio, se premo W, movement_action sarà MOVE_UP (Guardando nella Input Map), quindi iterando sulla lista di possibili movimenti, quando sta su
 	#MOVE_UP, esegue il primo IF
-	if StateManager.should_player_be_able_to_move: 
+	if StateManager.should_player_be_able_to_move:
 		return
 	
 	assert(input_const_string!=null and is_pressed!=null)
@@ -136,7 +136,6 @@ func _process_system_input_event(input_const_string: String, is_pressed: bool):
 				movement_action_pressed.emit(movement_action)
 				return
 			else:
-				movement_action_released.emit(movement_action)
 				return
 	
 	#Gestione del tasto di interazione con oggetti

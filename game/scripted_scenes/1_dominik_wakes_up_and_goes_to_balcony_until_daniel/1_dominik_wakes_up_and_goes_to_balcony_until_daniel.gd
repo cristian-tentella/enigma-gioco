@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var launcher : OnCollisionAnyInteraction = $everything_launcher_collision_interaction
+
 @onready var first_dialogue_on_wake_up : DialogueInteraction = $first_dialogue_on_wake_up
 
 @onready var AUTOPILOT_da_letto_a_fuori: ReachDestinationInteraction = $AUTOPILOT_da_letto_a_fuori
@@ -19,6 +21,11 @@ func launch_everything():
 	
 	await UIManager.start_menu_play_button_pressed
 	await get_tree().create_timer(1.3).timeout
+	
+	if StateManager.current_minigame >= 0:# == -1 se è prima volta che inizio in assoluto quindi eseguo
+		if is_instance_valid(self):
+			self.queue_free()
+		return
 	
 	#Fai partire dialogo appena sveglio
 	self.first_dialogue_on_wake_up.handle_interaction()
@@ -52,6 +59,6 @@ func launch_everything():
 	self.fourth_dialogue_con_daniel.handle_interaction()
 	await DialogueManager.has_finished_displaying
 	
-	
+	StateManager.current_minigame = 0
 	self.queue_free()
 
