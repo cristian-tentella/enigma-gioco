@@ -14,8 +14,7 @@ var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
 var clicks = 0
 var hearts_array: Array[Heart]
-const max_hearts = 5
-#var i = 0
+const max_hearts = 6
 var game_won
 var hearts_lost: Array[Heart]
 var last_heart_lost
@@ -27,8 +26,6 @@ func update_hearts():
 	updatehearts.emit()
 
 func remove_heart():
-	#print_debug(hearts_array.size())
-	#if(hearts_array[0]!=null):
 	hearts_array.remove_at(hearts_array.size()-1)
 
 func insert(card: Card):
@@ -53,7 +50,6 @@ func insert_pick(card: Card):
 func reset_pick():
 	picked.clear()
 	clicks = 0
-	#updatehearts.emit()
 	update.emit()
 
 func remove_picks():
@@ -124,12 +120,8 @@ func card_show_description():
 
 func remove_heart_from_array():
 	if(hearts_array.size() > 0):
-		#print_debug("rimuovo cuore")
-		#last_heart_lost = hearts_array[hearts_array.size()-1]
 		hearts_lost.append(hearts_array[hearts_array.size()-1])
 		hearts_array[hearts_array.size()-1] = null
-		#print_debug(hearts_array)
-		#print_debug(hearts_lost)
 		updatehearts.emit()
 	
 func clear_slots():
