@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://beq1b34jf1bpq"]
+[gd_scene load_steps=9 format=3 uid="uid://beq1b34jf1bpq"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_ekgtv"]
 [ext_resource type="Texture2D" uid="uid://dtodat5nokpmc" path="res://game/minigames/minigame_4_ripara_spada_laser/monnezza.png" id="4_c0pjp"]
+[ext_resource type="Texture2D" uid="uid://ccydv5yhs27yv" path="res://game/items/spada_laser/spada_laser.png" id="5_0qiy5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6xq6"]
 radius = 17.1172
@@ -118,3 +119,7 @@ initial_velocity_max = 1.0
 scale_amount_min = 2.0
 scale_amount_max = 2.9
 color_ramp = SubResource("Gradient_i8cjx")
+
+[node name="LightSaber" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("5_0qiy5")
