@@ -100,8 +100,6 @@ func check():
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
-	#print_debug(MemeoryManager.slots)
-	#print_debug(MemeoryManager.hearts_array)
 	reset_pick()
 
 func cover_picked_cards():
