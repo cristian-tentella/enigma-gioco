@@ -53,10 +53,13 @@ func _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids: Array) -> Array:
 	for dialogue_line_id in dialogue_lines_ids:
 		var id: String = dialogue_line_id
 		var line: String
-		
+
 		if id.begins_with(DIALOGUE_WITH_SOUND_EFFECT_PREFIX):
-			var sound_effect_name: String = id.erase(0, DIALOGUE_WITH_SOUND_EFFECT_PREFIX.length())
-			line = "sound_effect:" + sound_effect_name
+			#var sound_effect_name: String = id.erase(0, DIALOGUE_WITH_SOUND_EFFECT_PREFIX.length())
+			# sound_effect_light_saber ; light saber ; spada laser
+			# diventa
+			# line -> sound_effect_light_saber : light saber ; sound_effect_light_saber : spada laser
+			line = id + ":" + tr(id)
 		else:
 			line = tr(id)
 
