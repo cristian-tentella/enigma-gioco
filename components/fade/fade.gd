@@ -16,6 +16,9 @@ var has_faded_in = false
 
 
 func fade_in(background_color: Color = BLACK):
+	if not self.visible:
+		self.show()
+
 	if self.has_faded_in:
 		return
 
@@ -41,3 +44,5 @@ func fade_out():
 	).set_ease(Tween.EASE_OUT)
 
 	self.has_faded_in = false
+
+	self.hide()
