@@ -82,12 +82,13 @@ func on_sign_out():
 	
 	
 func on_sign_error(error: SupabaseAuthError): 
-	await display_report_message(str(error.message))
+	await display_report_message("Wrong email or password")
 
 
 func display_report_message(report_message: String):
 	self.message.emit(report_message)
 	await get_tree().create_timer(sleep_after_action).timeout
+	self.message.emit("")
 	
 	
 func save_auth_token_to_encrypted_file(auth: SupabaseUser):
