@@ -28,7 +28,6 @@ func start():
 	
 	#Mostra il menu iniziale 
 	UIManager.show_start_menu()
-	StateManager.player_phantom_camera.set_zoom(Vector2(1, 1))
 	await UIManager.start_menu.exit
 	
  	
