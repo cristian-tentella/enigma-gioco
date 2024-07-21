@@ -17,9 +17,10 @@ func start():
 	StateManager.house.hide()
 	StateManager.player_phantom_camera.set_priority(0)
 	StateManager.ui_phantom_camera.set_priority(10)
-
+	
+	
 	AudioManager.play_start_menu_sound_track()
-
+	
 	if AuthenticationManager.is_enabled:
 		AuthenticationManager.display_report_message("")
 		UIManager.show_authentication_menu()
