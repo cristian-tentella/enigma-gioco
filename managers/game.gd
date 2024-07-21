@@ -18,8 +18,7 @@ func start():
 	StateManager.player_phantom_camera.set_priority(0)
 	StateManager.ui_phantom_camera.set_priority(10)
 	
-	#FIXARE QUA QUAUAUUAUAUAU
-	#if StateManager.audio_player.current_sound_track_player == null or not StateManager.audio_player.current_sound_track_player.playing == true:
+	
 	AudioManager.play_start_menu_sound_track()
 	
 	if AuthenticationManager.is_enabled:
