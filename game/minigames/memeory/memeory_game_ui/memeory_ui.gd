@@ -10,9 +10,11 @@ var addlife = false
 
 signal exit
 signal close_popup
+signal close_description
 
 func _ready():
 	$Deck.hide()
+	MemeoryManager.memeory_ui = self
 	MemeoryManager.gamelost.connect(game_lost_ui)
 	MemeoryManager.gamewon.connect(game_won_ui)
 	MemeoryManager.start.connect(start_new_game)
@@ -21,7 +23,6 @@ func _ready():
 	MemeoryManager.description.connect(show_description)
 	MemeoryManager.change_life_ui.connect(change_life_system)
 	MemeoryManager.virus_ui.connect(show_popup)
-	#MemeoryManager.addlife.connect(addlife_ui)
 	update_slots()
 
 	
@@ -53,7 +54,7 @@ func start_new_game():
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
 	$Card_Description.hide()
-	$Win_or_Lost.hide()
+	$CenterContainer.hide()
 	for heart in heart_UI:
 		MemeoryManager.insert_heart(heart)
 		heart.beating_animation()
@@ -78,28 +79,28 @@ func update_hearts():
 func game_lost_ui():
 	$CloseButtonBackground.hide()
 	await get_tree().create_timer(1).timeout
-	$Win_or_Lost/Label.text = "memeory_lost_ui"
-	$Win_or_Lost.show()
+	$CenterContainer/Win_or_Lost/Label.text = "memeory_lost_ui"
+	$CenterContainer.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
 func game_won_ui():
 	$CloseButtonBackground.hide()
 	await get_tree().create_timer(1).timeout
-	$Win_or_Lost/Label.text = "memeory_win_ui"
-	$Win_or_Lost.show()
+	$CenterContainer/Win_or_Lost/Label.text = "memeory_win_ui"
+	$CenterContainer.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
 func show_description():
 	$CloseButtonBackground.hide()
+	#$Card_Description/Button.show()
 	var card_type = MemeoryManager.picked[1].card_type
 	MemeoryManager.clicks = -1
 	update_slots()
 	$Card_Description/Label.text = "memeory_"+String(card_type)+"_description"
 	$Card_Description.show()
-	await get_tree().create_timer(3).timeout
-	$Card_Description.hide()
+	await close_description
 	$CloseButtonBackground.show()
 	
 func change_life_system():
@@ -115,11 +116,6 @@ func _on_exit_pause_menu_button_pressed():
 	self.exit.emit()
 
 
-func _on_touch_screen_button_pressed():
-	$Card_Description.hide()
-	MemeoryManager.pressed = true
-
-
 func _on_exit_popup_1_pressed():
 	$Virus/Sprite2D.hide()
 
@@ -131,3 +127,8 @@ func _on_exit_popup_3_pressed():
 
 func _on_exit_popup_4_pressed():
 	$Virus/Sprite2D4.hide()
+
+
+func _on_button_pressed():
+	$Card_Description.hide()
+	self.close_description.emit()

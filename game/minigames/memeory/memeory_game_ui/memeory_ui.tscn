@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=9 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
@@ -9,8 +9,7 @@
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2l06"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvi2b"]
+font_size = 3
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -282,7 +281,27 @@ layout_mode = 2
 [node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
-[node name="Win_or_Lost" type="ColorRect" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 235.0
+offset_top = 120.0
+offset_right = 410.0
+offset_bottom = 219.0
+
+[node name="Win_or_Lost" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(88.1133, 60.6129)
+scale = Vector2(5.45477, 3.38523)
+texture = ExtResource("2_3wgbt")
+
+[node name="Label" type="Label" parent="CenterContainer/Win_or_Lost"]
+modulate = Color(0, 0, 0, 1)
+offset_left = 228.0
+offset_top = 121.0
+offset_right = 407.0
+offset_bottom = 227.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Win_or_Lost3" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 212.0
@@ -291,37 +310,37 @@ offset_right = 426.0
 offset_bottom = 236.0
 color = Color(0.368627, 1, 1, 1)
 
-[node name="Label" type="Label" parent="Win_or_Lost"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 195.0
-offset_bottom = 114.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Card_Description" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(318, 172.5)
-scale = Vector2(4.75, 3.03125)
+position = Vector2(320.06, 178.868)
+scale = Vector2(5.27675, 3.26536)
 texture = ExtResource("2_3wgbt")
 
-[node name="Label" type="Label" parent="Card_Description"]
+[node name="Label3" type="Label" parent="Card_Description"]
 modulate = Color(0, 0, 0, 1)
 offset_left = -16.0
-offset_top = -15.0
+offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
 label_settings = SubResource("LabelSettings_p2l06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-visible = false
-position = Vector2(319.914, 178.059)
-scale = Vector2(32, 18)
-shape = SubResource("RectangleShape2D_cvi2b")
+[node name="Button" type="Button" parent="Card_Description"]
+offset_left = -61.0
+offset_top = -55.0
+offset_right = 61.0
+offset_bottom = 55.0
+flat = true
+
+[node name="Label" type="Label" parent="Card_Description"]
+z_index = 105
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
 
 [node name="LifePointsBackground" type="ColorRect" parent="."]
 visible = false
@@ -345,4 +364,4 @@ theme = ExtResource("7_cton7")
 [connection signal="pressed" from="Virus/Sprite2D3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
-[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="Card_Description/Button" to="." method="_on_button_pressed"]
