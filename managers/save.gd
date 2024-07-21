@@ -26,6 +26,7 @@ const debug_loading_save = true #Se vuoi debuggare caricamento salvataggi, quest
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
 const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
 
+const start_without_first_scripted_interaction = false #Starta senza vederti tutta la parte iniziale
 const start_with_minigame_1_finished = false #Starta con i nodi minigame 1 tolti
 const start_with_minigame_2_finished = false #Starta con i nodi minigame 2 tolti
 const start_with_minigame_3_finished = false #Starta con i nodi minigame 3 tolti
@@ -150,6 +151,8 @@ func load_game_save_from_json():
 		var json_file = FileAccess.open(json_path, FileAccess.READ)
 		var content = JSON.parse_string(json_file.get_as_text())
 		
+		if start_without_first_scripted_interaction:
+			content = { "all_exited_interactions": ["Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/everything_launcher_collision_interaction", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/first_dialogue_on_wake_up", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/AUTOPILOT_da_letto_a_fuori", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/second_dialogue_after_autopilot", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/AUTOPILOT_da_fuori_a_dentro", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/third_dialogue_tra_poliziotti", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/AUTOPILOT_da_fuori_a_dentro2", "Game/House/Rooms/Cameretta + Terrazzo/1DominikWakesUpAndGoesToBalconyUntilDaniel/fourth_dialogue_con_daniel"], "current_language": "it_IT", "current_minigame": 0, "inventory_owned_items_names": [], "mute_button_state": false, "player_position": "(168.8086, 119.9803)" }
 		if start_with_minigame_1_finished:
 			content = {"all_exited_interactions":["Game/House/Rooms/Cameretta + Terrazzo/set_of_keys/PickableItemInteraction/DialogueInteraction","Game/House/Minigame1KeyCombination/first_dialogue_on_first_open","Game/House/Minigame1KeyCombination/first_click_on_door_after_keys_taken","Game/House/Minigame1KeyCombination/second_dialogue_on_first_open","Game/House/Rooms/Cameretta + Terrazzo/porta_camera","Game/House/Minigame1KeyCombination/combination_minigame_won"],"current_language":"it_IT","current_minigame":4,"inventory_owned_items_names":["set_of_keys"],"mute_button_state":true,"player_position":"(176.8509, 199.9232)"}
 			
@@ -276,7 +279,8 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 		var node_script = node.get_script()
 		if node_script != null:
 			var node_script_path = node_script.get_path()
-			
+			if "scripted" in node_script_path:
+				print_debug("\n\nFOUND SCRIPT-> ", node_script_path)
 			if node_script_path.begins_with("res://game/minigames/"):
 				var key = node_script_path.substr(21, node_script_path.substr(21).find("/")) #minigame_1 ad esempio. Il parsing funziona
 				if all_minigame_nodes.has(key):
@@ -412,7 +416,7 @@ func reset_save():
 	StateManager.house = unchanged_house #Refresha quello che StateManager vede
 	
 	all_exited_interactions = []
-	StateManager.current_minigame = 0
-	StateManager.player.position =  Vector2(111, 127)
+	StateManager.current_minigame = StateManager.starting_current_minigame
+	StateManager.player.position =  StateManager.player.starting_position
 	StateManager.inventory.slots = []
 

@@ -164,3 +164,4 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.combination_key_minigame.queue_free()
 	UIManager.combination_key_minigame = null
 	self.queue_free()
+

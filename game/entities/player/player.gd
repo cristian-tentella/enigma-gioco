@@ -18,12 +18,13 @@ extends CharacterBody2D
 @export var FRICTION: float = 16
 
 var input = Vector2.ZERO
-
+var starting_position
 const MOVEMENT_ACTIONS = ["move_left", "move_right", "move_up", "move_down"]
 var movement_actions_queue: Array[String]
 
 
 func _ready():
+	starting_position = self.global_position
 	InputManager.movement_action_pressed.connect(
 		func(movement_action: String):
 			self.movement_actions_queue.append(movement_action)
@@ -53,7 +54,7 @@ func _physics_process(delta: float):
 func update_velocity(delta: float):
 	if is_idle():
 		self.velocity = self.velocity.lerp(Vector2.ZERO, self.FRICTION * delta)
-
+	
 		#	AudioManager.play_step_sound_effect()
 	else:
 		self.velocity = self.velocity.lerp(
@@ -131,3 +132,16 @@ func is_idle() -> bool:
 
 func _on_step_sound_effect_timer_timeout():
 	AudioManager.play_step_sound_effect()
+
+#Funzioni utili per cambiare temporaneamente le variabili di movimento del player
+#Usate in InputManager per _process_system_input_event()
+func get_movement_constants():
+	return [MAX_SPEED, ACCELERATION, FRICTION]
+
+func set_movement_constants(movement_constants):
+	self.MAX_SPEED = movement_constants[0]
+	self.ACCELERATION = movement_constants[1]
+	self.FRICTION = movement_constants[2]
+
+func clear_movement_queue():
+	self.movement_actions_queue.clear()

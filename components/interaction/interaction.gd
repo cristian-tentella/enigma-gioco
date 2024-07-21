@@ -57,7 +57,6 @@ func handle_interaction():
 #Pure debugging
 func _exit_tree():
 	print_debug(get_name()+" exiting!\n")
-	#self._insert_into_minigameManager_dictionary()
 	pass
 
 func _remove_if_proc_only_once():

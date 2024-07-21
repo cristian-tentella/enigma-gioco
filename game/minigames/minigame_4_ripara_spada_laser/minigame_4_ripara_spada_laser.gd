@@ -148,8 +148,6 @@ func launch_brucia_cumulo_immondizia_interazione():
 
 
 
-
-
 #Gioco vinto, adios!
 #Forse non serve per il current_minigame che gestisce tutto ma per sicurezza facciamo uscire tutto
 func _free_every_node_related_to_the_minigame_partial():
