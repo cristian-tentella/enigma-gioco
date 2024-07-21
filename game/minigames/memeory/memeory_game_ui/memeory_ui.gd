@@ -34,8 +34,8 @@ func _draw_random_card():
 		i = i+1
 	
 func start_new_game(): 
-	AudioManager.stop_current_sound_track()
-	AudioManager.play_memeory_sound_track()
+	#AudioManager.stop_current_sound_track()
+	#AudioManager.play_memeory_sound_track()
 	MemeoryManager.hearts_array.clear()
 	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()

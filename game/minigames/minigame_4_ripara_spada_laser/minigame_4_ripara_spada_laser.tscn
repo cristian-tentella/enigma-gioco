@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://beq1b34jf1bpq"]
+[gd_scene load_steps=10 format=3 uid="uid://beq1b34jf1bpq"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
@@ -14,6 +14,9 @@ size = Vector2(60.5, 12)
 
 [sub_resource type="Gradient" id="Gradient_i8cjx"]
 colors = PackedColorArray(0.65098, 0.266667, 0.247059, 1, 0.847059, 0.654902, 0.14902, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljivs"]
+radius = 16.5074
 
 [node name="Minigame4RiparaSpadaLaser" type="Node2D"]
 script = ExtResource("1_g1yqu")
@@ -123,3 +126,12 @@ color_ramp = SubResource("Gradient_i8cjx")
 [node name="LightSaber" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
 texture = ExtResource("5_0qiy5")
+
+[node name="dialogo_monnezza_generico" parent="." instance=ExtResource("2_haxex")]
+dialogue_id = "dialogo_monnezza_generico"
+destroy_after_minigame_requirement_number = 10
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogo_monnezza_generico"]
+position = Vector2(107.812, 660.047)
+shape = SubResource("CircleShape2D_ljivs")
