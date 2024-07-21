@@ -97,6 +97,10 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			return $SoundEffects/LightSaber
 		"reset":
 			return $SoundEffects/Reset
+		"laser_sword_power_on":
+			return $SoundEffects/LaserSwordPowerOn
+		"engine_revving":
+			return $SoundEffects/EngineRevving
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null

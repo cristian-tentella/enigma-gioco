@@ -10,6 +10,7 @@ signal gamewon
 signal description
 signal addlife
 signal change_life_ui
+signal virus_ui
 
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
@@ -138,3 +139,6 @@ func check_game_won():
 
 func meme_card_effect():
 	change_life_ui.emit()
+	
+func virus_card_effect():
+	virus_ui.emit()

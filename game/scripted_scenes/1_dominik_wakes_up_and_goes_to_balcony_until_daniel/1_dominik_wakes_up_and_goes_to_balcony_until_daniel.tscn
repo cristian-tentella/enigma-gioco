@@ -31,23 +31,11 @@ position = Vector2(0, 58)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 
-[node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_letto_a_fuori"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.152011, 0.156848)
-metadata/_edit_use_anchors_ = true
-
 [node name="AUTOPILOT_da_letto_a_fuori2" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(283, -38)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 just_proc_once = false
-
-[node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_letto_a_fuori2"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.198661, 0.141401)
-metadata/_edit_use_anchors_ = true
 
 [node name="second_dialogue_after_autopilot" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "second_dialogue_on_wake_up"
@@ -59,24 +47,10 @@ position = Vector2(283, 58)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 
-[node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_fuori_a_dentro"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.152011, 0.156848)
-color = Color(1, 0, 1, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="AUTOPILOT_da_fuori_a_dentro2" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(185, 58)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
-
-[node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_fuori_a_dentro2"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.152011, 0.156848)
-color = Color(1, 0, 1, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="third_dialogue_tra_poliziotti" parent="." instance=ExtResource("1_wis6k")]
 dialogue_id = "third_dialogue_on_wake_up"

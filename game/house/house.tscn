@@ -4615,6 +4615,7 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(1002, 15, 1002, 266, 1274, 266, 1274, 392, 1383, 392, 1383, 264, 1421, 264, 1421, 203, 1434, 203, 1434, 267, 1711, 267, 1711, 23, 1018, 24, 1018, 12, 1001, 12)
 
 [node name="lista_degli_invitati" parent="Rooms/Salotto+Cucina" instance=ExtResource("8_0lq6k")]
+z_index = 10
 position = Vector2(1566, 190)
 item_name = "lista_degli_invitati"
 dialogue_id = "pickup_guest_list"
