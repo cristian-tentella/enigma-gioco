@@ -27,9 +27,10 @@ func handle_interaction():
 	# Interaction logic
 	UIManager.lock.emit()   #Blocco lo user dal premere tasti, ora comando io!
 	
-	self.real_interaction.queue_free()
+	if is_instance_valid(real_interaction):
+		self.real_interaction.queue_free()
 	
-	self.move_to_target_destination(self.position)
+	self.move_to_target_destination(self.global_position)
 	
 	#UIManager.unlock.emit() #NON FUNZIONA...
 	await move_to_target_destination_finished
@@ -43,7 +44,7 @@ signal move_to_target_destination_finished
 signal generic_movement_done
 func move_to_target_destination(target_destination: Vector2):
 	var player_position = StateManager.player.position
-	
+	print_debug("\nPLAYER AT -> ", player_position, " || Moving to -> ", target_destination, "\n")
 	#==== MOVIMENTO SULLA X ====
 	# [Player x = 100] -> [Dest x = 120] DEVE ANDARE A DESTRA (-20)
 	if(player_position.x - target_destination.x < 0):

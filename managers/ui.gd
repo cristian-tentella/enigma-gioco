@@ -142,7 +142,7 @@ func show_dialogue_box(dialogue_lines: Array):
 
 
 """GESTIONE START MENU"""
-
+signal start_menu_play_button_pressed
 func show_start_menu():
 	
 	if use_start_menu_with_resume_button:
@@ -153,11 +153,10 @@ func show_start_menu():
 	_spawn_locking_ui_element(start_menu)
 	await start_menu.exit
 	_kil_locking_ui_element(start_menu)
-	
+	start_menu_play_button_pressed.emit()
 	#Faccio mostrare il resume button al posto del play button
 	#Non voglio che il giocatore ricarichi ogni volta i salvataggi che stanno già in locale
 	use_start_menu_with_resume_button = true
-	print(use_start_menu_with_resume_button)
 
 func show_start_menu_with_resume_button():
 	_spawn_locking_ui_element(start_menu)

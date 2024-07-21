@@ -33,6 +33,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AUTOPILOT_da_letto_a_fuori2" parent="." instance=ExtResource("4_hufej")]
 position = Vector2(283, -38)
+just_proc_once = false
 
 [node name="ColorRect" type="ColorRect" parent="AUTOPILOT_da_letto_a_fuori2"]
 offset_right = 40.0

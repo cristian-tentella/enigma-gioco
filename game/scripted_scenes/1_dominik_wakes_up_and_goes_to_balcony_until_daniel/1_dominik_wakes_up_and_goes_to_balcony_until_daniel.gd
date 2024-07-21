@@ -14,7 +14,11 @@ extends Node2D
 
 @onready var fourth_dialogue_con_daniel: DialogueInteraction = $fourth_dialogue_con_daniel
 
+
 func launch_everything():
+	
+	await UIManager.start_menu_play_button_pressed
+	await get_tree().create_timer(1.3).timeout
 	
 	#Fai partire dialogo appena sveglio
 	self.first_dialogue_on_wake_up.handle_interaction()
@@ -49,3 +53,5 @@ func launch_everything():
 	await DialogueManager.has_finished_displaying
 	
 	
+	self.queue_free()
+
