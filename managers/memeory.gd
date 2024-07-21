@@ -7,14 +7,17 @@ signal update
 signal updatehearts
 signal gamelost
 signal gamewon
+signal description
+signal addlife
 
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
 var clicks = 0
 var hearts_array: Array[Heart]
-var hearts = hearts_array.size()
-var i = 0
+const max_hearts = 5
+#var i = 0
 var game_won
+var last_heart_lost
 
 func start_game():
 	start.emit()
@@ -23,6 +26,8 @@ func update_hearts():
 	updatehearts.emit()
 
 func remove_heart():
+	print_debug(hearts_array.size())
+	#if(hearts_array[0]!=null):
 	hearts_array.remove_at(hearts_array.size()-1)
 
 func insert(card: Card):
@@ -30,7 +35,9 @@ func insert(card: Card):
 	update.emit()
 	
 func insert_heart(heart: Heart):
+	heart.recover = true
 	hearts_array.append(heart)
+	updatehearts.emit()
 
 func has_item(needed_card_name: String):
 	for slot in slots:
@@ -45,12 +52,14 @@ func insert_pick(card: Card):
 func reset_pick():
 	picked.clear()
 	clicks = 0
-	updatehearts.emit()
+	#updatehearts.emit()
 	update.emit()
 
 func remove_picks():
 	for card in picked:
-		slots[card.index] = null
+		var index_remove = slots.find(card)
+		print_debug(index_remove)
+		slots[index_remove] = null
 		update.emit()
 		
 func has_couple():
@@ -62,23 +71,33 @@ func check():
 	if(!check_var):
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
-		if(hearts_array.size() > 0):
-			hearts_array[hearts_array.size()-1] = null
+		remove_heart_from_array()
+		for i in range(0,2):
+			if(picked[i].card_type == "shuffle"):
+				print_debug("rimescola")
+				card_show_description()
+				picked[i].handle_interaction()
 		cover_picked_cards()
 	else:
 		game_won = true
+		var shuffle_check = picked[0].card_type
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
 		remove_picks()
-		print_debug(MemeoryManager.slots)
-		for card in slots:
-			if (card != null):
-				print_debug("not yet")
-				game_won = false
-				break
+		card_show_description()
+		await get_tree().create_timer(3).timeout
+		print_debug(shuffle_check)
+		print_debug(picked[1])
+		if(shuffle_check != "shuffle"):
+			print_debug("attiva effetto carta 2")
+			picked[1].handle_interaction() 
+		if(picked[1].card_type == "seer"):
+			await get_tree().create_timer(2).timeout
+		check_game_won()
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
+	print_debug(MemeoryManager.slots)
 	reset_pick()
 
 func cover_picked_cards():
@@ -91,7 +110,23 @@ func cover_all_cards():
 		card.update_card_sprite2D_back_texture()
 		update.emit()
 
+func card_show_description():
+	description.emit()
+
+func remove_heart_from_array():
+	if(hearts_array.size() > 0):
+		#print_debug("rimuovo cuore")
+		last_heart_lost = hearts_array[hearts_array.size()-1]
+		hearts_array[hearts_array.size()-1] = null
+		updatehearts.emit()
+	
 func clear_slots():
 	slots.clear()
 	picked.clear()
 	update.emit()
+	
+func check_game_won():
+	for card in slots:
+			if (card != null):
+				game_won = false
+				break

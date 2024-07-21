@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt314pqrb6ojt"
-path="res://.godot/imported/bet_front.png-e4b8f58104773e697a25d288970d8e92.ctex"
+uid="uid://hr3i3m7onlgt"
+path="res://.godot/imported/regular_front.png-f57942c2e2d67a47af4bb3c4b110a06b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_items/bet/bet_front.png"
-dest_files=["res://.godot/imported/bet_front.png-e4b8f58104773e697a25d288970d8e92.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/regular/regular_front.png"
+dest_files=["res://.godot/imported/regular_front.png-f57942c2e2d67a47af4bb3c4b110a06b.ctex"]
 
 [params]
 

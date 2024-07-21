@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6y0in01ln5ib"]
+
+[ext_resource type="Texture2D" uid="uid://dfrgl75do8qab" path="res://components/close_ui_button/close_ui_button.png" id="1_y3d1i"]
+[ext_resource type="Texture2D" uid="uid://bsfqyjy58hn3u" path="res://components/close_ui_button/close_ui_button_pressed.png" id="2_x30lm"]
+[ext_resource type="Texture2D" uid="uid://4jjerpqudtug" path="res://components/close_ui_button/close_ui_button_hover.png" id="3_g85h3"]
+[ext_resource type="Script" path="res://components/close_ui_button/close_ui_button.gd" id="4_i2g6e"]
+
+[node name="CloseUiButton" type="TextureButton"]
+texture_normal = ExtResource("1_y3d1i")
+texture_pressed = ExtResource("2_x30lm")
+texture_hover = ExtResource("3_g85h3")
+texture_focused = ExtResource("3_g85h3")
+script = ExtResource("4_i2g6e")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

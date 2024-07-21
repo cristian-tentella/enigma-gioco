@@ -8,6 +8,15 @@ extends Node
 @onready var memeory_lost = $memeory_lost
 
 
+@onready var all_interaction_nodes = [
+	memeory_first_dialogue,
+	memeory_launcher,
+	memeory_retry,
+	memeory_win,
+	memeory_win_after_polipetto,
+	memeory_lost
+]
+
 func memeory_start_dialogues():
 	
 	#Dialogo iniziale
@@ -47,9 +56,9 @@ func memeory_start_dialogues():
 
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
-	memeory_retry.queue_free()
-	memeory_retry = null
+	for interaction_node in all_interaction_nodes:
+		if is_instance_valid(interaction_node):
+			interaction_node.forcefully_remove_as_if_proc_only_once()
 	UIManager.memeory_menu.queue_free()
 	UIManager.memeory_menu = null
 	self.queue_free()
-

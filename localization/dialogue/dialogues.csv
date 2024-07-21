@@ -131,7 +131,10 @@ memeory_lost_1;Watermelon:AHA! I knew that you weren’t WORTHY OF MY PRIZE!;Ang
 memeory_lost_2;Dominik:…whatever;Dominik:…certo, certo...
 memeory_win_ui;YOU WON!;HAI VINTO!
 memeory_lost_ui;YOU LOST!;HAI PERSO!
-
+memeory_bet_description;CARAPACE;CARBONARA
+memeory_regular_description;Regular;Regolare
+memeory_extralife_description;Extra life for you!;Vita Extra per te!
+memeory_malus_description;-1 Heart '_'; -1 Vita '_'
 
 minigame_3_colors_mobile_bloccato;Domink:This one is locked too, what's wrong with my house, what is this level of security?!;Dominik:Anche questo è bloccato, ma cos'è questo livello di sicurezza in casa mia?!
 minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around, there has to be a hint around!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi!

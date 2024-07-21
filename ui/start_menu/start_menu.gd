@@ -82,4 +82,5 @@ func remove_auth_file():
 	DirAccess.remove_absolute("user://save.json")
 
 func _on_resume_button_pressed():
+	AudioManager.stop_current_sound_track()
 	self.exit.emit()

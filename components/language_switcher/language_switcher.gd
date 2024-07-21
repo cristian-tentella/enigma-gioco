@@ -28,3 +28,7 @@ func _show_italian_flag():
 func _show_united_kingdom_flag():
 	united_kingdom_flag.show()
 	italian_flag.hide()
+
+
+func _on_visibility_changed():
+	_update_flag()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c244nxcwnjwnn"
-path="res://.godot/imported/placeholder_yellow1.png-1096e4d6fde8810e568a30ee0fe70fe6.ctex"
+uid="uid://cqycb77uc7ppn"
+path="res://.godot/imported/seer_front.png-e556f3f18a9d69a5907c67ad7720f085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_game_ui/placeholder_yellow1.png"
-dest_files=["res://.godot/imported/placeholder_yellow1.png-1096e4d6fde8810e568a30ee0fe70fe6.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/seer/seer_front.png"
+dest_files=["res://.godot/imported/seer_front.png-e556f3f18a9d69a5907c67ad7720f085.ctex"]
 
 [params]
 

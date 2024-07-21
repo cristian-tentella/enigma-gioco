@@ -3,10 +3,8 @@ extends Node
 
 
 const LOWEST_VOLUME_IN_DECIBELS = -36
-
 @export var sound_track_fade_in_duration_in_seconds = 2
 var current_sound_track_player: AudioStreamPlayer
-
 
 func _ready():
 	AudioManager.play_sound_effect.connect(_on_audio_manager_play_sound_effect)
@@ -36,16 +34,16 @@ func _on_audio_manager_play_sound_track(sound_track_name: String):
 		return
 
 
-	var correct_volume_in_decibels = player.volume_db
+	var correct_volume_in_decibels = 0
 	self.current_sound_track_player = player
 	player.set_volume_db(LOWEST_VOLUME_IN_DECIBELS)
 	player.play()
-	create_tween().tween_property(player, "volume_db", correct_volume_in_decibels, sound_track_fade_in_duration_in_seconds)
-
+	var tween = create_tween()
+	tween.tween_property(player, "volume_db", correct_volume_in_decibels, sound_track_fade_in_duration_in_seconds)
+	await tween.finished
 
 func _on_stop_sound_track():
 	var player = self.current_sound_track_player
-
 	var tween = create_tween()
 	tween.tween_property(player, "volume_db", LOWEST_VOLUME_IN_DECIBELS, sound_track_fade_in_duration_in_seconds)
 	await tween.finished
@@ -97,6 +95,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			return $SoundEffects/Staircase
 		"light_saber":
 			return $SoundEffects/LightSaber
+		"reset":
+			return $SoundEffects/Reset
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null

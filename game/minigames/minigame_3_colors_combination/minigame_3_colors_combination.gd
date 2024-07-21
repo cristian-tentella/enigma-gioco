@@ -57,8 +57,18 @@ var combination_color_lock_minigame
 @onready var game_lost_dialogue: DialogueInteraction = $game_lost_dialogue
 @onready var after_plutonio_dialogue: DialogueInteraction = $after_plutonio_dialogue
 
+@onready var all_interaction_nodes = [
+	mobile_bloccato_dialogo,
+	game_won_dialogue,
+	game_lost_dialogue,
+	after_plutonio_dialogue,
+	computer_color_switcher,
+	$game_starter
+]
+
+
 #      					 ["black" ,  "green", "purple",  "cyan" ,  "red"  ]
-const color2hex: Array = ["000000", "64AB3A", "914A9B", "2D7885", "A6443F"]
+const color2hex: Array = ["00000000", "64AB3A", "914A9B", "2D7885", "A6443F"]
 var current_color_index: int = 0
 
 func _ready():
@@ -107,7 +117,9 @@ func rotate_computer_color():
 
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
-	
+	for interaction_node in all_interaction_nodes:
+		if is_instance_valid(interaction_node):
+			interaction_node.forcefully_remove_as_if_proc_only_once()
 	UIManager.combination_color_key_minigame.queue_free()
 	UIManager.combination_color_key_minigame = null
 	self.queue_free()

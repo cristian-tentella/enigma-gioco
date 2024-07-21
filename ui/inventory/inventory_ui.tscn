@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwxmqs7dpwp5y"]
+[gd_scene load_steps=8 format=3 uid="uid://cwxmqs7dpwp5y"]
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_ui.gd" id="1_cw135"]
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_2yfj2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="4_6oj7c"]
 [ext_resource type="Texture2D" uid="uid://c6le4co31rawj" path="res://components/inventory/slot.png" id="5_ofa7i"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="6_jo3hw"]
+[ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="7_12ya8"]
 
 [node name="Control" type="Control"]
 z_index = 100
@@ -193,29 +194,6 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 608.0
-offset_top = 8.0
-offset_right = 632.0
-offset_bottom = 32.0
-texture = ExtResource("2_2yfj2")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-metadata/_edit_group_ = true
-
-[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground" groups=["Buttons"]]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
 [node name="ItemPickupDialogue" parent="." instance=ExtResource("4_6oj7c")]
 position = Vector2(209, 100)
 dialogue_id = "pickup_item_generic"
@@ -254,6 +232,13 @@ theme = ExtResource("6_jo3hw")
 text = "Seleziona un oggetto per visualizzarne la descrizione"
 autowrap_mode = 2
 
+[node name="CloseUiButton" parent="." instance=ExtResource("7_12ya8")]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 18.0
+offset_right = 622.0
+offset_bottom = 52.0
+
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_1/Inventory_UI_slot_1_button" to="." method="_on_inventory_ui_slot_1_button_pressed"]
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_2/Inventory_UI_slot_2_button" to="." method="_on_inventory_ui_slot_2_button_pressed"]
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_3/Inventory_UI_slot_3_button" to="." method="_on_inventory_ui_slot_3_button_pressed"]
@@ -270,4 +255,4 @@ autowrap_mode = 2
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_14/Inventory_UI_slot_14_button" to="." method="_on_inventory_ui_slot_14_button_pressed"]
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_15/Inventory_UI_slot_15_button" to="." method="_on_inventory_ui_slot_15_button_pressed"]
 [connection signal="pressed" from="SlotsGridBackground/GridContainer/Inventory_UI_slot_16/Inventory_UI_slot_16_button" to="." method="_on_inventory_ui_slot_16_button_pressed"]
-[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
+[connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]

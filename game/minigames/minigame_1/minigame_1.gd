@@ -93,11 +93,26 @@ VARIABILI PER IL GIOCO VERO E PROPRIO
 #Dialogo di vittoria
 @onready var combination_minigame_won = $combination_minigame_won
 
+#FOR SAVE =======================================
+
+@onready var all_interaction_nodes = [
+	first_dialogue_on_first_open,
+	second_dialogue_on_first_open,
+	actual_minigame_combination_first_dialogue,
+	combination_minigame_won,
+	$second_dialogue_on_first_open_static_until_poster,
+	$door_locked_basic_dialogue,
+	$dialogue_with_pi_poster,
+	$first_click_on_door_after_keys_taken,
+	$actual_minigame_launcher,
+	short_win_dialogue
+]
+#=======================================
+
 func _ready():
 	combination_lock_minigame = UIManager.combination_key_minigame
 
 func open_combination_lock_first_time(): 
-	print_debug(get_name()+" MINIGAME 1\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
 	#Nascondi pulsante per quittare, why would they?
 	self.combination_lock_minigame.exit_button.hide()
 	
@@ -112,6 +127,8 @@ func open_combination_lock_first_time():
 	#Se vinci al primo tentativo (o hai barato o sei decisamente fortunato)
 	if StateManager.current_minigame == 4: 
 		short_win_dialogue.handle_interaction()
+		await DialogueManager.has_finished_displaying
+		self._free_every_node_related_to_the_minigame()
 		return
 	
 	#Fai vedere la frustrazione di Daniel dopo aver fallito e dice che deve guardarsi in giro
@@ -119,7 +136,6 @@ func open_combination_lock_first_time():
 	await DialogueManager.has_finished_displaying
 	
 func open_combination_lock_real():
-	print_debug(get_name()+" MINIGAME 1\tEXIT BUTTON -> ", combination_lock_minigame.exit_button)
 	#Fai vedere il dialogo prima che si apra il menu in cui si incita
 	actual_minigame_combination_first_dialogue.handle_interaction()
 	await DialogueManager.has_finished_displaying
@@ -133,8 +149,8 @@ func open_combination_lock_real():
 	if StateManager.current_minigame == 4: #Quindi se ho vinto il primo minigame, che si vince in 4 steps
 	#Se ha workato, fai vedere che è felice che ha vinto, altrimenti esci senza nessun dialogo (seems fair per gameplay)
 		combination_minigame_won.handle_interaction()
-		self._free_every_node_related_to_the_minigame()
 		await DialogueManager.has_finished_displaying
+		self._free_every_node_related_to_the_minigame()
 	else:
 		second_dialogue_on_first_open.handle_interaction()
 		await DialogueManager.has_finished_displaying
@@ -142,6 +158,9 @@ func open_combination_lock_real():
 
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
+	for interaction_node in all_interaction_nodes:
+		if is_instance_valid(interaction_node):
+			interaction_node.forcefully_remove_as_if_proc_only_once()
 	UIManager.combination_key_minigame.queue_free()
 	UIManager.combination_key_minigame = null
 	self.queue_free()

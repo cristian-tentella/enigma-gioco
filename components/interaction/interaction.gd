@@ -60,19 +60,15 @@ func _exit_tree():
 	pass
 
 func _remove_if_proc_only_once():
-
 	if just_proc_once: #Se deve proccare una volta sola, detto fatto, adios!
-		self.queue_free()
-		
-		#Per il salvataggio ----------
-		#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
-		self._insert_into_minigameManager_dictionary()
+		forcefully_remove_as_if_proc_only_once()
 
 
 func _insert_into_minigameManager_dictionary():
 	var node_name = self.get_name()
 	if node_name != "ItemInteraction": #Per questo ci pensa l'Inventory
 		var path_to_node = self.get_tree().root.get_path_to(self) as String #Path da root a nodo
+		path_to_node = SaveManager.insert_house_in_path(path_to_node)
 		SaveManager.all_exited_interactions.append(path_to_node)
 
 
@@ -80,13 +76,14 @@ func _increment_current_minigame_if_told_so():
 	if increments_current_minigame:
 		StateManager.current_minigame += 1
 		increments_current_minigame = false
+		print(StateManager.current_minigame)
 
 #Funzione utile per quei casi in cui si dovrebbe rompere l'interazione guardandola ma se ci riclicchi sopra senza girarti si scassa tutto il gioco...
 #Quindi lo togliamo a mano
 func forcefully_remove_as_if_proc_only_once():
-	self.queue_free()
-		
 	#Per il salvataggio ----------
 	#Non salvo nell'array le interazioni degli item, per quello basta l'inventario
 	self._insert_into_minigameManager_dictionary()
+	#Free normale
+	self.queue_free()
 

@@ -37,7 +37,7 @@ func _on_area_entered(area: Area2D):
 		#Il check > iniziale serve perché è impossibile avere requirement più alto di quando va distrutto, quindi sicuramente non va fatto!
 		#Se chiedo minigame 2 per poterci interagire e lo faccio rompere al minigame 1, non va bene...
 		if area.destroy_after_minigame_requirement_number > area.minigame_requirement and area.destroy_after_minigame_requirement_number <= curr_minigame: #Va rotto
-			area.queue_free()
+			area.forcefully_remove_as_if_proc_only_once()
 			area = null
 			return
 		

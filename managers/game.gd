@@ -15,24 +15,22 @@ func start():
 	
 	StateManager.player.hide()
 	StateManager.house.hide()
-	StateManager.player_phantom_camera.set_priority(0)
-	StateManager.ui_phantom_camera.set_priority(10)
-
+	
+#	
+	
 	AudioManager.play_start_menu_sound_track()
-
+	
 	if AuthenticationManager.is_enabled:
 		AuthenticationManager.display_report_message("")
 		UIManager.show_authentication_menu()
 		await AuthenticationManager.exit
 	
-
+	
 	#Mostra il menu iniziale 
 	UIManager.show_start_menu()
-
 	await UIManager.start_menu.exit
-  
-	StateManager.player_phantom_camera.set_priority(10)
-	StateManager.ui_phantom_camera.set_priority(0)
+	
+ 	
   
 	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
