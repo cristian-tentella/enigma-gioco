@@ -68,9 +68,8 @@ func on_sign_in_succeeded(auth: SupabaseUser):
 func on_sign_up_succeeded(auth: SupabaseUser):
 	await add_entry_to_supabase_public_database(auth.id)
 	await Supabase.database.inserted
-	save_auth_token_to_encrypted_file(auth)
-	await display_report_message(str(auth.role))
-	self.exit.emit()
+	await display_report_message("Verifica la mail e prova ad accedere con l'account appena creato")
+
 	
 	
 func on_reset_succeded():
@@ -82,7 +81,7 @@ func on_sign_out():
 	self.exit.emit()
 	
 	
-func on_sign_error(error: SupabaseAuthError):
+func on_sign_error(error: SupabaseAuthError): 
 	await display_report_message(str(error.message))
 
 
