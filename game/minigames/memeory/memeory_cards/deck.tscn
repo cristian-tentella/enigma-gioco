@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/minigames/memeory/memeory_cards/card.tscn" id="1_cfiem"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/regular/regular.gd" id="2_1fngq"]
-[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/bet/bet.gd" id="2_g7eaw"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/watermelon/watermelon.gd" id="3_sx3iy"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/extralife/extralife.gd" id="4_4m565"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/malus/malus.gd" id="5_ehp5n"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.gd" id="6_7p1kv"]
@@ -24,18 +24,18 @@ card_name = "Regular2"
 card_type = "regular"
 index = 1
 
-[node name="Bet1" parent="." instance=ExtResource("1_cfiem")]
+[node name="Watermelon1" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(7, 49)
-script = ExtResource("2_g7eaw")
-card_name = "Bet1"
-card_type = "bet"
+script = ExtResource("3_sx3iy")
+card_name = "Watermelon1"
+card_type = "watermelon"
 index = 2
 
-[node name="Bet2" parent="." instance=ExtResource("1_cfiem")]
+[node name="Watermelon2" parent="." instance=ExtResource("1_cfiem")]
 position = Vector2(92, 18)
-script = ExtResource("2_g7eaw")
-card_name = "Bet2"
-card_type = "bet"
+script = ExtResource("3_sx3iy")
+card_name = "Watermelon2"
+card_type = "watermelon"
 index = 3
 
 [node name="Extra1" parent="." instance=ExtResource("1_cfiem")]

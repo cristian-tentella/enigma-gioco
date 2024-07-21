@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_p2l06"]
-font_size = 3
+[sub_resource type="LabelSettings" id="LabelSettings_w2yk5"]
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -282,6 +281,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_left = 235.0
 offset_top = 120.0
 offset_right = 410.0
@@ -293,13 +293,13 @@ scale = Vector2(5.45477, 3.38523)
 texture = ExtResource("2_3wgbt")
 
 [node name="Label" type="Label" parent="CenterContainer/Win_or_Lost"]
-modulate = Color(0, 0, 0, 1)
-offset_left = 228.0
-offset_top = 121.0
-offset_right = 407.0
-offset_bottom = 227.0
-horizontal_alignment = 1
-vertical_alignment = 1
+z_index = 200
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 12
+text = "ciaoo"
 
 [node name="Win_or_Lost3" type="ColorRect" parent="."]
 visible = false
@@ -314,16 +314,6 @@ color = Color(0.368627, 1, 1, 1)
 position = Vector2(320.06, 178.868)
 scale = Vector2(5.27675, 3.26536)
 texture = ExtResource("2_3wgbt")
-
-[node name="Label3" type="Label" parent="Card_Description"]
-modulate = Color(0, 0, 0, 1)
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-label_settings = SubResource("LabelSettings_p2l06")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Button" type="Button" parent="Card_Description"]
 offset_left = -61.0
@@ -341,6 +331,7 @@ offset_bottom = 12.0
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
+label_settings = SubResource("LabelSettings_w2yk5")
 
 [node name="LifePointsBackground" type="ColorRect" parent="."]
 visible = false
@@ -358,6 +349,44 @@ offset_top = 5.87867
 offset_right = 86.1213
 offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
+
+[node name="Watermelons" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Watermelons"]
+position = Vector2(452.41, 116.684)
+rotation = 0.0296706
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Watermelons"]
+position = Vector2(183.992, 237.378)
+rotation = 0.123918
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Watermelons"]
+position = Vector2(451.324, 232.986)
+rotation = -0.244346
+scale = Vector2(1.7, 1.7)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Watermelons"]
+position = Vector2(184.978, 116.947)
+rotation = 0.307178
+scale = Vector2(2.25, 2.25)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Watermelons"]
+position = Vector2(262.4, 318.883)
+rotation = 0.0593412
+scale = Vector2(1.8, 1.8)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Watermelons"]
+position = Vector2(260.525, 37.5245)
+rotation = 0.118682
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D7" type="Sprite2D" parent="Watermelons"]
+position = Vector2(376.327, 315.298)
+rotation = 0.237365
+scale = Vector2(1.44, 1.44)
 
 [connection signal="pressed" from="Virus/Sprite2D/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
