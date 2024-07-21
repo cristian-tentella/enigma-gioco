@@ -42,19 +42,25 @@ layout_mode = 2
 theme = ExtResource("2_6vdja")
 placeholder_text = "Email"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_right = 80
+alignment = 1
 
-[node name="SendReset" type="Button" parent="VBoxContainer/MarginContainer" groups=["Buttons"]]
+[node name="SendReset" type="Button" parent="VBoxContainer/HBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_6vdja")
 text = "Send reset email"
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer" groups=["Buttons"]]
+layout_mode = 2
+theme = ExtResource("2_6vdja")
+text = "Back
+"
 
 [node name="ReportMessage" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_6vdja")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="VBoxContainer/MarginContainer/SendReset" to="." method="_on_send_reset_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SendReset" to="." method="_on_send_reset_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
