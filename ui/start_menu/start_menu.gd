@@ -66,6 +66,7 @@ func _on_exit_button_pressed():
 
 
 func _on_log_out_button_pressed():
+	UIManager.hide_mobile_ui()
 	AuthenticationManager.sign_out()
 	await Supabase.auth.signed_out
 	remove_auth_file()
@@ -83,5 +84,6 @@ func remove_auth_file():
 	DirAccess.remove_absolute("user://save.json")
 
 func _on_resume_button_pressed():
+	UIManager.show_mobile_ui()
 	AudioManager.stop_current_sound_track()
 	self.exit.emit()

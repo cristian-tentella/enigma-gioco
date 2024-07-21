@@ -284,4 +284,14 @@ func load_all_minigame_UIs():
 		"res://game/minigames/minigame_3_colors_combination/combination_color_lock.tscn"
 	).instantiate()
 	
+	
+	
+func show_mobile_ui():
+	if PlatformHelper.is_mobile():
+		self.mobile_only_ui.show()
+
+func hide_mobile_ui():
+	if PlatformHelper.is_mobile():
+		self.mobile_only_ui.hide()
+
 
