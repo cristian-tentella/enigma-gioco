@@ -74,6 +74,7 @@ func _on_log_out_button_pressed():
 	print_debug("\n--------------------------------------------------\n\tRESET CALLED\n--------------------------------------------------\n")
 	UIManager.respawn_minigame_UI_nodes()
 	SaveManager.reset_save()
+	StateManager.inventory.update.emit()
 	GameManager.start()
 	
 	

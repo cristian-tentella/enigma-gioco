@@ -13,12 +13,12 @@ NO_ITEM_SELECTED_DESC_STRING;Please select an item to view its description;Selez
 set_of_keys;Set of keys;Mazzo di chiavi
 polipetto;Octypus;Polipetto
 plutonio_radioattivo;Radioactive Plutonium;Plutonio Radioattivo
+spada_laser;Laser Sword;Spada Laser
 
 set_of_keys_description;A very amusing set of keys.\nThey range from 1 to 8, and each have a different color assigned.;Un bellissimo mazzo di chiavi.\nVanno dal numero 1 al numero 8, ed ognuna ha un colore diverso.
 plutonio_radioattivo_description;A very radioactive chunk of plutonium.;Un pezzo di plutonio estremamente radioattivo.
 polipetto_description;A strange octopus that was given to you by the almight Watermelon.;Uno strano polipetto che ti è stato donato dall'unica e sola Anguria.
 spada_laser_description;An extremely powerful and destructive laser sword.;Una spada laser estremamente potente e distruttiva.
-
 
 
 pickup_set_of_keys_1;Dominik:There they are! Why did I even put them here...;Dominik:Ecco dov'erano! Ma perché le ho messe proprio lì....

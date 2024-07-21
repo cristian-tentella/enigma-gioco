@@ -244,6 +244,7 @@ func show_inventory_for_minigame4():
 #====================================
 #SAVE METHODS TO RESPAWN MINIGAMES
 func respawn_minigame_UI_nodes():
+	
 	load_all_minigame_UIs();
 	
 	var minigame_ui_elements: Array[Control] = [
