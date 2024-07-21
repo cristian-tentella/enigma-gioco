@@ -27,7 +27,7 @@ func update_hearts():
 	updatehearts.emit()
 
 func remove_heart():
-	print_debug(hearts_array.size())
+	#print_debug(hearts_array.size())
 	#if(hearts_array[0]!=null):
 	hearts_array.remove_at(hearts_array.size()-1)
 
@@ -72,12 +72,17 @@ func check():
 	if(!check_var):
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
-		remove_heart_from_array()
-		for i in range(0,2):
-			if(picked[i].card_type == "shuffle"):
+		print_debug(picked)
+		if(picked[0].card_type == "shuffle"):
+				picked.reverse()
+		if(picked[1].card_type == "shuffle"):
 				print_debug("rimescola")
 				card_show_description()
-				picked[i].handle_interaction()
+				await get_tree().create_timer(3).timeout
+				picked[1].handle_interaction()
+			
+		if(picked[0].card_type != "shuffle" and picked[1].card_type != "shuffle"):
+			remove_heart_from_array()
 		cover_picked_cards()
 	else:
 		game_won = true
@@ -92,7 +97,7 @@ func check():
 		if(picked[1].card_type == "extralife"):
 			MemeoryManager.hearts_lost.reverse() 
 		if(shuffle_check != "shuffle"):
-			print_debug("attiva effetto carta 2")
+			print_debug("attiva effetto carta")
 			picked[1].handle_interaction()
 		if(picked[1].card_type == "seer"):
 			await get_tree().create_timer(2).timeout
@@ -114,6 +119,7 @@ func cover_all_cards():
 		update.emit()
 
 func card_show_description():
+	print_debug("mostro effetto")
 	description.emit()
 
 func remove_heart_from_array():
@@ -122,8 +128,8 @@ func remove_heart_from_array():
 		#last_heart_lost = hearts_array[hearts_array.size()-1]
 		hearts_lost.append(hearts_array[hearts_array.size()-1])
 		hearts_array[hearts_array.size()-1] = null
-		print_debug(hearts_array)
-		print_debug(hearts_lost)
+		#print_debug(hearts_array)
+		#print_debug(hearts_lost)
 		updatehearts.emit()
 	
 func clear_slots():

@@ -32,7 +32,7 @@ func _draw_random_card():
 	cards.shuffle()
 	for random_card in cards:
 		random_card.index = index
-		print_debug(random_card.index)
+		#print_debug(random_card.index)
 		MemeoryManager.insert(random_card)
 		index = index+1
 	
@@ -52,7 +52,7 @@ func start_new_game():
 	#MemeoryManager.update_hearts()
 	_draw_random_card()
 	print_debug(MemeoryManager.slots)
-	print_debug(MemeoryManager.hearts_array)
+	#print_debug(MemeoryManager.hearts_array)
 	MemeoryManager.cover_all_cards()
 	
 func update_slots():
