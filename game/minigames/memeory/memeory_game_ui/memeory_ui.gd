@@ -9,6 +9,7 @@ var index = 0
 var addlife = false
 
 signal exit
+signal close_popup
 
 func _ready():
 	$Deck.hide()
@@ -19,6 +20,7 @@ func _ready():
 	MemeoryManager.update.connect(update_slots)
 	MemeoryManager.description.connect(show_description)
 	MemeoryManager.change_life_ui.connect(change_life_system)
+	MemeoryManager.virus_ui.connect(show_popup)
 	#MemeoryManager.addlife.connect(addlife_ui)
 	update_slots()
 
@@ -38,6 +40,11 @@ func _draw_random_card():
 		index = index+1
 	
 func start_new_game(): 
+	$Virus.hide()
+	$Virus/Sprite2D.show()
+	$Virus/Sprite2D2.show()
+	$Virus/Sprite2D3.show()
+	$Virus/Sprite2D4.show()
 	$LifePointsBackground.hide()
 	$Hearts.show()
 	MemeoryManager.hearts_array.clear()
@@ -98,7 +105,9 @@ func show_description():
 func change_life_system():
 	$Hearts.hide()
 	$"LifePointsBackground".show()
-	
+
+func show_popup():
+	$Virus.show()
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
@@ -109,3 +118,16 @@ func _on_exit_pause_menu_button_pressed():
 func _on_touch_screen_button_pressed():
 	$Card_Description.hide()
 	MemeoryManager.pressed = true
+
+
+func _on_exit_popup_1_pressed():
+	$Virus/Sprite2D.hide()
+
+func _on_exit_popup_2_pressed():
+	$Virus/Sprite2D2.hide()
+
+func _on_exit_popup_3_pressed():
+	$Virus/Sprite2D3.hide()
+
+func _on_exit_popup_4_pressed():
+	$Virus/Sprite2D4.hide()

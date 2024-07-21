@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr28jfcj25jap"]
+[gd_scene load_steps=10 format=3 uid="uid://cr28jfcj25jap"]
 
 [ext_resource type="PackedScene" uid="uid://cqxsjuyty2eeh" path="res://game/minigames/memeory/memeory_cards/card.tscn" id="1_cfiem"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/regular/regular.gd" id="2_1fngq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.gd" id="6_7p1kv"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/seer/seer.gd" id="7_0fw7h"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/meme/meme.gd" id="8_b3u87"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/virus/virus.gd" id="9_f34mx"]
 
 [node name="Deck" type="Node2D"]
 
@@ -93,8 +94,22 @@ index = 11
 script = ExtResource("8_b3u87")
 card_name = "Meme1"
 card_type = "meme"
+index = 12
 
 [node name="Meme2" parent="." instance=ExtResource("1_cfiem")]
 script = ExtResource("8_b3u87")
 card_name = "Meme2"
 card_type = "meme"
+index = 13
+
+[node name="Virus1" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("9_f34mx")
+card_name = "Virus1"
+card_type = "virus"
+index = 14
+
+[node name="Virus2" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("9_f34mx")
+card_name = "Virus2"
+card_type = "virus"
+index = 15

@@ -109,6 +109,121 @@ layout_mode = 2
 [node name="MemeoryUiSlot7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
+[node name="Virus" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Virus"]
+position = Vector2(188.072, 135.046)
+scale = Vector2(2.77341, 2.14273)
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D"]
+offset_left = 16.5127
+offset_top = -30.0444
+offset_right = 30.5127
+offset_bottom = -15.0444
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup1" type="Button" parent="Virus/Sprite2D/ClosePopup"]
+layout_mode = 0
+offset_left = -0.0299301
+offset_top = -4.77974
+offset_right = 18.9701
+offset_bottom = 26.2203
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Virus"]
+position = Vector2(433.418, 234.828)
+scale = Vector2(2.72785, 2.4222)
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D2"]
+offset_left = 16.5127
+offset_top = -30.0444
+offset_right = 30.5127
+offset_bottom = -15.0444
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup2" type="Button" parent="Virus/Sprite2D2/ClosePopup"]
+layout_mode = 0
+offset_left = -0.0299301
+offset_top = -4.77974
+offset_right = 18.9701
+offset_bottom = 26.2203
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Virus"]
+position = Vector2(242.621, 262.443)
+scale = Vector2(3.30121, 2.41334)
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D3"]
+offset_left = 16.5127
+offset_top = -30.0444
+offset_right = 30.5127
+offset_bottom = -15.0444
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup3" type="Button" parent="Virus/Sprite2D3/ClosePopup"]
+layout_mode = 0
+offset_left = -0.0299301
+offset_top = -4.77974
+offset_right = 18.9701
+offset_bottom = 26.2203
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Virus"]
+position = Vector2(382.99, 123.187)
+scale = Vector2(2.2559, 2.02805)
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D4"]
+offset_left = 16.5127
+offset_top = -30.0444
+offset_right = 30.5127
+offset_bottom = -15.0444
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup4" type="Button" parent="Virus/Sprite2D4/ClosePopup"]
+layout_mode = 0
+offset_left = -0.0299301
+offset_top = -4.77974
+offset_right = 18.9701
+offset_bottom = 26.2203
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_left = 541.0
@@ -225,5 +340,9 @@ offset_right = 86.1213
 offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
 
+[connection signal="pressed" from="Virus/Sprite2D/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
+[connection signal="pressed" from="Virus/Sprite2D2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
+[connection signal="pressed" from="Virus/Sprite2D3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
+[connection signal="pressed" from="Virus/Sprite2D4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
