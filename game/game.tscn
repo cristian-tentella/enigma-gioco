@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://v3qc4mr67rsd"]
+[gd_scene load_steps=18 format=3 uid="uid://v3qc4mr67rsd"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_oaeyu"]
 [ext_resource type="PackedScene" uid="uid://cgi6252xdiyy1" path="res://game/house/house.tscn" id="2_535vp"]
@@ -20,13 +20,7 @@
 [sub_resource type="Resource" id="Resource_tneua"]
 script = ExtResource("5_oecrg")
 duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="Resource" id="Resource_4rndt"]
-script = ExtResource("5_oecrg")
-duration = 1.0
-transition = 0
+transition = 7
 ease = 2
 
 [node name="Game" type="Node2D"]
@@ -80,15 +74,10 @@ script = ExtResource("7_7nffp")
 follow_mode = 2
 follow_target = NodePath("../Player")
 tween_resource = SubResource("Resource_tneua")
+tween_on_load = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(111, 127)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("11_1jbf8")
-
-[node name="PhantomCamera2D" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_7nffp")
-follow_mode = 2
-tween_resource = SubResource("Resource_4rndt")
