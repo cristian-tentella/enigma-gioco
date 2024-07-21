@@ -9,7 +9,7 @@ func handle_interaction():
 	MemeoryManager.clicks = -1
 	#print_debug(MemeoryManager.clicks)
 	if(MemeoryManager.game_won == false):
-		while(preview.size() < 2):
+		while(preview.size() < 3):
 			var rng = RandomNumberGenerator.new()
 			rng.randomize()
 			var num = rng.randi_range(0, MemeoryManager.slots.size()-1)

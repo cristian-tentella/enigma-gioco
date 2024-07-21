@@ -17,6 +17,7 @@ var hearts_array: Array[Heart]
 const max_hearts = 5
 #var i = 0
 var game_won
+var hearts_lost: Array[Heart]
 var last_heart_lost
 
 func start_game():
@@ -88,9 +89,11 @@ func check():
 		await get_tree().create_timer(3).timeout
 		print_debug(shuffle_check)
 		print_debug(picked[1])
+		if(picked[1].card_type == "extralife"):
+			MemeoryManager.hearts_lost.reverse() 
 		if(shuffle_check != "shuffle"):
 			print_debug("attiva effetto carta 2")
-			picked[1].handle_interaction() 
+			picked[1].handle_interaction()
 		if(picked[1].card_type == "seer"):
 			await get_tree().create_timer(2).timeout
 		check_game_won()
@@ -116,8 +119,11 @@ func card_show_description():
 func remove_heart_from_array():
 	if(hearts_array.size() > 0):
 		#print_debug("rimuovo cuore")
-		last_heart_lost = hearts_array[hearts_array.size()-1]
+		#last_heart_lost = hearts_array[hearts_array.size()-1]
+		hearts_lost.append(hearts_array[hearts_array.size()-1])
 		hearts_array[hearts_array.size()-1] = null
+		print_debug(hearts_array)
+		print_debug(hearts_lost)
 		updatehearts.emit()
 	
 func clear_slots():

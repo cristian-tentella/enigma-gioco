@@ -40,6 +40,7 @@ func start_new_game():
 	#AudioManager.stop_current_sound_track()
 	#AudioManager.play_memeory_sound_track()
 	MemeoryManager.hearts_array.clear()
+	MemeoryManager.hearts_lost.clear()
 	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
