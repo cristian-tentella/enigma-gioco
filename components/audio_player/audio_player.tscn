@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://crbudpuk5xyqu"]
+[gd_scene load_steps=28 format=3 uid="uid://crbudpuk5xyqu"]
 
 [ext_resource type="Script" path="res://components/audio_player/audio_player.gd" id="1_oq8ox"]
 [ext_resource type="AudioStream" uid="uid://dhj8k5kej0wfq" path="res://audio/sound_effects/click.ogg" id="1_rlg06"]
@@ -25,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://chvfmlx6tc8je" path="res://audio/sound_effects/light_saber.ogg" id="22_t23br"]
 [ext_resource type="AudioStream" uid="uid://cvkudkt1kei1b" path="res://audio/sound_effects/reset.ogg" id="23_3haaa"]
 [ext_resource type="AudioStream" uid="uid://btdiy5sygchwg" path="res://audio/sound_tracks/memeory.ogg" id="23_bct1s"]
+[ext_resource type="AudioStream" uid="uid://bqdx47nsda2lh" path="res://audio/sound_effects/light_saber_power_on.ogg" id="24_mi876"]
+[ext_resource type="AudioStream" uid="uid://bjjpk7n32n212" path="res://audio/sound_effects/engine_revving.ogg" id="25_78w07"]
 
 [node name="AudioPlayer" type="Node"]
 script = ExtResource("1_oq8ox")
@@ -109,6 +111,12 @@ volume_db = -9.0
 
 [node name="Reset" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("23_3haaa")
+
+[node name="LightSaberPowerOn" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("24_mi876")
+
+[node name="EngineRevving" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("25_78w07")
 
 [node name="SoundTracks" type="Node" parent="."]
 
