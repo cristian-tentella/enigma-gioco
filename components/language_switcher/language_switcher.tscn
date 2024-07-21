@@ -54,5 +54,6 @@ texture_normal = ExtResource("5_7ovx5")
 texture_pressed = ExtResource("6_0cw3v")
 texture_hover = ExtResource("7_fxsro")
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="UnitedKingdomFlag" to="." method="_on_flag_pressed"]
 [connection signal="pressed" from="ItalianFlag" to="." method="_on_flag_pressed"]
