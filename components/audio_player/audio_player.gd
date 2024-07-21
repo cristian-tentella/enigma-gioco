@@ -95,6 +95,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			return $SoundEffects/KeyTurning
 		"staircase":
 			return $SoundEffects/Staircase
+		"light_saber":
+			return $SoundEffects/LightSaber
 		_:
 			push_error("Non esiste alcun effetto sonoro chiamato '{0}'".format([sound_effect_name]))
 			return null

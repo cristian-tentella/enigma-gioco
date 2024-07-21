@@ -68,10 +68,10 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	#Descrizione -> item_to_show.description
 	self.description_label.text = item_to_show.localized_item_name+"\n\n"+item_to_show.description
 	
-	self.inventory_slot_pressed.emit(slot_number, item_to_show)
+	self.inventory_slot_pressed.emit(item_to_show)
 
 
-signal inventory_slot_pressed(slot_number: int, item: PickableItem)
+signal inventory_slot_pressed(item: PickableItem)
 
 func _on_inventory_ui_slot_1_button_pressed():
 	_change_description_label_on_slot_button_pressed(1)

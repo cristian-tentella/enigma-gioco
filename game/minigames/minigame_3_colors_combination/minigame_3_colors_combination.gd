@@ -63,6 +63,8 @@ var current_color_index: int = 0
 
 func _ready():
 	self.combination_color_lock_minigame = UIManager.combination_color_key_minigame
+	print_debug(get_name()+" MINIGAME spawning!\n")
+
 
 func open_combination_color_lock_real():
 
@@ -90,13 +92,18 @@ func open_combination_color_lock_real():
 		await DialogueManager.has_finished_displaying
 		
 
+var is_rotating = false
 #Questo è solo per dare hint
 func rotate_computer_color():
+	if is_rotating:
+		return
+	is_rotating = true
 	AudioManager.play_keyboard_sound_effect()
 	await get_tree().create_timer(1).timeout
 	current_color_index = (current_color_index+1) % 5
 	computer_color_rect.color = Color(color2hex[current_color_index])
 	AudioManager.play_pew_sound_effect()
+	is_rotating = false
 
 
 #Gioco vinto, adios!
@@ -105,3 +112,7 @@ func _free_every_node_related_to_the_minigame():
 	UIManager.combination_color_key_minigame.queue_free()
 	UIManager.combination_color_key_minigame = null
 	self.queue_free()
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME exiting!\n")
+	pass

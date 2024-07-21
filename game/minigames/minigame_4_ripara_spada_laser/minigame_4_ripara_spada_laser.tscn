@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://beq1b34jf1bpq"]
+[gd_scene load_steps=7 format=3 uid="uid://beq1b34jf1bpq"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.gd" id="1_g1yqu"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_haxex"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_ekgtv"]
+[ext_resource type="Texture2D" uid="uid://dtodat5nokpmc" path="res://game/minigames/minigame_4_ripara_spada_laser/monnezza.png" id="4_c0pjp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6xq6"]
 radius = 17.1172
@@ -93,3 +94,7 @@ increments_current_minigame = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interazione_con_immondizia/StaticBody2D"]
 position = Vector2(108, 660)
 shape = SubResource("CircleShape2D_r6xq6")
+
+[node name="monnezza" type="Sprite2D" parent="."]
+position = Vector2(109, 659)
+texture = ExtResource("4_c0pjp")

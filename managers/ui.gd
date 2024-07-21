@@ -108,7 +108,6 @@ func init_ui_elements():
 	for ui_element in ui_elements:
 		ui_element.hide()
 		ui.add_child(ui_element)
-		
 	
 	
 	
@@ -237,3 +236,50 @@ func show_inventory_for_minigame4():
 	AudioManager.play_menu_sound_effect()
 	await inventory_menu.exit
 	_kil_locking_ui_element(inventory_menu)
+
+
+
+
+#====================================
+#SAVE METHODS TO RESPAWN MINIGAMES
+func respawn_minigame_UI_nodes():
+	load_all_minigame_UIs();
+	
+	var minigame_ui_elements: Array[Control] = [
+			combination_key_minigame,
+			memeory_menu,
+			combination_color_key_minigame
+		]
+		
+	add_all_minigame_ui_children(minigame_ui_elements) 
+	
+
+
+func add_all_minigame_ui_children(minigame_ui_elements: Array):
+	for minigame_ui_element in minigame_ui_elements:
+		minigame_ui_element.hide()
+		ui.add_child(minigame_ui_element)
+
+
+func load_all_minigame_UIs():
+	
+	if is_instance_valid(self.combination_key_minigame):
+		self.memeory_menu.queue_free()
+	if is_instance_valid(self.combination_color_key_minigame):
+		self.combination_color_key_minigame.queue_free()
+	if is_instance_valid(self.memeory_menu):
+		self.memeory_menu.queue_free()
+	
+	self.combination_key_minigame = load(
+		"res://game/minigames/minigame_1/combination_lock.tscn"
+	).instantiate()
+	
+	self.memeory_menu = load(
+		"res://game/minigames/memeory/memeory_game_ui/memeory_ui.tscn"
+	).instantiate()
+	
+	self.combination_color_key_minigame = load(
+		"res://game/minigames/minigame_3_colors_combination/combination_color_lock.tscn"
+	).instantiate()
+	
+

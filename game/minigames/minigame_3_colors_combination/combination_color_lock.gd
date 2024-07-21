@@ -22,7 +22,7 @@ func _insert_into_next_slot(key_number: String):
 	if current_slot == 5 or key_number in current_combination:
 		return
 	
-	AudioManager.play_click_sound_effect()
+	AudioManager.play_key_turning_sound_effect()
 	
 	match current_slot:
 		1:
@@ -100,3 +100,7 @@ func _on_key_7_pressed():
 func _on_exit_pause_menu_button_pressed():
 	_on_reset_minigame_button_pressed()
 	self.exit.emit()
+
+func _exit_tree():
+	print_debug(get_name()+" MINIGAME UI exiting!\n")
+	pass

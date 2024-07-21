@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://drdaodrpkx0no"]
+[gd_scene load_steps=6 format=3 uid="uid://drdaodrpkx0no"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_1/combination_lock.gd" id="1_eu50j"]
+[ext_resource type="Texture2D" uid="uid://c4orcwn4v37l8" path="res://game/minigames/minigame_1/door_zoom.png" id="2_2j54n"]
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_3pcwa"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="3_sy2tb"]
+[ext_resource type="FontFile" uid="uid://dmf2onuk3mmhs" path="res://theme/fonts/Shantell_Sans-Informal_SemiBold.otf" id="4_6bjb8"]
 
 [node name="CombinationLock" type="Control"]
 layout_mode = 3
@@ -12,50 +15,156 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eu50j")
 
-[node name="backgroud_placeholder" type="ColorRect" parent="."]
+[node name="background" type="TextureRect" parent="."]
 z_index = 100
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 361.0
-color = Color(0.303739, 0.106699, 0.0250893, 1)
+texture = ExtResource("2_2j54n")
 
 [node name="digits_container" type="HBoxContainer" parent="."]
 z_index = 105
 layout_mode = 0
-offset_left = 181.0
-offset_top = 140.0
-offset_right = 251.0
-offset_bottom = 207.0
+offset_left = 486.0
+offset_top = 112.0
+offset_right = 556.0
+offset_bottom = 179.0
+theme_override_constants/separation = 2
 alignment = 1
+metadata/_edit_group_ = true
 
 [node name="digit1" type="Label" parent="digits_container"]
 z_index = 105
 layout_mode = 2
+theme = ExtResource("3_sy2tb")
+theme_override_font_sizes/font_size = 12
 text = "0"
 
 [node name="digit2" type="Label" parent="digits_container"]
 z_index = 105
 layout_mode = 2
+theme = ExtResource("3_sy2tb")
+theme_override_font_sizes/font_size = 12
 text = "0"
 
 [node name="digit3" type="Label" parent="digits_container"]
 z_index = 105
 layout_mode = 2
+theme = ExtResource("3_sy2tb")
+theme_override_font_sizes/font_size = 12
 text = "0"
+
+[node name="key1" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 216.0
+offset_top = 144.0
+offset_right = 264.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "1"
+
+[node name="key2" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 248.0
+offset_top = 144.0
+offset_right = 296.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "2"
+
+[node name="key3" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 280.0
+offset_top = 144.0
+offset_right = 328.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "3"
+
+[node name="key4" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 312.0
+offset_top = 144.0
+offset_right = 360.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "4"
+
+[node name="key5" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 343.0
+offset_top = 144.0
+offset_right = 391.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "5"
+
+[node name="key6" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 376.0
+offset_top = 144.0
+offset_right = 424.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "6"
+
+[node name="key7" type="Button" parent="."]
+z_index = 105
+layout_mode = 1
+anchors_preset = -1
+offset_left = 408.0
+offset_top = 144.0
+offset_right = 456.0
+offset_bottom = 192.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("3_sy2tb")
+theme_override_fonts/font = ExtResource("4_6bjb8")
+theme_override_font_sizes/font_size = 22
+text = "7"
 
 [node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
 z_index = 105
-layout_mode = 0
-offset_left = 258.0
-offset_top = 161.0
-offset_right = 282.0
-offset_bottom = 185.0
+offset_left = 149.0
+offset_top = 177.0
+offset_right = 173.0
+offset_bottom = 201.0
 texture = ExtResource("2_3pcwa")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+metadata/_edit_group_ = true
 
 [node name="ResetMinigameButton" type="Button" parent="ResetMinigameButtonBackground"]
 layout_mode = 0
@@ -66,93 +175,12 @@ theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[node name="serratura_placeholder" type="ColorRect" parent="."]
-z_index = 105
-layout_mode = 0
-offset_left = 150.0
-offset_top = 168.0
-offset_right = 161.0
-offset_bottom = 197.0
-color = Color(0.596078, 1, 1, 1)
-
-[node name="serratura_placeholder2" type="ColorRect" parent="."]
-z_index = 105
-layout_mode = 0
-offset_left = 145.0
-offset_top = 163.0
-offset_right = 165.0
-offset_bottom = 171.0
-color = Color(0.596078, 1, 1, 1)
-
-[node name="key1" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 173.0
-offset_top = 263.0
-offset_right = 195.0
-offset_bottom = 339.0
-
-[node name="key2" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 210.0
-offset_top = 262.0
-offset_right = 232.0
-offset_bottom = 338.0
-
-[node name="key3" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 247.0
-offset_top = 263.0
-offset_right = 269.0
-offset_bottom = 339.0
-
-[node name="key4" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 283.0
-offset_top = 264.0
-offset_right = 305.0
-offset_bottom = 340.0
-
-[node name="key5" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 318.0
-offset_top = 266.0
-offset_right = 340.0
-offset_bottom = 342.0
-
-[node name="key6" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 358.0
-offset_top = 263.0
-offset_right = 380.0
-offset_bottom = 339.0
-
-[node name="key7" type="Button" parent="."]
-z_index = 105
-layout_mode = 1
-anchors_preset = -1
-offset_left = 395.0
-offset_top = 260.0
-offset_right = 417.0
-offset_bottom = 336.0
-
 [node name="CloseButtonBackground" type="NinePatchRect" parent="."]
 z_index = 110
 layout_mode = 0
-offset_left = 601.0
+offset_left = 602.0
 offset_top = 12.0
-offset_right = 625.0
+offset_right = 626.0
 offset_bottom = 36.0
 texture = ExtResource("2_3pcwa")
 region_rect = Rect2(0, 0, 32, 32)
@@ -170,7 +198,6 @@ theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
 [connection signal="pressed" from="key1" to="." method="_on_key_1_pressed"]
 [connection signal="pressed" from="key2" to="." method="_on_key_2_pressed"]
 [connection signal="pressed" from="key3" to="." method="_on_key_3_pressed"]
@@ -178,4 +205,5 @@ flat = true
 [connection signal="pressed" from="key5" to="." method="_on_key_5_pressed"]
 [connection signal="pressed" from="key6" to="." method="_on_key_6_pressed"]
 [connection signal="pressed" from="key7" to="." method="_on_key_7_pressed"]
+[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]

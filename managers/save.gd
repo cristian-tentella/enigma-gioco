@@ -22,7 +22,7 @@ DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico..
 """
 
 const debug_creating_save = false #Se vuoi debuggare creazione salvataggi, questo attiva una serie di print
-const debug_loading_save = false #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
+const debug_loading_save = true #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
 const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
 
@@ -132,7 +132,6 @@ func is_online() -> bool:
 		return true
 	return false
 
-
 #Quando lo chiama, viene chiamato anche il loading screen, quindi modificarne le values funziona anche sulla UI
 #Il fatto che viene spawnato è gestito dal fatto che quando clicchi su "Play Game" si carica il salvataggio
 func load_game_save_from_json():
@@ -165,7 +164,14 @@ func load_game_save_from_json():
 		
 		
 		if debug_loading_save:
-			print_debug("\nSave content file is:\n", content)
+			print("\nSave content file is :")
+			for key in content:
+				print("\n\t", key, " :")
+				if content[key] is Array:
+					for entry in content[key]:
+						print("\t\t", entry, ",")
+				else:
+					print("\t\t", content[key])
 		
 		#Barra di caricamento a 0
 		if loading_bar_enabled:
@@ -196,7 +202,12 @@ func load_game_save_from_json():
 			UIManager.loading_screen.set_value(45)
 		#Elimina le interazioni che già sono state fatte, e ottieni la lista dei nodi pickableItems nel mentre
 		var pickableItemInteraction_nodes = self.delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return_item_nodes(all_nodes, all_exited_interactions)
-		var inventory_owned_items_names = content.get("inventory_owned_items_names")
+		if debug_loading_save:
+			var toPrint = ""
+			for item_node in pickableItemInteraction_nodes:
+				toPrint += "\t"+item_node.item_in_interaction.item_name+",\n"
+			print_debug("\npickableItemInteraction_nodes:\n", toPrint)
+		inventory_owned_items_names = content.get("inventory_owned_items_names")
 		#Carica nell'inventario questi nodi
 		self.insert_into_inventory_from_item_names(pickableItemInteraction_nodes, inventory_owned_items_names)
 		if loading_bar_enabled:
@@ -306,12 +317,7 @@ func delete_interaction_nodes_from_node_list_with_name_into_name_list_and_return
 				node.queue_free()
 				node = null
 	
-	if debug_loading_save:
-		print_debug("\nall_minigame_nodes:\n", all_minigame_nodes)
 	self.delete_minigames_that_have_been_completed(all_minigame_nodes)
-	
-	if debug_loading_save:
-		print_debug("\npickableItemInteraction_nodes:\n", pickableItemInteraction_nodes)
 	return pickableItemInteraction_nodes
 
 #Funzione che dato un elenco di nodi PickableItemInteraction, esegue l'inserimento nell'inventario di quelli il cui nome
@@ -326,6 +332,7 @@ func insert_into_inventory_from_item_names(item_nodes: Array, items_names: Array
    
 func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 	#Struttura dizionario: { "minigame_1": { Minigame1KeyCombination:<Node2D#88063609573>: "minigame_1/minigame_1.gd", CombinationLock:<Control#94287957038>: "minigame_1/combination_lock.gd" }
+	#Non è più cosi, è una lista
 	var curr_minigame: int = StateManager.current_minigame
 	var minigame_keys: Array = minigame_to_current_minigame_requirement.keys()
 	var iteraction_index: int = 0
@@ -346,6 +353,7 @@ func delete_minigames_that_have_been_completed(all_minigame_dict: Dictionary):
 			if destroy_requirement <= curr_minigame: #Vanno rotti tutti quei nodi
 				for minigame_node in all_minigame_dict[minigame_key_from_input]: #Iterazione su lista input per rompere i nodi
 					self._increment_loading_screen_by_value_to_a_cap_of_80_percent(loading_screen_step)
+					print("FREEING A MINIGAME NODE! -> ", minigame_node.get_name())
 					minigame_node.queue_free()
 
 #Questo qua purtroppo si vede solo se il caricamento è lento, credo...
@@ -363,7 +371,8 @@ func _increment_loading_screen_by_value_to_a_cap_of_80_percent(val: int):
 
 
 func reset_save():
-	StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	#StateManager.game.remove_child(StateManager.house) #Cancello la casa del save precedente, che contiene tutte le interazioni
+	StateManager.house.queue_free()
 	var unchanged_house = load("res://game/house/house.tscn").instantiate()
 	StateManager.game.add_child(unchanged_house) #Metti la nuova house
 	StateManager.house = unchanged_house #Refresha quello che StateManager vede
