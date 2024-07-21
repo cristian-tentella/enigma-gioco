@@ -11,6 +11,7 @@ extends Node
 
 
 const dialogues = preload("res://localization/dialogue/dialogues.gd").dialogues
+const DIALOGUE_WITH_SOUND_EFFECT_PREFIX = "sound_effect_"
 
 signal has_started_displaying
 signal has_finished_displaying
@@ -47,10 +48,22 @@ func _get_dialogue_lines_ids(dialogue_id: String) -> Array:
 Metodo che prende gli id di singole righe di dialogo e le converte nelle versioni tradotte nella lingua impostata dal giocatore
 """
 func _dialogue_lines_ids_to_dialogue_lines(dialogue_lines_ids: Array) -> Array:
-	var dialogue_lines = dialogue_lines_ids.map(
-		func(dialogue_line_id: String): return tr(dialogue_line_id)
-	)
+	var dialogue_lines = []
+
+	for dialogue_line_id in dialogue_lines_ids:
+		var id: String = dialogue_line_id
+		var line: String
+		
+		if id.begins_with(DIALOGUE_WITH_SOUND_EFFECT_PREFIX):
+			var sound_effect_name: String = id.erase(0, DIALOGUE_WITH_SOUND_EFFECT_PREFIX.length())
+			line = "sound_effect:" + sound_effect_name
+		else:
+			line = tr(id)
+
+		dialogue_lines.append(line)
+
 	return dialogue_lines
+
 
 #Utilizzo improprio ma funzionale del sistema dei dialoghi anche per le traduzioni degli item
 #Non vale la pena implementarlo in modo diverso
