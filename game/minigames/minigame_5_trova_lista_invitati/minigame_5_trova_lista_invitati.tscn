@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlpsx57sf4eop"]
+[gd_scene load_steps=6 format=3 uid="uid://dlpsx57sf4eop"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_5_trova_lista_invitati/minigame_5_trova_lista_invitati.gd" id="1_24o8b"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_s0dhn"]
+[ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_d2jru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ioj8q"]
 radius = 26.0
@@ -27,5 +28,11 @@ dialogue_id = "ending_dialogue_with_daniel_door"
 minigame_requirement = 18
 increments_current_minigame = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="2_riparla_con_daniel"]
+[node name="2_riparla_con_daniel_poi_chiudi_gioco" parent="." instance=ExtResource("3_d2jru")]
+script_path = ""
+method_name = "talk_with_daniel_then_fade_into_oblivion"
+is_method_in_direct_parent = true
+minigame_requirement = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2_riparla_con_daniel_poi_chiudi_gioco"]
 shape = SubResource("CircleShape2D_6svhh")

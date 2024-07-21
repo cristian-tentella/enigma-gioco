@@ -31,4 +31,21 @@ NODI NECESSARI PER FUNZIONAMENTO:
 	
 """
 
+@onready var riparla_con_daniel_dialogue: DialogueInteraction = $"2_riparla_con_daniel"
 
+func talk_with_daniel_then_fade_into_oblivion():
+	#Fai partire ultimo dialogo in cui alla fine dice ce la faranno i nostri eroi
+	riparla_con_daniel_dialogue.handle_interaction()
+	await DialogueManager.has_finished_displaying
+	
+	var whole_game_fade_out = create_tween()
+	var player_fade_out = create_tween()
+	player_fade_out.tween_property(StateManager.player, "modulate", Color.hex(0x000000), 4)
+	whole_game_fade_out.tween_property(StateManager.house, "modulate", Color.hex(0x000000), 4)
+	
+	await whole_game_fade_out.finished
+	await player_fade_out.finished
+	
+	await get_tree().create_timer(2).timeout
+	#Esci dal gioco forzatamente
+	GameManager.exit()
