@@ -16,6 +16,6 @@ close_animation = "closed"
 
 [node name="lock_sprite_image" type="Sprite2D" parent="."]
 position = Vector2(0, 5.68434e-14)
-scale = Vector2(1.6, 1.7)
+scale = Vector2(0.8, 0.8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
