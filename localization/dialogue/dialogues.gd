@@ -51,6 +51,27 @@ const dialogues: Dictionary = {
 	"minigame_4_lost": ["minigame_4_lost"],
 	"wrong_item_selected_minigame4": ["wrong_item_selected_minigame4"],
 	"brucia_immondizia_inizio": ["brucia_immondizia_inizio"],
-	"brucia_immondizia_fine": ["brucia_immondizia_fine"]
+	"brucia_immondizia_fine": ["brucia_immondizia_fine"], 
+	#=======================================
+	
+	#FIRST DIALOGUE WITH DANIEL DOWNSTAIRS =======================================
+	"door_dialogue_with_daniel": ["door_dialogue_with_daniel_1", "door_dialogue_with_daniel_2", "door_dialogue_with_daniel_3", "door_dialogue_with_daniel_4", "door_dialogue_with_daniel_5", "door_dialogue_with_daniel_6", "door_dialogue_with_daniel_7", "door_dialogue_with_daniel_8", "door_dialogue_with_daniel_9", "door_dialogue_with_daniel_10", "door_dialogue_with_daniel_11", "door_dialogue_with_daniel_12", "door_dialogue_with_daniel_13", "door_dialogue_with_daniel_14", "door_dialogue_with_daniel_15", "door_dialogue_with_daniel_16", "door_dialogue_with_daniel_17", "door_dialogue_with_daniel_18", "door_dialogue_with_daniel_19", "door_dialogue_with_daniel_20", "door_dialogue_with_daniel_21", "door_dialogue_with_daniel_22", "door_dialogue_with_daniel_23", "door_dialogue_with_daniel_24", "door_dialogue_with_daniel_25", "door_dialogue_with_daniel_26"], 
+	#=======================================
+	
+	#PICKUP GUEST LIST FROM KITCHEN TABLE =======================================
+	"pickup_guest_list": ["pickup_guest_list_1", "pickup_guest_list_2", "pickup_guest_list_3", "pickup_guest_list_4", "pickup_guest_list_5", "pickup_guest_list_6", "pickup_guest_list_7", "pickup_guest_list_8"],
+	#=======================================
+	
+	#ENDING DIALOGUE WITH DANIEL DOWNSTAIRS =======================================
+	"ending_dialogue_with_daniel_door":["ending_dialogue_with_daniel_door_1", "ending_dialogue_with_daniel_door_2", "ending_dialogue_with_daniel_door_3", "ending_dialogue_with_daniel_door_4", "ending_dialogue_with_daniel_door_5", "ending_dialogue_with_daniel_door_6", "ending_dialogue_with_daniel_door_7", "ending_dialogue_with_daniel_door_8"], 
+	#=======================================
+	
+	#INTERACTIONS WITH ITEMS AROUND THE HOUSE =======================================
+	"bed_interaction": ["bed_interaction_1", "bed_interaction_2"],
+	"fridge_interaction": ["fridge_interaction_1"],
+	"christmas_tree_interaction": ["christmas_tree_interaction_1"],
+	"toilet_interaction": ["toilet_interaction_1"],
+	"plant_in_study_interaction": ["plant_in_study_interaction_1"]
+	
 	#=======================================
 }
