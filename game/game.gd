@@ -31,8 +31,8 @@ func _ready():
 	
 	#StateManager.inventory_UI = inventory_UI #Settati nel SaveManager
 	#StateManager.inventory = inventory_UI.inv #Settati nel SaveManager
-
+	
 	StateManager.audio_player = audio_player
-
+	
 	#Cuore del gioco, il GameManager.start() è da dove tutto ha inizio (molto filosofica, come cosa)
 	GameManager.start()

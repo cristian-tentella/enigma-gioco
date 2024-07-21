@@ -21,6 +21,7 @@ var game_won
 var hearts_lost: Array[Heart]
 var last_heart_lost
 var memeory_ui
+var card_counter = 0
 
 func start_game():
 	start.emit()
@@ -146,3 +147,9 @@ func virus_card_effect():
 	
 func watermelon_card_effect():
 	self.memeory_ui.show_watermelons()
+	
+func count_cards_remained():
+	for card in slots:
+		if(card != null):
+			card_counter += 1
+	return card_counter
