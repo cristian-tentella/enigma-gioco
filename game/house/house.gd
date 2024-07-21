@@ -13,3 +13,4 @@ func _ready():
 	
 	"""SETUP PER QUARTO MINIGIOCO, ATTENZIONE A COME SONO MESSI I NODI NELLA SCENA!"""
 	MinigameManager.spada_laser = $"Rooms/Cameretta + Terrazzo/spada_laser"
+	
