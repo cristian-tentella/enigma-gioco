@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://game/minigames/minigame_1/combination_lock.gd" id="1_eu50j"]
 [ext_resource type="Texture2D" uid="uid://c4orcwn4v37l8" path="res://game/minigames/minigame_1/door_zoom.png" id="2_2j54n"]
-[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="2_3pcwa"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="3_sy2tb"]
 [ext_resource type="FontFile" uid="uid://dmf2onuk3mmhs" path="res://theme/fonts/Shantell_Sans-Informal_SemiBold.otf" id="4_6bjb8"]
 [ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="6_2os8o"]
+[ext_resource type="PackedScene" uid="uid://b5p36t6tf2j6m" path="res://components/reset_ui_button/reset_ui_button.tscn" id="6_dd11s"]
 
 [node name="CombinationLock" type="Control"]
 layout_mode = 3
@@ -153,30 +153,6 @@ theme_override_fonts/font = ExtResource("4_6bjb8")
 theme_override_font_sizes/font_size = 22
 text = "7"
 
-[node name="ResetMinigameButtonBackground" type="NinePatchRect" parent="."]
-z_index = 105
-layout_mode = 0
-offset_left = 149.0
-offset_top = 177.0
-offset_right = 173.0
-offset_bottom = 201.0
-texture = ExtResource("2_3pcwa")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-metadata/_edit_group_ = true
-
-[node name="ResetMinigameButton" type="Button" parent="ResetMinigameButtonBackground"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
 [node name="CloseUiButton" parent="." instance=ExtResource("6_2os8o")]
 z_index = 200
 layout_mode = 0
@@ -185,6 +161,14 @@ offset_top = 18.0
 offset_right = 622.0
 offset_bottom = 52.0
 
+[node name="ResetUiButton" parent="." instance=ExtResource("6_dd11s")]
+z_index = 100
+layout_mode = 0
+offset_left = 588.0
+offset_top = 60.0
+offset_right = 622.0
+offset_bottom = 94.0
+
 [connection signal="pressed" from="key1" to="." method="_on_key_1_pressed"]
 [connection signal="pressed" from="key2" to="." method="_on_key_2_pressed"]
 [connection signal="pressed" from="key3" to="." method="_on_key_3_pressed"]
@@ -192,5 +176,5 @@ offset_bottom = 52.0
 [connection signal="pressed" from="key5" to="." method="_on_key_5_pressed"]
 [connection signal="pressed" from="key6" to="." method="_on_key_6_pressed"]
 [connection signal="pressed" from="key7" to="." method="_on_key_7_pressed"]
-[connection signal="pressed" from="ResetMinigameButtonBackground/ResetMinigameButton" to="." method="_on_reset_minigame_button_pressed"]
 [connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
+[connection signal="pressed" from="ResetUiButton" to="." method="_on_reset_minigame_button_pressed"]
