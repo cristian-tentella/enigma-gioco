@@ -15,7 +15,7 @@ var picked: Array[Card]
 var clicks = 0
 var hearts_array: Array[Heart]
 const max_hearts = 5
-var i = 0
+#var i = 0
 var game_won
 var last_heart_lost
 
@@ -73,16 +73,14 @@ func check():
 		AudioManager.play_failure_sound_effect()
 		remove_heart_from_array()
 		for i in range(0,2):
-			#print_debug(i)
 			if(picked[i].card_type == "shuffle"):
 				print_debug("rimescola")
 				card_show_description()
-				#update.emit()
 				picked[i].handle_interaction()
 		cover_picked_cards()
 	else:
-		var shuffle_check = picked[0].card_type
 		game_won = true
+		var shuffle_check = picked[0].card_type
 		await get_tree().create_timer(0.7).timeout
 		AudioManager.play_success_sound_effect()
 		remove_picks()
@@ -93,11 +91,9 @@ func check():
 		if(shuffle_check != "shuffle"):
 			print_debug("attiva effetto carta 2")
 			picked[1].handle_interaction() 
-		for card in slots:
-			if (card != null):
-				#print_debug("not yet")
-				game_won = false
-				break
+		if(picked[1].card_type == "seer"):
+			await get_tree().create_timer(2).timeout
+		check_game_won()
 		if (game_won):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
@@ -119,7 +115,7 @@ func card_show_description():
 
 func remove_heart_from_array():
 	if(hearts_array.size() > 0):
-		print_debug("rimuovo cuore")
+		#print_debug("rimuovo cuore")
 		last_heart_lost = hearts_array[hearts_array.size()-1]
 		hearts_array[hearts_array.size()-1] = null
 		updatehearts.emit()
@@ -128,4 +124,9 @@ func clear_slots():
 	slots.clear()
 	picked.clear()
 	update.emit()
-
+	
+func check_game_won():
+	for card in slots:
+			if (card != null):
+				game_won = false
+				break
