@@ -80,6 +80,7 @@ func launch_minigame():
 		self.game_starter.queue_free()
 		self.game_won_dialogue.handle_interaction()
 		await DialogueManager.has_finished_displaying
+		$LightSaber.hide()
 		StateManager.inventory.insert(MinigameManager.spada_laser)
 		StateManager.inventory.remove("polipetto")
 		StateManager.inventory.remove("plutonio_radioattivo")
