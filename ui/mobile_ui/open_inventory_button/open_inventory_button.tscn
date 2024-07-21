@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpja2shqv8hh6"]
+[gd_scene load_steps=5 format=3 uid="uid://cpja2shqv8hh6"]
 
 [ext_resource type="Script" path="res://ui/mobile_ui/open_inventory_button/open_inventory_button.gd" id="1_qrv2w"]
+[ext_resource type="Texture2D" uid="uid://dyg28h8dujbh4" path="res://ui/mobile_ui/open_inventory_button/open_inventory_button.png" id="1_v4spi"]
+[ext_resource type="Texture2D" uid="uid://bjf7shb33fyc6" path="res://ui/mobile_ui/open_inventory_button/open_inventory_button_pressed.png" id="2_g0wot"]
+[ext_resource type="Texture2D" uid="uid://clmm6ohtb00vi" path="res://ui/mobile_ui/open_inventory_button/open_inventory_button_hover.png" id="3_cy0pk"]
 
 [node name="OpenInventoryButton" type="TextureButton"]
+texture_normal = ExtResource("1_v4spi")
+texture_pressed = ExtResource("2_g0wot")
+texture_hover = ExtResource("3_cy0pk")
 script = ExtResource("1_qrv2w")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
