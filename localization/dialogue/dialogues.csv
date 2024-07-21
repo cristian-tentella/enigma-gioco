@@ -18,7 +18,7 @@ lista_degli_invitati;Guest List;Lista degli Invitati
 
 set_of_keys_description;A very amusing set of keys.\nThey range from 1 to 8, and each have a different color assigned.;Un bellissimo mazzo di chiavi.\nVanno dal numero 1 al numero 8, ed ognuna ha un colore diverso.
 plutonio_radioattivo_description;A very radioactive chunk of plutonium.;Un pezzo di plutonio estremamente radioattivo.
-polipetto_description;A strange octopus that was given to you by the almight Watermelon.;Uno strano polipetto che ti è stato donato dall'unica e sola Anguria.
+polipetto_description;A strange octopus that was given to you by the Almighty Watermelon.;Uno strano polipetto che ti è stato donato dall'Unica e Sola Anguria.
 spada_laser_description;An extremely powerful and destructive laser sword.;Una spada laser estremamente potente e distruttiva.
 lista_degli_invitati_description;Gesualdo: piselletto;Gesualdo: Pisellone
 
@@ -138,8 +138,8 @@ memeory_extralife_description;Extra life for you!;Vita Extra per te!
 memeory_malus_description;-1 Heart '_'; -1 Vita '_'
 
 minigame_3_colors_mobile_bloccato;Domink:This one is locked too, what's wrong with my house, what is this level of security?!;Dominik:Anche questo è bloccato, ma cos'è questo livello di sicurezza in casa mia?!
-minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around, there has to be a hint around!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi!
-minigame_3_won_1;Dominik:Nice! I wonder who would use a whole pc to remember a key combination, but I guess it works, so it's fine.;Dominik:Ottimo! Mi chiedo perché usare un intero pc per ricordarsi una combinazione di chiavi, ma immagino abbia funzionato, quindi va bene.
+minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around the house, there has to be a hint somewhere around here!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi da qualche parte!
+minigame_3_won_1;Dominik:Nice! I wonder who would use their whole pc to remember a key combination, but I guess it works, so it's fine.;Dominik:Ottimo! Mi chiedo perché usare il mio intero pc per ricordarsi una combinazione di chiavi, ma immagino abbia funzionato, quindi va bene.
 minigame_3_won_2;Dominik:Well, let's see what's in here... What is this? It looks suspicious...;Dominik:Ok, vediamo cosa c'è qui dentro... Ma che roba è? Sembra sospetta...
 minigame_3_after_plutonio;Dominik:Woah, that's... PLUTONIUM?!! That's radioactive as heck too, I sure hope i don't grow extra arms or something... Well, who cares, let's take it!;Dominik:Woah, ma è... PLUTONIO?? Ed è anche dannatamente radioattivo, spero proprio che non mi crescano altre braccia o roba del genere... Vabbè, che importa, prendiamolo!
 
@@ -148,22 +148,22 @@ click_spada_laser_dialogo_minigame4_2;Octypus:Hehe, it sure can!;Polipetto:Hehe,
 click_spada_laser_dialogo_minigame4_3;...;...
 click_spada_laser_dialogo_minigame4_4;Dominik:What was that...? Did it come out of...;Dominik:Ma che cosa...? La voce sembrava provenire da...
 click_spada_laser_dialogo_minigame4_5;Octypus:Yes that was me you mere human!;Polipetto:Ero proprio io, sciocco umano!
-click_spada_laser_dialogo_minigame4_6;Octypus:I am a gift from the one and only almighty Watermelon, and I will be your guide to fix this almighty laser sword!;Polipetto:Sono un regalo dell'unica e sola Anguria, e sarò la tua guida per riparare quest'unica e sola spada laser!
-click_spada_laser_dialogo_minigame4_7;Dominik:Well, that's... Unexpected? But I guess I could use some help...;Dominik:Ah, è un po'... Inaspettato? Ma credo che non mi dispiaccia ricevere una mano...
+click_spada_laser_dialogo_minigame4_6;Octypus:I am a gift from the Almighty Watermelon, and I will be your guide to fix this Almighty laser sword!;Polipetto:Sono un regalo dell'Unica e Sola Anguria, e sarò la tua guida per riparare quest'Unica e Sola spada laser!
+click_spada_laser_dialogo_minigame4_7;Dominik:Well, that's... unexpected? But I guess I could use some help...;Dominik:Ah, è un po'... inaspettato? Ma credo che non mi dispiaccia ricevere una mano...
 click_spada_laser_dialogo_minigame4_8;Octypus:This very sword is extremely powerful, and as such, it needs an extremely powerful power source!;Polipetto:Questa spada è estremamente potente, e in quanto tale, ha bisogno di una fonte di energia estremamente potente!
-click_spada_laser_dialogo_minigame4_9;Octypus:Do you happen to have anything that just fits this description? See, there is a slot on the base of it, try to fit something there.;Polipetto:Ti ricorda qualcosa che possiedi? Guarda, sulla base della spada c'è un vano, prova ad inserirci qualcosa.
+click_spada_laser_dialogo_minigame4_9;Octypus:Do you happen to have anything that fits this description? See, there is a slot on its base, try to fit something there...;Polipetto:Ti ricorda qualcosa che possiedi? Guarda, sulla base della spada c'è un vano, prova ad inserirci qualcosa...
 click_spada_laser_dialogo_minigame4_10;Dominik:Alright, let's give it a shot then.;Dominik:Ok, proviamo.
 
 click_spada_laser_dialogo_minigame4_after;Octypus:Try to fit something inside of the slot on the base of the sword, see if it turns on.;Polipetto:Prova ad inserire qualcosa nel vano alla base della spada, vedi se riesci ad accenderla.
 
 dialogo_monnezza_1;Dominik:I am starting to think this is not my house. Man, what's with all this trash?!;Dominik:Inizio a pensare che questa non sia casa mia. Ma che ci fa tutta questa immondizia qui?!
-dialogo_monnezza_2;Dominik:No way I'm stepping over it, and I'm not going anywhere near that and move it by hand...;Dominik:Non ci penso proprio a passarci sopra, e tantomeno mi ci avvicinerò per spostarla a mani nude...
-dialogo_monnezza_3;Dominik:I wish I had something to straight up incinerate it all, for real...;Dominik:Vorrei avere qualcosa per incenerirlo direttamente, davvero...
+dialogo_monnezza_2;Dominik:I can't step over it, and there's no way I'm going anywhere near it to try and move it by hand...;Dominik:Non ci penso proprio a passarci sopra, e tantomeno mi ci avvicinerò per spostarla a mani nude...
+dialogo_monnezza_3;Dominik:I wish I had something to straight up burn it all, for real...;Dominik:Vorrei avere qualcosa per incenerirlo direttamente, davvero...
 minigame_4_won_1;Dominik:Wow, so that's how you use radioactive plutonium? Well, as long as it works!;Dominik:Wow, quindi è cosi che si usa il plutonio radioattivo? Bhe, finché funziona!
-minigame_4_won_2;Octypus:Nice, human! Now I'll leave, I fulfilled my duty, goodbye!;Polipetto:Bene, umano! Ora me ne vado, ho fatto il mio dovere, addio!
+minigame_4_won_2;Octypus:Nice work, human! Now I shall leave, I have fulfilled my duty, goodbye!;Polipetto:Ben fatto, umano! Ora devo andare, ho compiuto il mio dovere, addio!
 minigame_4_won_3;Dominik:Bye, and thanks!;Dominik:Addio, e grazie!
 minigame_4_won_4;Dominik:After all, he was a really cool octopus.;Dominik:Alla fine, era proprio un bravo polipetto.
-minigame_4_won_5;Dominik:Now, now... This looks like it could really melt something, I need to be careful with it...;Dominik:Tornando a noi... Sinceramente, questa cosa potrebbe veramente arrostire qualcuno, devo farci attenzione...
+minigame_4_won_5;Dominik:Now, now... this looks like it could really melt something, I need to be careful with it...;Dominik:Tornando a noi... sinceramente, questa cosa potrebbe veramente arrostire qualcuno, devo farci attenzione...
 minigame_4_lost;Octypus:Need some time to think huh? You humans are slow!;Polipetto:Hai bisogno di tempo per pensare eh? Voi umani siete lenti!
 NO_ITEM_SELECTED_DESC_STRING_MINIGAME4;Select an item to try to power on the laser sword;Seleziona un oggetto per provare ad accendere la spada laser
 wrong_item_selected_minigame4;It does not seem to be working...;Non sembra funzionare...
