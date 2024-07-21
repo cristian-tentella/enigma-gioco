@@ -29,7 +29,7 @@ func update(slot: Card):
 
 func _on_button_pressed():
 	if(MemeoryManager.clicks < 2):
-		print_debug("premuto")
+		#print_debug("premuto")
 		AudioManager.play_click_sound_effect()
 		MemeoryManager.clicks += 1
 		button.hide()
