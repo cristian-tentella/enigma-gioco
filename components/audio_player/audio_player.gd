@@ -97,8 +97,8 @@ func _convert_sound_effect_name_to_audio_stream_player(sound_effect_name: String
 			return $SoundEffects/LightSaber
 		"reset":
 			return $SoundEffects/Reset
-		"light_saber_power_on":
-			return $SoundEffects/LightSaberPowerOn
+		"laser_sword_power_on":
+			return $SoundEffects/LaserSwordPowerOn
 		"engine_revving":
 			return $SoundEffects/EngineRevving
 		_:

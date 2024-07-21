@@ -77,8 +77,8 @@ func play_light_saber_sound_effect():
 func play_engine_revving_sound_effect():
 	self.play_sound_effect.emit("engine_revving")
 
-func play_light_saber_power_on_sound_effect():
-	self.play_sound_effect.emit("light_saber_power_on")
+func play_laser_sword_power_on_sound_effect():
+	self.play_sound_effect.emit("laser_sword_power_on")
 
 func play_reset_sound_effect():
 	self.play_sound_effect.emit("reset")

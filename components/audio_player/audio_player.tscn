@@ -112,7 +112,7 @@ volume_db = -9.0
 [node name="Reset" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("23_3haaa")
 
-[node name="LightSaberPowerOn" type="AudioStreamPlayer" parent="SoundEffects"]
+[node name="LaserSwordPowerOn" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource("24_mi876")
 
 [node name="EngineRevving" type="AudioStreamPlayer" parent="SoundEffects"]
