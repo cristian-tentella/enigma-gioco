@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=34 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bn1jjcvsfrk1" path="res://game/house/assets/objects.png" id="8_51wt1"]
 [ext_resource type="Texture2D" uid="uid://bsdcenogc5s6f" path="res://game/house/assets/walls.png" id="8_goqik"]
 [ext_resource type="PackedScene" uid="uid://w4jvh1rshccc" path="res://game/house/rooms/generic_room/generic_room.tscn" id="10_330gl"]
+[ext_resource type="PackedScene" uid="uid://dtjoht3iwtjl1" path="res://game/scripted_scenes/1_dominik_wakes_up_and_goes_to_balcony_until_daniel/1_dominik_wakes_up_and_goes_to_balcony_until_daniel.tscn" id="10_picgp"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://dryl7d3tx6ov3" path="res://game/house/rooms/salotto + cucina/salotto + cucina.tscn" id="12_yej84"]
 [ext_resource type="PackedScene" uid="uid://wbu7xnwvf2u2" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.tscn" id="14_5ijjr"]
@@ -4408,6 +4409,9 @@ dialogue_id = "pickup_set_of_keys"
 position = Vector2(-1659.12, -504.605)
 item_name = "spada_laser"
 dialogue_id = ""
+
+[node name="1DominikWakesUpAndGoesToBalconyUntilDaniel" parent="Rooms/Cameretta + Terrazzo" instance=ExtResource("10_picgp")]
+position = Vector2(113.021, 86.9731)
 
 [node name="Studio" parent="Rooms" groups=["Rooms"] instance=ExtResource("10_330gl")]
 

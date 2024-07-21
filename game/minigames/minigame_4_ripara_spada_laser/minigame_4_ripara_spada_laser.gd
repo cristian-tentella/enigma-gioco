@@ -108,8 +108,8 @@ func _on_inventory_slot_pressed(item: PickableItem):
 #Gioco vinto, adios!
 func _free_every_node_related_to_the_minigame():
 	self.queue_free()
-	
-	
+
+
 @onready var monnezza: Sprite2D = $monnezza
 @onready var fire_particles: CPUParticles2D = $FireParticles
 

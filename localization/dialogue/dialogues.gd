@@ -8,6 +8,13 @@ const dialogues: Dictionary = {
 	"pickup_set_of_keys": ["pickup_set_of_keys_1", "pickup_set_of_keys_2"],
 	#"add_polipetto_to_inventory":["add_polipetto_1", "add_polipetto_2"],
 	
+	#FIRST SCRIPTED MOVEMENT =======================================
+	"first_dialogue_on_wake_up" : ["placeholder"],
+	"second_dialogue_on_wake_up" : ["placeholder"],
+	"third_dialogue_on_wake_up" : ["placeholder"],
+	"fourth_dialogue_on_wake_up" : ["placeholder"],
+	#=======================================
+	
 	#FIRST MINIGAME =======================================
 	"first_open_minigame_combination": ["first_open_minigame_combination_1", "first_open_minigame_combination_2"],
 	"first_minigame_combination_door_fail": ["first_minigame_combination_door_fail_1", "first_minigame_combination_door_fail_2"],

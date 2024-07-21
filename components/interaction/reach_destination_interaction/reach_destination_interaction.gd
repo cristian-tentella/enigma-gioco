@@ -8,16 +8,17 @@ extends Interaction
 
 func _ready():
 	#Metti la collision shape come figlia della vera interazione
-	self.move_collision_shape_from_self_to_onCollAnyInteraction()
+	if collision_shape != null:
+		self.move_collision_shape_from_self_to_onCollAnyInteraction()
 	
 	real_interaction.is_method_in_direct_parent = true
 	real_interaction.method_name = "handle_interaction"
 
 func move_collision_shape_from_self_to_onCollAnyInteraction():
+	#Se vuoi che gli va addosso e parte la cosa scriptata,
 	#ASSEGNA UNA COLLISION SHAPE COME FIGLIA DEL NODO ReachDestinationInteraction DELLA TUA SCENA!
 	#Non cambiarle nome, chiamala CollisionShape2D .
 	#NON QUI, NELLA TUA SCENA!
-	assert(collision_shape != null) #Leggi qui sopra
 	
 	self.remove_child(collision_shape)
 	self.real_interaction.add_child(collision_shape)
