@@ -135,12 +135,12 @@ visible = false
 
 [node name="Hearts" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 329.0
+offset_left = 306.0
 offset_top = 35.0
-offset_right = 448.0
+offset_right = 451.0
 offset_bottom = 48.0
 theme_override_constants/h_separation = 27
-columns = 5
+columns = 6
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
@@ -155,6 +155,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Heart5" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart6" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
 [node name="Win_or_Lost" type="ColorRect" parent="."]
