@@ -9,12 +9,13 @@ signal gamelost
 signal gamewon
 signal description
 signal addlife
+signal change_life_ui
 
 var slots: Array[Card] #Gli slot del memeory
 var picked: Array[Card]
 var clicks = 0
 var hearts_array: Array[Heart]
-const max_hearts = 6
+const max_hearts = 8
 var game_won
 var hearts_lost: Array[Heart]
 var last_heart_lost
@@ -134,3 +135,6 @@ func check_game_won():
 			if (card != null):
 				game_won = false
 				break
+
+func meme_card_effect():
+	change_life_ui.emit()

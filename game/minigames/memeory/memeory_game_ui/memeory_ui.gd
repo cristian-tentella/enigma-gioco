@@ -18,6 +18,7 @@ func _ready():
 	MemeoryManager.updatehearts.connect(update_hearts)
 	MemeoryManager.update.connect(update_slots)
 	MemeoryManager.description.connect(show_description)
+	MemeoryManager.change_life_ui.connect(change_life_system)
 	#MemeoryManager.addlife.connect(addlife_ui)
 	update_slots()
 
@@ -37,8 +38,8 @@ func _draw_random_card():
 		index = index+1
 	
 func start_new_game(): 
-	#AudioManager.stop_current_sound_track()
-	#AudioManager.play_memeory_sound_track()
+	$LifePointsBackground.hide()
+	$Hearts.show()
 	MemeoryManager.hearts_array.clear()
 	MemeoryManager.hearts_lost.clear()
 	MemeoryManager.clicks = 0
@@ -62,6 +63,9 @@ func update_slots():
 func update_hearts():
 	for k in range(min(MemeoryManager.hearts_array.size(),heart_UI.size())):
 		heart_UI[k].updateheart(MemeoryManager.hearts_array[k])
+	var life_points = MemeoryManager.hearts_array.size() * 1000
+	$"LifePointsBackground/Life Points".text = str(life_points) + "LP"
+	print_debug($"LifePointsBackground/Life Points".text)
 
 		
 func game_lost_ui():
@@ -92,6 +96,10 @@ func show_description():
 	await get_tree().create_timer(3).timeout
 	$Card_Description.hide()
 	$CloseButtonBackground.show()
+	
+func change_life_system():
+	$Hearts.hide()
+	$"LifePointsBackground".show()
 	
 
 func _on_exit_pause_menu_button_pressed():

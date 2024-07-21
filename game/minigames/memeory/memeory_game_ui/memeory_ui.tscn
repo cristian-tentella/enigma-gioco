@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=10 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/minigames/memeory/memeory_cards/deck.tscn" id="5_b56a0"]
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
+[ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2l06"]
 
@@ -137,10 +138,10 @@ visible = false
 layout_mode = 0
 offset_left = 306.0
 offset_top = 35.0
-offset_right = 451.0
+offset_right = 495.0
 offset_bottom = 48.0
 theme_override_constants/h_separation = 27
-columns = 6
+columns = 8
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
@@ -158,6 +159,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Heart6" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart7" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
 [node name="Win_or_Lost" type="ColorRect" parent="."]
@@ -200,6 +207,23 @@ visible = false
 position = Vector2(319.914, 178.059)
 scale = Vector2(32, 18)
 shape = SubResource("RectangleShape2D_cvi2b")
+
+[node name="LifePointsBackground" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 357.0
+offset_top = 7.0
+offset_right = 445.0
+offset_bottom = 47.0
+color = Color(0.698039, 0.698039, 0, 1)
+
+[node name="Life Points" type="Label" parent="LifePointsBackground"]
+layout_mode = 0
+offset_left = 3.12134
+offset_top = 5.87867
+offset_right = 86.1213
+offset_bottom = 34.8787
+theme = ExtResource("7_cton7")
 
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
