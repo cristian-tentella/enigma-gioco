@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpja2shqv8hh6"]
+
+[ext_resource type="Script" path="res://ui/mobile_ui/open_inventory_button/open_inventory_button.gd" id="1_qrv2w"]
+
+[node name="OpenInventoryButton" type="TextureButton"]
+script = ExtResource("1_qrv2w")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
