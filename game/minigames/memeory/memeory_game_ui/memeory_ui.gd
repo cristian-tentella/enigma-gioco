@@ -25,7 +25,7 @@ func _ready():
 	MemeoryManager.virus_ui.connect(show_popup)
 	update_slots()
 
-	
+
 func _draw_random_card():  
 	MemeoryManager.slots.clear()
 	index = 0
@@ -40,21 +40,13 @@ func _draw_random_card():
 		MemeoryManager.insert(random_card)
 		index = index+1
 	
-func start_new_game(): 
-	$Virus.hide()
-	$Virus/Sprite2D.show()
-	$Virus/Sprite2D2.show()
-	$Virus/Sprite2D3.show()
-	$Virus/Sprite2D4.show()
-	$LifePointsBackground.hide()
-	$Hearts.show()
+func start_new_game():
+	reset_ui()
 	MemeoryManager.hearts_array.clear()
 	MemeoryManager.hearts_lost.clear()
 	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
-	$Card_Description.hide()
-	$CenterContainer.hide()
 	for heart in heart_UI:
 		MemeoryManager.insert_heart(heart)
 		heart.beating_animation()
@@ -63,6 +55,18 @@ func start_new_game():
 	print_debug(MemeoryManager.slots)
 	#print_debug(MemeoryManager.hearts_array)
 	MemeoryManager.cover_all_cards()
+
+func reset_ui():
+	$Watermelons.hide()
+	$Virus.hide()
+	$Virus/Sprite2D.show()
+	$Virus/Sprite2D2.show()
+	$Virus/Sprite2D3.show()
+	$Virus/Sprite2D4.show()
+	$LifePointsBackground.hide()
+	$Hearts.show()
+	$Card_Description.hide()
+	$CenterContainer.hide()
 	
 func update_slots():
 	for k in range(min(MemeoryManager.slots.size(), slots_UI.size())):
@@ -80,6 +84,8 @@ func game_lost_ui():
 	$CloseButtonBackground.hide()
 	await get_tree().create_timer(1).timeout
 	$CenterContainer/Win_or_Lost/Label.text = "memeory_lost_ui"
+	print_debug($CenterContainer/Win_or_Lost/Label.text)
+	await get_tree().create_timer(0.0000001).timeout
 	$CenterContainer.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
@@ -88,6 +94,7 @@ func game_won_ui():
 	$CloseButtonBackground.hide()
 	await get_tree().create_timer(1).timeout
 	$CenterContainer/Win_or_Lost/Label.text = "memeory_win_ui"
+	await get_tree().create_timer(0.0000001).timeout
 	$CenterContainer.show()
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
@@ -115,6 +122,8 @@ func _on_exit_pause_menu_button_pressed():
 	AudioManager.stop_current_sound_track()
 	self.exit.emit()
 
+func show_watermelons():
+	$Watermelons.show()
 
 func _on_exit_popup_1_pressed():
 	$Virus/Sprite2D.hide()
@@ -131,4 +140,4 @@ func _on_exit_popup_4_pressed():
 
 func _on_button_pressed():
 	$Card_Description.hide()
-	self.close_description.emit()
+	self.close_description.emit() 
