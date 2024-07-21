@@ -1,8 +1,12 @@
 extends Node
 
+
+@onready var master_bus_index = AudioServer.get_bus_index("Master")
+
 signal play_sound_effect(sound_effect_name: String)
 signal play_sound_track(sound_track_name: String)
 signal stop_sound_track
+
 
 # Questa funzione viene chiamata nella funzione _spawn_ui_element di
 # UIManager (managers/ui.gd) in modo da associare ad ogni nuovo elemento di UI
@@ -18,6 +22,15 @@ func make_buttons_play_click_sound_effect():
 	for button in buttons:
 		if not button.is_connected("pressed", _on_button_pressed):
 			button.pressed.connect(_on_button_pressed)
+
+func set_mute(should_be_muted: bool):
+	AudioServer.set_bus_mute(self.master_bus_index, should_be_muted)
+
+func is_muted() -> bool:
+	return AudioServer.is_bus_mute(self.master_bus_index)
+
+func set_volume(db: float):
+	AudioServer.set_bus_volume_db(self.master_bus_index, db)
 
 func _on_button_pressed():
 	self.play_click_sound_effect()
