@@ -15,7 +15,7 @@ func start():
 	
 	StateManager.player.hide()
 	StateManager.house.hide()
-	
+	UIManager.mobile_only_ui.hide()
 #	
 	
 	AudioManager.play_start_menu_sound_track()
@@ -23,8 +23,12 @@ func start():
 	if AuthenticationManager.is_enabled:
 		AuthenticationManager.display_report_message("")
 		UIManager.show_authentication_menu()
+		if await SaveManager.is_online() == false:
+			AuthenticationManager.display_report_message("Connection error")
+			AuthenticationManager.is_enabled = false
 		await AuthenticationManager.exit
 	
+		
 	
 	#Mostra il menu iniziale 
 	UIManager.show_start_menu()
