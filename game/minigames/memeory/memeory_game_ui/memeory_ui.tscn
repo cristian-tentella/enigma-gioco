@@ -38,16 +38,23 @@ offset_right = 622.0
 offset_bottom = 52.0
 
 [node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 2
-offset_left = 217.0
-offset_top = 63.0
-offset_right = 423.0
-offset_bottom = 297.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = -97.5
+offset_right = 103.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = 26
 theme_override_constants/v_separation = 14
 columns = 4
 
-[node name="MemeoryUiSlot" parent="GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot1" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
 [node name="MemeoryUiSlot2" parent="GridContainer" instance=ExtResource("2_cnvj3")]
@@ -63,6 +70,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="MemeoryUiSlot6" parent="GridContainer" instance=ExtResource("2_cnvj3")]
+layout_mode = 2
+
+[node name="MemeoryUiSlot7" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
 [node name="MemeoryUiSlot8" parent="GridContainer" instance=ExtResource("2_cnvj3")]
@@ -92,10 +102,8 @@ layout_mode = 2
 [node name="MemeoryUiSlot16" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot7" parent="GridContainer" instance=ExtResource("2_cnvj3")]
-layout_mode = 2
-
 [node name="Virus" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -268,22 +276,8 @@ layout_mode = 2
 [node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
-[node name="End_game" type="Button" parent="."]
-z_index = 20
-layout_mode = 2
-offset_left = 1.0
-offset_right = 639.0
-offset_bottom = 360.0
-flat = true
-
-[node name="Close_Description" type="Button" parent="."]
-z_index = 20
-layout_mode = 2
-offset_right = 640.0
-offset_bottom = 360.0
-flat = true
-
 [node name="Win_Lost" type="CenterContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 offset_left = 255.688
@@ -304,8 +298,15 @@ theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
+[node name="End_game" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 361.0
+flat = true
+
 [node name="Card_Description" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(256, 128)
 layout_direction = 1
 layout_mode = 1
 anchors_preset = 8
@@ -323,6 +324,7 @@ grow_vertical = 2
 [node name="Win_or_Lost" type="TextureRect" parent="Card_Description"]
 layout_mode = 2
 texture = ExtResource("2_3wgbt")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="Card_Description"]
 z_index = 105
@@ -331,12 +333,24 @@ theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
+[node name="Close_Description" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+layout_mode = 2
+offset_left = 1.0
+offset_right = 640.0
+offset_bottom = 359.0
+
 [node name="LifePointsBackground" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 357.0
-offset_top = 7.0
-offset_right = 397.0
-offset_bottom = 47.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 54.0
+grow_horizontal = 2
 
 [node name="Life Points" type="Label" parent="LifePointsBackground"]
 layout_mode = 0
@@ -347,6 +361,7 @@ offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
 
 [node name="Watermelons" type="Control" parent="."]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_left = 448.5

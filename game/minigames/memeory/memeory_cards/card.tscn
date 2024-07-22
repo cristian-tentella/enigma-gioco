@@ -1,35 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqxsjuyty2eeh"]
+[gd_scene load_steps=2 format=3 uid="uid://cpnhf73b7d107"]
 
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/card.gd" id="1_ogyhc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic55s"]
-size = Vector2(20.5, 21)
-
-[node name="Card" type="Node2D"]
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -608.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ogyhc")
-card_name = "card"
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Carta"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 48.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(18, 26)
-
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-visible = false
-position = Vector2(10.75, 15.5)
-shape = SubResource("RectangleShape2D_ic55s")
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 0.415686, 1, 1)
-offset_top = 6.0
-offset_right = 21.0
-offset_bottom = 26.0
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 48.0
 action_mode = 0
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+flat = true
