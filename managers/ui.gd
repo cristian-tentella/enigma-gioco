@@ -166,6 +166,7 @@ func show_start_menu_with_resume_button():
 """######################"""
 
 func show_pause_menu():
+	AudioManager.stop_current_sound_track()
 	_spawn_locking_ui_element(pause_menu)
 	AudioManager.set_volume(-10)
 	AudioManager.play_menu_sound_effect()

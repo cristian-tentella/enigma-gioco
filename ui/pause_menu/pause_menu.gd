@@ -20,3 +20,6 @@ func _on_exit_pause_menu_button_pressed():
 	
 	if PlatformHelper.is_mobile():
 		UIManager.mobile_only_ui.show()
+	AudioManager.set_volume(0)
+	AudioManager.play_main_theme_sound_track()
+	
