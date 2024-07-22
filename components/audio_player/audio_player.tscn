@@ -124,6 +124,6 @@ volume_db = -9.0
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
 
-[node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
+[node name="MainTheme" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("23_bct1s")
 volume_db = -12.0

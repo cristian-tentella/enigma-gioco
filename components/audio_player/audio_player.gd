@@ -110,8 +110,8 @@ func _convert_sound_track_name_to_audio_stream_player(sound_track_name: String) 
 	match sound_track_name:
 		"StartMenu":
 			return $SoundTracks/StartMenu
-		"memeory":
-			return $SoundTracks/Memeory
+		"main_theme":
+			return $SoundTracks/MainTheme
 		_:
 			push_error("Non esiste alcuna colonna sonora chiamata '{0}'".format([sound_track_name]))
 			return null
