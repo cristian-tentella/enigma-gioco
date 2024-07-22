@@ -10,9 +10,9 @@ signal message(message: String)
 #
 # Nota: i menu vengono mostrati in ogni caso se il gioco è in esecuzione in una
 # versione esportata, cioè quando NON si sta eseguendo via editor.
-const is_enabled = false
+var is_enabled = true
 
-var sleep_after_action = 1
+var sleep_after_action = 2
 const access_token_path = "user://user.auth"
 
 @onready var authentication_menu: AuthenticationMenu = preload(
