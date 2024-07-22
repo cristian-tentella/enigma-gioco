@@ -132,10 +132,16 @@ memeory_lost_1;Watermelon:AHA! I knew that you weren’t WORTHY OF MY PRIZE!;Ang
 memeory_lost_2;Dominik:…whatever;Dominik:…certo, certo...
 memeory_win_ui;YOU WON!;HAI VINTO!
 memeory_lost_ui;YOU LOST!;HAI PERSO!
-memeory_bet_description;CARAPACE;CARBONARA
-memeory_regular_description;Regular;Regolare
-memeory_extralife_description;Extra life for you!;Vita Extra per te!
-memeory_malus_description;-1 Heart '_'; -1 Vita '_'
+
+memeory_watermelon_description;Watermelon Card:Let's make the game more beautiful!;Carta Anguria:Rendiamo il gioco più bello!
+memeory_regular_description;Regular Card:Nothing happens here...;Carta Standard:Qui non succede nulla...
+memeory_extralife_description;Extra Lifes Card:Here's to you two lives, make good use of them! (P.S. You can have a maximum of 8 lifes);Carta Vite Extra:Ecco a te due vite, fanne buon uso! (P.S. puoi avere massimo 8 vite)
+memeory_malus_description;Malus Card:The curse that lives in these two cards unfortunately takes a life from you... (P.S. Only if you don't have only 1 life left);Carta Malus:La maledizione che vive in queste due carte purtroppo ti toglie una vita...(solo se non hai una sola vita rimasta)
+memeory_virus_description;Error Card:Error 418, i'm a teapot...;Carta Errore:Errore 418, sono una teiera... 
+memeory_seer_description;Seer Card:I see the future...;Carta Veggente:Io vedo il futuro...
+memeory_meme_description;Meme Card:I summon Pot of Greed to draw three additional cards from my deck...It doesn't work tho...;Carta Meme:Io utilizzo Anfora dell'avidità per pescare tre carte dal deck...Non funziona però...
+memeory_shuffle_description;Shuffle Card:I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found);Carta Rimescola:Io mi attivo solo se sbagli la coppia e in una delle due carte ci sono io...Attenzione perchè rimescolo tutto...(P.S. L'effetto non si attiva se si trova la coppia)
+
 
 minigame_3_colors_mobile_bloccato;Domink:This one is locked too, what's wrong with my house, what is this level of security?!;Dominik:Anche questo è bloccato, ma cos'è questo livello di sicurezza in casa mia?!
 minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around the house, there has to be a hint somewhere around here!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi da qualche parte!
