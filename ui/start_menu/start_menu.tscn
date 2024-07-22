@@ -52,6 +52,11 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 text = "LogOutButton"
 
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+text = "CreditsButton"
+
 [node name="ExitButton" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_vdu52")
