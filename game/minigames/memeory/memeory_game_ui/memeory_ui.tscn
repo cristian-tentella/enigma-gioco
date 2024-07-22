@@ -300,10 +300,12 @@ flat = true
 
 [node name="Label" type="Label" parent="CenterContainer/Win_or_Lost"]
 z_index = 105
-offset_left = -12.5147
-offset_top = -12.158
-offset_right = 11.4853
-offset_bottom = 11.842
+
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
