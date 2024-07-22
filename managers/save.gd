@@ -144,7 +144,7 @@ func load_game_save_from_json():
 		print_debug("\nStarting without saves as specified in save.gd constants")
 		return
 
-	if await is_online() and player_id != null:
+	if StateManager.is_online and player_id != null:
 		await retrieve_save_file_from_database_and_write_it_to_filesystem()
 		#Se questo va a buon fine, il caricamento è al 25%
 	

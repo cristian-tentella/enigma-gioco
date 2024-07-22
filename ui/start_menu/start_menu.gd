@@ -30,6 +30,7 @@ func show_logout_button():
 	if AuthenticationManager.is_enabled:
 		logout_button.show()
 
+
 #Quando si clicca su play, viene caricato il salvataggio
 func _on_play_button_pressed():
 	_hide_all_buttons()
@@ -59,6 +60,9 @@ func _hide_all_buttons():
 	play_button.hide()
 	resume_button.hide()
 	exit_button.hide()
+
+func _hide_logout_button():
+	logout_button.hide()
 
 
 func _on_exit_button_pressed():

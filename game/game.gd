@@ -8,7 +8,6 @@ extends Node
 
 @onready var player = $Player/Player
 @onready var house = $House
-@onready var inventory_UI = UIManager.inventory_menu
 @onready var memeory_UI = UIManager.memeory_menu
 @onready var player_phantom_camera = %PlayerPhantomCamera2D
 @onready var audio_player = $AudioPlayer

@@ -20,10 +20,6 @@ const access_token_path = "user://user.auth"
 ).instantiate()
 
 func _ready():
-	#Se non lo voglio, via di qui
-	if not is_enabled: 
-		self.queue_free()
-		return
 	Supabase.auth.signed_up.connect(on_sign_up_succeeded)
 	Supabase.auth.signed_in.connect(on_sign_in_succeeded)
 	Supabase.auth.error.connect(on_sign_error)

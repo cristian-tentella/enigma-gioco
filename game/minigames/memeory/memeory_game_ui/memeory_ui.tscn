@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=11 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
 [ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://game/minigames/memeory/memeory_game_ui/ui_background.png" id="2_3wgbt"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
+[ext_resource type="Texture2D" uid="uid://hv6qh6alhlok" path="res://game/minigames/memeory/memeory_game_ui/bathroom_floor_zoom.png" id="2_ehauv"]
+[ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="3_i76jl"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/minigames/memeory/memeory_cards/deck.tscn" id="5_b56a0"]
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
@@ -19,91 +21,78 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hlp5k")
 
-[node name="SlotsGridBackground" type="NinePatchRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3wgbt")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+texture = ExtResource("2_ehauv")
 
-[node name="CenterContainer" type="CenterContainer" parent="SlotsGridBackground"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -117.0
-offset_right = 103.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CloseUiButton" parent="." instance=ExtResource("3_i76jl")]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 18.0
+offset_right = 622.0
+offset_bottom = 52.0
 
-[node name="GridContainer" type="GridContainer" parent="SlotsGridBackground/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
+offset_left = 217.0
+offset_top = 63.0
+offset_right = 423.0
+offset_bottom = 297.0
 theme_override_constants/h_separation = 26
 theme_override_constants/v_separation = 14
 columns = 4
 
-[node name="MemeoryUiSlot" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot2" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot2" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot3" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot3" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot4" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot4" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot5" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot5" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot6" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot6" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot8" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot8" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot9" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot9" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot10" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot10" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot11" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot11" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot12" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot12" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot13" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot13" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot14" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot14" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot15" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot15" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot16" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot16" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot7" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
@@ -222,32 +211,10 @@ patch_margin_bottom = 6
 
 [node name="ExitPopup4" type="Button" parent="Virus/Popup4/ClosePopup"]
 layout_mode = 0
-offset_left = -0.61142
-offset_top = -4.61416
-offset_right = 18.3886
-offset_bottom = 26.3859
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
-[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 541.0
-offset_top = 17.0
-offset_right = 565.0
-offset_bottom = 41.0
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_left = -0.0299301
+offset_top = -4.77974
+offset_right = 18.9701
+offset_bottom = 26.2203
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
@@ -256,14 +223,13 @@ flat = true
 [node name="Deck" parent="." instance=ExtResource("5_b56a0")]
 visible = false
 
-[node name="Hearts" type="GridContainer" parent="."]
+[node name="Hearts" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 306.0
 offset_top = 35.0
 offset_right = 495.0
 offset_bottom = 48.0
-theme_override_constants/h_separation = 27
-columns = 8
+theme_override_constants/separation = 32
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
@@ -414,10 +380,10 @@ rotation = 0.237365
 scale = Vector2(1.44, 1.44)
 texture = ExtResource("8_1q51g")
 
+[connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="Virus/Popup1/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
 [connection signal="pressed" from="Virus/Popup2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
 [connection signal="pressed" from="Virus/Popup3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
 [connection signal="pressed" from="Virus/Popup4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
-[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Win_or_Lost/End_game" to="." method="_on_end_game_pressed"]
 [connection signal="pressed" from="Card_Description/Button" to="." method="_on_button_pressed"]

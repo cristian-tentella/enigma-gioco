@@ -17,7 +17,7 @@ var game: Game #Reference al nodo root di "game.tscn"
 var starting_current_minigame
 var current_minigame = -1 #Cattiva nomenclatura! Questo è un simbolo di "avanzamento" nel gioco, non è un numero per ogni minigioco!
 #Parte da -1 perché la prima interazione scriptata porta a 0 quindi vero inizio del gioco
-
+var is_online: bool 
 #Inventory variables
 var inventory_UI: InventoryUI
 var inventory: Inventory
