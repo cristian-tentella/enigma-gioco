@@ -24,10 +24,10 @@ DIZIONARIO STATICO (lo è per definizione di utilizzo, godot non lo fa statico..
 const debug_creating_save = false #Se vuoi debuggare creazione salvataggi, questo attiva una serie di print
 const debug_loading_save = true #Se vuoi debuggare caricamento salvataggi, questo attiva una serie di print
 const loading_bar_enabled = true #Se non vuoi fare niente con la loading bar, mettilo a false
-const start_without_any_save = true #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
+const start_without_any_save = false #Se vuoi partire sempre senza salvataggi. Non sovrascrive file, semplicemente returna subito
 
-const start_without_first_scripted_interaction = false #Starta senza vederti tutta la parte iniziale
-const start_with_minigame_1_finished = false #Starta con i nodi minigame 1 tolti
+const start_without_first_scripted_interaction = true #Starta senza vederti tutta la parte iniziale
+const start_with_minigame_1_finished = true #Starta con i nodi minigame 1 tolti
 const start_with_minigame_2_finished = false #Starta con i nodi minigame 2 tolti
 const start_with_minigame_3_finished = false #Starta con i nodi minigame 3 tolti
 const start_with_minigame_2_and_3_finished = false #Starta con i nodi minigame 2 e 3 tolti

@@ -7,11 +7,13 @@ var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più 
 var index = 0
 @onready var heart_UI: Array = $Hearts.get_children()
 var addlife = false
+var reset = false
 
 signal exit
 signal close_popup
 signal close_description
 signal end_game
+signal description_closed
 
 func _ready():
 	$Deck.hide()
@@ -49,15 +51,18 @@ func start_new_game():
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
 	for heart in heart_UI:
-		MemeoryManager.insert_heart(heart)
+		heart.stop_animation()
+		MemeoryManager.create_heart(heart)
 		heart.beating_animation()
 	#MemeoryManager.update_hearts()
+	#update_hearts()
 	_draw_random_card()
 	print_debug(MemeoryManager.slots)
 	#print_debug(MemeoryManager.hearts_array)
 	MemeoryManager.cover_all_cards()
 
 func reset_ui():
+	$CloseUiButton.show()
 	$Watermelons.hide()
 	$Virus.hide()
 	$Virus/Popup1.show()
@@ -67,7 +72,10 @@ func reset_ui():
 	$LifePointsBackground.hide()
 	$Hearts.show()
 	$Card_Description.hide()
-	$CenterContainer.hide()
+	$Win_Lost.hide()
+	$Card_Description.hide()
+	$End_game.hide()
+	$Close_Description.hide()
 	
 func update_slots():
 	for k in range(min(MemeoryManager.slots.size(), slots_UI.size())):
@@ -78,38 +86,49 @@ func update_hearts():
 		heart_UI[k].updateheart(MemeoryManager.hearts_array[k])
 	var life_points = MemeoryManager.hearts_array.size() * 1000
 	$"LifePointsBackground/Life Points".text = str(life_points) + "LP"
-	print_debug($"LifePointsBackground/Life Points".text)
+	#print_debug($"LifePointsBackground/Life Points".text)
+
+func reset_beating():
+		for i in range(0,MemeoryManager.hearts_array.size()):
+			heart_UI[i].stop_animation()
+			heart_UI[i].beating_animation()
+			print_debug("worka")
 
 		
 func game_lost_ui():
-	$CloseButtonBackground.hide()
+	$CloseUiButton.hide()
 	await get_tree().create_timer(1).timeout
-	$CenterContainer/Win_or_Lost/Label.text = "memeory_lost_ui"
-	print_debug($CenterContainer/Win_or_Lost/Label.text)
-	$CenterContainer.show()
+	$Win_Lost/Label.text = "memeory_lost_ui"
+	print_debug($Win_Lost/Label.text)
+	$Win_Lost.show()
 	await end_game
 	self.exit.emit()
 	
 func game_won_ui():
-	$CloseButtonBackground.hide()
+	$CloseUiButton.hide()
 	await get_tree().create_timer(1).timeout
-	$CenterContainer/Win_or_Lost/Label.text = "memeory_win_ui"
+	$Win_Lost/Label.text = "memeory_win_ui"
 	#await get_tree().create_timer(0.0000001).timeout
-	$CenterContainer.show()
+	$Win_Lost.show()
+	$End_game.show()
 	await end_game
 	await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
 func show_description():
-	$CloseButtonBackground.hide()
-	#$Card_Description/Button.show()
+	$CloseUiButton.hide()
+	$Close_Description.show()
 	var card_type = MemeoryManager.picked[1].card_type
 	MemeoryManager.clicks = -1
 	update_slots()
 	$Card_Description/Label.text = "memeory_"+String(card_type)+"_description"
 	$Card_Description.show()
 	await close_description
-	$CloseButtonBackground.show()
+	print_debug("qui")
+	$Close_Description.hide()
+	$Card_Description.hide()
+	$CloseUiButton.show()
+	self.description_closed.emit()
 	
 func change_life_system():
 	$Hearts.hide()

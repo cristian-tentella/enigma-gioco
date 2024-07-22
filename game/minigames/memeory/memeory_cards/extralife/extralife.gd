@@ -12,6 +12,7 @@ func handle_interaction():
 				print_debug(i)
 				print_debug(MemeoryManager.hearts_lost[0])
 				#print_debug(MemeoryManager.hearts_lost[1])
+				MemeoryManager.hearts_lost[0].recover = true
 				MemeoryManager.insert_heart(MemeoryManager.hearts_lost[0])
 				MemeoryManager.hearts_lost.remove_at(0)
 				print_debug(MemeoryManager.hearts_array)
