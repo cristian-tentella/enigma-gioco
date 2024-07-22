@@ -17,6 +17,8 @@ signal description_closed
 
 func _ready():
 	$Deck.hide()
+		#heart.stop_animation()
+		
 	MemeoryManager.memeory_ui = self
 	MemeoryManager.gamelost.connect(game_lost_ui)
 	MemeoryManager.gamewon.connect(game_won_ui)
@@ -45,13 +47,12 @@ func _draw_random_card():
 	
 func start_new_game():
 	reset_ui()
+	MemeoryManager.clicks = 0
 	MemeoryManager.hearts_array.clear()
 	MemeoryManager.hearts_lost.clear()
-	MemeoryManager.clicks = 0
 	heart_UI = $Hearts.get_children()
 	#print_debug(heart_UI)
 	for heart in heart_UI:
-		heart.stop_animation()
 		MemeoryManager.create_heart(heart)
 		heart.beating_animation()
 	#MemeoryManager.update_hearts()
@@ -62,6 +63,7 @@ func start_new_game():
 	MemeoryManager.cover_all_cards()
 
 func reset_ui():
+	reset_beating(8)
 	$CloseUiButton.show()
 	$Watermelons.hide()
 	$Virus.hide()
@@ -88,8 +90,8 @@ func update_hearts():
 	$"LifePointsBackground/Life Points".text = str(life_points) + "LP"
 	#print_debug($"LifePointsBackground/Life Points".text)
 
-func reset_beating():
-		for i in range(0,MemeoryManager.hearts_array.size()):
+func reset_beating(k):
+		for i in range(0,k):
 			heart_UI[i].stop_animation()
 			heart_UI[i].beating_animation()
 			print_debug("worka")
@@ -101,6 +103,7 @@ func game_lost_ui():
 	$Win_Lost/Label.text = "memeory_lost_ui"
 	print_debug($Win_Lost/Label.text)
 	$Win_Lost.show()
+	$End_game.show()
 	await end_game
 	self.exit.emit()
 	
@@ -160,7 +163,6 @@ func _on_exit_popup_4_pressed():
 func _on_button_pressed():
 	$Card_Description.hide()
 	self.close_description.emit() 
-
 
 func _on_end_game_pressed():
 	self.end_game.emit() # Replace with function body.
