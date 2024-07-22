@@ -28,7 +28,7 @@ func start():
 			AuthenticationManager.display_report_message("Connection error")
 			AuthenticationManager.is_enabled = false
 		await AuthenticationManager.exit
-		if AuthenticationManager.is_enabled == false:
+		if AuthenticationManager.is_enabled == false: ##se play offline e' stato premuto, risultera' in is_enabled = false
 			UIManager.start_menu._hide_logout_button()
 		
 	
