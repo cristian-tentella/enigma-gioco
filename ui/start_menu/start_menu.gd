@@ -5,6 +5,7 @@ extends Control
 @onready var resume_button = $VBoxContainer/ResumeButton
 @onready var logout_button = $VBoxContainer/LogOutButton
 @onready var exit_button = $VBoxContainer/ExitButton
+@onready var credits_button = $VBoxContainer/CreditsButton
 @onready var fade: Fade = $Fade
 
 signal exit
@@ -19,6 +20,7 @@ func show_resume_button():
 	play_button.hide()
 	resume_button.show()
 	exit_button.show()
+	credits_button.show()
 	show_logout_button()
 
 func show_play_button():
@@ -61,6 +63,7 @@ func _hide_all_buttons():
 	play_button.hide()
 	resume_button.hide()
 	exit_button.hide()
+	credits_button.hide()
 
 func _hide_logout_button():
 	logout_button.hide()
