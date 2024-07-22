@@ -78,7 +78,7 @@ func check():
 		if(picked[1].card_type == "shuffle"):
 				print_debug("rimescola")
 				card_show_description()
-				await get_tree().create_timer(3).timeout
+				await get_tree().create_timer(1.5).timeout
 				picked[1].handle_interaction()
 			
 		if(picked[0].card_type != "shuffle" and picked[1].card_type != "shuffle"):

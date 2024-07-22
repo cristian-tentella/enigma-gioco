@@ -95,5 +95,5 @@ func stop_current_sound_track():
 func play_start_menu_sound_track():
 	self.play_sound_track.emit("StartMenu")
 
-func play_memeory_sound_track():
-	self.play_sound_track.emit("memeory")
+func play_main_theme_sound_track():
+	self.play_sound_track.emit("main_theme")

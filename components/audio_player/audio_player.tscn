@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://ul23po3uxtlo" path="res://audio/sound_effects/staircase.ogg" id="21_xvsxj"]
 [ext_resource type="AudioStream" uid="uid://chvfmlx6tc8je" path="res://audio/sound_effects/light_saber.ogg" id="22_t23br"]
 [ext_resource type="AudioStream" uid="uid://cvkudkt1kei1b" path="res://audio/sound_effects/reset.ogg" id="23_3haaa"]
-[ext_resource type="AudioStream" uid="uid://btdiy5sygchwg" path="res://audio/sound_tracks/memeory.ogg" id="23_bct1s"]
+[ext_resource type="AudioStream" uid="uid://btdiy5sygchwg" path="res://audio/sound_tracks/main_theme.ogg" id="23_bct1s"]
 [ext_resource type="AudioStream" uid="uid://bqdx47nsda2lh" path="res://audio/sound_effects/light_saber_power_on.ogg" id="24_mi876"]
 [ext_resource type="AudioStream" uid="uid://bjjpk7n32n212" path="res://audio/sound_effects/engine_revving.ogg" id="25_78w07"]
 
@@ -124,6 +124,6 @@ volume_db = -9.0
 [node name="StartMenu" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("15_yyu6b")
 
-[node name="Memeory" type="AudioStreamPlayer" parent="SoundTracks"]
+[node name="MainTheme" type="AudioStreamPlayer" parent="SoundTracks"]
 stream = ExtResource("23_bct1s")
 volume_db = -12.0

@@ -30,7 +30,6 @@ func memeory_start_dialogues():
 		await DialogueManager.has_finished_displaying
 	
 	#Mostra e gioca al minigame
-	AudioManager.play_memeory_sound_track()
 	MemeoryManager.start_game()
 	UIManager.show_memeory()
 	await UIManager.unlock
