@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.gd" id="6_7p1kv"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/seer/seer.gd" id="7_0fw7h"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/meme/meme.gd" id="8_b3u87"]
-[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/virus/virus.gd" id="9_f34mx"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/error/error.gd" id="9_os161"]
 
 [node name="Deck" type="Node2D"]
 
@@ -102,14 +102,14 @@ card_name = "Meme2"
 card_type = "meme"
 index = 13
 
-[node name="Virus1" parent="." instance=ExtResource("1_cfiem")]
-script = ExtResource("9_f34mx")
-card_name = "Virus1"
-card_type = "virus"
+[node name="Error1" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("9_os161")
+card_name = "Error1"
+card_type = "error"
 index = 14
 
-[node name="Virus2" parent="." instance=ExtResource("1_cfiem")]
-script = ExtResource("9_f34mx")
-card_name = "Virus2"
-card_type = "virus"
+[node name="Error2" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("9_os161")
+card_name = "Error2"
+card_type = "error"
 index = 15
