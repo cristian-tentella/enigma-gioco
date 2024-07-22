@@ -2,7 +2,7 @@ class_name MemeoryUI
 extends Control
 
 #var MemeoryManager: Memeory
-@onready var slots_UI: Array = $SlotsGridBackground/CenterContainer/GridContainer.get_children() #Array di Memeory_UI_Slot
+@onready var slots_UI: Array = $GridContainer.get_children() #Array di Memeory_UI_Slot
 var is_open: bool = false #Ridondanza della proprietà self.visible, ma è più comodo usarlo cosi
 var index = 0
 @onready var heart_UI: Array = $Hearts.get_children()

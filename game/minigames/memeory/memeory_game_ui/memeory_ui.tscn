@@ -37,91 +37,62 @@ offset_top = 18.0
 offset_right = 622.0
 offset_bottom = 52.0
 
-[node name="SlotsGridBackground" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_3wgbt")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="CenterContainer" type="CenterContainer" parent="SlotsGridBackground"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -103.0
-offset_top = -117.0
-offset_right = 103.0
-offset_bottom = 117.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="SlotsGridBackground/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
+offset_left = 217.0
+offset_top = 63.0
+offset_right = 423.0
+offset_bottom = 297.0
 theme_override_constants/h_separation = 26
 theme_override_constants/v_separation = 14
 columns = 4
 
-[node name="MemeoryUiSlot" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot2" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot2" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot3" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot3" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot4" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot4" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot5" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot5" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot6" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot6" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot8" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot8" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot9" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot9" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot10" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot10" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot11" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot11" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot12" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot12" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot13" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot13" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot14" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot14" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot15" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot15" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot16" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot16" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="MemeoryUiSlot7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
+[node name="MemeoryUiSlot7" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
 [node name="Virus" type="Node2D" parent="."]
