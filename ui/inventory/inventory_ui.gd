@@ -19,6 +19,7 @@ func _ready():
 	self.inv.item_pickup_dialogue = $ItemPickupDialogue
 	inv.update.connect(update_slots)
 	update_slots()
+	self.name_label.hide()
 	#_assign_NO_ITEM_SELECTED_DESC_STRING()
 	
 # Doing it dynamically is the only way to make it work.
@@ -75,6 +76,7 @@ func _change_description_label_on_slot_button_pressed(slot_number: int):
 	item_to_show._associate_name_from_traslation_file()
 	#Nome -> item_to_show.localized_item_name
 	#Descrizione -> item_to_show.description
+	self.name_label.text = ""
 	self.name_label.show()
 	self.name_label.text = item_to_show.localized_item_name
 	self.description_label.text = item_to_show.description
