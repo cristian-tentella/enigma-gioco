@@ -60,10 +60,10 @@ func start_new_game():
 func reset_ui():
 	$Watermelons.hide()
 	$Virus.hide()
-	$Virus/Sprite2D.show()
-	$Virus/Sprite2D2.show()
-	$Virus/Sprite2D3.show()
-	$Virus/Sprite2D4.show()
+	$Virus/Popup1.show()
+	$Virus/Popup2.show()
+	$Virus/Popup3.show()
+	$Virus/Popup4.show()
 	$LifePointsBackground.hide()
 	$Hearts.show()
 	$Card_Description.hide()
@@ -126,16 +126,16 @@ func show_watermelons():
 	$Watermelons.show()
 
 func _on_exit_popup_1_pressed():
-	$Virus/Sprite2D.hide()
+	$Virus/Popup1.hide()
 
 func _on_exit_popup_2_pressed():
-	$Virus/Sprite2D2.hide()
+	$Virus/Popup2.hide()
 
 func _on_exit_popup_3_pressed():
-	$Virus/Sprite2D3.hide()
+	$Virus/Popup3.hide()
 
 func _on_exit_popup_4_pressed():
-	$Virus/Sprite2D4.hide()
+	$Virus/Popup4.hide()
 
 
 func _on_button_pressed():

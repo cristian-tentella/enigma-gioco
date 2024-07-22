@@ -106,19 +106,23 @@ layout_mode = 2
 [node name="MemeoryUiSlot7" parent="SlotsGridBackground/CenterContainer/GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="Virus" type="Node2D" parent="."]
-visible = false
+[node name="Virus" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Virus"]
-position = Vector2(188.072, 135.046)
-scale = Vector2(2.77341, 2.14273)
+[node name="Popup1" type="TextureRect" parent="Virus"]
+offset_left = 152.556
+offset_top = 79.2047
+offset_right = 258.556
+offset_bottom = 172.205
 texture = ExtResource("2_3wgbt")
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup1"]
+offset_left = 104.716
+offset_top = -13.7113
+offset_right = 118.716
+offset_bottom = 1.28868
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -126,27 +130,29 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPopup1" type="Button" parent="Virus/Sprite2D/ClosePopup"]
+[node name="ExitPopup1" type="Button" parent="Virus/Popup1/ClosePopup"]
 layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
+offset_left = 0.793686
+offset_top = -4.0
+offset_right = 18.7937
+offset_bottom = 27.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Virus"]
-position = Vector2(433.418, 234.828)
-scale = Vector2(2.72785, 2.4222)
+[node name="Popup2" type="TextureRect" parent="Virus"]
+offset_left = 240.025
+offset_top = 210.795
+offset_right = 353.025
+offset_bottom = 283.795
 texture = ExtResource("2_3wgbt")
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D2"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup2"]
+offset_left = 110.051
+offset_top = -13.8601
+offset_right = 124.051
+offset_bottom = 1.13988
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -154,27 +160,29 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPopup2" type="Button" parent="Virus/Sprite2D2/ClosePopup"]
+[node name="ExitPopup2" type="Button" parent="Virus/Popup2/ClosePopup"]
 layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
+offset_left = -0.741394
+offset_top = -3.92738
+offset_right = 18.2586
+offset_bottom = 27.0727
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Virus"]
-position = Vector2(242.621, 262.443)
-scale = Vector2(3.30121, 2.41334)
+[node name="Popup3" type="TextureRect" parent="Virus"]
+offset_left = 365.063
+offset_top = 67.3339
+offset_right = 470.063
+offset_bottom = 157.334
 texture = ExtResource("2_3wgbt")
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D3"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup3"]
+offset_left = 107.67
+offset_top = -14.257
+offset_right = 121.67
+offset_bottom = 0.743011
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -182,27 +190,29 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPopup3" type="Button" parent="Virus/Sprite2D3/ClosePopup"]
+[node name="ExitPopup3" type="Button" parent="Virus/Popup3/ClosePopup"]
 layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
+offset_left = -1.12415
+offset_top = -4.97394
+offset_right = 17.8759
+offset_bottom = 26.0261
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[node name="Sprite2D4" type="Sprite2D" parent="Virus"]
-position = Vector2(382.99, 123.187)
-scale = Vector2(2.2559, 2.02805)
+[node name="Popup4" type="TextureRect" parent="Virus"]
+offset_left = 402.364
+offset_top = 198.46
+offset_right = 463.364
+offset_bottom = 248.46
 texture = ExtResource("2_3wgbt")
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D4"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup4"]
+offset_left = 58.8576
+offset_top = -16.2412
+offset_right = 72.8576
+offset_bottom = -1.2412
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -210,12 +220,12 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPopup4" type="Button" parent="Virus/Sprite2D4/ClosePopup"]
+[node name="ExitPopup4" type="Button" parent="Virus/Popup4/ClosePopup"]
 layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
+offset_left = -0.61142
+offset_top = -4.61416
+offset_right = 18.3886
+offset_bottom = 26.3859
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
@@ -280,6 +290,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 235.0
 offset_top = 120.0
@@ -287,6 +298,7 @@ offset_right = 410.0
 offset_bottom = 219.0
 
 [node name="Win_or_Lost" type="Sprite2D" parent="CenterContainer"]
+visible = false
 position = Vector2(88.1133, 60.6129)
 scale = Vector2(5.45477, 3.38523)
 texture = ExtResource("2_3wgbt")
@@ -330,6 +342,7 @@ offset_bottom = 55.0
 flat = true
 
 [node name="Label" type="Label" parent="Card_Description"]
+visible = false
 z_index = 105
 offset_left = -12.0
 offset_top = -12.0
@@ -401,10 +414,10 @@ rotation = 0.237365
 scale = Vector2(1.44, 1.44)
 texture = ExtResource("8_1q51g")
 
-[connection signal="pressed" from="Virus/Sprite2D/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
+[connection signal="pressed" from="Virus/Popup1/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
+[connection signal="pressed" from="Virus/Popup2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
+[connection signal="pressed" from="Virus/Popup3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
+[connection signal="pressed" from="Virus/Popup4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
 [connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Win_or_Lost/End_game" to="." method="_on_end_game_pressed"]
 [connection signal="pressed" from="Card_Description/Button" to="." method="_on_button_pressed"]
