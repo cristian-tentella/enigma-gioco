@@ -176,6 +176,7 @@ func show_pause_menu():
 	
 func show_inventory():
 	self.inventory_menu._assign_NO_ITEM_SELECTED_DESC_STRING() #Va fatto qui perché cosi ogni volta che clicco si aggiorna la lingua
+	self.inventory_menu.name_label.hide()
 	_spawn_locking_ui_element(inventory_menu)
 	AudioManager.play_menu_sound_effect()
 	await inventory_menu.exit
