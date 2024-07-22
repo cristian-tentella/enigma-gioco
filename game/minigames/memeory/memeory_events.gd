@@ -33,7 +33,6 @@ func memeory_start_dialogues():
 	MemeoryManager.start_game()
 	UIManager.show_memeory()
 	await UIManager.unlock
-	AudioManager.stop_current_sound_track()
 	
 	#Mostra il dopo se vinto o perso
 	if MemeoryManager.game_won:

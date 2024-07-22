@@ -120,7 +120,6 @@ func show_popup():
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
-	AudioManager.stop_current_sound_track()
 	self.exit.emit()
 
 func show_watermelons():
