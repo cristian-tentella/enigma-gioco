@@ -213,14 +213,13 @@ flat = true
 [node name="Deck" parent="." instance=ExtResource("5_b56a0")]
 visible = false
 
-[node name="Hearts" type="GridContainer" parent="."]
+[node name="Hearts" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 306.0
 offset_top = 35.0
 offset_right = 495.0
 offset_bottom = 48.0
-theme_override_constants/h_separation = 27
-columns = 8
+theme_override_constants/separation = 32
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
