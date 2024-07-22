@@ -71,6 +71,12 @@ theme = ExtResource("2_qckts")
 theme_override_colors/font_color = Color(0.419608, 0.419608, 0.419608, 1)
 horizontal_alignment = 1
 
+[node name="Offline" type="Button" parent="VBoxContainer" groups=["Buttons"]]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme = ExtResource("2_qckts")
+text = "PlayOffline"
+
 [node name="ResetPassword" type="Button" parent="VBoxContainer" groups=["Buttons"]]
 layout_mode = 2
 theme = ExtResource("2_qckts")
@@ -78,4 +84,5 @@ text = "ResetPassword"
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SignIn" to="." method="_on_sign_in_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SignUp" to="." method="_on_sign_up_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Offline" to="." method="_on_offline_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResetPassword" to="." method="_on_reset_password_button_pressed"]
