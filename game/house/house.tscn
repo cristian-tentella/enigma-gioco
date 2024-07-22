@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=41 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dtjoht3iwtjl1" path="res://game/scripted_scenes/1_dominik_wakes_up_and_goes_to_balcony_until_daniel/1_dominik_wakes_up_and_goes_to_balcony_until_daniel.tscn" id="10_picgp"]
 [ext_resource type="PackedScene" uid="uid://cdhd0gnavbedl" path="res://game/minigames/memeory/memeory_events.tscn" id="11_qgyjf"]
 [ext_resource type="PackedScene" uid="uid://dryl7d3tx6ov3" path="res://game/house/rooms/salotto + cucina/salotto + cucina.tscn" id="12_yej84"]
+[ext_resource type="Texture2D" uid="uid://c4mn40wqxlcne" path="res://game/house/assets/door_window.png" id="13_1cqjr"]
 [ext_resource type="PackedScene" uid="uid://wbu7xnwvf2u2" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.tscn" id="14_5ijjr"]
 [ext_resource type="PackedScene" uid="uid://bby0msqin8uj6" path="res://game/house/teleport_down.tscn" id="14_mveet"]
 [ext_resource type="PackedScene" uid="uid://beq1b34jf1bpq" path="res://game/minigames/minigame_4_ripara_spada_laser/minigame_4_ripara_spada_laser.tscn" id="15_aqewa"]
@@ -4618,6 +4619,13 @@ just_proc_once = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Bagno/furniture_dialogues/toilet_interaction"]
 position = Vector2(-1.52588e-05, -5.50024)
 shape = SubResource("RectangleShape2D_07v0t")
+
+[node name="DoorWindow" type="Sprite2D" parent="Rooms"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(502.038, 159.88)
+rotation = 1.17611
+texture = ExtResource("13_1cqjr")
 
 [node name="Objects" type="TileMap" parent="Rooms"]
 position = Vector2(0, 32)
