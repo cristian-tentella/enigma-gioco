@@ -36,12 +36,6 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CenterContainer/Panel"]
 
-[node name="Area2D" type="Area2D" parent="CenterContainer/Panel/Sprite"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CenterContainer/Panel/Sprite/Area2D"]
-visible = false
-
 [node name="Button" type="Button" parent="CenterContainer/Panel"]
 visible = false
 modulate = Color(1, 0.376471, 1, 1)

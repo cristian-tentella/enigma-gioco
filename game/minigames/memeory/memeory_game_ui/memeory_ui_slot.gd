@@ -4,7 +4,6 @@ class_name MemeoryUISlot
 @onready var panel : Panel = $CenterContainer/Panel
 
 @onready var card_visual: Sprite2D = $CenterContainer/Panel/Sprite
-@onready var pickablearea: CollisionShape2D = $CenterContainer/Panel/Sprite/Area2D/CollisionShape2D
 @onready var button : Button = $CenterContainer/Panel/Button
 var card_in_slot : Card
 
@@ -19,7 +18,6 @@ func update(slot: Card):
 		card_visual.texture = slot.sprite2D.texture #Nello slot ci metto la texture dell'item
 		card_in_slot = slot
 		card_in_slot.index = slot.index
-		pickablearea.shape = slot.area.shape
 		button.icon = slot.button.icon
 		if(MemeoryManager.clicks == -1):
 			button.hide()
