@@ -103,7 +103,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -132,9 +131,9 @@ patch_margin_bottom = 6
 
 [node name="ExitPopup1" type="Button" parent="Virus/Popup1/ClosePopup"]
 layout_mode = 0
-offset_left = 0.793686
+offset_left = 1.0
 offset_top = -4.0
-offset_right = 18.7937
+offset_right = 19.0
 offset_bottom = 27.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
@@ -337,9 +336,10 @@ theme_override_font_sizes/font_size = 12
 modulate = Color(1, 1, 1, 0)
 z_index = 20
 layout_mode = 2
-offset_left = 1.0
-offset_right = 640.0
-offset_bottom = 359.0
+offset_left = -0.414215
+offset_top = -1.41422
+offset_right = 638.586
+offset_bottom = 357.586
 
 [node name="LifePointsBackground" type="TextureRect" parent="."]
 layout_mode = 1
