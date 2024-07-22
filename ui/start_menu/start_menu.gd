@@ -13,7 +13,7 @@ func _ready():
 	resume_button.hide()
 	if !AuthenticationManager.is_enabled or not await SaveManager.is_online():
 		logout_button.hide()
-		logout_button.queue_free()
+		
 
 func show_resume_button():
 	play_button.hide()
