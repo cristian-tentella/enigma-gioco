@@ -67,7 +67,8 @@ const dialogues: Dictionary = {
 	"fridge_interaction": ["fridge_interaction_1"],
 	"christmas_tree_interaction": ["christmas_tree_interaction_1"],
 	"toilet_interaction": ["toilet_interaction_1"],
-	"plant_in_study_interaction": ["plant_in_study_interaction_1"]
+	"plant_in_study_interaction": ["plant_in_study_interaction_1"],
+	"hms_interaction": ["hms_interaction_1", "hms_interaction_2", "hms_interaction_3", "hms_interaction_4", "hms_interaction_5", "hms_interaction_6"],
 	
 	#=======================================
 }

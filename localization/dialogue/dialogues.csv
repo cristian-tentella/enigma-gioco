@@ -237,5 +237,12 @@ christmas_tree_interaction_1;Dominik:At least this managed not to get destroyed 
 
 plant_in_study_interaction_1;Dominik:That’s a really nice plant, it’s kind of blurry but I think it’s part of its appeal!;Dominik:Veramente una bella pianta, è un po’ sfocata ma è bella per questo!
 
+hms_interaction_1;'Ahhh, you were at my side, all along';
+hms_interaction_2;'My true mentor...';
+hms_interaction_3;'My guiding moonlight...';
+hms_interaction_4;...;...
+hms_interaction_5;This sword costed me an entire paycheck...;Questa spada mi è costata un intero stipendio...
+hms_interaction_6;TOTALLY WORTH IT;NE È VALSA LA PENA
+
 sound_effect_engine_revving;vroom vroom;brum brum
 sound_effect_laser_sword_power_on;whoom;whoom
