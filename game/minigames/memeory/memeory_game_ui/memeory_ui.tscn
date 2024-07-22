@@ -95,19 +95,26 @@ layout_mode = 2
 [node name="MemeoryUiSlot7" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
-[node name="Virus" type="Node2D" parent="."]
-visible = false
+[node name="Virus" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Virus"]
-position = Vector2(188.072, 135.046)
-scale = Vector2(2.77341, 2.14273)
+[node name="Popup1" type="TextureRect" parent="Virus"]
+z_index = 15
+layout_mode = 0
+offset_left = 152.556
+offset_top = 79.2047
+offset_right = 258.556
+offset_bottom = 172.205
 texture = ExtResource("2_3wgbt")
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup1"]
+layout_mode = 0
+offset_left = 104.716
+offset_top = -13.7113
+offset_right = 118.716
+offset_bottom = 1.28868
 texture = ExtResource("1_58hgi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 6
@@ -115,7 +122,106 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ExitPopup1" type="Button" parent="Virus/Sprite2D/ClosePopup"]
+[node name="ExitPopup1" type="Button" parent="Virus/Popup1/ClosePopup"]
+layout_mode = 0
+offset_left = 0.793686
+offset_top = -4.0
+offset_right = 18.7937
+offset_bottom = 27.0
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Popup2" type="TextureRect" parent="Virus"]
+z_index = 15
+layout_mode = 0
+offset_left = 240.025
+offset_top = 210.795
+offset_right = 353.025
+offset_bottom = 283.795
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup2"]
+layout_mode = 0
+offset_left = 110.051
+offset_top = -13.8601
+offset_right = 124.051
+offset_bottom = 1.13988
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup2" type="Button" parent="Virus/Popup2/ClosePopup"]
+layout_mode = 0
+offset_left = -0.741394
+offset_top = -3.92738
+offset_right = 18.2586
+offset_bottom = 27.0727
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Popup3" type="TextureRect" parent="Virus"]
+z_index = 15
+layout_mode = 0
+offset_left = 365.063
+offset_top = 67.3339
+offset_right = 470.063
+offset_bottom = 157.334
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup3"]
+layout_mode = 0
+offset_left = 107.67
+offset_top = -14.257
+offset_right = 121.67
+offset_bottom = 0.743011
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup3" type="Button" parent="Virus/Popup3/ClosePopup"]
+layout_mode = 0
+offset_left = -1.12415
+offset_top = -4.97394
+offset_right = 17.8759
+offset_bottom = 26.0261
+scale = Vector2(0.75, 0.75)
+theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
+text = "X"
+flat = true
+
+[node name="Popup4" type="TextureRect" parent="Virus"]
+z_index = 15
+layout_mode = 0
+offset_left = 402.364
+offset_top = 198.46
+offset_right = 463.364
+offset_bottom = 248.46
+texture = ExtResource("2_3wgbt")
+
+[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup4"]
+layout_mode = 0
+offset_left = 58.8576
+offset_top = -16.2412
+offset_right = 72.8576
+offset_bottom = -1.2412
+texture = ExtResource("1_58hgi")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="ExitPopup4" type="Button" parent="Virus/Popup4/ClosePopup"]
 layout_mode = 0
 offset_left = -0.0299301
 offset_top = -4.77974
@@ -125,100 +231,17 @@ scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="Virus"]
-position = Vector2(433.418, 234.828)
-scale = Vector2(2.72785, 2.4222)
-texture = ExtResource("2_3wgbt")
-
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D2"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="ExitPopup2" type="Button" parent="Virus/Sprite2D2/ClosePopup"]
-layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
-[node name="Sprite2D3" type="Sprite2D" parent="Virus"]
-position = Vector2(242.621, 262.443)
-scale = Vector2(3.30121, 2.41334)
-texture = ExtResource("2_3wgbt")
-
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D3"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="ExitPopup3" type="Button" parent="Virus/Sprite2D3/ClosePopup"]
-layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
-[node name="Sprite2D4" type="Sprite2D" parent="Virus"]
-position = Vector2(382.99, 123.187)
-scale = Vector2(2.2559, 2.02805)
-texture = ExtResource("2_3wgbt")
-
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Sprite2D4"]
-offset_left = 16.5127
-offset_top = -30.0444
-offset_right = 30.5127
-offset_bottom = -15.0444
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="ExitPopup4" type="Button" parent="Virus/Sprite2D4/ClosePopup"]
-layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
-[node name="Deck" parent="." instance=ExtResource("5_b56a0")]
-visible = false
 
 [node name="Hearts" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 306.0
-offset_top = 35.0
-offset_right = 495.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 22.0
+offset_right = 128.0
+offset_bottom = 53.0
+grow_horizontal = 2
 theme_override_constants/separation = 32
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
@@ -245,74 +268,75 @@ layout_mode = 2
 [node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 235.0
-offset_top = 120.0
-offset_right = 410.0
-offset_bottom = 219.0
-
-[node name="Win_or_Lost" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(88.1133, 60.6129)
-scale = Vector2(5.45477, 3.38523)
-texture = ExtResource("2_3wgbt")
-
-[node name="End_game" type="Button" parent="CenterContainer/Win_or_Lost"]
-offset_left = -59.0
-offset_top = -53.0
-offset_right = 58.0
-offset_bottom = 53.0
+[node name="End_game" type="Button" parent="."]
+z_index = 20
+layout_mode = 2
+offset_left = 1.0
+offset_right = 639.0
+offset_bottom = 360.0
 flat = true
 
-[node name="Label" type="Label" parent="CenterContainer/Win_or_Lost"]
+[node name="Close_Description" type="Button" parent="."]
+z_index = 20
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
+flat = true
+
+[node name="Win_Lost" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+offset_left = 255.688
+offset_top = 116.106
+offset_right = 383.688
+offset_bottom = 244.106
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win_or_Lost_background" type="TextureRect" parent="Win_Lost"]
+layout_mode = 2
+texture = ExtResource("2_3wgbt")
+
+[node name="Label" type="Label" parent="Win_Lost"]
 z_index = 105
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
+layout_mode = 2
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
-[node name="Win_or_Lost3" type="ColorRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 212.0
-offset_top = 113.0
-offset_right = 426.0
-offset_bottom = 236.0
-color = Color(0.368627, 1, 1, 1)
+[node name="Card_Description" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Card_Description" type="Sprite2D" parent="."]
-position = Vector2(320.06, 178.868)
-scale = Vector2(5.27675, 3.26536)
+[node name="Win_or_Lost" type="TextureRect" parent="Card_Description"]
+layout_mode = 2
 texture = ExtResource("2_3wgbt")
-
-[node name="Button" type="Button" parent="Card_Description"]
-offset_left = -61.0
-offset_top = -55.0
-offset_right = 61.0
-offset_bottom = 55.0
-flat = true
 
 [node name="Label" type="Label" parent="Card_Description"]
 z_index = 105
-offset_left = -12.0
-offset_top = -12.0
-offset_right = 12.0
-offset_bottom = 12.0
+layout_mode = 2
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
-[node name="LifePointsBackground" type="ColorRect" parent="."]
-visible = false
+[node name="LifePointsBackground" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 357.0
 offset_top = 7.0
-offset_right = 445.0
+offset_right = 397.0
 offset_bottom = 47.0
-color = Color(0.698039, 0.698039, 0, 1)
 
 [node name="Life Points" type="Label" parent="LifePointsBackground"]
 layout_mode = 0
@@ -322,55 +346,91 @@ offset_right = 86.1213
 offset_bottom = 34.8787
 theme = ExtResource("7_cton7")
 
-[node name="Watermelons" type="Node2D" parent="."]
-visible = false
+[node name="Watermelons" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 448.5
+offset_top = 22.0
+offset_right = 448.5
+offset_bottom = 53.0
 
-[node name="Sprite2D3" type="Sprite2D" parent="Watermelons"]
-position = Vector2(452.41, 116.684)
-rotation = 0.0296706
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_1q51g")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Watermelons"]
-position = Vector2(183.992, 237.378)
-rotation = 0.123918
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_1q51g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Watermelons"]
-position = Vector2(451.324, 232.986)
+[node name="Watermelon1" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -8.84247
+offset_top = 200.269
+offset_right = 26.1575
+offset_bottom = 248.269
 rotation = -0.244346
 scale = Vector2(1.7, 1.7)
 texture = ExtResource("8_1q51g")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Watermelons"]
-position = Vector2(184.978, 116.947)
+[node name="Watermelon2" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -285.636
+offset_top = 176.109
+offset_right = -249.636
+offset_bottom = 224.109
+rotation = 0.125664
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon3" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -22.589
+offset_top = 58.0929
+offset_right = 14.411
+offset_bottom = 106.093
+rotation = 0.0296706
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon4" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -284.016
+offset_top = 31.3969
+offset_right = -248.016
+offset_bottom = 79.3969
 rotation = 0.307178
 scale = Vector2(2.25, 2.25)
 texture = ExtResource("8_1q51g")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Watermelons"]
-position = Vector2(262.4, 318.883)
-rotation = 0.0593412
+[node name="Watermelon5" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -215.428
+offset_top = 252.587
+offset_right = -179.428
+offset_bottom = 300.587
+rotation = 0.0663225
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("8_1q51g")
 
-[node name="Sprite2D6" type="Sprite2D" parent="Watermelons"]
-position = Vector2(260.525, 37.5245)
+[node name="Watermelon6" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -209.033
+offset_top = 0.125996
+offset_right = -176.033
+offset_bottom = 48.126
 rotation = 0.118682
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("8_1q51g")
 
-[node name="Sprite2D7" type="Sprite2D" parent="Watermelons"]
-position = Vector2(376.327, 315.298)
+[node name="Watermelon7" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -86.4441
+offset_top = 253.984
+offset_right = -53.4441
+offset_bottom = 301.984
 rotation = 0.237365
 scale = Vector2(1.44, 1.44)
 texture = ExtResource("8_1q51g")
 
+[node name="Deck" parent="." instance=ExtResource("5_b56a0")]
+visible = false
+
 [connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
-[connection signal="pressed" from="Virus/Sprite2D4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
-[connection signal="pressed" from="CenterContainer/Win_or_Lost/End_game" to="." method="_on_end_game_pressed"]
-[connection signal="pressed" from="Card_Description/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Virus/Popup1/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
+[connection signal="pressed" from="Virus/Popup2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
+[connection signal="pressed" from="Virus/Popup3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
+[connection signal="pressed" from="Virus/Popup4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
+[connection signal="pressed" from="End_game" to="." method="_on_end_game_pressed"]
+[connection signal="pressed" from="Close_Description" to="." method="_on_button_pressed"]

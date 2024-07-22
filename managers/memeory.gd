@@ -36,6 +36,15 @@ func insert(card: Card):
 	slots.append(card)
 	update.emit()
 	
+func create_heart(heart: Heart):
+	heart.recover = false
+	hearts_array.append(heart)
+	updatehearts.emit()
+	
+func insert_heart_no_update(heart: Heart):
+	heart.recover = true
+	hearts_array.append(heart)
+	
 func insert_heart(heart: Heart):
 	heart.recover = true
 	hearts_array.append(heart)
@@ -76,9 +85,9 @@ func check():
 		if(picked[0].card_type == "shuffle"):
 				picked.reverse()
 		if(picked[1].card_type == "shuffle"):
-				print_debug("rimescola")
+				#print_debug("rimescola")
 				card_show_description()
-				await get_tree().create_timer(1.5).timeout
+				await memeory_ui.description_closed
 				picked[1].handle_interaction()
 			
 		if(picked[0].card_type != "shuffle" and picked[1].card_type != "shuffle"):
@@ -91,14 +100,18 @@ func check():
 		AudioManager.play_success_sound_effect()
 		remove_picks()
 		card_show_description()
-		await memeory_ui.close_description
-		print_debug(shuffle_check)
-		print_debug(picked[1])
+		await memeory_ui.description_closed
+		#print_debug(shuffle_check)
+		#print_debug(picked[1])
+		#print_debug("andato oltre")
 		if(picked[1].card_type == "extralife"):
 			MemeoryManager.hearts_lost.reverse() 
 		if(shuffle_check != "shuffle"):
-			print_debug("attiva effetto carta")
+			#print_debug("attiva effetto carta")
 			picked[1].handle_interaction()
+		if(picked[1].card_type == "extralife"):
+			await get_tree().create_timer(2).timeout
+			memeory_ui.reset_beating()
 		if(picked[1].card_type == "seer"):
 			await get_tree().create_timer(2).timeout
 		check_game_won()
@@ -119,7 +132,7 @@ func cover_all_cards():
 		update.emit()
 
 func card_show_description():
-	print_debug("mostro effetto")
+	#print_debug("mostro effetto")
 	description.emit()
 
 func remove_heart_from_array():
