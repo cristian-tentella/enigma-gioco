@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://doio6jdaa5op3"
-path="res://.godot/imported/virus_front.png-414cd52fd76a7056cf89e23c42dd7685.ctex"
+path="res://.godot/imported/error_front.png-d44df86f2c1afeace9ef140be6a18263.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_cards/virus/virus_front.png"
-dest_files=["res://.godot/imported/virus_front.png-414cd52fd76a7056cf89e23c42dd7685.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/error/error_front.png"
+dest_files=["res://.godot/imported/error_front.png-d44df86f2c1afeace9ef140be6a18263.ctex"]
 
 [params]
 
