@@ -43,5 +43,6 @@ texture_normal = ExtResource("2_m1p2w")
 texture_pressed = ExtResource("6_ygtc1")
 texture_hover = ExtResource("4_boe3i")
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Muted" to="." method="_on_pressed"]
 [connection signal="pressed" from="Unmuted" to="." method="_on_pressed"]

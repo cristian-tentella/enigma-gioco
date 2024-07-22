@@ -36,3 +36,7 @@ func _save_muted_to_state_manager():
 
 func _load_muted_from_state_manager():
 	AudioManager.set_mute(StateManager.muted)
+
+
+func _on_visibility_changed():
+	_update_icon()
