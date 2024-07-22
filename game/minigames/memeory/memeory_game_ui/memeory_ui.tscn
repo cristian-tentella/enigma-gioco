@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuenaxqy17uw8"]
+[gd_scene load_steps=11 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
 [ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://game/minigames/memeory/memeory_game_ui/ui_background.png" id="2_3wgbt"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
+[ext_resource type="Texture2D" uid="uid://hv6qh6alhlok" path="res://game/minigames/memeory/memeory_game_ui/bathroom_floor_zoom.png" id="2_ehauv"]
+[ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="3_i76jl"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/minigames/memeory/memeory_cards/deck.tscn" id="5_b56a0"]
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
@@ -18,6 +20,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hlp5k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehauv")
+
+[node name="CloseUiButton" parent="." instance=ExtResource("3_i76jl")]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 18.0
+offset_right = 622.0
+offset_bottom = 52.0
 
 [node name="SlotsGridBackground" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -221,28 +239,6 @@ theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
 flat = true
 
-[node name="CloseButtonBackground" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 541.0
-offset_top = 17.0
-offset_right = 565.0
-offset_bottom = 41.0
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="ExitPauseMenuButton" type="Button" parent="CloseButtonBackground"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
-
 [node name="Deck" parent="." instance=ExtResource("5_b56a0")]
 visible = false
 
@@ -401,10 +397,10 @@ rotation = 0.237365
 scale = Vector2(1.44, 1.44)
 texture = ExtResource("8_1q51g")
 
+[connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
 [connection signal="pressed" from="Virus/Sprite2D4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
-[connection signal="pressed" from="CloseButtonBackground/ExitPauseMenuButton" to="." method="_on_exit_pause_menu_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Win_or_Lost/End_game" to="." method="_on_end_game_pressed"]
 [connection signal="pressed" from="Card_Description/Button" to="." method="_on_button_pressed"]
