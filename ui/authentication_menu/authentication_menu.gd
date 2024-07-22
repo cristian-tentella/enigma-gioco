@@ -22,4 +22,6 @@ func _on_reset_password_button_pressed():
 	UIManager.show_authentication_reset_menu()
 	
 func _on_offline_button_pressed():
+	AuthenticationManager.is_enabled = false
+	
 	AuthenticationManager.exit.emit()

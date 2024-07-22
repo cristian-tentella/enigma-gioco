@@ -28,7 +28,8 @@ func start():
 			AuthenticationManager.display_report_message("Connection error")
 			AuthenticationManager.is_enabled = false
 		await AuthenticationManager.exit
-	
+		if AuthenticationManager.is_enabled == false:
+			UIManager.start_menu._hide_logout_button()
 		
 	
 	#Mostra il menu iniziale 
