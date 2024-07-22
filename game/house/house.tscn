@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=44 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -4529,6 +4529,9 @@ size = Vector2(788, 419.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaf42"]
 size = Vector2(26.9999, 59)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bp2og"]
+radius = 35.0571
+
 [node name="House" type="Node2D"]
 script = ExtResource("1_1idty")
 
@@ -4743,6 +4746,7 @@ rotation = 0.518363
 position = Vector2(-1.85974, -1.24127)
 rotation = -0.518601
 dialogue_id = "hms_interaction"
+just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HolyMoonlightSword/DialogueInteraction"]
 shape = SubResource("CircleShape2D_am5in")
@@ -4858,3 +4862,14 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(208, 691)
 texture = ExtResource("19_pd54m")
+
+[node name="BedroomPC" type="Node2D" parent="."]
+position = Vector2(269, 59)
+
+[node name="DialogueInteraction" parent="BedroomPC" instance=ExtResource("10_533ll")]
+dialogue_id = "bedroom_pc_interaction"
+just_proc_once = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomPC/DialogueInteraction"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_bp2og")
