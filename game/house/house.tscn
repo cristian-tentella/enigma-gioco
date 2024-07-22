@@ -4485,7 +4485,8 @@ color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(-17.0036, -14.996, -16.9438, 236.004, 346.056, 235.918, 346.065, 270.918, 576.065, 270.863, 575.988, -50.1371, -19.0119, -49.9955)
 
 [node name="set_of_keys" parent="Rooms/Cameretta + Terrazzo" instance=ExtResource("8_0lq6k")]
-position = Vector2(382.022, 91.909)
+position = Vector2(495, 160)
+rotation = -0.47822
 item_name = "set_of_keys"
 dialogue_id = "pickup_set_of_keys"
 
@@ -4619,6 +4620,13 @@ just_proc_once = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Bagno/furniture_dialogues/toilet_interaction"]
 position = Vector2(-1.52588e-05, -5.50024)
 shape = SubResource("RectangleShape2D_07v0t")
+
+[node name="DoorWindow2" type="Sprite2D" parent="Rooms"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(473.035, 145.887)
+rotation = 0.837758
+texture = ExtResource("13_1cqjr")
 
 [node name="DoorWindow" type="Sprite2D" parent="Rooms"]
 z_as_relative = false
