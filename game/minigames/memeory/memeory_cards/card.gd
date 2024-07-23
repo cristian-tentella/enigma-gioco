@@ -6,7 +6,7 @@ extends Control
 @onready var button = $Button
 #@onready var card_name_label = $Label
 @export var card_name: String
-@export_enum("regular", "watermelon", "extralife", "malus", "shuffle", "seer", "meme","error") var card_type: String
+@export_enum("regular", "watermelon", "extralife", "malus", "shuffle", "seer", "tcg","error") var card_type: String
 @export var description: String
 @export var index = 0;
 @onready var clickable = true

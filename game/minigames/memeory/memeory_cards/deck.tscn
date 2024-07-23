@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/malus/malus.gd" id="5_ehp5n"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/shuffle/shuffle.gd" id="6_7p1kv"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/seer/seer.gd" id="7_0fw7h"]
-[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/meme/meme.gd" id="8_b3u87"]
+[ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/tcg/meme.gd" id="8_e0el6"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_cards/error/error.gd" id="9_os161"]
 
 [node name="Deck" type="Node2D"]
@@ -111,16 +111,16 @@ card_name = "Seer2"
 card_type = "seer"
 index = 11
 
-[node name="Meme1" parent="." instance=ExtResource("1_cfiem")]
-script = ExtResource("8_b3u87")
-card_name = "Meme1"
-card_type = "meme"
+[node name="Tcg1" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("8_e0el6")
+card_name = "Tcg1"
+card_type = "tcg"
 index = 12
 
-[node name="Meme2" parent="." instance=ExtResource("1_cfiem")]
-script = ExtResource("8_b3u87")
-card_name = "Meme2"
-card_type = "meme"
+[node name="Tcg2" parent="." instance=ExtResource("1_cfiem")]
+script = ExtResource("8_e0el6")
+card_name = "Tcg2"
+card_type = "tcg"
 index = 13
 
 [node name="Error1" parent="." instance=ExtResource("1_cfiem")]

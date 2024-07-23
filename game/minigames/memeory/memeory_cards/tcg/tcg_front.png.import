@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qqhic08s7nx4"
-path="res://.godot/imported/meme_front.png-a2d3a185d34bf69dc2a67a84e56cf7e6.ctex"
+path="res://.godot/imported/tcg_front.png-df97e89c42eeeeefe062518c3aa68551.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/minigames/memeory/memeory_cards/meme/meme_front.png"
-dest_files=["res://.godot/imported/meme_front.png-a2d3a185d34bf69dc2a67a84e56cf7e6.ctex"]
+source_file="res://game/minigames/memeory/memeory_cards/tcg/tcg_front.png"
+dest_files=["res://.godot/imported/tcg_front.png-df97e89c42eeeeefe062518c3aa68551.ctex"]
 
 [params]
 
