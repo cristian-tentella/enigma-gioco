@@ -103,6 +103,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 
 [node name="Popup1" type="Control" parent="Virus"]
@@ -337,29 +338,31 @@ layout_mode = 2
 [node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
-[node name="Win_Lost" type="VBoxContainer" parent="."]
-visible = false
+[node name="Win_Lost" type="Control" parent="."]
 layout_mode = 2
-offset_left = 256.0
-offset_top = 123.0
-offset_right = 384.0
-offset_bottom = 251.0
+anchors_preset = 0
 
-[node name="Win_or_Lost_background" type="TextureRect" parent="Win_Lost"]
-custom_minimum_size = Vector2(128, 128)
+[node name="ColorRect" type="ColorRect" parent="Win_Lost"]
 layout_mode = 2
-texture = ExtResource("2_3wgbt")
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.576471)
 
-[node name="Label" type="Label" parent="Win_Lost/Win_or_Lost_background"]
+[node name="CenterContainer" type="CenterContainer" parent="Win_Lost"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="Label" type="Label" parent="Win_Lost/CenterContainer"]
 z_index = 105
 layout_mode = 2
-offset_left = 20.3454
-offset_top = 52.4359
-offset_right = 107.345
-offset_bottom = 69.4359
 theme = ExtResource("7_cton7")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
+theme_override_colors/font_outline_color = Color(0.333333, 0.309804, 0.305882, 1)
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 56
 
 [node name="End_game" type="Button" parent="."]
 visible = false

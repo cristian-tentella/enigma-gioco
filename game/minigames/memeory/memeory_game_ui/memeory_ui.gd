@@ -10,7 +10,7 @@ var addlife = false
 var reset = false
 @onready var card_name: Label = $Card_Description/Background/Card_Name
 @onready var effect: Label = $Card_Description/Background/Effect
-@onready var win_loss: Label = $Win_Lost/Win_or_Lost_background/Label
+@onready var win_loss: Label = $Win_Lost/CenterContainer/Label
 
 signal exit
 signal close_popup
