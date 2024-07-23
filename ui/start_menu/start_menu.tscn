@@ -116,15 +116,252 @@ color = Color(0.12549, 0.117647, 0.113725, 0.901961)
 
 [node name="Backgroud" type="NinePatchRect" parent="CreditsPopup"]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 64.0
 offset_top = 32.0
-offset_right = 512.0
+offset_right = 576.0
 offset_bottom = 328.0
 texture = ExtResource("7_ykcfw")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsPopup/Backgroud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="CreditsPopup/Backgroud/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+columns = 4
+
+[node name="Programmazione" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Programmazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Programmazione"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Programmazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Maria Lazzaro
+- Riccardo Moretti
+- Giorgio Paoloni
+- Francesco Pittacolo
+- Cristian Tentella"
+
+[node name="Autenticazione" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Autenticazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Autenticazione"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Autenticazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Giorgio Paoloni"
+
+[node name="Salvataggio" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Salvataggio"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Salvataggio"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Salvataggio"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Riccardo Moretti
+- Giorgio Paoloni"
+
+[node name="Minigiochi" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Minigiochi"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Minigiochi"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Minigiochi"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Maria Lazzaro
+- Riccardo Moretti
+- Francesco Pittacolo"
+
+[node name="Storia" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Storia"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Storia
+"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Storia"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Maria Lazzaro
+- Riccardo Moretti
+- Francesco Pittacolo"
+
+[node name="Mappa" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Mappa"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Mappa"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Mappa"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Maria Lazzaro
+- Francesco Pittacolo"
+
+[node name="Localizzazione" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Localizzazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Localizzazione
+"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Localizzazione"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Maria Lazzaro
+- Cristian Tentella"
+
+[node name="Video gameplay" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Video gameplay"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Video gameplay"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Video gameplay"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Giorgio Paoloni"
+
+[node name="Pixel art" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Pixel art"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Pixel art"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Pixel art"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Cristian Tentella"
+
+[node name="Interfaccia" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Interfaccia"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Interfaccia
+"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Interfaccia"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Cristian Tentella"
+
+[node name="Colonna sonora" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Colonna sonora"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Musiche"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Colonna sonora"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Cristian Tentella"
+
+[node name="Suoni" type="VBoxContainer" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="NomeSezione" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Suoni"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Suoni
+"
+
+[node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Suoni"]
+layout_mode = 2
+theme = ExtResource("2_vdu52")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+theme_override_font_sizes/font_size = 9
+text = "- Cristian Tentella"
 
 [node name="CloseUiButton" parent="CreditsPopup" instance=ExtResource("8_lly63")]
 layout_mode = 0
