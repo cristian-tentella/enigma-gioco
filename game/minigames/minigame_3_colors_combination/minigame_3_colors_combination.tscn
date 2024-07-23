@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://wbu7xnwvf2u2"]
+[gd_scene load_steps=6 format=3 uid="uid://wbu7xnwvf2u2"]
 
 [ext_resource type="Script" path="res://game/minigames/minigame_3_colors_combination/minigame_3_colors_combination.gd" id="1_dlgg2"]
 [ext_resource type="PackedScene" uid="uid://h0be1jjovjxo" path="res://components/interaction/dialogue_interaction/dialogue_interaction.tscn" id="2_yqpw7"]
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_6jylu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
-size = Vector2(51, 38.8271)
+size = Vector2(51, 30.6635)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0nc5"]
+size = Vector2(18.5, 20)
 
 [node name="Minigame3ColorsCombination" type="Node2D"]
 script = ExtResource("1_dlgg2")
@@ -38,14 +41,15 @@ is_method_in_direct_parent = true
 just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer_color_switcher"]
-position = Vector2(375, 54)
+position = Vector2(375, 49.9182)
 shape = SubResource("RectangleShape2D_22paf")
 
 [node name="Computer_color" type="ColorRect" parent="."]
-offset_left = 373.0
-offset_top = 176.0
-offset_right = 427.0
-offset_bottom = 223.0
+z_index = 3
+offset_left = 391.0
+offset_top = 188.0
+offset_right = 411.0
+offset_bottom = 202.0
 color = Color(0, 0, 0, 0)
 
 [node name="game_starter" parent="." instance=ExtResource("3_6jylu")]
@@ -57,5 +61,5 @@ minigame_requirement = 4
 just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
-position = Vector2(152.855, -115.775)
-shape = SubResource("RectangleShape2D_22paf")
+position = Vector2(153.855, -109.317)
+shape = SubResource("RectangleShape2D_k0nc5")
