@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cgi6252xdiyy1"]
+[gd_scene load_steps=45 format=3 uid="uid://cgi6252xdiyy1"]
 
 [ext_resource type="Script" path="res://game/house/house.gd" id="1_1idty"]
 [ext_resource type="PackedScene" uid="uid://cq1lte857e71c" path="res://game/house/rooms/rooms.tscn" id="2_axyq3"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://uc8agtk4h134" path="res://game/minigames/minigame_1/minigame_1_key_combination.tscn" id="15_w3m7q"]
 [ext_resource type="PackedScene" uid="uid://dlpsx57sf4eop" path="res://game/minigames/minigame_5_trova_lista_invitati/minigame_5_trova_lista_invitati.tscn" id="18_uscp0"]
 [ext_resource type="Texture2D" uid="uid://cywiipp58pni0" path="res://game/minigames/minigame_4_ripara_spada_laser/ash.png" id="19_pd54m"]
+[ext_resource type="Texture2D" uid="uid://bgmtmo7x16kho" path="res://game/house/assets/casal_del_marmo.png" id="25_3ptpn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8vydt"]
 texture = ExtResource("8_51wt1")
@@ -5038,3 +5039,12 @@ just_proc_once = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BedroomPC/DialogueInteraction"]
 position = Vector2(1, 2)
 shape = SubResource("CircleShape2D_bp2og")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+clip_contents = true
+offset_left = 352.0
+offset_top = -64.0
+offset_right = 1363.0
+offset_bottom = 603.0
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("25_3ptpn")
