@@ -101,13 +101,9 @@ func check():
 		remove_picks()
 		card_show_description()
 		await memeory_ui.description_closed
-		#print_debug(shuffle_check)
-		#print_debug(picked[1])
-		#print_debug("andato oltre")
 		if(picked[1].card_type == "extralife"):
 			MemeoryManager.hearts_lost.reverse() 
 		if(shuffle_check != "shuffle"):
-			#print_debug("attiva effetto carta")
 			picked[1].handle_interaction()
 			check_game_won()
 		if(picked[1].card_type == "extralife"):
