@@ -48,6 +48,7 @@ NODI NECESSARI PER FUNZIONAMENTO:
 	plutonio_radioattivo dentro house.tscn (dentro studio)
 	
 """
+@onready var first_time = true
 @onready var dialogo_monnezza: DialogueInteraction = $dialogo_monnezza
 @onready var dialogo_monnezza_persistente: DialogueInteraction = $dialogo_monnezza_uguale
 @onready var primo_dialogo_appena_clicco_su_spada: DialogueInteraction = $click_spada_laser_dialogo_minigame4
@@ -119,31 +120,33 @@ func _on_inventory_slot_pressed(item: PickableItem):
 @onready var monnezza: Sprite2D = $monnezza
 @onready var fire_particles: CPUParticles2D = $FireParticles
 func launch_brucia_cumulo_immondizia_interazione():
-	self.brucia_immondizia_dialogo_inizio.handle_interaction()
-	await DialogueManager.has_finished_displaying
+	if(first_time):
+		first_time = false
+		self.brucia_immondizia_dialogo_inizio.handle_interaction()
+		await DialogueManager.has_finished_displaying
 	
-	AudioManager.play_light_saber_sound_effect()
+		AudioManager.play_light_saber_sound_effect()
 
-	var ash: Sprite2D = StateManager.house.get_node("Ash")
-	ash.show()
+		var ash: Sprite2D = StateManager.house.get_node("Ash")
+		ash.show()
 	
-	var monnezza_fade_out = create_tween()
-	monnezza_fade_out.tween_property(self.monnezza, "modulate", Color.hex(0x00000000), 1)
+		var monnezza_fade_out = create_tween()
+		monnezza_fade_out.tween_property(self.monnezza, "modulate", Color.hex(0x00000000), 1)
 	
-	self.fire_particles.emitting = true
-	await monnezza_fade_out.finished
+		self.fire_particles.emitting = true
+		await monnezza_fade_out.finished
 	
-	var ash_fade_in = create_tween()
-	ash_fade_in.tween_property(ash, "modulate", Color.hex(0xffffffff), 0.25)
-	await ash_fade_in.finished
-	self.fire_particles.emitting = false
-	self.monnezza.queue_free()
+		var ash_fade_in = create_tween()
+		ash_fade_in.tween_property(ash, "modulate", Color.hex(0xffffffff), 0.25)
+		await ash_fade_in.finished
+		self.fire_particles.emitting = false
+		self.monnezza.queue_free()
 	
-	self.brucia_immondizia_dialogo_fine.handle_interaction()
-	await DialogueManager.has_finished_displaying
+		self.brucia_immondizia_dialogo_fine.handle_interaction()
+		await DialogueManager.has_finished_displaying
 	
-	$interazione_con_immondizia.forcefully_remove_as_if_proc_only_once()
-	self.queue_free()
+		$interazione_con_immondizia.forcefully_remove_as_if_proc_only_once()
+		self.queue_free()
 
 
 
