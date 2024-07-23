@@ -106,6 +106,8 @@ func check():
 		if(shuffle_check != "shuffle"):
 			picked[1].handle_interaction()
 			check_game_won()
+		if(picked[1].card_type == "seer"):
+			await get_tree().create_timer(2).timeout
 		if(picked[1].card_type == "extralife"):
 			await get_tree().create_timer(2).timeout
 			memeory_ui.reset_beating(hearts_array.size())

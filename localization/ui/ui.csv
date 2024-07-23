@@ -26,3 +26,13 @@ PixelArt;Pixel Art;Pixel Art
 InterfacciaUtente;User Interface;Interfaccia Utente
 ColonnaSonora;Soundtrack;Colonna Sonora
 EffettiSonori;Sound Effects;Effetti Sonori
+
+Popup1Title;ADVERTISEMENT;ANNUNCIO
+Popup2Title;ERROR 418;ERRORE 418
+Popup3Title;ERROR 404!;ERRORE 404!
+Popup4Title;Error;Errore
+
+Popup1Body;Fresh Watermelon at 3km from you!;Anguria fresca a 3km da te!
+Popup2Body;I'm a teapot...;Sono una teiera...
+Popup3Body;Page not found!;Pagina non trovata!
+Popup4Body;The operation completed successfully.;L'operazione è stata completata con successo.

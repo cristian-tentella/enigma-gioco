@@ -144,12 +144,12 @@ memeory_shuffle_title;Shuffle Card;Carta Rimescola
 
 memeory_watermelon_description;Let's make the game more beautiful!;Rendiamo il gioco più bello!
 memeory_regular_description;Nothing happens here...;Qui non succede nulla...
-memeory_extralife_description;Here's to you two lives, make good use of them! (P.S. You can have a maximum of 8 lifes);Ecco a te due vite, fanne buon uso! (P.S. puoi avere massimo 8 vite)
-memeory_malus_description;The curse that lives in these two cards unfortunately takes a life from you... (P.S. Only if you don't have only 1 life left);La maledizione che vive in queste due carte purtroppo ti toglie una vita...(solo se non hai una sola vita rimasta)
-memeory_error_description;Error 418, i'm a teapot...;Errore 418, sono una teiera... 
+memeory_extralife_description;Here's to you two lives, make good use of them!\n(You can have a maximum of 8 lifes);Ecco a te due vite, fanne buon uso!\n(Puoi avere massimo 8 vite)
+memeory_malus_description;The curse that lives in these card unfortunately takes a life from you...(only if you don't have only 1 life left...);La maledizione che vive in questa carta purtroppo ti toglie una vita...(solo se non hai una sola vita rimasta...)
+memeory_error_description;Oops! Something went wrong.;Ooops! Qualcosa è andato storto 
 memeory_seer_description;I see the future...;Io vedo il futuro...
 memeory_tcg_description;I summon Pot of Greed to draw three additional cards from my deck...It doesn't work tho...;Utilizzo Anfora dell'avidità per pescare tre carte dal deck...Non funziona però...
-memeory_shuffle_description;I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found);Io mi attivo solo se sbagli la coppia e in una delle due carte ci sono io...Attenzione perchè rimescolo tutto...(P.S. L'effetto non si attiva se si trova la coppia)
+memeory_shuffle_description;I only activate if the pair is wrong and I am one of the picked cards...Be careful because I mix everything up, but at least you don't lose an heart...\n(The effect is not activated if the pair is found);Mi attivo solo se sbagli la coppia e in una delle carte selezionate ci sono io...Attenzione perchè rimescolo tutto, ma almeno non perdi una vita...\n(L'effetto non si attiva se si trova la coppia)
 
 minigame_3_colors_mobile_bloccato;Domink:This one is locked too, what's wrong with my house, what is this level of security?!;Dominik:Anche questo è bloccato, ma cos'è questo livello di sicurezza in casa mia?!
 minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around the house, there has to be a hint somewhere around here!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi da qualche parte!

@@ -69,11 +69,11 @@ func reset_ui():
 	reset_beating(8)
 	$CloseUiButton.show()
 	$Watermelons.hide()
-	$Virus.hide()
-	$Virus/Popup1.show()
-	$Virus/Popup2.show()
-	$Virus/Popup3.show()
-	$Virus/Popup4.show()
+	$Error.hide()
+	$Error/Popup1.show()
+	$Error/Popup2.show()
+	$Error/Popup3.show()
+	$Error/Popup4.show()
 	$LifePointsBackground.hide()
 	$Hearts.show()
 	$Card_Description.hide()
@@ -102,7 +102,9 @@ func reset_beating(k):
 		
 func game_lost_ui():
 	$CloseUiButton.hide()
-	await get_tree().create_timer(1).timeout
+	MemeoryManager.clicks = -1
+	update_slots()
+	#await get_tree().create_timer(1).timeout
 	win_loss.text = "memeory_lost_ui"
 	$Win_Lost.show()
 	$End_game.show()
@@ -111,12 +113,13 @@ func game_lost_ui():
 	
 func game_won_ui():
 	$CloseUiButton.hide()
-	await get_tree().create_timer(1).timeout
+	MemeoryManager.clicks = -1
+	#await get_tree().create_timer(1).timeout
 	win_loss.text = "memeory_win_ui"
 	$Win_Lost.show()
 	$End_game.show()
 	await end_game
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
 	self.exit.emit()
 	
 func show_description():
@@ -140,7 +143,7 @@ func change_life_system():
 	$"LifePointsBackground".show()
 
 func show_popup():
-	$Virus.show()
+	$Error.show()
 
 func _on_exit_pause_menu_button_pressed():
 	MemeoryManager.clear_slots()
@@ -150,16 +153,16 @@ func show_watermelons():
 	$Watermelons.show()
 
 func _on_exit_popup_1_pressed():
-	$Virus/Popup1.hide()
+	$Error/Popup1.hide()
 
 func _on_exit_popup_2_pressed():
-	$Virus/Popup2.hide()
+	$Error/Popup2.hide()
 
 func _on_exit_popup_3_pressed():
-	$Virus/Popup3.hide()
+	$Error/Popup3.hide()
 
 func _on_exit_popup_4_pressed():
-	$Virus/Popup4.hide()
+	$Error/Popup4.hide()
 
 
 func _on_button_pressed():
