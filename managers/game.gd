@@ -19,14 +19,15 @@ func start():
 	
 	
 	AudioManager.play_start_menu_sound_track()
-	
 	if AuthenticationManager.is_enabled:
 		AuthenticationManager.display_report_message("")
 		UIManager.show_authentication_menu()
+		UIManager.authentication_menu.get_node("VBoxContainer/Offline").disabled = true
 		StateManager.is_online = await SaveManager.is_online()
 		if StateManager.is_online == false:
 			AuthenticationManager.display_report_message("Connection error")
 			AuthenticationManager.is_enabled = false
+		UIManager.authentication_menu.get_node("VBoxContainer/Offline").disabled = false
 		await AuthenticationManager.exit
 		if AuthenticationManager.is_enabled == false: ##se play offline e' stato premuto, risultera' in is_enabled = false
 			UIManager.start_menu._hide_logout_button()
