@@ -106,7 +106,7 @@ func update_interaction_detector_position():
 	if is_idle():
 		return
 
-	const offset_multiplier = 20
+	const offset_multiplier = 17
 	self.interaction_detector.position = input * offset_multiplier
 
 
