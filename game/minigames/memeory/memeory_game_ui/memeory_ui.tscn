@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuenaxqy17uw8"]
 
-[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="1_58hgi"]
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
 [ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://game/minigames/memeory/memeory_game_ui/ui_background.png" id="2_3wgbt"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
 [ext_resource type="Texture2D" uid="uid://hv6qh6alhlok" path="res://game/minigames/memeory/memeory_game_ui/bathroom_floor_zoom.png" id="2_ehauv"]
 [ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="3_i76jl"]
 [ext_resource type="PackedScene" uid="uid://cr28jfcj25jap" path="res://game/minigames/memeory/memeory_cards/deck.tscn" id="5_b56a0"]
+[ext_resource type="Texture2D" uid="uid://c6cww8oj83b1a" path="res://game/minigames/memeory/memeory_game_ui/virus_popup_bg.png" id="5_f5a7s"]
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 [ext_resource type="Texture2D" uid="uid://chyg2v1oywjod" path="res://game/minigames/memeory/memeory_game_ui/watermelon.png" id="8_1q51g"]
@@ -103,140 +103,203 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 
-[node name="Popup1" type="TextureRect" parent="Virus"]
-z_index = 15
-layout_mode = 0
-offset_left = 152.556
-offset_top = 79.2047
-offset_right = 258.556
-offset_bottom = 172.205
-texture = ExtResource("2_3wgbt")
+[node name="Popup1" type="Control" parent="Virus"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 83.0
+offset_top = 92.0
+offset_right = 123.0
+offset_bottom = 132.0
+metadata/_edit_group_ = true
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup1"]
+[node name="Background" type="NinePatchRect" parent="Virus/Popup1"]
 layout_mode = 0
-offset_left = 104.716
-offset_top = -13.7113
-offset_right = 118.716
-offset_bottom = 1.28868
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 99.0
+offset_bottom = 60.0
+texture = ExtResource("5_f5a7s")
+patch_margin_left = 2
+patch_margin_top = 19
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="ExitPopup1" type="Button" parent="Virus/Popup1/ClosePopup"]
+[node name="Title" type="Label" parent="Virus/Popup1/Background"]
 layout_mode = 0
-offset_left = 0.841461
-offset_top = -4.0
-offset_right = 18.8415
-offset_bottom = 27.0
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 17.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
+text = "Popup1Title"
 
-[node name="Popup2" type="TextureRect" parent="Virus"]
-z_index = 15
+[node name="Body" type="Label" parent="Virus/Popup1/Background"]
 layout_mode = 0
-offset_left = 240.025
-offset_top = 210.795
-offset_right = 353.025
-offset_bottom = 283.795
-texture = ExtResource("2_3wgbt")
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 90.0
+offset_bottom = 54.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.639216, 0.611765, 0.603922, 1)
+text = "Popup1Body"
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup2"]
+[node name="CloseUiButton" parent="Virus/Popup1" instance=ExtResource("3_i76jl")]
 layout_mode = 0
-offset_left = 110.051
-offset_top = -13.8601
-offset_right = 124.051
-offset_bottom = 1.13988
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+offset_left = 81.3333
+offset_top = 6.0
+offset_right = 115.333
+offset_bottom = 40.0
+scale = Vector2(0.45, 0.45)
 
-[node name="ExitPopup2" type="Button" parent="Virus/Popup2/ClosePopup"]
-layout_mode = 0
-offset_left = -0.741394
-offset_top = -3.92738
-offset_right = 18.2586
-offset_bottom = 27.0727
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
+[node name="Popup2" type="Control" parent="Virus"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 462.0
+offset_top = 204.0
+offset_right = 502.0
+offset_bottom = 244.0
+metadata/_edit_group_ = true
 
-[node name="Popup3" type="TextureRect" parent="Virus"]
-z_index = 15
+[node name="Background" type="NinePatchRect" parent="Virus/Popup2"]
 layout_mode = 0
-offset_left = 365.063
-offset_top = 67.3339
-offset_right = 470.063
-offset_bottom = 157.334
-texture = ExtResource("2_3wgbt")
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 99.0
+offset_bottom = 60.0
+texture = ExtResource("5_f5a7s")
+patch_margin_left = 2
+patch_margin_top = 19
+patch_margin_right = 2
+patch_margin_bottom = 2
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup3"]
+[node name="Title" type="Label" parent="Virus/Popup2/Background"]
 layout_mode = 0
-offset_left = 107.67
-offset_top = -14.257
-offset_right = 121.67
-offset_bottom = 0.743011
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 17.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
+text = "Popup2Title"
 
-[node name="ExitPopup3" type="Button" parent="Virus/Popup3/ClosePopup"]
+[node name="Body" type="Label" parent="Virus/Popup2/Background"]
 layout_mode = 0
-offset_left = -0.703679
-offset_top = -4.13304
-offset_right = 18.2964
-offset_bottom = 26.867
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 90.0
+offset_bottom = 54.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.639216, 0.611765, 0.603922, 1)
+text = "Popup2Body"
 
-[node name="Popup4" type="TextureRect" parent="Virus"]
-z_index = 15
+[node name="CloseUiButton" parent="Virus/Popup2" instance=ExtResource("3_i76jl")]
 layout_mode = 0
-offset_left = 402.364
-offset_top = 198.46
-offset_right = 463.364
-offset_bottom = 248.46
-texture = ExtResource("2_3wgbt")
+offset_left = 81.3333
+offset_top = 6.0
+offset_right = 115.333
+offset_bottom = 40.0
+scale = Vector2(0.45, 0.45)
 
-[node name="ClosePopup" type="NinePatchRect" parent="Virus/Popup4"]
-layout_mode = 0
-offset_left = 58.8576
-offset_top = -16.2412
-offset_right = 72.8576
-offset_bottom = -1.2412
-texture = ExtResource("1_58hgi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+[node name="Popup3" type="Control" parent="Virus"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 95.0
+offset_top = 229.0
+offset_right = 135.0
+offset_bottom = 269.0
+metadata/_edit_group_ = true
 
-[node name="ExitPopup4" type="Button" parent="Virus/Popup4/ClosePopup"]
+[node name="Background" type="NinePatchRect" parent="Virus/Popup3"]
 layout_mode = 0
-offset_left = -0.0299301
-offset_top = -4.77974
-offset_right = 18.9701
-offset_bottom = 26.2203
-scale = Vector2(0.75, 0.75)
-theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
-text = "X"
-flat = true
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 99.0
+offset_bottom = 60.0
+texture = ExtResource("5_f5a7s")
+patch_margin_left = 2
+patch_margin_top = 19
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Title" type="Label" parent="Virus/Popup3/Background"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 17.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
+text = "Popup3Title"
+
+[node name="Body" type="Label" parent="Virus/Popup3/Background"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 90.0
+offset_bottom = 54.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.639216, 0.611765, 0.603922, 1)
+text = "Popup3Body"
+
+[node name="CloseUiButton" parent="Virus/Popup3" instance=ExtResource("3_i76jl")]
+layout_mode = 0
+offset_left = 81.3333
+offset_top = 6.0
+offset_right = 115.333
+offset_bottom = 40.0
+scale = Vector2(0.45, 0.45)
+
+[node name="Popup4" type="Control" parent="Virus"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 460.0
+offset_top = 89.0
+offset_right = 500.0
+offset_bottom = 129.0
+metadata/_edit_group_ = true
+
+[node name="Background" type="NinePatchRect" parent="Virus/Popup4"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 99.0
+offset_bottom = 60.0
+texture = ExtResource("5_f5a7s")
+patch_margin_left = 2
+patch_margin_top = 19
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Title" type="Label" parent="Virus/Popup4/Background"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 17.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
+text = "Popup4Title"
+
+[node name="Body" type="Label" parent="Virus/Popup4/Background"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 90.0
+offset_bottom = 54.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.639216, 0.611765, 0.603922, 1)
+text = "Popup4Body"
+
+[node name="CloseUiButton" parent="Virus/Popup4" instance=ExtResource("3_i76jl")]
+layout_mode = 0
+offset_left = 81.3333
+offset_top = 6.0
+offset_right = 115.333
+offset_bottom = 40.0
+scale = Vector2(0.45, 0.45)
 
 [node name="Hearts" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -459,9 +522,9 @@ texture = ExtResource("8_1q51g")
 visible = false
 
 [connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
-[connection signal="pressed" from="Virus/Popup1/ClosePopup/ExitPopup1" to="." method="_on_exit_popup_1_pressed"]
-[connection signal="pressed" from="Virus/Popup2/ClosePopup/ExitPopup2" to="." method="_on_exit_popup_2_pressed"]
-[connection signal="pressed" from="Virus/Popup3/ClosePopup/ExitPopup3" to="." method="_on_exit_popup_3_pressed"]
-[connection signal="pressed" from="Virus/Popup4/ClosePopup/ExitPopup4" to="." method="_on_exit_popup_4_pressed"]
+[connection signal="pressed" from="Virus/Popup1/CloseUiButton" to="." method="_on_exit_popup_1_pressed"]
+[connection signal="pressed" from="Virus/Popup2/CloseUiButton" to="." method="_on_exit_popup_2_pressed"]
+[connection signal="pressed" from="Virus/Popup3/CloseUiButton" to="." method="_on_exit_popup_3_pressed"]
+[connection signal="pressed" from="Virus/Popup4/CloseUiButton" to="." method="_on_exit_popup_4_pressed"]
 [connection signal="pressed" from="End_game" to="." method="_on_end_game_pressed"]
 [connection signal="pressed" from="Close_Description" to="." method="_on_button_pressed"]
