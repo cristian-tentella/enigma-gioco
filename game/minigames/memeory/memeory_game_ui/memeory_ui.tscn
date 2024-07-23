@@ -339,6 +339,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Win_Lost" type="Control" parent="."]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 
@@ -372,45 +373,56 @@ offset_right = 640.0
 offset_bottom = 361.0
 flat = true
 
-[node name="Card_Description" type="VBoxContainer" parent="."]
+[node name="Card_Description" type="Control" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -87.0
-offset_right = 126.0
-offset_bottom = 102.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 106.0
+offset_right = 192.0
+offset_bottom = 106.0
 
-[node name="Background" type="TextureRect" parent="Card_Description"]
-custom_minimum_size = Vector2(128, 128)
+[node name="ColorRect" type="ColorRect" parent="Card_Description"]
+offset_left = -192.0
+offset_top = -106.0
+offset_right = 448.0
+offset_bottom = 254.0
+color = Color(0, 0, 0, 0.576471)
+
+[node name="Background" type="NinePatchRect" parent="Card_Description"]
 layout_mode = 2
+offset_right = 256.0
+offset_bottom = 128.0
 texture = ExtResource("2_3wgbt")
-stretch_mode = 5
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
-[node name="Card_Name" type="Label" parent="Card_Description/Background"]
+[node name="MarginContainer" type="MarginContainer" parent="Card_Description/Background"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card_Description/Background/MarginContainer"]
 layout_mode = 2
-offset_left = 82.7084
-offset_top = 16.0272
-offset_right = 169.708
-offset_bottom = 39.0272
 
-[node name="Effect" type="Label" parent="Card_Description/Background"]
+[node name="Card_Name" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+text = "Shuffle"
+
+[node name="Effect" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
 z_index = 105
 layout_mode = 2
-offset_left = 78.2539
-offset_top = 35.1091
-offset_right = 175.254
-offset_bottom = 110.109
 theme = ExtResource("7_cton7")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+text = "I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found)"
 autowrap_mode = 3
 
 [node name="Close_Description" type="Button" parent="."]

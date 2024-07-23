@@ -8,8 +8,8 @@ var index = 0
 @onready var heart_UI: Array = $Hearts.get_children()
 var addlife = false
 var reset = false
-@onready var card_name: Label = $Card_Description/Background/Card_Name
-@onready var effect: Label = $Card_Description/Background/Effect
+@onready var card_name: Label = $Card_Description/Background/MarginContainer/VBoxContainer/Card_Name
+@onready var effect: Label = $Card_Description/Background/MarginContainer/VBoxContainer/Effect
 @onready var win_loss: Label = $Win_Lost/CenterContainer/Label
 
 signal exit
