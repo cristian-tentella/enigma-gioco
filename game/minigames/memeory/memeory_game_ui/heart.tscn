@@ -83,10 +83,9 @@ grow_vertical = 2
 script = ExtResource("1_dyxx2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 32.0532
+offset_bottom = 32.0532
 texture = ExtResource("2_jmycq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
