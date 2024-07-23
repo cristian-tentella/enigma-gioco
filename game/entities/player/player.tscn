@@ -188,11 +188,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krkt7"]
-radius = 7.14286
-height = 39.2157
+radius = 6.66667
+height = 35.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yd28a"]
-radius = 20.0
+radius = 13.3333
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 3

@@ -32,7 +32,7 @@ minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 
 [node name="AUTOPILOT_da_letto_a_fuori2" parent="." instance=ExtResource("4_hufej")]
-position = Vector2(283, -38)
+position = Vector2(280, -16)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 just_proc_once = false
@@ -43,7 +43,7 @@ minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 
 [node name="AUTOPILOT_da_fuori_a_dentro" parent="." instance=ExtResource("4_hufej")]
-position = Vector2(283, 58)
+position = Vector2(280, 56)
 minigame_requirement = -1
 destroy_after_minigame_requirement_number = -2
 
