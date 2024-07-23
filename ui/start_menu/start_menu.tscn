@@ -284,7 +284,7 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
 theme_override_font_sizes/font_size = 12
-text = "Video gameplay"
+text = "VideoGameplay"
 
 [node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Video gameplay"]
 layout_mode = 2
@@ -301,7 +301,7 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
 theme_override_font_sizes/font_size = 12
-text = "Pixel art"
+text = "PixelArt"
 
 [node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Pixel art"]
 layout_mode = 2
@@ -318,8 +318,7 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
 theme_override_font_sizes/font_size = 12
-text = "Interfaccia
-"
+text = "InterfacciaUtente"
 
 [node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Interfaccia"]
 layout_mode = 2
@@ -336,7 +335,7 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
 theme_override_font_sizes/font_size = 12
-text = "Musiche"
+text = "ColonnaSonora"
 
 [node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Colonna sonora"]
 layout_mode = 2
@@ -353,8 +352,7 @@ layout_mode = 2
 theme = ExtResource("2_vdu52")
 theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
 theme_override_font_sizes/font_size = 12
-text = "Suoni
-"
+text = "EffettiSonori"
 
 [node name="Partecipanti" type="Label" parent="CreditsPopup/Backgroud/MarginContainer/GridContainer/Suoni"]
 layout_mode = 2
