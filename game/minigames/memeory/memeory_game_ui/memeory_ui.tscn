@@ -103,7 +103,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 
 [node name="Popup1" type="TextureRect" parent="Virus"]
@@ -243,12 +242,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -127.0
-offset_top = 22.0
-offset_right = 128.0
-offset_bottom = 53.0
+offset_left = -142.0
+offset_top = 16.0
+offset_right = 142.0
+offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 36
 
 [node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
@@ -274,26 +273,24 @@ layout_mode = 2
 [node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
 layout_mode = 2
 
-[node name="Win_Lost" type="VBoxContainer" parent="."]
+[node name="Win_Lost" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
-offset_left = 222.0
-offset_top = 132.0
-offset_right = 413.0
-offset_bottom = 281.0
-alignment = 1
+offset_left = 255.688
+offset_top = 116.106
+offset_right = 383.688
+offset_bottom = 244.106
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Win_or_Lost_background" type="TextureRect" parent="Win_Lost"]
-custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("2_3wgbt")
 
-[node name="Label" type="Label" parent="Win_Lost/Win_or_Lost_background"]
+[node name="Label" type="Label" parent="Win_Lost"]
 z_index = 105
 layout_mode = 2
-offset_left = 24.0
-offset_top = 54.0
-offset_right = 167.0
-offset_bottom = 71.0
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
@@ -306,45 +303,33 @@ offset_right = 640.0
 offset_bottom = 361.0
 flat = true
 
-[node name="Card_Description" type="VBoxContainer" parent="."]
-visible = false
+[node name="Card_Description" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(256, 128)
+layout_direction = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -97.0
-offset_top = -61.0
-offset_right = 97.0
-offset_bottom = 94.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="Background" type="TextureRect" parent="Card_Description"]
-custom_minimum_size = Vector2(128, 128)
+[node name="Win_or_Lost" type="TextureRect" parent="Card_Description"]
 layout_mode = 2
 texture = ExtResource("2_3wgbt")
+stretch_mode = 5
 
-[node name="Card_Name" type="Label" parent="Card_Description/Background"]
+[node name="Label" type="Label" parent="Card_Description"]
 z_index = 105
 layout_mode = 2
-offset_left = 24.0
-offset_top = 21.0
-offset_right = 169.0
-offset_bottom = 38.0
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
-
-[node name="Effect" type="Label" parent="Card_Description/Background"]
-layout_mode = 2
-offset_left = 25.0
-offset_top = 49.0
-offset_right = 169.0
-offset_bottom = 108.0
-autowrap_mode = 3
 
 [node name="Close_Description" type="Button" parent="."]
 visible = false
