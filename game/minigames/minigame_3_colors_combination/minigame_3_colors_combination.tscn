@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ciu5hdnyfuthf" path="res://components/interaction/on_click_any_interaction/on_click_any_interaction.tscn" id="3_6jylu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22paf"]
-size = Vector2(51, 46)
+size = Vector2(51, 38.8271)
 
 [node name="Minigame3ColorsCombination" type="Node2D"]
 script = ExtResource("1_dlgg2")
@@ -45,7 +45,7 @@ shape = SubResource("RectangleShape2D_22paf")
 offset_left = 373.0
 offset_top = 176.0
 offset_right = 427.0
-offset_bottom = 225.0
+offset_bottom = 223.0
 color = Color(0, 0, 0, 0)
 
 [node name="game_starter" parent="." instance=ExtResource("3_6jylu")]
@@ -57,5 +57,5 @@ minigame_requirement = 4
 just_proc_once = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="game_starter"]
-position = Vector2(152.855, -80.188)
+position = Vector2(152.855, -115.775)
 shape = SubResource("RectangleShape2D_22paf")
