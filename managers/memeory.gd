@@ -138,6 +138,7 @@ func card_show_description():
 func remove_heart_from_array():
 	if(hearts_array.size() > 0):
 		hearts_lost.append(hearts_array[hearts_array.size()-1])
+		print_debug(hearts_lost)
 		hearts_array[hearts_array.size()-1] = null
 		updatehearts.emit()
 	

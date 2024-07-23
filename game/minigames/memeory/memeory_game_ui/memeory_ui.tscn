@@ -337,12 +337,10 @@ theme_override_font_sizes/font_size = 12
 modulate = Color(1, 1, 1, 0)
 z_index = 20
 layout_mode = 2
-
 offset_left = -0.414215
 offset_top = -1.41422
 offset_right = 638.586
 offset_bottom = 357.586
-
 
 [node name="LifePointsBackground" type="TextureRect" parent="."]
 layout_mode = 1
