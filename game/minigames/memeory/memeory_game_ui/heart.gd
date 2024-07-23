@@ -15,7 +15,7 @@ func stop_animation():
 	
 func lost_heart_animation():
 	$AnimationPlayer.play("lost_heart")
-	await get_tree().create_timer(1.5).timeout
+	#await get_tree().create_timer(1.5).timeout
 	#self.hide()
 
 func recover_heart_animation():

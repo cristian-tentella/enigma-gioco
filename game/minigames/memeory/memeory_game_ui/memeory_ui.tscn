@@ -103,10 +103,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Virus" type="Control" parent="."]
-visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Popup1" type="TextureRect" parent="Virus"]
 z_index = 15
@@ -132,9 +129,9 @@ patch_margin_bottom = 6
 
 [node name="ExitPopup1" type="Button" parent="Virus/Popup1/ClosePopup"]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 0.841461
 offset_top = -4.0
-offset_right = 19.0
+offset_right = 18.8415
 offset_bottom = 27.0
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
@@ -198,10 +195,10 @@ patch_margin_bottom = 6
 
 [node name="ExitPopup3" type="Button" parent="Virus/Popup3/ClosePopup"]
 layout_mode = 0
-offset_left = -1.12415
-offset_top = -4.97394
-offset_right = 17.8759
-offset_bottom = 26.0261
+offset_left = -0.703679
+offset_top = -4.13304
+offset_right = 18.2964
+offset_bottom = 26.867
 scale = Vector2(0.75, 0.75)
 theme_override_colors/font_color = Color(0.545098, 0.505882, 0.498039, 1)
 text = "X"
@@ -299,6 +296,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
 [node name="End_game" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 640.0
@@ -334,6 +332,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 
 [node name="Close_Description" type="Button" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 20
 layout_mode = 2
