@@ -243,6 +243,7 @@ texture = ExtResource("8_1q51g")
 flip_h = true
 
 [node name="Watermelon8" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
 offset_left = -70.3927
 offset_top = 7.79946
 offset_right = -38.3927
