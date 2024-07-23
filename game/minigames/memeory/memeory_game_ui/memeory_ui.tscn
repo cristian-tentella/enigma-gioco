@@ -303,6 +303,7 @@ offset_bottom = 40.0
 scale = Vector2(0.45, 0.45)
 
 [node name="Hearts" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -357,7 +358,6 @@ offset_right = 640.0
 offset_bottom = 360.0
 
 [node name="Label" type="Label" parent="Win_Lost/CenterContainer"]
-z_index = 105
 layout_mode = 2
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0.831373, 0.815686, 0.811765, 1)
@@ -382,6 +382,7 @@ offset_right = 192.0
 offset_bottom = 106.0
 
 [node name="ColorRect" type="ColorRect" parent="Card_Description"]
+layout_mode = 0
 offset_left = -192.0
 offset_top = -106.0
 offset_right = 448.0
@@ -435,24 +436,27 @@ offset_top = -1.41422
 offset_right = 638.586
 offset_bottom = 357.586
 
-[node name="LifePointsBackground" type="TextureRect" parent="."]
+[node name="LifePointsBackground" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -44.0
-offset_top = 6.0
-offset_right = 44.0
-offset_bottom = 54.0
+offset_left = -320.0
+offset_right = -320.0
 grow_horizontal = 2
 
 [node name="Life Points" type="Label" parent="LifePointsBackground"]
 layout_mode = 0
-offset_left = 3.12134
-offset_top = 5.87867
-offset_right = 86.1213
-offset_bottom = 34.8787
+offset_right = 640.0
+offset_bottom = 60.0
 theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.807843, 0.545098, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0.429222, 0.157026, 0.164089, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Watermelons" type="Control" parent="."]
 visible = false
