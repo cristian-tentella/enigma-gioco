@@ -10,6 +10,7 @@ var addlife = false
 var reset = false
 @onready var card_name: Label = $Card_Description/Background/Card_Name
 @onready var effect: Label = $Card_Description/Background/Effect
+@onready var win_loss: Label = $Win_Lost/Win_or_Lost_background/Label
 
 signal exit
 signal close_popup
@@ -102,8 +103,7 @@ func reset_beating(k):
 func game_lost_ui():
 	$CloseUiButton.hide()
 	await get_tree().create_timer(1).timeout
-	$Win_Lost/Label.text = "memeory_lost_ui"
-	print_debug($Win_Lost/Label.text)
+	win_loss.text = "memeory_lost_ui"
 	$Win_Lost.show()
 	$End_game.show()
 	await end_game
@@ -112,7 +112,7 @@ func game_lost_ui():
 func game_won_ui():
 	$CloseUiButton.hide()
 	await get_tree().create_timer(1).timeout
-	$Win_Lost/Label.text = "memeory_win_ui"
+	win_loss.text = "memeory_win_ui"
 	$Win_Lost.show()
 	$End_game.show()
 	await end_game
@@ -127,25 +127,13 @@ func show_description():
 	update_slots()
 	effect.text = "memeory_"+String(card_type)+"_description"
 	card_name.text = "memeory_"+String(card_type)+"_title"
-	#process_description(effect.text)
 	$Card_Description.show()
 	await close_description
-	#print_debug("qui")
 	$Close_Description.hide()
 	$Card_Description.hide()
 	$CloseUiButton.show()
 	self.description_closed.emit()
 	
-	
-func process_description(description: String):
-	const title_delimiter = ":"
-	var title_delimiter_index = effect.text.find(title_delimiter)
-	var title_text = description.substr(0, title_delimiter_index).rstrip(" ")
-	print_debug(title_text)
-	var body_text = description.substr(title_delimiter_index + 1).lstrip(" ")
-	print_debug(body_text)
-	card_name.text = title_text
-	effect.text = body_text
 
 func change_life_system():
 	$Hearts.hide()
