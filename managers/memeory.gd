@@ -78,19 +78,19 @@ func has_couple():
 	
 func check():
 	var check_var = has_couple()
-	if(!check_var):
+	if not check_var:
 		await get_tree().create_timer(1).timeout
 		AudioManager.play_failure_sound_effect()
 		print_debug(picked)
-		if(picked[0].card_type == "shuffle"):
-				picked.reverse()
-		if(picked[1].card_type == "shuffle"):
-				#print_debug("rimescola")
-				card_show_description()
-				await memeory_ui.description_closed
-				picked[1].handle_interaction()
+		if picked[0].card_type == "shuffle":
+			picked.reverse()
+		if picked[1].card_type == "shuffle":
+			#print_debug("rimescola")
+			card_show_description()
+			await memeory_ui.description_closed
+			picked[1].handle_interaction()
 			
-		if(picked[0].card_type != "shuffle" and picked[1].card_type != "shuffle"):
+		if picked[0].card_type != "shuffle" and picked[1].card_type != "shuffle":
 			remove_heart_from_array()
 		cover_picked_cards()
 	else:
