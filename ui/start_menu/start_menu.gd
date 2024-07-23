@@ -7,6 +7,7 @@ extends Control
 @onready var exit_button = $VBoxContainer/ExitButton
 @onready var credits_button = $VBoxContainer/CreditsButton
 @onready var fade: Fade = $Fade
+@onready var credits_popup: Control = $CreditsPopup
 
 signal exit
 
@@ -98,5 +99,9 @@ func _on_resume_button_pressed():
 	AudioManager.play_main_theme_sound_track()
 	
 
+func _on_credits_button_pressed():
+	self.credits_popup.show()
 
 
+func _on_close_credits_popup_button_pressed():
+	self.credits_popup.hide()
