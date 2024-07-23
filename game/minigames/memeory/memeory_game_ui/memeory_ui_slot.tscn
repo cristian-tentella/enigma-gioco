@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c72ia170pdba4"]
+[gd_scene load_steps=2 format=3 uid="uid://c72ia170pdba4"]
 
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.gd" id="1_oxlxo"]
-[ext_resource type="Texture2D" uid="uid://bhpt0u3ex43gx" path="res://game/minigames/memeory/memeory_game_ui/slot.png" id="2_u68tf"]
 
 [node name="MemeoryUiSlot" type="Control"]
 custom_minimum_size = Vector2(32, 48)
@@ -25,11 +24,6 @@ offset_right = 16.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="sprite_casella_vuota" type="TextureRect" parent="CenterContainer"]
-custom_minimum_size = Vector2(32, 48)
-layout_mode = 2
-texture = ExtResource("2_u68tf")
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
 custom_minimum_size = Vector2(32, 48)
