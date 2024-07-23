@@ -102,6 +102,207 @@ layout_mode = 2
 [node name="MemeoryUiSlot16" parent="GridContainer" instance=ExtResource("2_cnvj3")]
 layout_mode = 2
 
+[node name="Hearts" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -142.0
+offset_top = 16.0
+offset_right = 142.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_constants/separation = 36
+
+[node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart2" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart3" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart4" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart5" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart6" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart7" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
+layout_mode = 2
+
+[node name="LifePointsBackground" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_right = -320.0
+grow_horizontal = 2
+
+[node name="Life Points" type="Label" parent="LifePointsBackground"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 60.0
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.807843, 0.545098, 0.494118, 1)
+theme_override_colors/font_outline_color = Color(0.429222, 0.157026, 0.164089, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Watermelons" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 448.5
+offset_top = 22.0
+offset_right = 448.5
+offset_bottom = 53.0
+
+[node name="Watermelon1" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -8.84247
+offset_top = 200.269
+offset_right = 26.1575
+offset_bottom = 248.269
+rotation = -0.244346
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon2" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -285.636
+offset_top = 176.109
+offset_right = -249.636
+offset_bottom = 224.109
+rotation = 0.125664
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon3" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -22.589
+offset_top = 58.0929
+offset_right = 14.411
+offset_bottom = 106.093
+rotation = 0.0296706
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon4" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -284.016
+offset_top = 31.3969
+offset_right = -248.016
+offset_bottom = 79.3969
+rotation = 0.307178
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon5" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -215.428
+offset_top = 252.587
+offset_right = -179.428
+offset_bottom = 300.587
+rotation = 0.0663225
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon6" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -209.033
+offset_top = 0.125996
+offset_right = -176.033
+offset_bottom = 48.126
+rotation = 0.118682
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_1q51g")
+
+[node name="Watermelon7" type="TextureRect" parent="Watermelons"]
+layout_mode = 0
+offset_left = -86.4441
+offset_top = 253.984
+offset_right = -53.4441
+offset_bottom = 301.984
+rotation = 0.237365
+scale = Vector2(1.44, 1.44)
+texture = ExtResource("8_1q51g")
+
+[node name="Card_Description" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 106.0
+offset_right = 192.0
+offset_bottom = 106.0
+
+[node name="ColorRect" type="ColorRect" parent="Card_Description"]
+layout_mode = 0
+offset_left = -192.0
+offset_top = -106.0
+offset_right = 448.0
+offset_bottom = 254.0
+color = Color(0, 0, 0, 0.576471)
+
+[node name="Background" type="NinePatchRect" parent="Card_Description"]
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 128.0
+texture = ExtResource("2_3wgbt")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Card_Description/Background"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card_Description/Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Card_Name" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+text = "Shuffle"
+
+[node name="Effect" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
+z_index = 105
+layout_mode = 2
+theme = ExtResource("7_cton7")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
+text = "I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found)"
+autowrap_mode = 3
+
+[node name="Close_Description" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+layout_mode = 2
+offset_left = -0.414215
+offset_top = -1.41422
+offset_right = 638.586
+offset_bottom = 357.586
+
 [node name="Virus" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -302,43 +503,6 @@ offset_right = 115.333
 offset_bottom = 40.0
 scale = Vector2(0.45, 0.45)
 
-[node name="Hearts" type="HBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -142.0
-offset_top = 16.0
-offset_right = 142.0
-offset_bottom = 48.0
-grow_horizontal = 2
-theme_override_constants/separation = 36
-
-[node name="Heart" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart2" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart3" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart4" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart5" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart6" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart7" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
-[node name="Heart8" parent="Hearts" instance=ExtResource("6_jyv30")]
-layout_mode = 2
-
 [node name="Win_Lost" type="Control" parent="."]
 visible = false
 layout_mode = 2
@@ -373,177 +537,13 @@ offset_right = 640.0
 offset_bottom = 361.0
 flat = true
 
-[node name="Card_Description" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 192.0
-offset_top = 106.0
-offset_right = 192.0
-offset_bottom = 106.0
-
-[node name="ColorRect" type="ColorRect" parent="Card_Description"]
-layout_mode = 0
-offset_left = -192.0
-offset_top = -106.0
-offset_right = 448.0
-offset_bottom = 254.0
-color = Color(0, 0, 0, 0.576471)
-
-[node name="Background" type="NinePatchRect" parent="Card_Description"]
-layout_mode = 2
-offset_right = 256.0
-offset_bottom = 128.0
-texture = ExtResource("2_3wgbt")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="Card_Description/Background"]
-layout_mode = 0
-offset_right = 256.0
-offset_bottom = 128.0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Card_Description/Background/MarginContainer"]
-layout_mode = 2
-
-[node name="Card_Name" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("7_cton7")
-theme_override_colors/font_color = Color(0.439216, 0.403922, 0.4, 1)
-theme_override_font_sizes/font_size = 14
-text = "Shuffle"
-
-[node name="Effect" type="Label" parent="Card_Description/Background/MarginContainer/VBoxContainer"]
-z_index = 105
-layout_mode = 2
-theme = ExtResource("7_cton7")
-theme_override_colors/font_color = Color(0.231373, 0.207843, 0.207843, 1)
-text = "I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found)"
-autowrap_mode = 3
-
-[node name="Close_Description" type="Button" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
-z_index = 20
-layout_mode = 2
-offset_left = -0.414215
-offset_top = -1.41422
-offset_right = 638.586
-offset_bottom = 357.586
-
-[node name="LifePointsBackground" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.0
-offset_right = -320.0
-grow_horizontal = 2
-
-[node name="Life Points" type="Label" parent="LifePointsBackground"]
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 60.0
-theme = ExtResource("7_cton7")
-theme_override_colors/font_color = Color(0.807843, 0.545098, 0.494118, 1)
-theme_override_colors/font_outline_color = Color(0.429222, 0.157026, 0.164089, 1)
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 36
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Watermelons" type="Control" parent="."]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_left = 448.5
-offset_top = 22.0
-offset_right = 448.5
-offset_bottom = 53.0
-
-[node name="Watermelon1" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -8.84247
-offset_top = 200.269
-offset_right = 26.1575
-offset_bottom = 248.269
-rotation = -0.244346
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon2" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -285.636
-offset_top = 176.109
-offset_right = -249.636
-offset_bottom = 224.109
-rotation = 0.125664
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon3" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -22.589
-offset_top = 58.0929
-offset_right = 14.411
-offset_bottom = 106.093
-rotation = 0.0296706
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon4" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -284.016
-offset_top = 31.3969
-offset_right = -248.016
-offset_bottom = 79.3969
-rotation = 0.307178
-scale = Vector2(2.25, 2.25)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon5" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -215.428
-offset_top = 252.587
-offset_right = -179.428
-offset_bottom = 300.587
-rotation = 0.0663225
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon6" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -209.033
-offset_top = 0.125996
-offset_right = -176.033
-offset_bottom = 48.126
-rotation = 0.118682
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("8_1q51g")
-
-[node name="Watermelon7" type="TextureRect" parent="Watermelons"]
-layout_mode = 0
-offset_left = -86.4441
-offset_top = 253.984
-offset_right = -53.4441
-offset_bottom = 301.984
-rotation = 0.237365
-scale = Vector2(1.44, 1.44)
-texture = ExtResource("8_1q51g")
-
 [node name="Deck" parent="." instance=ExtResource("5_b56a0")]
 visible = false
 
 [connection signal="pressed" from="CloseUiButton" to="." method="_on_exit_pause_menu_button_pressed"]
+[connection signal="pressed" from="Close_Description" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Virus/Popup1/CloseUiButton" to="." method="_on_exit_popup_1_pressed"]
 [connection signal="pressed" from="Virus/Popup2/CloseUiButton" to="." method="_on_exit_popup_2_pressed"]
 [connection signal="pressed" from="Virus/Popup3/CloseUiButton" to="." method="_on_exit_popup_3_pressed"]
 [connection signal="pressed" from="Virus/Popup4/CloseUiButton" to="." method="_on_exit_popup_4_pressed"]
 [connection signal="pressed" from="End_game" to="." method="_on_end_game_pressed"]
-[connection signal="pressed" from="Close_Description" to="." method="_on_button_pressed"]
