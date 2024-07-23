@@ -290,10 +290,9 @@ texture = ExtResource("2_3wgbt")
 [node name="Label" type="Label" parent="Win_Lost/Win_or_Lost_background"]
 z_index = 105
 layout_mode = 2
-offset_left = 24.0
-offset_top = 54.0
-offset_right = 167.0
-offset_bottom = 71.0
+offset_top = 43.801
+offset_right = 191.0
+offset_bottom = 60.801
 theme = ExtResource("7_cton7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
