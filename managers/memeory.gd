@@ -109,13 +109,13 @@ func check():
 		if(shuffle_check != "shuffle"):
 			#print_debug("attiva effetto carta")
 			picked[1].handle_interaction()
+			check_game_won()
 		if(picked[1].card_type == "extralife"):
 			await get_tree().create_timer(2).timeout
 			memeory_ui.reset_beating(hearts_array.size())
-		if(picked[1].card_type == "seer"):
-			await get_tree().create_timer(2).timeout
 		check_game_won()
-		if (game_won):
+		print_debug(game_won)
+		if (game_won == true):
 			StateManager.current_minigame += 3 #Insieme al minigame 3 serve che la somma faccia 10
 			gamewon.emit()
 	print_debug(MemeoryManager.slots)

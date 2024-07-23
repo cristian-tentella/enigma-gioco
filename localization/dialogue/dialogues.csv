@@ -133,15 +133,23 @@ memeory_lost_2;Dominik:…whatever;Dominik:…certo, certo...
 memeory_win_ui;YOU WON!;HAI VINTO!
 memeory_lost_ui;YOU LOST!;HAI PERSO!
 
-memeory_watermelon_description;Watermelon Card:Let's make the game more beautiful!;Carta Anguria:Rendiamo il gioco più bello!
-memeory_regular_description;Regular Card:Nothing happens here...;Carta Standard:Qui non succede nulla...
-memeory_extralife_description;Extra Lifes Card:Here's to you two lives, make good use of them! (P.S. You can have a maximum of 8 lifes);Carta Vite Extra:Ecco a te due vite, fanne buon uso! (P.S. puoi avere massimo 8 vite)
-memeory_malus_description;Malus Card:The curse that lives in these two cards unfortunately takes a life from you... (P.S. Only if you don't have only 1 life left);Carta Malus:La maledizione che vive in queste due carte purtroppo ti toglie una vita...(solo se non hai una sola vita rimasta)
-memeory_error_description;Error Card:Error 418, i'm a teapot...;Carta Errore:Errore 418, sono una teiera... 
-memeory_seer_description;Seer Card:I see the future...;Carta Veggente:Io vedo il futuro...
-memeory_tcg_description;TCG Card:I summon Pot of Greed to draw three additional cards from my deck...It doesn't work tho...;Carta GCC:Utilizzo Anfora dell'avidità per pescare tre carte dal deck...Non funziona però...
-memeory_shuffle_description;Shuffle Card:I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found);Carta Rimescola:Io mi attivo solo se sbagli la coppia e in una delle due carte ci sono io...Attenzione perchè rimescolo tutto...(P.S. L'effetto non si attiva se si trova la coppia)
+memeory_watermelon_title;Watermelon Card;Carta Anguria
+memeory_regular_title;Regular Card;Carta Standard
+memeory_extralife_title;Extra Lifes Card;Carta Vite Extra
+memeory_malus_title;Malus Card;Carta Malus
+memeory_error_title;Error Card;Carta Errore
+memeory_seer_title;Seer Card;Carta Veggente
+memeory_tcg_title;TCG Card;Carta GCC
+memeory_shuffle_title;Shuffle Card;Carta Rimescola
 
+memeory_watermelon_description;Let's make the game more beautiful!;Rendiamo il gioco più bello!
+memeory_regular_description;Nothing happens here...;Qui non succede nulla...
+memeory_extralife_description;Here's to you two lives, make good use of them! (P.S. You can have a maximum of 8 lifes);Ecco a te due vite, fanne buon uso! (P.S. puoi avere massimo 8 vite)
+memeory_malus_description;The curse that lives in these two cards unfortunately takes a life from you... (P.S. Only if you don't have only 1 life left);La maledizione che vive in queste due carte purtroppo ti toglie una vita...(solo se non hai una sola vita rimasta)
+memeory_error_description;Error 418, i'm a teapot...;Errore 418, sono una teiera... 
+memeory_seer_description;I see the future...;Io vedo il futuro...
+memeory_tcg_description;I summon Pot of Greed to draw three additional cards from my deck...It doesn't work tho...;Utilizzo Anfora dell'avidità per pescare tre carte dal deck...Non funziona però...
+memeory_shuffle_description;I only activate if the pair is wrong and I am in one of the two cards... Be careful because I mix everything up... (P.S. The effect is not activated if the pair is found);Io mi attivo solo se sbagli la coppia e in una delle due carte ci sono io...Attenzione perchè rimescolo tutto...(P.S. L'effetto non si attiva se si trova la coppia)
 
 minigame_3_colors_mobile_bloccato;Domink:This one is locked too, what's wrong with my house, what is this level of security?!;Dominik:Anche questo è bloccato, ma cos'è questo livello di sicurezza in casa mia?!
 minigame_3_lost;Dominik:Well, guess I'll have to take a deeper look around the house, there has to be a hint somewhere around here!;Dominik:Bene, immagino che dovrò guardare meglio in giro, ci deve essere qualcosa che può aiutarmi da qualche parte!

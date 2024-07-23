@@ -10,7 +10,7 @@ func beating_animation():
 	$AnimationPlayer.play("beating_heart")
 	
 func stop_animation():
-	print_debug("stop")
+	#print_debug("stop")
 	$AnimationPlayer.stop()
 	
 func lost_heart_animation():
