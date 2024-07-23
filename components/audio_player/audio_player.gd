@@ -2,8 +2,8 @@ class_name AudioPlayer
 extends Node
 
 
-const LOWEST_VOLUME_IN_DECIBELS = -36
-@export var sound_track_fade_in_duration_in_seconds = 2
+const LOWEST_VOLUME_IN_DECIBELS = -24
+@export var sound_track_fade_in_duration_in_seconds = 1.25
 var current_sound_track_player: AudioStreamPlayer
 
 func _ready():
