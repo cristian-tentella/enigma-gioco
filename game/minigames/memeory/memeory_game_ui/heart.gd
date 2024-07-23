@@ -16,7 +16,7 @@ func stop_animation():
 func lost_heart_animation():
 	$AnimationPlayer.play("lost_heart")
 	await get_tree().create_timer(1.5).timeout
-	self.hide()
+	#self.hide()
 
 func recover_heart_animation():
 	self.show()
@@ -34,7 +34,7 @@ func updateheart(heart: Heart):
 			MemeoryManager.gamelost.emit()
 	if(recover):
 		print_debug("entro nel recover")
-		recover = true
+		recover = false
 		#self.show_heart = true
 		#print_debug(self.show_heart)
 		self.recover_heart_animation()
