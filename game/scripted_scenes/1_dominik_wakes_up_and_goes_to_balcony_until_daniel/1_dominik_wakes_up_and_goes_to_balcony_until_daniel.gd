@@ -60,5 +60,7 @@ func launch_everything():
 	await DialogueManager.has_finished_displaying
 	
 	StateManager.current_minigame = 0
+	StateManager.should_player_be_able_to_move = true
+
 	self.queue_free()
 

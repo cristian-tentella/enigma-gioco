@@ -47,6 +47,9 @@ func start():
 	StateManager.player.show()
 	StateManager.house.show()
 
+	# Il giocatore potrà muoversi autonomamente dopo la fine della prima cutscene
+	StateManager.should_player_be_able_to_move = false
+
 #Se clicca il tasto di EXIT, distruggi tutto e addio.
 func exit():
 	get_tree().quit()
