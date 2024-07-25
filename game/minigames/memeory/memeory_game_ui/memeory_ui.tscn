@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cuenaxqy17uw8"]
 
 [ext_resource type="Script" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui.gd" id="1_hlp5k"]
-[ext_resource type="Texture2D" uid="uid://usk7h5iyt7sl" path="res://game/minigames/memeory/memeory_game_ui/ui_background.png" id="2_3wgbt"]
 [ext_resource type="PackedScene" uid="uid://c72ia170pdba4" path="res://game/minigames/memeory/memeory_game_ui/memeory_ui_slot.tscn" id="2_cnvj3"]
 [ext_resource type="Texture2D" uid="uid://hv6qh6alhlok" path="res://game/minigames/memeory/memeory_game_ui/bathroom_floor_zoom.png" id="2_ehauv"]
 [ext_resource type="PackedScene" uid="uid://b6y0in01ln5ib" path="res://components/close_ui_button/close_ui_button.tscn" id="3_i76jl"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cclj6c6cwa88m" path="res://game/minigames/memeory/memeory_game_ui/heart.tscn" id="6_jyv30"]
 [ext_resource type="Theme" uid="uid://cb6ct0icqeuwi" path="res://theme/theme.tres" id="7_cton7"]
 [ext_resource type="Texture2D" uid="uid://chyg2v1oywjod" path="res://game/minigames/memeory/memeory_game_ui/watermelon.png" id="8_1q51g"]
+[ext_resource type="Texture2D" uid="uid://dbrwqjdta36ej" path="res://components/inventory/ui_background.png" id="8_suu52"]
 
 [node name="MemeoryUi" type="Control"]
 z_index = 100
@@ -254,6 +254,7 @@ texture = ExtResource("8_1q51g")
 flip_h = true
 
 [node name="Card_Description" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_left = 192.0
 offset_top = 106.0
@@ -272,7 +273,7 @@ color = Color(0, 0, 0, 0.576471)
 layout_mode = 2
 offset_right = 256.0
 offset_bottom = 128.0
-texture = ExtResource("2_3wgbt")
+texture = ExtResource("8_suu52")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
